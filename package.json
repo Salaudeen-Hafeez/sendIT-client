@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "index.js",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
