@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Package</title>
+  </head>
+  <body onload="loadPackage()">
+    <div class="logo">
+      <div class="logo1">
+        <nav>
+          <img src="./images/logo2.png" alt="" class="logo-img" />
+          <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="nav-link">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="index.html/#section-2">About</a></li>
+              <li><a onclick="logOut()">logout</a></li>
+              <li><a href="/login">Login</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <main class="user-main">
+      <div class="packagePage">
+        <h1 style="text-align: center">New Order</h1>
+        <div class="user-profile" id="userProfile"></div>
+        <div class="cancelbtn">
+          <a onclick="cancelOrder()">Cancel order</a>
+          <a onclick="completeOrder()">Okay</a>
+        </div>
+
+        <div id="mapcontainer">
+          <div id="map"></div>
+        </div>
+
+        <div class="changeDestination"></div>
+        <form onsubmit="return false">
+          <div class="reg-heading">
+            <h3>Fill the form below to change your order destination</h3>
+          </div>
+          <div class="input-field">
+            <label for="pName" class="col-4">New destination</label>
+            <input
+              type="text"
+              class="packageinput"
+              id="newDestination"
+              name="destination"
+              oninput="clearErr(this)"
+              required
+            />
+            <small></small>
+          </div>
+          <input
+            type="submit"
+            class="btn packageinput"
+            id="submitBtn"
+            onclick="updateDestination()"
+            value="Change destination"
+          />
+        </form>
+      </div>
+    </main>
+    <script src="index.js"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA&callback=initMap"
+      type="text/javascript"
+    ></script>
+  </body>
+</html>

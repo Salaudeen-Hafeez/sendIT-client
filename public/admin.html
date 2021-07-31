@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>user profile</title>
+  </head>
+  <body onload="displayAdmin()">
+    <div class="logo">
+      <div class="logo1">
+        <nav>
+          <img src="/images/logo2.png" alt="" class="logo-img" />
+          <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="nav-link">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="#">profile</a></li>
+              <li><a href="#" onclick="getPakages()">My packages</a></li>
+              <li><a onclick="logOut()">Logout</a></li>
+              <li><a href="/login.html">Login</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <main class="user-main">
+      <div>
+        <div class="user-profile" id="userProfile"></div>
+        <div class="packages" id="packages">
+          <ul>
+            <li><a onclick="fetchUsers()">Users</a></li>
+            <div class="UsersContainer" id="usersContainer"><ul></ul></div>
+            <li><a onclick="showPackages()">Packages</a></li>
+            <div class="packageContainer" id="packageContainer">
+              <ul>
+                <li><a onclick="fetchNewPackages()">New packages</a></li>
+                <div class="newPackages" id="newPackages"></div>
+                <li>
+                  <a onclick="fetchPackagesInTransit()">Packages in transit</a>
+                </li>
+                <li>
+                  <a onclick="fetchDeliveredPackages()">Delivered packages</a>
+                </li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <main class="login-main" id="updatePackage">
+      <div class="form-bg">
+        <form onsubmit="return false">
+          <div class="reg-heading">
+            <h2>Update location and status</h2>
+          </div>
+          <div class="input-container" id="inputContainer">
+            <div class="input-field">
+              <label for="location" class="col-4">Present location</label>
+              <input
+                type="text"
+                class="location"
+                id="location"
+                name="location"
+                onclick="clearErr(this)"
+                required
+              />
+              <small></small>
+            </div>
+            <div class="input-field">
+              <label for="status" class="col-4">Status</label>
+              <input
+                type="text"
+                class="col-8"
+                id="status"
+                name="status"
+                onclick="clearErr(this)"
+                required
+              />
+              <small></small>
+            </div>
+          </div>
+          <input
+            type="submit"
+            class="btn"
+            id="submitBtn"
+            onclick="updatePackage()"
+            value="Update"
+          />
+        </form>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+      </div>
+    </main>
+  </body>
+  <script src="/index.js"></script>
+</html>
