@@ -377,9 +377,7 @@ const loadPackage = () => {
 const postUser = (data) => {
   fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
     .then((resp) => resp.json())
