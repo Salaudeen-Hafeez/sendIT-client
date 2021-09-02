@@ -385,7 +385,7 @@ const postUser = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.setItem('user', JSON.stringify(data));
-      //setTimeout(openUser(), 1000);
+      etTimeout(openUser(), 1000);
     })
     .catch((err) => {
       console.log(err);
