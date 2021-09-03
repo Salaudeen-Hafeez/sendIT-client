@@ -375,16 +375,20 @@ const loadPackage = () => {
 };
 
 const postUser = (data) => {
+  console.log('hi before fetch');
   fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
-    .then((resp) => resp.json())
+    .then((resp) => {
+      console.log('hi after fetch');
+      resp.json();
+    })
     .then((data) => {
       console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
-      //setTimeout(openUser(), 1000);
+      setTimeout(openUser(), 1500);
     })
     .catch((err) => {
       console.log(err);
