@@ -444,6 +444,8 @@ const postPackage = (data) => {
   const username = user._username;
   const token = user.auth_token;
   const email = user._email;
+  console.log(data);
+  console.log(user);
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${email}/${token}/packages`,
     {
@@ -454,6 +456,7 @@ const postPackage = (data) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
     })
