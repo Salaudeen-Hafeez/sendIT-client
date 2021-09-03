@@ -378,7 +378,7 @@ const postUser = (data) => {
   console.log(data);
   fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users/login', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json;charset=utf-8' },
     body: JSON.stringify(data),
   })
     .then((resp) => resp.json())
