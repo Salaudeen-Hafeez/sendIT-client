@@ -480,7 +480,7 @@ const postPackage = (data) => {
       `;
   // sendEmail(data._email, message);
   fetchPackages();
-  setTimeout(openPackage, 1500);
+  // setTimeout(openPackage, 1500);
 };
 
 const submitPackage = () => {
