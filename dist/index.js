@@ -1,16 +1,16 @@
 // const apiKey = 'AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA';
 
-const sendEmail = (email, message) => {
-  Email.send({
-    Host: 'smtp.gmail.com',
-    Username: email,
-    Password: 'ozcmcdwqqojagogr',
-    To: 'amplifiedsalaudeenak21@gmail.com',
-    From: email,
-    Subject: 'Sendit Logistic',
-    Body: message,
-  }).then((message) => alert(message));
-};
+// const sendEmail = (email, message) => {
+//   Email.send({
+//     Host: 'smtp.gmail.com',
+//     Username: email,
+//     Password: 'ozcmcdwqqojagogr',
+//     To: 'amplifiedsalaudeenak21@gmail.com',
+//     From: email,
+//     Subject: 'Sendit Logistic',
+//     Body: message,
+//   }).then((message) => alert(message));
+// };
 
 const setErrorFor = (
   inp,
@@ -398,7 +398,7 @@ const postUser = (data) => {
         <p>As always, we shall do our best to get your package 
         to your desire destination as early as possible and safely.</p>
       `;
-  sendEmail(data._email, message);
+  // sendEmail(data._email, message);
 };
 
 const postAdmin = (data) => {
@@ -422,9 +422,9 @@ const postAdmin = (data) => {
         <p>As always, we shall do our best to get your package 
         to your desire destination as early as possible and safely.</p>
       `;
-  sendEmail(data._email, message);
+  // sendEmail(data._email, message);
 };
-
+alert;
 const signUp = () => {
   localStorage.clear();
   const input = document
@@ -476,7 +476,7 @@ const postPackage = (data) => {
         <p>As always, we shall do our best to get your package 
         to your desire destination as early as possible and safely.</p>
       `;
-  sendEmail(data._email, message);
+  // sendEmail(data._email, message);
   fetchPackages();
   setTimeout(openPackage, 1500);
 };
