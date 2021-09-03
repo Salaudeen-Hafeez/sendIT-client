@@ -436,6 +436,7 @@ const signUp = () => {
     if (validatedUser.data.email.includes('@sendit.com')) {
       postAdmin(validatedUser.data);
     } else {
+      console.log(validatedUser);
       postUser(validatedUser.data);
     }
   }
