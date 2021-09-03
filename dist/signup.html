@@ -31,7 +31,7 @@
     </div>
     <main class="login-main">
       <div class="form-bg">
-        <form onsubmit="signUp()">
+        <form onsubmit="return false">
           <div class="reg-heading">
             <h2>Sign-up Now</h2>
             <p>
@@ -102,7 +102,13 @@
               <small></small>
             </div>
           </div>
-          <input type="submit" class="btn" id="submitBtn" value="Sign-up" />
+          <input
+            type="submit"
+            class="btn"
+            id="submitBtn"
+            value="Sign-up"
+            onclick="signUp()"
+          />
           <p>Already a member? <a href="/login.html">Login</a></p>
         </form>
         <div class="circle1"></div>
