@@ -489,6 +489,7 @@ const submitPackage = () => {
     .querySelectorAll('input');
   const validatedInput = formValidation(input);
   if (!validatedInput.emptyInput) {
+    console.log(validatedInput.data);
     postPackage(validatedInput.data);
   }
 };
