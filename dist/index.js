@@ -386,7 +386,7 @@ const postUser = (data) => {
       console.log('hi after fetch');
       console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
-      // setTimeout(openUser(), 1500);
+      setTimeout(openUser(), 1500);
     })
     .catch((err) => {
       console.log(err);
