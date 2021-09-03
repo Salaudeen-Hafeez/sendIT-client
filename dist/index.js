@@ -441,13 +441,11 @@ const signUp = () => {
 };
 const postPackage = (data) => {
   const user = usersData();
-  const username = user._username;
-  const token = user.auth_token;
-  const email = user._email;
+  const { _username, _email, auth_token } = user;
   console.log(data);
   console.log(user);
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${email}/${token}/packages`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
