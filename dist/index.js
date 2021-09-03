@@ -375,7 +375,7 @@ const loadPackage = () => {
 };
 
 const postUser = (data) => {
-  console.log('hi before fetch');
+  console.log(data);
   fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -436,7 +436,6 @@ const signUp = () => {
     if (validatedUser.data.email.includes('@sendit.com')) {
       postAdmin(validatedUser.data);
     } else {
-      console.log(validatedUser);
       postUser(validatedUser.data);
     }
   }
