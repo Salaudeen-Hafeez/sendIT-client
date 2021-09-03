@@ -381,11 +381,9 @@ const postUser = (data) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
-    .then((resp) => {
-      console.log('hi after fetch');
-      resp.json();
-    })
+    .then((resp) => resp.json())
     .then((data) => {
+      console.log('hi after fetch');
       console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
       setTimeout(openUser(), 1500);
