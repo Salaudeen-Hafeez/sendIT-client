@@ -282,6 +282,7 @@ input {
   flex-direction: column;
   justify-content: space-around;
   padding-bottom: 1rem;
+  margin-bottom: 00.5rem;
 }
 .checkBox {
   display: flex;
