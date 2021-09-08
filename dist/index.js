@@ -232,6 +232,7 @@ const fetchPackages = () => {
   const token = user.auth_token;
   const userId = user.users_id;
   const username = user._username;
+  console.log('Inside fetchPackages');
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userId}/${email}/${token}/packages`,
     {
@@ -241,6 +242,7 @@ const fetchPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log('fetchPackages successful');
       localStorage.removeItem('userPackages');
       localStorage.setItem('userPackages', JSON.stringify(data));
     })
@@ -316,6 +318,7 @@ const displayUserPackages = () => {
     );
     setTimeout(createUserPackage, 1500);
   } else if (packages1.packages) {
+    console.log('Inside packages');
     fetchPackages();
     setTimeout(createUserPackage, 1500);
   } else {
