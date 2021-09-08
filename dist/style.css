@@ -399,7 +399,7 @@ td {
   );
 }
 .new-package {
-  width: 75%;
+  width: 100%;
   display: block;
   background: #c6f1dd;
   border: 1px solid darkgreen;
@@ -407,6 +407,7 @@ td {
   color: #333;
   text-align: center;
   margin: 1rem;
+  padding: 1rem 0;
 }
 .cancelbtn {
   width: 100%;
