@@ -212,7 +212,7 @@ const loginUser = () => {
 };
 
 const loginNewUser = () => {
-  const newUser = JSON.parse(localStorage.getItem('newUser'));
+  const newUser = JSON.parse(localStorage.getItem('user'));
   const data = { email: newUser.email, password: newUser.password };
   fetchData(data);
   setTimeout(openUser, 1200);
@@ -426,7 +426,7 @@ const postAdmin = (data) => {
       `;
   // sendEmail(data._email, message);
 };
-alert;
+
 const signUp = () => {
   localStorage.clear();
   const input = document
@@ -440,6 +440,15 @@ const signUp = () => {
     } else {
       postUser(validatedUser.data);
     }
+  }
+};
+
+const newPackage = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user.auth_token) {
+    window.location.href = 'newpackage.html';
+  } else {
+    displayUserPackages();
   }
 };
 const postPackage = (data) => {
