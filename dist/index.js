@@ -146,6 +146,8 @@ const fetchData = (data) => {
       .then((resp) => resp.json())
       .then((data) => {
         localStorage.removeItem('user');
+        localStorage.removeItem('newUser');
+        localStorage.removeItem('userPackages');
         localStorage.setItem('user', JSON.stringify(data));
         setTimeout(openUser, 1200);
       })
@@ -213,8 +215,6 @@ const loginNewUser = () => {
   const newUser = JSON.parse(localStorage.getItem('newUser'));
   const data = { email: newUser.email, password: newUser.password };
   fetchData(data);
-  localStorage.removeItem('newUser');
-  localStorage.removeItem('userPackages');
   setTimeout(openUser, 1200);
 };
 
