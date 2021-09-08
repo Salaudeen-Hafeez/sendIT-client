@@ -445,9 +445,12 @@ const signUp = () => {
 
 const newPackage = () => {
   const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user);
   if (user.auth_token) {
+    console.log('No auth_token');
     window.location.href = 'newpackage.html';
   } else {
+    console.log('auth_token exist');
     displayUserPackages();
   }
 };
