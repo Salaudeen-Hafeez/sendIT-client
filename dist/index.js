@@ -243,6 +243,7 @@ const fetchPackages = () => {
     .then((resp) => resp.json())
     .then((data) => {
       console.log('fetchPackages successful');
+      console.log(data);
       localStorage.removeItem('userPackages');
       localStorage.setItem('userPackages', JSON.stringify(data));
     })
