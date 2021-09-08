@@ -212,7 +212,7 @@ const loginUser = () => {
 };
 
 const loginNewUser = () => {
-  const newUser = JSON.parse(localStorage.getItem('user'));
+  const newUser = JSON.parse(localStorage.getItem('newUser'));
   const data = { email: newUser.email, password: newUser.password };
   fetchData(data);
   setTimeout(openUser, 1200);
