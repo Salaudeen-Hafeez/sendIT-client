@@ -23,6 +23,7 @@ const setErrorFor = (
   small.style.color = 'red';
   small.innerHTML = message;
 };
+
 const formValidation = (input) => {
   const data = {};
   let emptyInput = '';
@@ -49,6 +50,7 @@ const formValidation = (input) => {
   });
   return { emptyInput, data };
 };
+
 const clearErr = (e) => {
   e.style.border = '1px solid lightgreen';
   const small = e.parentElement.querySelector('small');
@@ -251,10 +253,10 @@ const fetchPackages = () => {
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
-  const packages = JSON.parse(localStorage.getItem('userPackages'));
-  if (packages.length > 0) {
+  const packages1 = JSON.parse(localStorage.getItem('userPackages'));
+  if (packages1.length > 0 && !packages1.packages) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
-    packages.forEach((newPackage) => {
+    packages1.forEach((newPackage) => {
       const tableBody = `
       <div class="package" id="userPackage">
       <img
@@ -294,8 +296,10 @@ const createUserPackage = () => {
         </div>`;
       displayPackage += tableBody;
     });
+  } else if (packages1.packages) {
+    displayPackage += `<h2>${packages1.packages}</h2>`;
   } else {
-    displayPackage += `<h2>${packages.ErrorMessage}</h2>`;
+    displayPackage += `<h2>${packages1.ErrorMessage}</h2>`;
   }
   packagesDiv.innerHTML = displayPackage;
 };
@@ -369,7 +373,6 @@ const createPackage = (metrix) => {
 const loadPackage = () => {
   const packages = document.getElementById('userProfile');
   const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
-  console.log(distanceMetrix);
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
@@ -723,7 +726,9 @@ function geocodeAddress(geocoder, address, map) {
 }
 
 function initMap() {
-  const packages = JSON.parse(localStorage.getItem('package'));
+  const { _location, _destination } = JSON.parse(
+    localStorage.getItem('package')
+  );
   const bounds = new google.maps.LatLngBounds();
   const map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 6.5095, lng: 3.3711 },
@@ -732,12 +737,10 @@ function initMap() {
   // initialize services
   const geocoder = new google.maps.Geocoder();
   const service = new google.maps.DistanceMatrixService();
-  const origin = packages._location;
-  const destination = packages._destination;
-  const addresses = [destination, origin];
+  const addresses = [_destination, _location];
   const request = {
-    origins: [origin],
-    destinations: [destination],
+    origins: [_location],
+    destinations: [_destination],
     travelMode: google.maps.TravelMode.DRIVING,
     unitSystem: google.maps.UnitSystem.METRIC,
     avoidHighways: false,
