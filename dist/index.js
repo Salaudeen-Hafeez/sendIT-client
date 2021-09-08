@@ -318,8 +318,7 @@ const displayUserPackages = () => {
       JSON.stringify({ ErrorMessage: packag })
     );
     setTimeout(createUserPackage, 1500);
-  } else if (packages1.packages) {
-    console.log('Inside packages');
+  } else if (!packages1) {
     fetchPackages();
     setTimeout(createUserPackage, 1500);
   } else {
