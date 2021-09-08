@@ -276,7 +276,7 @@ input {
   width: 100%;
   height: 60%;
 }
-.input-field {
+.new-package .input-field {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -399,6 +399,7 @@ td {
   );
 }
 .new-package {
+  width: 75%;
   display: block;
   background: #c6f1dd;
   border: 1px solid darkgreen;
@@ -406,7 +407,6 @@ td {
   color: #333;
   text-align: center;
   margin: 1rem;
-  padding: 1rem 0;
 }
 .cancelbtn {
   width: 100%;
