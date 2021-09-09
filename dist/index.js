@@ -730,6 +730,22 @@ function geocodeAddress(geocoder, address, map, add) {
     .then(({ results }) => {
       console.log(results);
       add.push(results[0].formatted_address);
+      console.log(add);
+      if (add.length >> 1) {
+        const request = {
+          origins: [add[0]],
+          destinations: [add[1]],
+          travelMode: google.maps.TravelMode.DRIVING,
+          unitSystem: google.maps.UnitSystem.METRIC,
+          avoidHighways: false,
+          avoidTolls: false,
+        };
+        // get distance matrix response
+        service.getDistanceMatrix(request).then((response) => {
+          console.log(response);
+          localStorage.setItem('distanceMetrix', JSON.stringify(response));
+        });
+      }
       map.setCenter(results[0].geometry.location);
       new google.maps.Marker({
         map,
@@ -754,20 +770,7 @@ function initMap() {
   const geocoder = new google.maps.Geocoder();
   const service = new google.maps.DistanceMatrixService();
   const addresses = [_destination, _location];
-  const request = {
-    origins: [_location],
-    destinations: [_destination],
-    travelMode: google.maps.TravelMode.DRIVING,
-    unitSystem: google.maps.UnitSystem.METRIC,
-    avoidHighways: false,
-    avoidTolls: false,
-  };
-  console.log(add);
-  // get distance matrix response
-  service.getDistanceMatrix(request).then((response) => {
-    console.log(response);
-    localStorage.setItem('distanceMetrix', JSON.stringify(response));
-  });
+
   const add = [];
   addresses.forEach((address) => {
     geocodeAddress(geocoder, address, map, add);
