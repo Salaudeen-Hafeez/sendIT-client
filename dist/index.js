@@ -728,12 +728,16 @@ function geocodeAddress(geocoder, address, map) {
   geocoder
     .geocode({ address })
     .then(({ results }) => {
-      console.log(results);
-      map.setCenter(results[0].geometry.location);
-      const marker = new google.maps.Marker({
-        map,
-        position: results[0].geometry.location,
-      });
+      geocoder
+        .geocode({ address: results[0].formatted_address })
+        .then(({ results }) => {
+          console.log(results);
+          map.setCenter(results[0].geometry.location);
+          const marker = new google.maps.Marker({
+            map,
+            position: results[0].geometry.location,
+          });
+        });
     })
     .catch((e) =>
       alert(`Geocode was not successful for the following reason: ${e}`)
