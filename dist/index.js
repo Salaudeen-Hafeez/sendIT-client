@@ -362,6 +362,11 @@ const displayPendingPackage = () => {
     setTimeout(createUserPackage, 1500);
   } else {
     console.log('Package exist');
+    const packageInTrans = packages1.find(
+      (packag) => packag._status === 'In transit'
+    );
+    localStorage.removeItem('userPackages');
+    localStorage.setItem('userPackages', JSON.stringify(packageInTrans));
     setTimeout(createUserPackage, 1500);
   }
 };
