@@ -770,7 +770,7 @@ function initMap() {
 
   addresses.forEach((address) => {
     let x = 0;
-    geocodeAddress(geocoder, address, map);
+    geocodeAddress(geocoder, address, map, x);
     x++;
   });
 }
