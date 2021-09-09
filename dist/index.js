@@ -724,12 +724,11 @@ const updatePackage = () => {
 };
 
 // Google map API call and services
-function geocodeAddress(geocoder, address, map) {
+function geocodeAddress(geocoder, address, map, add) {
   geocoder
     .geocode({ address })
     .then(({ results }) => {
       console.log(results);
-      const add = [];
       add.push(results[0].formatted_address);
       console.log(add);
       map.setCenter(results[0].geometry.location);
@@ -770,8 +769,8 @@ function initMap() {
     console.log(response);
     localStorage.setItem('distanceMetrix', JSON.stringify(response));
   });
-
+  const add = [];
   addresses.forEach((address) => {
-    geocodeAddress(geocoder, address, map);
+    geocodeAddress(geocoder, address, map, add);
   });
 }
