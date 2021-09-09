@@ -359,9 +359,11 @@ const displayPendingPackage = () => {
     );
     setTimeout(createUserPackage, 1500);
   } else if (!packages1) {
+    console.log(packages1);
     fetchPendingPackages();
     setTimeout(createUserPackage, 1500);
   } else {
+    console.log('Package exist');
     setTimeout(createUserPackage, 1500);
   }
 };
