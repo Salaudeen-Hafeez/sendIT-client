@@ -728,16 +728,12 @@ function geocodeAddress(geocoder, address, map) {
   geocoder
     .geocode({ address })
     .then(({ results }) => {
-      let x = 0;
-      console.log(x);
-      console.log(results);
+      // console.log(results);
       map.setCenter(results[0].geometry.location);
-      const marker = new google.maps.Marker({
+      new google.maps.Marker({
         map,
         position: results[0].geometry.location,
       });
-      x++;
-      return results;
     })
     .catch((e) =>
       alert(`Geocode was not successful for the following reason: ${e}`)
@@ -768,11 +764,11 @@ function initMap() {
 
   // get distance matrix response
   service.getDistanceMatrix(request).then((response) => {
+    console.log(response);
     localStorage.setItem('distanceMetrix', JSON.stringify(response));
   });
 
   addresses.forEach((address) => {
-    const geo = geocodeAddress(geocoder, address, map);
-    console.log(geo);
+    geocodeAddress(geocoder, address, map);
   });
 }
