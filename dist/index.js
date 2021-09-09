@@ -728,6 +728,7 @@ function geocodeAddress(geocoder, address, map, x) {
   geocoder
     .geocode({ address })
     .then(({ results }) => {
+      let x = 0;
       console.log(x);
       console.log(results);
       map.setCenter(results[0].geometry.location);
@@ -735,6 +736,7 @@ function geocodeAddress(geocoder, address, map, x) {
         map,
         position: results[0].geometry.location,
       });
+      x++;
     })
     .catch((e) =>
       alert(`Geocode was not successful for the following reason: ${e}`)
@@ -767,9 +769,8 @@ function initMap() {
   service.getDistanceMatrix(request).then((response) => {
     localStorage.setItem('distanceMetrix', JSON.stringify(response));
   });
-  let x = 0;
+
   addresses.forEach((address) => {
     geocodeAddress(geocoder, address, map, x);
-    x++;
   });
 }
