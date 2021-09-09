@@ -737,6 +737,7 @@ function geocodeAddress(geocoder, address, map) {
         position: results[0].geometry.location,
       });
       x++;
+      return results;
     })
     .catch((e) =>
       alert(`Geocode was not successful for the following reason: ${e}`)
