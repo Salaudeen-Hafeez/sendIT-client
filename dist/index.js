@@ -358,7 +358,7 @@ const displayPendingPackage = () => {
       JSON.stringify({ ErrorMessage: packag })
     );
     setTimeout(createUserPackage, 1500);
-  } else if (!packages1) {
+  } else if (!packages1 || packages1.length === 0) {
     console.log(packages1);
     fetchPendingPackages();
     setTimeout(createUserPackage, 1500);
