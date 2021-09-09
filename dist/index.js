@@ -94,7 +94,7 @@ const createUser = () => {
             <li>${user._email}</li>
             <li>${user._status}</li>
             <li><a onclick="displayUserPackages()">My packages</a></li>
-            <li><a>Pending packages</a></li>
+            <li><a onclick="displayPendingPackage()">Pending packages</a></li>
           </ul>
         </div>`;
   profile.innerHTML = userProfile;
@@ -226,6 +226,7 @@ const displayAdmin = () => {
   setTimeout(createAdmin, 1000);
 };
 // Use the username from the stored user to get the user packages
+
 const fetchPackages = () => {
   const user = usersData();
   const email = user._email;
@@ -242,8 +243,6 @@ const fetchPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log('fetchPackages successful');
-      console.log(data);
       localStorage.removeItem('userPackages');
       localStorage.setItem('userPackages', JSON.stringify(data));
     })
@@ -252,6 +251,28 @@ const fetchPackages = () => {
     });
 };
 
+const fetchPendingPackages = () => {
+  const user = usersData();
+  const token = user.auth_token;
+  const username = user._username;
+  const condition = 'In transit';
+  fetch(
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${token}/packages/${condition}`,
+    {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+      localStorage.removeItem('userPackages');
+      localStorage.setItem('userPackages', JSON.stringify(data));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 // Get the stored uaerPackages data and create the display packages
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
@@ -320,6 +341,26 @@ const displayUserPackages = () => {
     setTimeout(createUserPackage, 1500);
   } else if (!packages1) {
     fetchPackages();
+    setTimeout(createUserPackage, 1500);
+  } else {
+    setTimeout(createUserPackage, 1500);
+  }
+};
+
+const displayPendingPackage = () => {
+  const user = usersData();
+  const packages1 = JSON.parse(localStorage.getItem('userPackages'));
+  if (!user.auth_token) {
+    localStorage.removeItem('userPackages');
+    const packag =
+      '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login<p>';
+    localStorage.setItem(
+      'userPackages',
+      JSON.stringify({ ErrorMessage: packag })
+    );
+    setTimeout(createUserPackage, 1500);
+  } else if (!packages1) {
+    fetchPendingPackages();
     setTimeout(createUserPackage, 1500);
   } else {
     setTimeout(createUserPackage, 1500);
