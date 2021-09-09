@@ -771,6 +771,7 @@ function initMap() {
   });
 
   addresses.forEach((address) => {
-    geocodeAddress(geocoder, address, map);
+    const geo = geocodeAddress(geocoder, address, map);
+    console.log(geo);
   });
 }
