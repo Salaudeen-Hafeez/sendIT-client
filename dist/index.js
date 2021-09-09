@@ -728,7 +728,9 @@ function geocodeAddress(geocoder, address, map) {
   geocoder
     .geocode({ address })
     .then(({ results }) => {
-      // console.log(results);
+      console.log(results);
+      const add = [];
+      // add.push(results[0].formatted_address)
       map.setCenter(results[0].geometry.location);
       new google.maps.Marker({
         map,
