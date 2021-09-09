@@ -767,9 +767,8 @@ function initMap() {
   service.getDistanceMatrix(request).then((response) => {
     localStorage.setItem('distanceMetrix', JSON.stringify(response));
   });
-
+  let x = 0;
   addresses.forEach((address) => {
-    let x = 0;
     geocodeAddress(geocoder, address, map, x);
     x++;
   });
