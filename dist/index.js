@@ -327,8 +327,9 @@ const createUserPackage = () => {
   packagesDiv.innerHTML = displayPackage;
 };
 const displayUserPackages = () => {
+  let packages1;
   const user = usersData();
-  const packages1 = JSON.parse(localStorage.getItem('userPackages'));
+  packages1 = JSON.parse(localStorage.getItem('userPackages'));
   if (!user.auth_token) {
     localStorage.removeItem('userPackages');
     const packag =
@@ -347,8 +348,9 @@ const displayUserPackages = () => {
 };
 
 const displayPendingPackage = () => {
+  let packages1;
   const user = usersData();
-  const packages1 = JSON.parse(localStorage.getItem('userPackages'));
+  packages1 = JSON.parse(localStorage.getItem('userPackages'));
   if (!user.auth_token) {
     localStorage.removeItem('userPackages');
     const packag =
