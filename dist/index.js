@@ -724,7 +724,7 @@ const updatePackage = () => {
 };
 
 // Google map API call and services
-function geocodeAddress(geocoder, address, map, add) {
+function geocodeAddress(geocoder, address, map, add, service) {
   geocoder
     .geocode({ address })
     .then(({ results }) => {
@@ -773,6 +773,6 @@ function initMap() {
 
   const add = [];
   addresses.forEach((address) => {
-    geocodeAddress(geocoder, address, map, add);
+    geocodeAddress(geocoder, address, map, add, service);
   });
 }
