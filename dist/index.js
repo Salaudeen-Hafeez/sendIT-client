@@ -253,11 +253,10 @@ const fetchPackages = () => {
 
 const fetchPendingPackages = () => {
   const user = usersData();
-  const token = user.auth_token;
-  const username = user._username;
+  const { _email, _username, auth_token } = user;
   const condition = 'In transit';
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${token}/packages/${condition}`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${_username}/${auth_token}/packages/${condition}`,
     {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
