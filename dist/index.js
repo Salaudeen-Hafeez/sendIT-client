@@ -730,7 +730,6 @@ function geocodeAddress(geocoder, address, map, add) {
     .then(({ results }) => {
       console.log(results);
       add.push(results[0].formatted_address);
-      console.log(add);
       map.setCenter(results[0].geometry.location);
       new google.maps.Marker({
         map,
@@ -763,7 +762,7 @@ function initMap() {
     avoidHighways: false,
     avoidTolls: false,
   };
-
+  console.log(add);
   // get distance matrix response
   service.getDistanceMatrix(request).then((response) => {
     console.log(response);
