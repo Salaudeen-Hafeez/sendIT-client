@@ -821,6 +821,7 @@ function geocodeAddress(parameters, address) {
         };
         // get distance matrix response
         service.getDistanceMatrix(request).then((response) => {
+          console.log(response);
           localStorage.setItem('distanceMetrix', JSON.stringify(response));
         });
       }
