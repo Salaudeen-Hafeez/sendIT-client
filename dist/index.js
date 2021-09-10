@@ -229,13 +229,9 @@ const displayAdmin = () => {
 
 const fetchPackages = () => {
   const user = usersData();
-  const email = user._email;
-  const token = user.auth_token;
-  const userId = user.users_id;
-  const username = user._username;
-  console.log('Inside fetchPackages');
+  const { _email, auth_token, users_id, _username } = user;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userId}/${email}/${token}/packages`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
     {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
@@ -264,7 +260,6 @@ const fetchPendingPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       localStorage.removeItem('userPackages');
       localStorage.setItem('userPackages', JSON.stringify(data));
     })
@@ -328,7 +323,6 @@ const createUserPackage = () => {
 };
 const displayUserPackages = () => {
   const user = usersData();
-  const packages1 = JSON.parse(localStorage.getItem('userPackages'));
   if (!user.auth_token) {
     localStorage.removeItem('userPackages');
     const packag =
@@ -357,11 +351,9 @@ const displayPendingPackage = () => {
     );
     setTimeout(createUserPackage, 1500);
   } else if (!packages1 || packages1.length === 0) {
-    console.log(packages1);
     fetchPendingPackages();
     setTimeout(createUserPackage, 1500);
   } else {
-    console.log('Package exist');
     const packageInTrans = packages1.filter(
       (packag) => packag._status === 'In transit'
     );
@@ -426,7 +418,6 @@ const loadPackage = () => {
 };
 
 const postUser = (data) => {
-  console.log(data);
   fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -434,7 +425,6 @@ const postUser = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
       setTimeout(openUser(), 1500);
     })
@@ -493,12 +483,9 @@ const signUp = () => {
 
 const newPackage = () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user);
   if (user.auth_token) {
-    console.log('No auth_token');
     window.location.href = 'newpackage.html';
   } else {
-    console.log('auth_token exist');
     displayUserPackages();
   }
 };
@@ -547,7 +534,6 @@ const submitPackage = () => {
     .querySelectorAll('input');
   const validatedInput = formValidation(input);
   if (!validatedInput.emptyInput) {
-    console.log(validatedInput.data);
     postPackage(validatedInput.data);
   }
 };
@@ -774,9 +760,7 @@ function geocodeAddress(parameters, address) {
   geocoder
     .geocode({ address })
     .then(({ results }) => {
-      console.log(results);
       add.push(results[0].formatted_address);
-      console.log(add);
       if (add.length >> 1) {
         const request = {
           origins: [add[0]],
@@ -788,7 +772,6 @@ function geocodeAddress(parameters, address) {
         };
         // get distance matrix response
         service.getDistanceMatrix(request).then((response) => {
-          console.log(response);
           localStorage.setItem('distanceMetrix', JSON.stringify(response));
         });
       }
