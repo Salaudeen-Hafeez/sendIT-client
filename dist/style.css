@@ -514,7 +514,7 @@ input:focus {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.userUl .packageUl {
+.userUl.packageUl {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(2, 20rem [col-start]);
