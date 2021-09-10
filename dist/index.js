@@ -684,7 +684,8 @@ const fetchUsers = () => {
 const adminFetchUserPackage = (e) => {
   const admin = adminsData();
   const token = admin.admin_token;
-  const username = e.parentElement.querySelector('p')[0].innerHTML;
+  const username = e.parentElement.querySelector('p').innerHTML;
+  console.log(username);
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
     {
