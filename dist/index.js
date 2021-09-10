@@ -357,9 +357,19 @@ const displayPendingPackage = () => {
     const packageInTrans = packages1.filter(
       (packag) => packag._status === 'In transit'
     );
-    localStorage.removeItem('userPackages');
-    localStorage.setItem('userPackages', JSON.stringify(packageInTrans));
-    setTimeout(createUserPackage, 1500);
+    if (packageInTrans.length === 0) {
+      localStorage.removeItem('userPackages');
+      const packag = '<p>No pending packages<p>';
+      localStorage.setItem(
+        'userPackages',
+        JSON.stringify({ ErrorMessage: packag })
+      );
+      setTimeout(createUserPackage, 1500);
+    } else {
+      localStorage.removeItem('userPackages');
+      localStorage.setItem('userPackages', JSON.stringify(packageInTrans));
+      setTimeout(createUserPackage, 1500);
+    }
   }
 };
 const createPackage = (metrix) => {
