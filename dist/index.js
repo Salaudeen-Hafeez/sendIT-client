@@ -732,6 +732,51 @@ const fetchNewPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      localStorage.removeItem('packages');
+      localStorage.setItem('packages', JSON.stringify(data));
+      displayPackages();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const fetchPackagesInTransit = () => {
+  const admin = adminsData();
+  const { _email } = admin;
+  const condition = 'In transit';
+  const token = admin.admin_token;
+  fetch(
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      localStorage.removeItem('packages');
+      localStorage.setItem('packages', JSON.stringify(data));
+      displayPackages();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const fetchDeliveredPackages = () => {
+  const admin = adminsData();
+  const { _email } = admin;
+  const condition = 'Delivered';
+  const token = admin.admin_token;
+  fetch(
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(data));
       displayPackages();
     })
