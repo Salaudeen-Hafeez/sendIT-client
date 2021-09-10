@@ -37,17 +37,20 @@
             <li><a onclick="fetchUsers()">Users</a></li>
             <div class="UsersContainer" id="usersContainer"><ul class="userUl"></ul></div>
             <li><a onclick="showPackages()">Packages</a></li>
-            <div class="packageContainer" id="packageContainer">
+            <div>
               <ul>
-                <li><a onclick="fetchNewPackages()">New packages</a></li>
-                <div class="newPackages" id="newPackages"></div>
+                <li>
+                  <a onclick="fetchNewPackages()">New packages</a>
+                </li>
                 <li>
                   <a onclick="fetchPackagesInTransit()">Packages in transit</a>
                 </li>
                 <li>
                   <a onclick="fetchDeliveredPackages()">Delivered packages</a>
                 </li>
+                
               </ul>
+              <div class="packageContainer" id="newPackages"><ul class="packageUl"></ul></div>
             </div>
           </ul>
         </div>
