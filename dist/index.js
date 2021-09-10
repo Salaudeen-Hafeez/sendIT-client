@@ -315,11 +315,11 @@ const createUserPackage = () => {
       displayPackage += tableBody;
     });
   } else if (packages1.packages) {
-    displayPackage += `<h2>${packages1.packages}</h2>`;
+    displayPackage += `<h3>${packages1.packages}</h3>`;
   } else if (packages1.length === 0) {
-    displayPackage += `<h2>No pending packages</h2>`;
+    displayPackage += `<h3>No pending packages</h3>`;
   } else {
-    displayPackage += `<h2>${packages1.ErrorMessage}</h2>`;
+    displayPackage += `<h3>${packages1.ErrorMessage}</h3>`;
   }
   packagesDiv.innerHTML = displayPackage;
 };
@@ -365,7 +365,7 @@ const displayPendingPackage = () => {
     );
     if (packageInTrans.length === 0) {
       localStorage.removeItem('userPackages');
-      const packag = '<h2>No pending packages</h2>';
+      const packag = '<h3>No pending packages</h3>';
       localStorage.setItem(
         'userPackages',
         JSON.stringify({ ErrorMessage: packag })
