@@ -712,7 +712,7 @@ const displayPackages = () => {
           <p>${packag._location}</p>
           <p>${packag._destination}</p>
           <p>${packag._reciever}</p>
-          <button onclick="adminCheckPackageDetails()">${packag_status}</button>
+          <button onclick="adminCheckPackageDetails()">${packag._status}</button>
         </div>
       </li>
     `;
