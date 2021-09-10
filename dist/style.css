@@ -498,6 +498,7 @@ input:focus {
 
 .userDetails {
   max-width: 20rem;
+  padding: 0.8rem;
   margin: 0.5rem;
   background-color: aliceblue;
   border-radius: 0.5rem;
