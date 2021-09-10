@@ -359,7 +359,7 @@ const displayPendingPackage = () => {
     );
     if (packageInTrans.length === 0) {
       localStorage.removeItem('userPackages');
-      const packag = '<h2>No pending packages<h2>';
+      const packag = '<h2>No pending packages</h2>';
       localStorage.setItem(
         'userPackages',
         JSON.stringify({ ErrorMessage: packag })
