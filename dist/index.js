@@ -666,10 +666,11 @@ const fetchUsers = () => {
       data.forEach((user) => {
         users += `<li>
         <div class="userDetails">
+          <p>${user.users_id}</p>
           <h2>${user._name}</h2>
           <p>${user._username}</p>
           <p>${user._email}</p>
-          <button onclick="adminFetchUserPackage()">packages</button>
+          <button onclick="adminFetchUserPackage(e)">packages</button>
         </div>
       </li>`;
       });
@@ -680,12 +681,12 @@ const fetchUsers = () => {
     });
 };
 
-const fetchUser = (e) => {
+const adminFetchUserPackage = (e) => {
   const admin = adminsData();
   const token = admin.admin_token;
-  const userid = e.parentElement.querySelector('p').innerHTML;
+  const username = e.parentElement.querySelector('p')[0].innerHTML;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${userid}/${admin._email}/${token}`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
