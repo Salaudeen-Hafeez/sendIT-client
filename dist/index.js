@@ -636,19 +636,19 @@ const deleteUser = () => {
 
 const fetchUsers = () => {
   const admin = adminsData();
-  const { _email } = admin;
-  const token = admin.admin_token;
+  const { _email, admin_token } = admin;
   let users = '';
   const containerdiv = document.getElementById('packageContainer');
   const container = containerdiv.querySelector('ul');
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${token}`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       data.forEach((user) => {
         users += `<li><p>${user.users_id}</p><a onclick="fetchUser(this)">${user._email}</a></li>`;
       });
