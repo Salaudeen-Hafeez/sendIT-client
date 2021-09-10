@@ -316,6 +316,8 @@ const createUserPackage = () => {
     });
   } else if (packages1.packages) {
     displayPackage += `<h2>${packages1.packages}</h2>`;
+  } else if (packages1.length === 0) {
+    displayPackage += `<h2>No pending packages</h2>`;
   } else {
     displayPackage += `<h2>${packages1.ErrorMessage}</h2>`;
   }
