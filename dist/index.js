@@ -705,10 +705,10 @@ const adminDisplayUserPackages = () => {
 const adminFetchUserPackage = (e) => {
   const admin = adminsData();
   const token = admin.admin_token;
+  const email = admin._email;
   const pTags = e.parentElement.querySelectorAll('p');
   const userid = parseInt(pTags[0].innerText);
   const username = pTags[1].innerText;
-  const email = pTags[2].innerText;
   console.log(typeof username);
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userid}/${email}/${token}/packages`,
