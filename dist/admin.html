@@ -35,6 +35,9 @@
         <div class="packages" id="packages">
           <div>
             <a onclick="fetchUsers()">Users</a>
+            <div class="UsersContainer" id="usersContainer">
+                <ul class="userUl"></ul>
+              </div>
             <a onclick="showPackages()">Packages</a>
           </div>     
             <div class="packageContainer">
@@ -49,12 +52,7 @@
                   <a onclick="fetchDeliveredPackages()">Delivered packages</a>
                 </li>
               </ul>
-              <div class="UsersContainer" id="usersContainer">
-                <h2>Users Details</h2>
-                <ul class="userUl"></ul>
-              </div>
               <div>
-                <h2>Package Details</h2>
                 <ul class="packageUl" id="newPackages"></ul>
               </div>
             </div>
