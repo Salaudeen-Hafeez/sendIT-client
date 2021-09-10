@@ -670,7 +670,7 @@ const fetchUsers = () => {
           <h2>${user._name}</h2>
           <p>${user._username}</p>
           <p>${user._email}</p>
-          <button onclick="adminFetchUserPackage()">packages</button>
+          <button onclick="adminFetchUserPackage(this)">packages</button>
         </div>
       </li>`;
       });
