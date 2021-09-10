@@ -344,7 +344,7 @@ const displayPendingPackage = () => {
   if (!user.auth_token) {
     localStorage.removeItem('userPackages');
     const packag =
-      '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login<p>';
+      '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login</p>';
     localStorage.setItem(
       'userPackages',
       JSON.stringify({ ErrorMessage: packag })
@@ -359,7 +359,7 @@ const displayPendingPackage = () => {
     );
     if (packageInTrans.length === 0) {
       localStorage.removeItem('userPackages');
-      const packag = '<p>No pending packages<p>';
+      const packag = '<h2>No pending packages<h2>';
       localStorage.setItem(
         'userPackages',
         JSON.stringify({ ErrorMessage: packag })
