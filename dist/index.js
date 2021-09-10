@@ -648,9 +648,15 @@ const fetchUsers = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       data.forEach((user) => {
-        users += `<li><p>${user.users_id}</p><a onclick="fetchUser(this)">${user._email}</a></li>`;
+        users += `<li>
+        <div class="userDetails">
+          <h2>${user._name}</h2>
+          <p>${user._username}</p>
+          <p>${user._email}</p>
+          <button onclick="adminFetchUserPackage()">packages</button>
+        </div>
+      </li>`;
       });
       container.innerHTML = users;
     })
