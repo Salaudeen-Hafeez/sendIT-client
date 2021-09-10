@@ -519,3 +519,8 @@ input:focus {
   display: grid;
   grid-template-columns: repeat(2, 20rem [col-start]);
 }
+.packageUl {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(2, 20rem [col-start]);
+}
