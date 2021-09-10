@@ -706,7 +706,7 @@ const adminFetchUserPackage = (e) => {
   const admin = adminsData();
   const token = admin.admin_token;
   const pTags = e.parentElement.querySelectorAll('p');
-  const userid = pTags[0].innerText;
+  const userid = parseInt(pTags[0].innerText);
   const username = pTags[1].innerText;
   const email = pTags[2].innerText;
   fetch(
