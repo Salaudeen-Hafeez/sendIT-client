@@ -350,14 +350,18 @@ const displayPendingPackage = () => {
       JSON.stringify({ ErrorMessage: packag })
     );
     setTimeout(createUserPackage, 1500);
-  } else if (!packages1 || packages1.length === 0) {
+  } else if (
+    !packages1 ||
+    packages1.length === 0 ||
+    Object.keys(packages1).length !== 0
+  ) {
     fetchPendingPackages();
     setTimeout(createUserPackage, 1500);
   } else {
     const packageInTrans = packages1.filter(
       (packag) => packag._status === 'In transit'
     );
-    if (packageInTrans.length === 0 || packages1.packages) {
+    if (packageInTrans.length === 0) {
       localStorage.removeItem('userPackages');
       const packag = '<h2>No pending packages</h2>';
       localStorage.setItem(
