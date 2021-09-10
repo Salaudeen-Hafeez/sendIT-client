@@ -671,6 +671,7 @@ const fetchUsers = () => {
           <p>${user._username}</p>
           <p>${user._email}</p>
           <button onclick="adminFetchUserPackage(this)">packages</button>
+          <div class="UsersContainer" id="userPackageContainer">
         </div>
       </li>`;
       });
@@ -681,22 +682,45 @@ const fetchUsers = () => {
     });
 };
 
+const adminDisplayUserPackages = () => {
+  let packagesDiv = '';
+  const packages = JSON.parse(localStorage.getItem('userPackages'));
+  const newPackages = document.getElementById('userPackageContainer');
+  newPackages.classList.toggle('open');
+  packages.forEach((packag) => {
+    packagesDiv += `<li>
+        <div class="userDetails">
+          <h2>${packag._name}</h2>
+          <p>${packag._location}</p>
+          <p>${packag._destination}</p>
+          <p>${packag._reciever}</p>
+          <button onclick="adminCheckPackageDetails()">${packag._status}</button>
+        </div>
+      </li>
+    `;
+  });
+  newPackages.innerHTML = packagesDiv;
+};
+
 const adminFetchUserPackage = (e) => {
   const admin = adminsData();
   const token = admin.admin_token;
-  const username = e.parentElement.querySelectorAll('p');
+  const pTags = e.parentElement.querySelectorAll('p');
+  const userid = pTags[0].innerHTML;
+  const username = pTags[1].innerHTML;
+  const email = pTags[2].innerHTML;
   console.log(username);
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userid}/${email}/${token}/packages`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('user');
-      localStorage.setItem('user', JSON.stringify(data));
-      setTimeout(openUser, 1200);
+      localStorage.removeItem('userPackages');
+      localStorage.setItem('userPackages', JSON.stringify(data));
+      adminDisplayUserPackages();
     })
     .catch((err) => {
       console.log(err);
