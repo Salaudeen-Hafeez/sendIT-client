@@ -734,7 +734,6 @@ const fetchNewPackages = () => {
     .then((data) => {
       localStorage.setItem('packages', JSON.stringify(data));
       displayPackages();
-      showPackages();
     })
     .catch((err) => {
       console.log(err);
