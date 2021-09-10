@@ -33,10 +33,10 @@
       <div>
         <div class="user-profile" id="userProfile"></div>
         <div class="packages" id="packages">
-          <ul>
-            <li><a onclick="fetchUsers()">Users</a></li>
-            <div class="UsersContainer" id="usersContainer"><ul class="userUl"></ul></div>
-            <li><a onclick="showPackages()">Packages</a></li>
+          <div>
+            <a onclick="fetchUsers()">Users</a>
+            <a onclick="showPackages()">Packages</a>
+          </div>     
             <div class="packageContainer">
               <ul>
                 <li>
@@ -49,9 +49,15 @@
                   <a onclick="fetchDeliveredPackages()">Delivered packages</a>
                 </li>
               </ul>
-              <div><ul class="packageUl" id="newPackages"></ul></div>
+              <div class="UsersContainer" id="usersContainer">
+                <h2>Users Details</h2>
+                <ul class="userUl"></ul>
+              </div>
+              <div>
+                <h2>Package Details</h2>
+                <ul class="packageUl" id="newPackages"></ul>
+              </div>
             </div>
-          </ul>
         </div>
       </div>
       <main class="login-main" id="updatePackage">
