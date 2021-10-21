@@ -299,8 +299,6 @@ input {
 }
 /*User profile design*/
 .user-main {
-  display: flex;
-  align-items: center;
   background: linear-gradient(
     to right top,
     rgba(147, 196, 173, 0.2),
