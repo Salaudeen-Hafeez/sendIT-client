@@ -536,3 +536,13 @@ input:focus {
   display: grid;
   grid-template-columns: repeat(2, 20rem [col-start]);
 }
+
+.admindataarrange {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.admindataarrange a {
+  font-size: 2rem;
+}

@@ -33,73 +33,30 @@
       <div>
         <div class="user-profile" id="userProfile"></div>
         <div class="packages" id="packages">
-          <div>
+          <div class="admindataarrange">
             <a onclick="fetchUsers()">Users</a>
             <div class="usersContainer" id="usersContainer">
-                <ul class="userUl"></ul>
-              </div>
+              <ul class="userUl"></ul>
+            </div>
             <a onclick="showPackages()">Packages</a>
-          </div>     
-            <div class="packageContainer">
-              <ul>
-                <li>
-                  <a onclick="fetchNewPackages()">New packages</a>
-                </li>
-                <li>
-                  <a onclick="fetchPackagesInTransit()">Packages in transit</a>
-                </li>
-                <li>
-                  <a onclick="fetchDeliveredPackages()">Delivered packages</a>
-                </li>
-              </ul>
-              <div>
-                <ul class="packageUl" id="newPackages"></ul>
-              </div>
+          </div>
+          <div class="packageContainer">
+            <ul>
+              <li>
+                <a onclick="fetchNewPackages()">New packages</a>
+              </li>
+              <li>
+                <a onclick="fetchPackagesInTransit()">Packages in transit</a>
+              </li>
+              <li>
+                <a onclick="fetchDeliveredPackages()">Delivered packages</a>
+              </li>
+            </ul>
+            <div>
+              <ul class="packageUl" id="newPackages"></ul>
             </div>
+          </div>
         </div>
-      </div>
-      <main class="login-main" id="updatePackage">
-      <div class="form-bg">
-        <form onsubmit="return false">
-          <div class="reg-heading">
-            <h2>Update location and status</h2>
-          </div>
-          <div class="input-container" id="inputContainer">
-            <div class="input-field">
-              <label for="location" class="col-4">Present location</label>
-              <input
-                type="text"
-                class="location"
-                id="location"
-                name="location"
-                onclick="clearErr(this)"
-                required
-              />
-              <small></small>
-            </div>
-            <div class="input-field">
-              <label for="status" class="col-4">Status</label>
-              <input
-                type="text"
-                class="col-8"
-                id="status"
-                name="status"
-                onclick="clearErr(this)"
-                required
-              />
-              <small></small>
-            </div>
-          </div>
-          <input
-            type="submit"
-            class="btn"
-            id="submitBtn"
-            onclick="updatePackage()"
-            value="Update"
-          />
-        </form>
-        <div class="circle1"></div>
-        <div class="circle2"></div>
       </div>
     </main>
   </body>
