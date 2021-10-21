@@ -675,11 +675,12 @@ const fetchUsers = () => {
     });
 };
 
-const adminDisplayUserPackages = () => {
+const adminDisplayUserPackages = (id) => {
   let packagesDiv = '';
+  const userCont = `userCont${id}`;
   const packages = JSON.parse(localStorage.getItem('userPackages'));
-  const newPackages = document.getElementsByClassName('userCont');
-  console.log(newPackages[5]);
+  const newPackages = document.getElementsByClassName(userCont);
+  console.log(newPackages);
   newPackages.classList.toggle('open');
   packages.forEach((packag) => {
     packagesDiv += `<li>
@@ -712,7 +713,7 @@ const adminFetchUserPackage = (e) => {
     .then((data) => {
       localStorage.removeItem('userPackages');
       localStorage.setItem('userPackages', JSON.stringify(data));
-      adminDisplayUserPackages();
+      adminDisplayUserPackages(userid);
     })
     .catch((err) => {
       console.log(err);
