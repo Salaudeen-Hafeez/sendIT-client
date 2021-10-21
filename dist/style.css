@@ -305,6 +305,7 @@ input {
     rgba(147, 196, 173, 0.2),
     rgba(198, 241, 221, 0.6)
   );
+  max-width: 50rem;
 }
 .user-profile {
   border-radius: 1rem;
