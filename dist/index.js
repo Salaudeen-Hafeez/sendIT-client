@@ -678,7 +678,9 @@ const fetchUsers = () => {
 const adminDisplayUserPackages = () => {
   let packagesDiv = '';
   const packages = JSON.parse(localStorage.getItem('userPackages'));
-  const newPackages = document.getElementsByClassName('userContainer');
+  const newPackages = document
+    .getElementById('main')
+    .getElementsByClassName('userContainer');
   console.log(newPackages);
   newPackages.classList.toggle('open');
   packages.forEach((packag) => {
