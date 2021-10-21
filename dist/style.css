@@ -298,14 +298,14 @@ input {
   padding: 12px;
 }
 /*User profile design*/
-
 .user-main {
+  display: flex;
+  align-items: center;
   background: linear-gradient(
     to right top,
     rgba(147, 196, 173, 0.2),
     rgba(198, 241, 221, 0.6)
   );
-  max-width: 50rem;
 }
 .user-profile {
   border-radius: 1rem;
@@ -423,6 +423,9 @@ td {
   text-align: center;
   background: rgb(138, 83, 67);
   border-radius: 10px;
+}
+.packagePage {
+  max-width: 50rem;
 }
 .packagePage form {
   width: 100%;
