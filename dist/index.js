@@ -682,7 +682,7 @@ const adminDisplayUserPackages = (id) => {
   const packages = JSON.parse(localStorage.getItem('userPackages'));
   const newPackages = document.getElementById(userCont);
   newPackages.classList.toggle('open');
-  console.log(packages);
+  console.log(packages.packages);
   if (packages.isArray()) {
     packages.forEach((packag) => {
       packagesDiv += `<li>
@@ -697,9 +697,10 @@ const adminDisplayUserPackages = (id) => {
     `;
     });
   } else {
+    console.log('No packages');
     packagesDiv = packages.packages;
   }
-
+  console.log(packagesDiv);
   newPackages.innerHTML = packagesDiv;
 };
 
