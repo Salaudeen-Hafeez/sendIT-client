@@ -697,7 +697,7 @@ const adminDisplayUserPackages = (id) => {
     `;
     });
   } else {
-    packagesDiv = Object.values(packages);
+    packagesDiv = packages;
   }
 
   newPackages.innerHTML = packagesDiv;
