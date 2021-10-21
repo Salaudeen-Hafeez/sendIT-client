@@ -135,45 +135,6 @@ const openUser = () => {
   }
 };
 
-// Login the user and store the user's data in localStorage
-const fetchData = (data) => {
-  if (!data.email.trim().includes('@sendit.com')) {
-    fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        localStorage.removeItem('user');
-        localStorage.removeItem('newUser');
-        localStorage.removeItem('userPackages');
-        localStorage.setItem('user', JSON.stringify(data));
-        setTimeout(openUser, 1200);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } else {
-    fetch(
-      'https://sendit-logistic-2021.herokuapp.com/api/v1/users/admins/login',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      }
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        localStorage.removeItem('admin');
-        localStorage.setItem('admin', JSON.stringify(data));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-};
-
 const openAdmin = () => {
   const admin = adminsData();
   if (!(admin.passwordErr || admin.emailErr || admin.joiErr)) {
@@ -189,24 +150,56 @@ const openAdmin = () => {
     setErrorFor(input, admin.joiErr);
   }
 };
+// Login the user and store the return user's data in localStorage
+const fetchUserData = (data) => {
+  fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      localStorage.clear();
+      localStorage.setItem('user', JSON.stringify(data));
+      setTimeout(openUser, 1200);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-const loginUser = () => {
+// Login the user and store the return admin's data in localStorage
+const fetchAdminData = (data) => {
+  fetch(
+    'https://sendit-logistic-2021.herokuapp.com/api/v1/users/admins/login',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      localStorage.clear();
+      localStorage.setItem('admin', JSON.stringify(data));
+      setTimeout(openAdmin, 1200);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const login = () => {
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
   const email = input[0].value.trim().toLowerCase();
-  if (!email.includes('@sendit.com')) {
-    localStorage.clear();
-    const validatedLogin = formValidation(input);
-    if (!validatedLogin.emptyInput) {
-      fetchData(validatedLogin.data);
-    }
-  } else if (email.includes('@sendit.com')) {
-    localStorage.clear();
-    const validatedLogin = formValidation(input);
-    if (!validatedLogin.emptyInput) {
-      fetchData(validatedLogin.data);
-      setTimeout(openAdmin, 1200);
+  const validatedLogin = formValidation(input);
+  if (!validatedLogin.emptyInput) {
+    if (!email.includes('@sendit.com')) {
+      fetchUserData(validatedLogin.data);
+    } else {
+      fetchAdminData(validatedLogin.data);
     }
   }
 };
@@ -214,7 +207,7 @@ const loginUser = () => {
 const loginNewUser = () => {
   const newUser = JSON.parse(localStorage.getItem('newUser'));
   const data = { email: newUser.email, password: newUser.password };
-  fetchData(data);
+  fetchUserData(data);
   setTimeout(openUser, 1200);
 };
 
