@@ -620,7 +620,7 @@ const getPackage = (td) => {
       localStorage.setItem('package', JSON.stringify(packageData));
     }
   });
-  // setTimeout(openPackage, 1500);
+  setTimeout(openPackage, 1500);
 };
 
 const completeOrder = () => {
