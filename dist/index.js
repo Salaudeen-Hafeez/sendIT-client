@@ -680,8 +680,8 @@ const adminDisplayUserPackages = (id) => {
   const userCont = `userCont${id}`;
   const packages = JSON.parse(localStorage.getItem('userPackages'));
   const newPackages = document.getElementById(userCont);
+  newPackages.classList.toggle('open');
   console.log(newPackages);
-  // newPackages.classList.toggle('open');
   packages.forEach((packag) => {
     packagesDiv += `<li>
         <div class="userDetails" style="background: #DDDDB9;">
