@@ -647,7 +647,6 @@ const fetchUsers = () => {
   const { _email, admin_token } = admin;
   let users = '';
   const containerdiv = document.getElementById('usersContainer');
-  containerdiv.classList.toggle('open');
   const container = containerdiv.querySelector('ul');
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
@@ -670,6 +669,7 @@ const fetchUsers = () => {
       </li>`;
       });
       container.innerHTML = users;
+      containerdiv.classList.toggle('open');
     })
     .catch((err) => {
       console.log(err);
@@ -682,7 +682,6 @@ const adminDisplayUserPackages = (id) => {
   const packages = JSON.parse(localStorage.getItem('userPackages'));
   const newPackages = document.getElementById(userCont);
   newPackages.classList.toggle('open');
-  console.log(packages.packages);
   if (Array.isArray(packages)) {
     packages.forEach((packag) => {
       packagesDiv += `<li>
@@ -697,10 +696,8 @@ const adminDisplayUserPackages = (id) => {
     `;
     });
   } else {
-    console.log('No packages');
     packagesDiv = packages.packages;
   }
-  console.log(packagesDiv);
   newPackages.innerHTML = packagesDiv;
 };
 
