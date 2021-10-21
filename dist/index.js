@@ -683,8 +683,8 @@ const adminDisplayUserPackages = (id) => {
   console.log(newPackages);
   // newPackages.classList.toggle('open');
   packages.forEach((packag) => {
-    packagesDiv += `<li style="background: #DDDDB9;">
-        <div class="userDetails">
+    packagesDiv += `<li>
+        <div class="userDetails" style="background: #DDDDB9;">
           <h2>${packag._name}</h2>
           <p>${packag._location}</p>
           <p>${packag._destination}</p>
