@@ -664,7 +664,7 @@ const fetchUsers = () => {
           <p>${user._username}</p>
           <p>${user._email}</p>
           <button onclick="adminFetchUserPackage(this)">packages</button>
-          <div class="UserCont" id="userCont">
+          <div class="UserCont" id="userCont"></div>
         </div>
       </li>`;
       });
