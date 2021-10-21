@@ -682,7 +682,7 @@ const adminDisplayUserPackages = (id) => {
   const packages = JSON.parse(localStorage.getItem('userPackages'));
   const newPackages = document.getElementById(userCont);
   newPackages.classList.toggle('open');
-  console.log(Object.values(packages));
+  console.log(packages);
   if (packages.isArray()) {
     packages.forEach((packag) => {
       packagesDiv += `<li>
