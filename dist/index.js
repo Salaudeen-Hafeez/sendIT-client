@@ -664,7 +664,7 @@ const fetchUsers = () => {
           <p>${user._username}</p>
           <p>${user._email}</p>
           <button onclick="adminFetchUserPackage(this)">packages</button>
-          <div class="UsersContainer" id="userPackageContainer">
+          <div class="UserContainer" id="userPackageContainer">
         </div>
       </li>`;
       });
@@ -678,7 +678,7 @@ const fetchUsers = () => {
 const adminDisplayUserPackages = () => {
   let packagesDiv = '';
   const packages = JSON.parse(localStorage.getItem('userPackages'));
-  const newPackages = document.getElementById('userPackageContainer');
+  const newPackages = document.getElementsByClassName('userContainer');
   newPackages.classList.toggle('open');
   packages.forEach((packag) => {
     packagesDiv += `<li>
@@ -697,14 +697,12 @@ const adminDisplayUserPackages = () => {
 
 const adminFetchUserPackage = (e) => {
   const admin = adminsData();
-  const token = admin.admin_token;
-  const email = admin._email;
+  const { admin_token, _email } = admin;
   const pTags = e.parentElement.querySelectorAll('p');
   const userid = parseInt(pTags[0].innerText);
   const username = pTags[1].innerText;
-  console.log(typeof username);
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userid}/${email}/${token}/packages`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userid}/${_email}/${admin_token}/packages`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
