@@ -469,7 +469,9 @@ input:focus {
   flex-direction: column;
 }
 
-.packageContainer {
+.packageContainer,
+.usersContainer,
+.userCont {
   height: 0rem;
   visibility: hidden;
 }
@@ -480,12 +482,12 @@ input:focus {
   visibility: visible;
 }
 
-.userCont {
-  height: 0rem;
-  visibility: hidden;
-}
-
 .userCont.open {
+  height: auto;
+  padding: 1rem;
+  visibility: visible;
+}
+.usersContainer.open {
   height: auto;
   padding: 1rem;
   visibility: visible;
