@@ -260,6 +260,7 @@ const fetchPendingPackages = () => {
       console.log(err);
     });
 };
+
 // Get the stored uaerPackages data and create the display packages
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
@@ -690,7 +691,7 @@ const adminDisplayUserPackages = (id) => {
           <p>${packag._location}</p>
           <p>${packag._destination}</p>
           <p>${packag._reciever}</p>
-          <button onclick="adminCheckPackageDetails()">${packag._status}</button>
+          <button onclick="getPackage(this)" value= "${packag.parcel_id}" id="parcel-id">${packag._status}</button>
         </div>
       </li>
     `;
