@@ -664,7 +664,7 @@ const fetchUsers = () => {
           <p>${user._username}</p>
           <p>${user._email}</p>
           <button onclick="adminFetchUserPackage(this)">packages</button>
-          <div class="userCont" id="userCont${user.users_id}" style="background: blue;"></div>
+          <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
       </li>`;
       });
@@ -683,7 +683,7 @@ const adminDisplayUserPackages = (id) => {
   console.log(newPackages);
   // newPackages.classList.toggle('open');
   packages.forEach((packag) => {
-    packagesDiv += `<li>
+    packagesDiv += `<li style="background: #DDDDB9;">
         <div class="userDetails">
           <h2>${packag._name}</h2>
           <p>${packag._location}</p>
