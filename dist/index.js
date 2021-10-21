@@ -683,7 +683,7 @@ const adminDisplayUserPackages = (id) => {
   const newPackages = document.getElementById(userCont);
   newPackages.classList.toggle('open');
   console.log(packages.packages);
-  if (packages.isArray()) {
+  if (Array.isArray(packages)) {
     packages.forEach((packag) => {
       packagesDiv += `<li>
         <div class="userDetails" style="background: #DDDDB9;">
