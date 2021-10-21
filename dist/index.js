@@ -682,9 +682,10 @@ const adminDisplayUserPackages = (id) => {
   const packages = JSON.parse(localStorage.getItem('userPackages'));
   const newPackages = document.getElementById(userCont);
   newPackages.classList.toggle('open');
-  console.log(packages);
-  packages.forEach((packag) => {
-    packagesDiv += `<li>
+  console.log(Object.values(packages));
+  if (packages.isArray()) {
+    packages.forEach((packag) => {
+      packagesDiv += `<li>
         <div class="userDetails" style="background: #DDDDB9;">
           <h2>${packag._name}</h2>
           <p>${packag._location}</p>
@@ -694,7 +695,11 @@ const adminDisplayUserPackages = (id) => {
         </div>
       </li>
     `;
-  });
+    });
+  } else {
+    packagesDiv = Object.values(packages);
+  }
+
   newPackages.innerHTML = packagesDiv;
 };
 
