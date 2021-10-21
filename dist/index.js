@@ -617,9 +617,9 @@ const getPackage = (td) => {
   setTimeout(openPackage, 1500);
 };
 
-// const completeOrder = () => {
-//   setTimeout(openUser, 1500);
-// };
+const completeOrder = () => {
+  window.history.go(-1);
+};
 
 // Delete data from database
 
