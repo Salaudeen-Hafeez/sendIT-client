@@ -476,6 +476,11 @@ input:focus {
   visibility: hidden;
 }
 
+.usersContainer {
+  height: 0rem;
+  visibility: hidden;
+}
+
 .packageContainer.open {
   height: auto;
   padding: 1rem;
