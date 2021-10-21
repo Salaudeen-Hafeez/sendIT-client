@@ -30,43 +30,45 @@
       </div>
     </div>
     <main class="user-main">
-      <div class="packagePage">
-        <h1 style="text-align: center">New Order</h1>
-        <div class="user-profile" id="userProfile"></div>
-        <div class="cancelbtn">
-          <a onclick="cancelOrder()">Cancel order</a>
-          <a onclick="completeOrder()">Okay</a>
-        </div>
-
-        <div id="mapcontainer">
-          <div id="map"></div>
-        </div>
-
-        <div class="changeDestination"></div>
-        <form onsubmit="return false">
-          <div class="reg-heading">
-            <h3>Fill the form below to change your order destination</h3>
+      <div class="packagePage1">
+        <div class="packagePage">
+          <h1 style="text-align: center">New Order</h1>
+          <div class="user-profile" id="userProfile"></div>
+          <div class="cancelbtn">
+            <a onclick="cancelOrder()">Cancel order</a>
+            <a onclick="completeOrder()">Okay</a>
           </div>
-          <div class="input-field">
-            <label for="pName" class="col-4">New destination</label>
+
+          <div id="mapcontainer">
+            <div id="map"></div>
+          </div>
+
+          <div class="changeDestination"></div>
+          <form onsubmit="return false">
+            <div class="reg-heading">
+              <h3>Fill the form below to change your order destination</h3>
+            </div>
+            <div class="input-field">
+              <label for="pName" class="col-4">New destination</label>
+              <input
+                type="text"
+                class="packageinput"
+                id="newDestination"
+                name="destination"
+                oninput="clearErr(this)"
+                required
+              />
+              <small></small>
+            </div>
             <input
-              type="text"
-              class="packageinput"
-              id="newDestination"
-              name="destination"
-              oninput="clearErr(this)"
-              required
+              type="submit"
+              class="btn packageinput"
+              id="submitBtn"
+              onclick="updateDestination()"
+              value="Change destination"
             />
-            <small></small>
-          </div>
-          <input
-            type="submit"
-            class="btn packageinput"
-            id="submitBtn"
-            onclick="updateDestination()"
-            value="Change destination"
-          />
-        </form>
+          </form>
+        </div>
       </div>
     </main>
     <script src="index.js"></script>

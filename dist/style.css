@@ -301,7 +301,6 @@ input {
 .user-main {
   display: flex;
   align-items: center;
-  width: 100%;
   background: linear-gradient(
     to right top,
     rgba(147, 196, 173, 0.2),
@@ -425,7 +424,7 @@ td {
   background: rgb(138, 83, 67);
   border-radius: 10px;
 }
-.packagePage {
+.packagePage1 {
   max-width: 50rem;
 }
 .packagePage form {
