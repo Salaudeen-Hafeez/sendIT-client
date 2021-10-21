@@ -664,7 +664,7 @@ const fetchUsers = () => {
           <p>${user._username}</p>
           <p>${user._email}</p>
           <button onclick="adminFetchUserPackage(this)">packages</button>
-          <div class="UserContainer" id="userPackageContainer">
+          <div class="UserCont" id="userPackageContainer">
         </div>
       </li>`;
       });
@@ -678,9 +678,7 @@ const fetchUsers = () => {
 const adminDisplayUserPackages = () => {
   let packagesDiv = '';
   const packages = JSON.parse(localStorage.getItem('userPackages'));
-  const newPackages = document
-    .getElementById('usersContainer')
-    .getElementById('UserDetails');
+  const newPackages = document.getElementById('userCont');
   console.log(newPackages);
   newPackages.classList.toggle('open');
   packages.forEach((packag) => {
