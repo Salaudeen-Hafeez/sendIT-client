@@ -301,6 +301,7 @@ input {
 .user-main {
   display: flex;
   align-items: center;
+  width: 100%;
   background: linear-gradient(
     to right top,
     rgba(147, 196, 173, 0.2),
