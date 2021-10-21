@@ -679,6 +679,7 @@ const adminDisplayUserPackages = () => {
   let packagesDiv = '';
   const packages = JSON.parse(localStorage.getItem('userPackages'));
   const newPackages = document.getElementsByClassName('userContainer');
+  console.log(newPackages);
   newPackages.classList.toggle('open');
   packages.forEach((packag) => {
     packagesDiv += `<li>
