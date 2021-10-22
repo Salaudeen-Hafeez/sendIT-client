@@ -676,13 +676,8 @@ const fetchUsers = () => {
       console.log(err);
     });
 };
-
-const adminDisplayUserPackages = (id) => {
+const packageDisplay = (packages) => {
   let packagesDiv = '';
-  const userCont = `userCont${id}`;
-  const packages = JSON.parse(localStorage.getItem('userPackages'));
-  const newPackages = document.getElementById(userCont);
-  newPackages.classList.toggle('open');
   if (Array.isArray(packages)) {
     packages.forEach((packag) => {
       packagesDiv += `<li>
@@ -699,7 +694,14 @@ const adminDisplayUserPackages = (id) => {
   } else {
     packagesDiv = packages.packages;
   }
-  newPackages.innerHTML = packagesDiv;
+  return packagesDiv;
+};
+const adminDisplayUserPackages = (id) => {
+  const userCont = `userCont${id}`;
+  const packages = JSON.parse(localStorage.getItem('userPackages'));
+  const newPackages = document.getElementById(userCont);
+  newPackages.innerHTML = packageDisplay(packages);
+  newPackages.classList.toggle('open');
 };
 
 const adminFetchUserPackage = (e) => {
@@ -741,23 +743,10 @@ const storePackage = (e) => {
 };
 
 const displayPackages = () => {
-  let packagesDiv = '';
   const packages = JSON.parse(localStorage.getItem('packages'));
   const newPackages = document.getElementById('newPackages');
   newPackages.classList.toggle('open');
-  packages.forEach((packag) => {
-    packagesDiv += `<li>
-        <div class="userDetails">
-          <h2>${packag._name}</h2>
-          <p>${packag._location}</p>
-          <p>${packag._destination}</p>
-          <p>${packag._reciever}</p>
-          <button onclick="adminCheckPackageDetails()">${packag._status}</button>
-        </div>
-      </li>
-    `;
-  });
-  newPackages.innerHTML = packagesDiv;
+  newPackages.innerHTML = packageDisplay(packages);
 };
 const fetchNewPackages = () => {
   const admin = adminsData();
