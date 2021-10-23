@@ -608,7 +608,7 @@ const cancelOrder = () => {
 const getPackage = (td) => {
   localStorage.removeItem('package');
   const parcelId = td.value;
-  const userPackage = JSON.parse(localStorage.getItem('userPackages'));
+  const userPackage = JSON.parse(localStorage.getItem('packages'));
   userPackage.forEach((packageData) => {
     if (packageData.parcel_id === parseInt(parcelId)) {
       localStorage.setItem('package', JSON.stringify(packageData));
@@ -748,6 +748,7 @@ const displayPackages = () => {
   newPackages.classList.toggle('open');
   newPackages.innerHTML = packageDisplay(packages);
 };
+
 const fetchNewPackages = () => {
   const admin = adminsData();
   const { _email } = admin;
