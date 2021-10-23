@@ -232,8 +232,8 @@ const fetchPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('userPackages');
-      localStorage.setItem('userPackages', JSON.stringify(data));
+      localStorage.removeItem('packages');
+      localStorage.setItem('packages', JSON.stringify(data));
     })
     .catch((err) => {
       console.log(err);
@@ -253,8 +253,8 @@ const fetchPendingPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('userPackages');
-      localStorage.setItem('userPackages', JSON.stringify(data));
+      localStorage.removeItem('packages');
+      localStorage.setItem('packages', JSON.stringify(data));
     })
     .catch((err) => {
       console.log(err);
@@ -265,7 +265,7 @@ const fetchPendingPackages = () => {
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
-  const packages1 = JSON.parse(localStorage.getItem('userPackages'));
+  const packages1 = JSON.parse(localStorage.getItem('packages'));
   if (packages1.length > 0 && !packages1.packages) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
     packages1.forEach((newPackage) => {
@@ -320,13 +320,10 @@ const createUserPackage = () => {
 const displayUserPackages = () => {
   const user = usersData();
   if (!user.auth_token) {
-    localStorage.removeItem('userPackages');
+    localStorage.removeItem('packages');
     const packag =
       '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login<p>';
-    localStorage.setItem(
-      'userPackages',
-      JSON.stringify({ ErrorMessage: packag })
-    );
+    localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
     setTimeout(createUserPackage, 1500);
   } else {
     fetchPackages();
@@ -336,15 +333,12 @@ const displayUserPackages = () => {
 
 const displayPendingPackage = () => {
   const user = usersData();
-  const packages1 = JSON.parse(localStorage.getItem('userPackages'));
+  const packages1 = JSON.parse(localStorage.getItem('packages'));
   if (!user.auth_token) {
-    localStorage.removeItem('userPackages');
+    localStorage.removeItem('packages');
     const packag =
       '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login</p>';
-    localStorage.setItem(
-      'userPackages',
-      JSON.stringify({ ErrorMessage: packag })
-    );
+    localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
     setTimeout(createUserPackage, 1500);
   } else if (
     !packages1 ||
@@ -358,16 +352,16 @@ const displayPendingPackage = () => {
       (packag) => packag._status === 'In transit'
     );
     if (packageInTrans.length === 0) {
-      localStorage.removeItem('userPackages');
+      localStorage.removeItem('packages');
       const packag = '<h3>No pending packages</h3>';
       localStorage.setItem(
-        'userPackages',
+        'packages',
         JSON.stringify({ ErrorMessage: packag })
       );
       setTimeout(createUserPackage, 1500);
     } else {
-      localStorage.removeItem('userPackages');
-      localStorage.setItem('userPackages', JSON.stringify(packageInTrans));
+      localStorage.removeItem('packages');
+      localStorage.setItem('packages', JSON.stringify(packageInTrans));
       setTimeout(createUserPackage, 1500);
     }
   }
