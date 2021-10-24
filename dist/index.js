@@ -617,7 +617,7 @@ const completeOrder = () => {
 
 // Delete data from database
 
-const deleteUser = (e) => {
+const adminDeleteUser = (e) => {
   const admin = adminsData();
   const { _email, admin_token } = admin;
   const [username, id] = e.value;
