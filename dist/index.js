@@ -618,10 +618,10 @@ const completeOrder = () => {
 // Delete data from database
 
 const deleteUser = () => {
-  const email = user._email;
-  const uid = user.users_id;
+  const user = JSON.parse(localStorage.getItem('admin'));
+  const { _email, user_id, admin_token } = user;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${email}/${uid}/${token}/packages`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${user_id}/${admin_token}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -659,6 +659,7 @@ const fetchUsers = () => {
           <p>${user._username}</p>
           <p>${user._email}</p>
           <button onclick="adminFetchUserPackage(this)">packages</button>
+          <button onclick="adminDeleteUser(this)">delete user</button>
           <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
       </li>`;
