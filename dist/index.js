@@ -661,7 +661,7 @@ const fetchUsers = () => {
           <h2>${user._name}</h2>
           <p>${user._username}</p>
           <p>${user._email}</p>
-          <button onclick="adminFetchUserPackage(this)" value= "${username}" id="${user.user_id}">packages</button>
+          <button onclick="adminFetchUserPackage(this)" value= "${user._username}" id="${user.user_id}">packages</button>
           <button onclick="adminDeleteUser(this)" value= "${user._username}" id="${user.users_id}">delete user</button>
           <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
