@@ -622,7 +622,7 @@ const adminDeleteUser = (e) => {
   const { _email, admin_token } = admin;
   console.log(e);
   const username = e.value;
-  const id = e.id;
+  const id = parseInt(e.id);
   console.log(username, id);
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}`,
@@ -661,13 +661,8 @@ const fetchUsers = () => {
           <h2>${user._name}</h2>
           <p>${user._username}</p>
           <p>${user._email}</p>
-          <button onclick="adminFetchUserPackage(this)" value= "${[
-            user.users_id,
-            user._username,
-          ]}" id="parcel-id">packages</button>
-          <button onclick="adminDeleteUser(this)" value= "${
-            user._username
-          }" id="${user.users_id}">delete user</button>
+          <button onclick="adminFetchUserPackage(this)" value= "${username}" id="${user.user_id}">packages</button>
+          <button onclick="adminDeleteUser(this)" value= "${user._username}" id="${user.users_id}">delete user</button>
           <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
       </li>`;
@@ -710,9 +705,10 @@ const adminDisplayUserPackages = (id) => {
 const adminFetchUserPackage = (e) => {
   const admin = adminsData();
   const { admin_token, _email } = admin;
-  const [userid, username] = e.value;
+  const username = e.value;
+  const id = parseInt(e.id);
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userid}/${_email}/${admin_token}/packages`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}/packages`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
