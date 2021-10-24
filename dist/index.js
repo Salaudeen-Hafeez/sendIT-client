@@ -717,7 +717,7 @@ const adminFetchUserPackage = (e) => {
     .then((data) => {
       localStorage.removeItem('userPackages');
       localStorage.setItem('userPackages', JSON.stringify(data));
-      adminDisplayUserPackages(userid);
+      adminDisplayUserPackages(id);
     })
     .catch((err) => {
       console.log(err);
