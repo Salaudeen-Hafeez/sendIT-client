@@ -664,10 +664,10 @@ const fetchUsers = () => {
             user.users_id,
             user._username,
           ]}" id="parcel-id">packages</button>
-          <button onclick="adminDeleteUser(this)" value= "${[
-            user.users_id,
-            user._username,
-          ]}" id="parcel-id">delete user</button>
+          <button onclick="adminDeleteUser(this)" value= "${{
+            id: user.users_id,
+            username: user._username,
+          }}" id="parcel-id">delete user</button>
           <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
       </li>`;
