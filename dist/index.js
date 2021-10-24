@@ -696,8 +696,10 @@ const packageDisplay = (packages) => {
 };
 const adminDisplayUserPackages = (id) => {
   const userCont = `userCont${id}`;
+  console.log(userCont);
   const packages = JSON.parse(localStorage.getItem('packages'));
   const newPackages = document.getElementById(userCont);
+  console.log(newPackages);
   newPackages.innerHTML = packageDisplay(packages);
   newPackages.classList.toggle('open');
 };
