@@ -617,11 +617,13 @@ const completeOrder = () => {
 
 // Delete data from database
 
-const deleteUser = () => {
-  const user = JSON.parse(localStorage.getItem('admin'));
-  const { _email, user_id, admin_token } = user;
+const deleteUser = (e) => {
+  const admin = adminsData();
+  const { _email, admin_token } = admin;
+  const [username, id] = e.value;
+  console.log(username, id);
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${user_id}/${admin_token}`,
+    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -654,12 +656,16 @@ const fetchUsers = () => {
       data.forEach((user) => {
         users += `<li>
         <div class="userDetails">
-          <p>${user.users_id}</p>
           <h2>${user._name}</h2>
           <p>${user._username}</p>
           <p>${user._email}</p>
-          <button onclick="adminFetchUserPackage(this)">packages</button>
-          <button onclick="adminDeleteUser(this)">delete user</button>
+          <button onclick="adminFetchUserPackage(this)" value= "${[
+            user.users_id,
+            user._username,
+          ]}" id="parcel-id">packages</button>
+          <button onclick="adminDeleteUser(this)" value= "${
+            user.users_id
+          }" id="parcel-id">delete user</button>
           <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
       </li>`;
@@ -702,9 +708,7 @@ const adminDisplayUserPackages = (id) => {
 const adminFetchUserPackage = (e) => {
   const admin = adminsData();
   const { admin_token, _email } = admin;
-  const pTags = e.parentElement.querySelectorAll('p');
-  const userid = parseInt(pTags[0].innerText);
-  const username = pTags[1].innerText;
+  const [userid, username] = e.value;
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${userid}/${_email}/${admin_token}/packages`,
     {
