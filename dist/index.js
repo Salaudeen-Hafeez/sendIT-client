@@ -620,7 +620,7 @@ const completeOrder = () => {
 const adminDeleteUser = (e) => {
   const admin = adminsData();
   const { _email, admin_token } = admin;
-  console.log(typeof e.value);
+  console.log(e);
   const [username, id] = e.value;
   console.log(username, id);
   fetch(
@@ -664,10 +664,9 @@ const fetchUsers = () => {
             user.users_id,
             user._username,
           ]}" id="parcel-id">packages</button>
-          <button onclick="adminDeleteUser(this)" value= "${{
-            id: user.users_id,
-            username: user._username,
-          }}" id="parcel-id">delete user</button>
+          <button onclick="adminDeleteUser(this)" value= "${
+            user._username
+          }" id="${user.users_id}">delete user</button>
           <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
       </li>`;
