@@ -620,6 +620,7 @@ const completeOrder = () => {
 const adminDeleteUser = (e) => {
   const admin = adminsData();
   const { _email, admin_token } = admin;
+  console.log(e.value);
   const [username, id] = e.value;
   console.log(username, id);
   fetch(
