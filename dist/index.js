@@ -696,7 +696,7 @@ const packageDisplay = (packages) => {
 };
 const adminDisplayUserPackages = (id) => {
   const userCont = `userCont${id}`;
-  const packages = JSON.parse(localStorage.getItem('userPackages'));
+  const packages = JSON.parse(localStorage.getItem('packages'));
   const newPackages = document.getElementById(userCont);
   newPackages.innerHTML = packageDisplay(packages);
   newPackages.classList.toggle('open');
@@ -715,8 +715,8 @@ const adminFetchUserPackage = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('userPackages');
-      localStorage.setItem('userPackages', JSON.stringify(data));
+      localStorage.removeItem('packages');
+      localStorage.setItem('packages', JSON.stringify(data));
       adminDisplayUserPackages(id);
     })
     .catch((err) => {
