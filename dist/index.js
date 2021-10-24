@@ -621,7 +621,8 @@ const adminDeleteUser = (e) => {
   const admin = adminsData();
   const { _email, admin_token } = admin;
   console.log(e);
-  const [username, id] = e.value;
+  const username = e.value;
+  const username = e.id;
   console.log(username, id);
   fetch(
     `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}`,
