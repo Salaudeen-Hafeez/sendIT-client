@@ -172,7 +172,6 @@ const fetchUserData = (data) => {
 const fetchAdminData = (data) => {
   fetch('https://sendit-logistics.herokuapp.com/api/v1/users/admins/login', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
     .then((resp) => resp.json())
