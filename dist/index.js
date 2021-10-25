@@ -152,7 +152,7 @@ const openAdmin = () => {
 };
 // Login the user and store the return user's data in localStorage
 const fetchUserData = (data) => {
-  fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users/login', {
+  fetch('https://sendit-logistics.herokuapp.com/api/v1/users/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -170,14 +170,11 @@ const fetchUserData = (data) => {
 
 // Login the user and store the return admin's data in localStorage
 const fetchAdminData = (data) => {
-  fetch(
-    'https://sendit-logistic-2021.herokuapp.com/api/v1/users/admins/login',
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    }
-  )
+  fetch('https://sendit-logistics.herokuapp.com/api/v1/users/admins/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  })
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
@@ -224,7 +221,7 @@ const fetchPackages = () => {
   const user = usersData();
   const { _email, auth_token, users_id, _username } = user;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
     {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
@@ -245,7 +242,7 @@ const fetchPendingPackages = () => {
   const { _email, _username, auth_token } = user;
   const condition = 'In transit';
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${_username}/${auth_token}/packages/${condition}`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${_email}/${_username}/${auth_token}/packages/${condition}`,
     {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
@@ -422,7 +419,7 @@ const loadPackage = () => {
 };
 
 const postUser = (data) => {
-  fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users', {
+  fetch('https://sendit-logistics.herokuapp.com/api/v1/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -446,7 +443,7 @@ const postUser = (data) => {
 };
 
 const postAdmin = (data) => {
-  fetch('https://sendit-logistic-2021.herokuapp.com/api/v1/users/admins', {
+  fetch('https://sendit-logistics.herokuapp.com/api/v1/users/admins', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -497,7 +494,7 @@ const postPackage = (data) => {
   const user = usersData();
   const { _username, _email, auth_token } = user;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -559,7 +556,7 @@ const putPackage = (data, selectedPackage) => {
     token = user.auth_token;
   }
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${selectedPackage.parcel_id}`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${selectedPackage.parcel_id}`,
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -625,7 +622,7 @@ const adminDeleteUser = (e) => {
   const id = parseInt(e.id);
   console.log(username, id);
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -648,7 +645,7 @@ const fetchUsers = () => {
   const containerdiv = document.getElementById('usersContainer');
   const container = containerdiv.querySelector('ul');
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
@@ -712,7 +709,7 @@ const adminFetchUserPackage = (e) => {
   const id = e.id;
   console.log(id);
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}/packages`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}/packages`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
@@ -756,7 +753,7 @@ const fetchNewPackages = () => {
   const condition = 'At the location';
   const token = admin.admin_token;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
@@ -778,7 +775,7 @@ const fetchPackagesInTransit = () => {
   const condition = 'In transit';
   const token = admin.admin_token;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
@@ -800,7 +797,7 @@ const fetchDeliveredPackages = () => {
   const condition = 'Delivered';
   const token = admin.admin_token;
   fetch(
-    `https://sendit-logistic-2021.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
+    `https://sendit-logistics.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
