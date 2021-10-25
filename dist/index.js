@@ -690,6 +690,7 @@ const packageDisplay = (packages) => {
   } else {
     packagesDiv = packages.packages;
   }
+  console.log(packagesDiv);
   return packagesDiv;
 };
 const adminDisplayUserPackages = (id) => {
