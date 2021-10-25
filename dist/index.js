@@ -160,7 +160,8 @@ const fetchUserData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
-      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('packages', JSON.stringify(data.packages));
       setTimeout(openUser, 1200);
     })
     .catch((err) => {
@@ -698,7 +699,6 @@ const adminDisplayUserPackages = (id) => {
   console.log(userCont);
   const packages = JSON.parse(localStorage.getItem('packages'));
   const newPackages = document.getElementById(userCont);
-  console.log(newPackages);
   newPackages.innerHTML = packageDisplay(packages);
   newPackages.classList.toggle('open');
 };
