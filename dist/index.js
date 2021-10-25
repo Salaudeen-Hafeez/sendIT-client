@@ -688,7 +688,7 @@ const packageDisplay = (packages) => {
     `;
     });
   } else {
-    packagesDiv = packages.packages;
+    packagesDiv = Object.values(packages);
   }
   console.log(packagesDiv);
   return packagesDiv;
