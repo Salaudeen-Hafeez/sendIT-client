@@ -655,6 +655,7 @@ const fetchUsers = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       data.forEach((user) => {
         users += `<li>
         <div class="userDetails">
