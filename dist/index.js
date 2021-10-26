@@ -179,14 +179,15 @@ const fetchAdminData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
-      localStorage.setItem('admin', JSON.stringify(data));
+      localStorage.setItem('admin', JSON.stringify(data.admin));
+      localStorage.setItem('users', JSON.stringify(data.users));
+      localStorage.setItem('packages', JSON.stringify(data.packages));
       setTimeout(openAdmin, 1200);
     })
     .catch((err) => {
       console.log(err);
     });
 };
-
 const login = () => {
   const input = document
     .getElementById('inputContainer')
