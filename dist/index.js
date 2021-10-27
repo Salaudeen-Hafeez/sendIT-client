@@ -658,6 +658,7 @@ const adminDeletePackage = (e) => {
     .then((data) => {
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
+      window.location.reload();
     })
     .catch((err) => {
       console.log(err);
