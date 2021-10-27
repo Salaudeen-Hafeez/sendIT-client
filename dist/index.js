@@ -66,6 +66,10 @@ const adminsData = () => {
   return admin;
 };
 
+const packages = () => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
+  return packages;
+};
 const logOut = () => {
   localStorage.clear();
   window.location.href = '/';
@@ -202,7 +206,6 @@ const login = () => {
     }
   }
 };
-
 const loginNewUser = () => {
   const newUser = JSON.parse(localStorage.getItem('newUser'));
   const data = { email: newUser.email, password: newUser.password };
@@ -220,23 +223,8 @@ const displayAdmin = () => {
 // Use the username from the stored user to get the user packages
 
 const fetchPackages = () => {
-  const user = usersData();
-  const { _email, auth_token, users_id, _username } = user;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
-    {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const packages = packages();
+  console.log(packages);
 };
 
 const fetchPendingPackages = () => {
