@@ -624,7 +624,7 @@ const adminDeleteUser = (e) => {
   const id = parseInt(e.id);
   console.log(username, id);
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}`,
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -634,6 +634,29 @@ const adminDeleteUser = (e) => {
     .then((data) => {
       localStorage.removeItem('user');
       localStorage.setItem('user', JSON.stringify(data));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const adminDeletePackage = (e) => {
+  const admin = adminsData();
+  const { _email, admin_token } = admin;
+  const username = e.value;
+  const id = parseInt(e.id);
+  console.log(username, id);
+  fetch(
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}`,
+    {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      localStorage.removeItem('package');
+      localStorage.setItem('package', JSON.stringify(data));
     })
     .catch((err) => {
       console.log(err);
@@ -685,6 +708,7 @@ const packageDisplay = (packages) => {
           <p>${packag._destination}</p>
           <p>${packag._reciever}</p>
           <button onclick="getPackage(this)" value= "${packag.parcel_id}" id="parcel-id">${packag._status}</button>
+          <button onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
         </div>
       </li>
     `;
