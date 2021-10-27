@@ -634,6 +634,7 @@ const adminDeleteUser = (e) => {
     .then((data) => {
       localStorage.removeItem('user');
       localStorage.setItem('user', JSON.stringify(data));
+      window.location.reload();
     })
     .catch((err) => {
       console.log(err);
