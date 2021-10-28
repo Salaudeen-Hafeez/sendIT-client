@@ -137,6 +137,7 @@ const openUser = () => {
 
 const openAdmin = () => {
   const admin = adminsData();
+  console.log(admin);
   if (!(admin.passwordErr || admin.emailErr || admin.joiErr)) {
     window.location.href = 'admin.html';
   } else if (admin.passwordErr) {
