@@ -775,32 +775,10 @@ const displayPackages = () => {
   newPackages.innerHTML = packageDisplay(packages);
 };
 
-const fetchNewPackages = () => {
+const adminFetchPackages = (cond) => {
   const admin = adminsData();
   const { _email } = admin;
-  const condition = 'At the location';
-  const token = admin.admin_token;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
-    {
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
-      displayPackages();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-const fetchPackagesInTransit = () => {
-  const admin = adminsData();
-  const { _email } = admin;
-  const condition = 'In transit';
+  const condition = cond;
   const token = admin.admin_token;
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
@@ -820,26 +798,16 @@ const fetchPackagesInTransit = () => {
     });
 };
 
+const fetchNewPackages = () => {
+  adminFetchPackages('At the location');
+};
+
+const fetchPackagesInTransit = () => {
+  adminFetchPackages('In transit');
+};
+
 const fetchDeliveredPackages = () => {
-  const admin = adminsData();
-  const { _email } = admin;
-  const condition = 'Delivered';
-  const token = admin.admin_token;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
-    {
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
-      displayPackages();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  adminFetchPackages('Delivered');
 };
 
 const updatePackage = () => {
