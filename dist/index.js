@@ -163,7 +163,7 @@ const fetchUserData = (data) => {
       console.log(data);
       localStorage.setItem('user', JSON.stringify(data.user));
       localStorage.setItem('packages', JSON.stringify(data.packages));
-      setTimeout(openUser, 1200);
+      openUser();
     })
     .catch((err) => {
       console.log(err);
