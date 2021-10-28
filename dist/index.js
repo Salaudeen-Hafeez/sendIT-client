@@ -769,6 +769,7 @@ const storePackage = (e) => {
 
 const displayPackages = () => {
   const packages = JSON.parse(localStorage.getItem('packages'));
+  console.log(packages);
   const newPackages = document.getElementById('newPackages');
   newPackages.classList.toggle('open');
   newPackages.innerHTML = packageDisplay(packages);
