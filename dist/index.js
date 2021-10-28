@@ -25,6 +25,7 @@ const setErrorFor = (
 };
 
 const formValidation = (input) => {
+  console.log(input);
   const data = {};
   let emptyInput = '';
   input.forEach((inp) => {
