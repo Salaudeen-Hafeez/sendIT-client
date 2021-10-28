@@ -322,10 +322,10 @@ const displayUserPackages = () => {
     const packag =
       '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login<p>';
     localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
-    createUserPackage();
+    setTimeout(createUserPackage, 1200);
   } else {
     fetchPackages();
-    createUserPackage();
+    setTimeout(createUserPackage, 1200);
   }
 };
 
@@ -337,14 +337,14 @@ const displayPendingPackage = () => {
     const packag =
       '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login</p>';
     localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
-    createUserPackage();
+    setTimeout(createUserPackage, 1200);
   } else if (
     !packages1 ||
     packages1.length === 0 ||
     Object.keys(packages1).length !== 0
   ) {
     fetchPendingPackages();
-    createUserPackage();
+    setTimeout(createUserPackage, 1200);
   } else {
     const packageInTrans = packages1.filter(
       (packag) => packag._status === 'In transit'
@@ -356,11 +356,11 @@ const displayPendingPackage = () => {
         'packages',
         JSON.stringify({ ErrorMessage: packag })
       );
-      createUserPackage();
+      setTimeout(createUserPackage, 1200);
     } else {
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(packageInTrans));
-      createUserPackage();
+      setTimeout(createUserPackage, 1200);
     }
   }
 };
