@@ -40,8 +40,16 @@ const formValidation = (input) => {
       }
     } else if (inp.getAttribute('name') === 'email') {
       data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
+    } else if (inp.getAttribute('name') === 'password') {
+      if (inp.value.trim().length < 6) {
+        emptyInput = 'true';
+        setErrorFor(inp, 'The password length must be 6 or more');
+      }
     } else if (inp.getAttribute('name') === 'password1') {
-      if (data.password !== inp.value.trim()) {
+      if (inp.value.trim().length < 6) {
+        emptyInput = 'true';
+        setErrorFor(inp, 'The password length must be 6 or more');
+      } else if (data.password !== inp.value.trim()) {
         emptyInput = 'true';
         setErrorFor(inp, 'The password does not match');
       }
