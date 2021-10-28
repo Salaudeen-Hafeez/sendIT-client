@@ -25,11 +25,9 @@ const setErrorFor = (
 };
 
 const formValidation = (input) => {
-  console.log(input);
   const data = {};
   let emptyInput = '';
   input.forEach((inp) => {
-    console.log(inp.getAttribute('name'));
     if (inp.value.trim() === '') {
       emptyInput = 'true';
       setErrorFor(inp);
@@ -43,7 +41,6 @@ const formValidation = (input) => {
       data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
     } else if (inp.getAttribute('name') === 'password') {
       if (inp.value.trim().length < 6) {
-        console.log(inp.value);
         emptyInput = 'true';
         setErrorFor(inp, 'The password length must be 6 or more');
       }
@@ -150,7 +147,7 @@ const openAdmin = () => {
   const admin = adminsData();
   console.log(admin);
   if (!(admin.passwordErr || admin.emailErr || admin.joiErr)) {
-    //window.location.href = 'admin.html';
+    window.location.href = 'admin.html';
   } else if (admin.passwordErr) {
     const input = document.getElementById('password');
     setErrorFor(input, admin.passwordErr);
