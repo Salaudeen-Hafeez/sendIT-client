@@ -131,17 +131,11 @@ const createAdmin = () => {
 
 const openUser = () => {
   const user = usersData();
-  if (!(user.passwordErr || user.emailErr || user.joiErr)) {
+  if (user.users_id) {
     window.location.href = 'user.html';
-  } else if (user.passwordErr) {
+  } else {
     const input = document.getElementById('password');
-    setErrorFor(input, user.passwordErr);
-  } else if (user.emailErr) {
-    const input = document.getElementById('email');
-    setErrorFor(input, user.emailErr);
-  } else if (user.joiErr) {
-    const input = document.getElementById('email');
-    setErrorFor(input, user.joiErr);
+    setErrorFor(input, admin);
   }
 };
 
@@ -165,6 +159,7 @@ const fetchUserData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
+      console.log(data);
       localStorage.setItem('user', JSON.stringify(data.user));
       localStorage.setItem('packages', JSON.stringify(data.packages));
       setTimeout(openUser, 1200);
