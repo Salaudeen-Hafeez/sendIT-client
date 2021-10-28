@@ -138,8 +138,8 @@ const openUser = () => {
 const openAdmin = () => {
   const admin = adminsData();
   console.log(admin);
-  if (false) {
-    window.location.href = 'admin.html';
+  if (!(admin.passwordErr || admin.emailErr || admin.joiErr)) {
+    //window.location.href = 'admin.html';
   } else if (admin.passwordErr) {
     const input = document.getElementById('password');
     setErrorFor(input, admin.passwordErr);
