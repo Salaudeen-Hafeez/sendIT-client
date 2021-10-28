@@ -310,7 +310,9 @@ const createUserPackage = () => {
       displayPackage += tableBody;
     });
   } else {
-    displayPackage += `<h3>${Object.values(packages1)}</h3>`;
+    displayPackage += `<h3 style="text-align: center; color: red">${Object.values(
+      packages1
+    )}</h3>`;
   }
   packagesDiv.innerHTML = displayPackage;
 };
