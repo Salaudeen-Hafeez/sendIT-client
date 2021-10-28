@@ -152,7 +152,7 @@ const openAdmin = () => {
     window.location.href = 'admin.html';
   } else {
     const input = document.getElementById('password');
-    setErrorFor(input, admin.passwordErr);
+    setErrorFor(input, admin);
   }
 };
 // Login the user and store the return user's data in localStorage
