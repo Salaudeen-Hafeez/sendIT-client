@@ -718,7 +718,6 @@ const packageDisplay = (packages) => {
   } else {
     packagesDiv = Object.values(packages);
   }
-  console.log(packagesDiv);
   return packagesDiv;
 };
 const adminDisplayUserPackages = (id) => {
