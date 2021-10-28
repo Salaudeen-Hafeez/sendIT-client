@@ -29,6 +29,7 @@ const formValidation = (input) => {
   const data = {};
   let emptyInput = '';
   input.forEach((inp) => {
+    console.log(inp.getAttribute('name'));
     if (inp.value.trim() === '') {
       emptyInput = 'true';
       setErrorFor(inp);
