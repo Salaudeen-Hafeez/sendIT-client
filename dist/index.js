@@ -131,11 +131,12 @@ const createAdmin = () => {
 
 const openUser = () => {
   const user = usersData();
+  console.log(user);
   if (user.users_id) {
     // window.location.href = 'user.html';
   } else {
     const input = document.getElementById('password');
-    setErrorFor(input, admin);
+    setErrorFor(input, user);
   }
 };
 
