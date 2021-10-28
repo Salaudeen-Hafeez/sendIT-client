@@ -179,6 +179,7 @@ const fetchAdminData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
+      console.log(data);
       localStorage.setItem('admin', JSON.stringify(data.admin));
       localStorage.setItem('users', JSON.stringify(data.users));
       localStorage.setItem('packages', JSON.stringify(data.packages));
