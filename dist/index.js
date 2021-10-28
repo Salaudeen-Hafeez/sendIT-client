@@ -183,7 +183,7 @@ const fetchAdminData = (data) => {
       localStorage.setItem('admin', JSON.stringify(data.admin));
       localStorage.setItem('users', JSON.stringify(data.users));
       localStorage.setItem('packages', JSON.stringify(data.packages));
-      setTimeout(openAdmin, 1200);
+      openAdmin();
     })
     .catch((err) => {
       console.log(err);
@@ -208,15 +208,15 @@ const loginNewUser = () => {
   const newUser = JSON.parse(localStorage.getItem('newUser'));
   const data = { email: newUser.email, password: newUser.password };
   fetchUserData(data);
-  setTimeout(openUser, 1200);
+  openUser();
 };
 
 const displayUserProfile = () => {
-  setTimeout(createUser, 1000);
+  createUser();
 };
 
 const displayAdmin = () => {
-  setTimeout(createAdmin, 1000);
+  createAdmin();
 };
 // Use the username from the stored user to get the user packages
 
@@ -253,7 +253,6 @@ const fetchPendingPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(data));
     })
@@ -267,7 +266,6 @@ const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
   const packages1 = JSON.parse(localStorage.getItem('packages'));
-  console.log(packages1);
   if (packages1.length > 0 && !packages1.packages) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
     packages1.forEach((newPackage) => {
@@ -324,10 +322,10 @@ const displayUserPackages = () => {
     const packag =
       '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login<p>';
     localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
-    setTimeout(createUserPackage, 1500);
+    createUserPackage();
   } else {
     fetchPackages();
-    setTimeout(createUserPackage, 1500);
+    createUserPackage();
   }
 };
 
@@ -339,14 +337,14 @@ const displayPendingPackage = () => {
     const packag =
       '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login</p>';
     localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
-    setTimeout(createUserPackage, 1500);
+    createUserPackage();
   } else if (
     !packages1 ||
     packages1.length === 0 ||
     Object.keys(packages1).length !== 0
   ) {
     fetchPendingPackages();
-    setTimeout(createUserPackage, 1500);
+    createUserPackage();
   } else {
     const packageInTrans = packages1.filter(
       (packag) => packag._status === 'In transit'
@@ -358,11 +356,11 @@ const displayPendingPackage = () => {
         'packages',
         JSON.stringify({ ErrorMessage: packag })
       );
-      setTimeout(createUserPackage, 1500);
+      createUserPackage();
     } else {
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(packageInTrans));
-      setTimeout(createUserPackage, 1500);
+      createUserPackage();
     }
   }
 };
@@ -430,7 +428,7 @@ const postUser = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.setItem('user', JSON.stringify(data));
-      setTimeout(openUser(), 1500);
+      openUser();
     })
     .catch((err) => {
       console.log(err);
@@ -454,7 +452,7 @@ const postAdmin = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.setItem('admin', JSON.stringify(data));
-      setTimeout(openAdmin(), 1500);
+      openAdmin();
     })
     .catch((err) => {
       console.log(err);
@@ -529,7 +527,7 @@ const postPackage = (data) => {
       `;
   // sendEmail(data._email, message);
   fetchPackages();
-  setTimeout(openPackage, 1500);
+  openPackage();
 };
 
 const submitPackage = () => {
@@ -585,7 +583,7 @@ const updateDestination = () => {
   } else if (!newDestination.emptyInput) {
     const data = { _destination: newDestination.data.destination };
     putPackage(data, selectedPackage);
-    setTimeout(openPackage, 1500);
+    openPackage();
   }
 };
 
@@ -596,7 +594,7 @@ const cancelOrder = () => {
   } else {
     const data = { _status: 'Order Canceled' };
     putPackage(data, selectedPackage);
-    setTimeout(openPackage, 1500);
+    openPackage();
   }
 };
 const getPackage = (td) => {
@@ -608,7 +606,7 @@ const getPackage = (td) => {
       localStorage.setItem('package', JSON.stringify(packageData));
     }
   });
-  setTimeout(openPackage, 1500);
+  openPackage();
 };
 
 const completeOrder = () => {
