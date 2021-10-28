@@ -42,6 +42,7 @@ const formValidation = (input) => {
       data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
     } else if (inp.getAttribute('name') === 'password') {
       if (inp.value.trim().length < 6) {
+        console.log(inp.value);
         emptyInput = 'true';
         setErrorFor(inp, 'The password length must be 6 or more');
       }
