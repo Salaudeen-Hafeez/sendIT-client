@@ -309,12 +309,8 @@ const createUserPackage = () => {
         </div>`;
       displayPackage += tableBody;
     });
-  } else if (packages1.packages) {
-    displayPackage += `<h3>${packages1.packages}</h3>`;
-  } else if (packages1.length === 0) {
-    displayPackage += `<h3>No pending packages</h3>`;
   } else {
-    displayPackage += `<h3>${packages1.ErrorMessage}</h3>`;
+    displayPackage += `<h3>${Object.values(packages1)}</h3>`;
   }
   packagesDiv.innerHTML = displayPackage;
 };
