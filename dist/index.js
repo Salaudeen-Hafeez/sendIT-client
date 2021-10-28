@@ -413,7 +413,10 @@ const createPackage = (metrix) => {
 };
 
 const loadPackage = () => {
+  const admin = adminsData();
+  console.log(admin);
   const packages = document.getElementById('userProfile');
+  const status = document.getElementById('upfateStatus');
   const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;

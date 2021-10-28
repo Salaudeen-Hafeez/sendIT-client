@@ -475,12 +475,14 @@ input:focus {
 
 .packageContainer,
 .usersContainer,
-.userCont {
+.userCont,
+.updateStatus {
   height: 0rem;
   visibility: hidden;
 }
 
-.packageContainer.open {
+.packageContainer.open,
+.updateStatus.open {
   height: auto;
   padding: 1rem;
   visibility: visible;
