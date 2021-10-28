@@ -417,8 +417,10 @@ const loadPackage = () => {
   console.log(admin);
   const packages = document.getElementById('userProfile');
   const status = document.getElementById('updateStatus');
+  const location = document.getElementById('location');
   if (admin) {
     status.classList.toggle('open');
+    location.innerHTML = 'Fill the form below to update the order status';
   }
   const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
