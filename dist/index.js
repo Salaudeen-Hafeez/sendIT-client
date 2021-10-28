@@ -717,7 +717,9 @@ const packageDisplay = (packages) => {
     });
   } else {
     packagesDiv = `<li>
-    <h3 style="color: red'">${Object.values(packages)}</h3></li>`;
+    <h3 style="padding-top: 5px; color: red;">${Object.values(
+      packages
+    )}</h3></li>`;
   }
   return packagesDiv;
 };
