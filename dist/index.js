@@ -148,17 +148,11 @@ const openUser = () => {
 const openAdmin = () => {
   const admin = adminsData();
   console.log(admin);
-  if (!(admin.passwordErr || admin.emailErr || admin.joiErr)) {
-    // window.location.href = 'admin.html';
-  } else if (admin.passwordErr) {
+  if (admin.users_id) {
+    window.location.href = 'admin.html';
+  } else {
     const input = document.getElementById('password');
     setErrorFor(input, admin.passwordErr);
-  } else if (admin.emailErr) {
-    const input = document.getElementById('email');
-    setErrorFor(input, admin.emailErr);
-  } else if (admin.joiErr) {
-    const input = document.getElementById('email');
-    setErrorFor(input, admin.joiErr);
   }
 };
 // Login the user and store the return user's data in localStorage
@@ -190,7 +184,6 @@ const fetchAdminData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
-      console.log(data);
       localStorage.setItem('admin', JSON.stringify(data.admin));
       localStorage.setItem('users', JSON.stringify(data.users));
       localStorage.setItem('packages', JSON.stringify(data.packages));
