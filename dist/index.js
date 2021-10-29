@@ -420,7 +420,7 @@ const loadPackage = () => {
   const location = document.getElementById('location');
   if (admin) {
     status.classList.toggle('open');
-    location.innerHTML = 'Fill the form below to update the order status';
+    location.innerHTML = 'New location';
   }
   const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
