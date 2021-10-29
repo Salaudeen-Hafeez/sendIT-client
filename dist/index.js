@@ -576,6 +576,7 @@ const putPackage = (data, selectedPackage) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
     })
