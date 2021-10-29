@@ -538,7 +538,7 @@ const postPackage = (data) => {
       `;
   // sendEmail(data._email, message);
   fetchPackages();
-  // openPackage();
+  setTimeout(openPackage, 1200);
 };
 
 const submitPackage = () => {
