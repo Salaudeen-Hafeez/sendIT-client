@@ -601,7 +601,7 @@ const updateDestination = () => {
       _status: newDestination.data.status,
     };
     putPackage(data, selectedPackage);
-    openPackage();
+    // openPackage();
   } else {
     const data = { _destination: newDestination.data.destination };
     putPackage(data, selectedPackage);
