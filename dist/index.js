@@ -588,16 +588,24 @@ const putPackage = (data, selectedPackage) => {
 };
 
 const updateDestination = () => {
+  const admin = adminsData();
   const selectedPackage = JSON.parse(localStorage.getItem('package'));
   const input = document.querySelectorAll('input');
   const newDestination = formValidation(input);
   console.log(newDestination);
   if (selectedPackage._status === 'Order Canceled') {
     alert('Order has been canceled');
-  } else if (!newDestination.emptyInput) {
+  } else if (admin) {
+    const data = {
+      _destination: newDestination.data.destination,
+      _status: newDestination.data.status,
+    };
+    putPackage(data, selectedPackage);
+    openPackage();
+  } else {
     const data = { _destination: newDestination.data.destination };
     putPackage(data, selectedPackage);
-    // openPackage();
+    openPackage();
   }
 };
 
