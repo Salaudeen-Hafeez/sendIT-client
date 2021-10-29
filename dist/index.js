@@ -590,10 +590,10 @@ const putPackage = (data, selectedPackage) => {
 const updateDestination = () => {
   const admin = adminsData();
   const selectedPackage = JSON.parse(localStorage.getItem('package'));
-  const input = document.querySelectorAll('input');
-  const select1 = document.querySelectorAll('select');
-  const newDestination = formValidation(input);
-  console.log(select1[0].value);
+  const input = document.getElementById('newDestination');
+  const select1 = document.getElementById('newStatus');
+  const newDestination = formValidation([input, select1]);
+  console.log(newDestination);
   if (selectedPackage._status === 'Order Canceled') {
     alert('Order has been canceled');
   } else if (admin) {
