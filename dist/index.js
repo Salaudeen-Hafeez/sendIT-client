@@ -599,10 +599,10 @@ const updateDestination = () => {
   } else if (admin) {
     const data = {
       _location: newDestination.data.destination,
-      _status: select1.data.status,
+      _status: newDestination.data.status,
     };
     putPackage(data, selectedPackage);
-    // setTimeout(openPackage, 1200);
+    setTimeout(openPackage, 1200);
   } else {
     const data = { _destination: newDestination.data.destination };
     putPackage(data, selectedPackage);
