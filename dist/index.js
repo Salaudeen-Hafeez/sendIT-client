@@ -514,6 +514,7 @@ const postPackage = (data) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
     })
@@ -537,7 +538,7 @@ const postPackage = (data) => {
       `;
   // sendEmail(data._email, message);
   fetchPackages();
-  openPackage();
+  // openPackage();
 };
 
 const submitPackage = () => {
@@ -586,7 +587,7 @@ const putPackage = (data, selectedPackage) => {
       console.log(err);
     });
 };
-
+submitPackage;
 const updateDestination = () => {
   const admin = adminsData();
   const selectedPackage = JSON.parse(localStorage.getItem('package'));
