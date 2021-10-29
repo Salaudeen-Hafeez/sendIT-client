@@ -567,7 +567,9 @@ const putPackage = (data, selectedPackage) => {
     token = user.auth_token;
   }
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${selectedPackage.parcel_id}`,
+    `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${parseInt(
+      selectedPackage.parcel_id
+    )}`,
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
