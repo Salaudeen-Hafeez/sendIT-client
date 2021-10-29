@@ -588,6 +588,7 @@ const updateDestination = () => {
   const selectedPackage = JSON.parse(localStorage.getItem('package'));
   const input = [document.getElementById('newDestination')];
   const newDestination = formValidation(input);
+  console.log(newDestination);
   if (selectedPackage._status === 'Order Canceled') {
     alert('Order has been canceled');
   } else if (!newDestination.emptyInput) {
