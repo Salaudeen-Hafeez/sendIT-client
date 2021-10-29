@@ -250,6 +250,7 @@ const fetchPendingPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(data));
     })
@@ -341,6 +342,7 @@ const displayPendingPackage = () => {
     Object.keys(packages1).length !== 0
   ) {
     fetchPendingPackages();
+    console.log('Fetching pending data');
     setTimeout(createUserPackage, 1200);
   } else {
     const packageInTrans = packages1.filter(
