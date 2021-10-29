@@ -594,7 +594,7 @@ const updateDestination = () => {
   } else if (!newDestination.emptyInput) {
     const data = { _destination: newDestination.data.destination };
     putPackage(data, selectedPackage);
-    openPackage();
+    // openPackage();
   }
 };
 
