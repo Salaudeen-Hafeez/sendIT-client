@@ -597,7 +597,7 @@ const updateDestination = () => {
     alert('Order has been canceled');
   } else if (admin) {
     const data = {
-      _destination: newDestination.data.destination,
+      _location: newDestination.data.destination,
       _status: newDestination.data.status,
     };
     putPackage(data, selectedPackage);
