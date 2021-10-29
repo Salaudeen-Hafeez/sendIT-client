@@ -593,7 +593,7 @@ const updateDestination = () => {
   const input = document.querySelectorAll('input');
   const select1 = document.querySelectorAll('select');
   const newDestination = formValidation(input);
-  console.log(select1.name);
+  console.log(select1.value);
   if (selectedPackage._status === 'Order Canceled') {
     alert('Order has been canceled');
   } else if (admin) {
