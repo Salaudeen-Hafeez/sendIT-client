@@ -205,10 +205,7 @@ const login = () => {
 };
 
 const loginNewUser = () => {
-  const newUser = JSON.parse(localStorage.getItem('newUser'));
-  const data = { email: newUser.email, password: newUser.password };
-  fetchUserData(data);
-  openUser();
+  window.location.href = 'login.html';
 };
 
 const displayUserProfile = () => {
@@ -587,7 +584,7 @@ const putPackage = (data, selectedPackage) => {
       console.log(err);
     });
 };
-submitPackage;
+
 const updateDestination = () => {
   const admin = adminsData();
   const selectedPackage = JSON.parse(localStorage.getItem('package'));
