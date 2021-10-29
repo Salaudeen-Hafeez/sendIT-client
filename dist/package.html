@@ -64,22 +64,20 @@
               />
               <small></small>
             </div>
-            <div class="input-field">
-              <div class="updateStatus" id="updateStatus">
-                <label for="newStatus" class="col-4">Status</label>
-                <select
-                  name="status"
-                  id="newStatus"
-                  class="packageinput"
-                  oninput="clearErr(this)"
-                  required
-                >
-                  <option value="At the location">At the location</option>
-                  <option value="In transit">In transit</option>
-                  <option value="Delivered">Delivered</option>
-                </select>
-                <small></small>
-              </div>
+            <div class="input-field updateStatus" id="updateStatus">
+              <label for="newStatus" class="col-4">Status</label>
+              <select
+                name="status"
+                id="newStatus"
+                class="packageinput"
+                oninput="clearErr(this)"
+                required
+              >
+                <option value="At the location">At the location</option>
+                <option value="In transit">In transit</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+              <small></small>
             </div>
 
             <input
