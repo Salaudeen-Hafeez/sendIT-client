@@ -21,6 +21,11 @@ const setErrorFor = (inp, message) => {
   small.innerHTML = message;
 };
 
+const displayErr = (data) => {
+  const erro = document.getElementById('userErr');
+  erro.innerHTML = Object.values(data);
+};
+
 const formValidation = (input) => {
   const pattern =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -162,7 +167,6 @@ const openAdmin = () => {
 };
 // Login the user and store the return user's data in localStorage
 const fetchUserData = (data) => {
-  const erro = document.getElementById('userErr');
   erro.innerHTML = '';
   fetch('https://akera-logistics.herokuapp.com/api/v1/users/login', {
     method: 'POST',
@@ -173,8 +177,7 @@ const fetchUserData = (data) => {
     .then((data) => {
       localStorage.clear();
       if (data.userErr) {
-        const erro = document.getElementById('userErr');
-        erro.innerHTML = data.userErr;
+        displayErr(data);
       } else {
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('packages', JSON.stringify(data.packages));
@@ -451,9 +454,12 @@ const postUser = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
-      localStorage.setItem('user', JSON.stringify(data));
-      openUser();
+      if (data.usernameErr) {
+        displayErr(data);
+      } else {
+        localStorage.setItem('user', JSON.stringify(data));
+        openUser();
+      }
     })
     .catch((err) => {
       console.log(err);
