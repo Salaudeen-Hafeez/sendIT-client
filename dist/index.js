@@ -27,6 +27,11 @@ const displayErr = (data) => {
   erro.innerHTML = Object.values(data);
 };
 
+const clearDisplayErr = () => {
+  const erro = document.getElementById('userErr');
+  erro.innerHTML = '';
+};
+
 const formValidation = (input) => {
   const pattern =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -168,6 +173,7 @@ const openAdmin = () => {
 };
 // Login the user and store the return user's data in localStorage
 const fetchUserData = (data) => {
+  clearDisplayErr();
   fetch('https://akera-logistics.herokuapp.com/api/v1/users/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -447,6 +453,7 @@ const loadPackage = () => {
 };
 
 const postUser = (data) => {
+  clearDisplayErr();
   fetch('https://akera-logistics.herokuapp.com/api/v1/users', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -475,6 +482,7 @@ const postUser = (data) => {
 };
 
 const postAdmin = (data) => {
+  clearDisplayErr();
   fetch('https://akera-logistics.herokuapp.com/api/v1/users/admins', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -482,8 +490,12 @@ const postAdmin = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.setItem('admin', JSON.stringify(data));
-      openAdmin();
+      if (data.adminErr) {
+        displayErr(data);
+      } else {
+        localStorage.setItem('admin', JSON.stringify(data));
+        openAdmin();
+      }
     })
     .catch((err) => {
       console.log(err);
