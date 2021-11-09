@@ -351,7 +351,7 @@ const displayUserPackages = () => {
     setTimeout(createUserPackage, 1200);
   }
 };
-
+loadPackage;
 const displayPendingPackage = () => {
   const user = usersData();
   const packages1 = JSON.parse(localStorage.getItem('packages'));
@@ -389,6 +389,7 @@ const displayPendingPackage = () => {
 };
 const createPackage = (metrix) => {
   const newPackage = JSON.parse(localStorage.getItem('package'));
+  console.log(newPackage);
   const tableBody = `
           <img 
             src="/images/Lagos4.jpg"
