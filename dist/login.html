@@ -11,7 +11,6 @@
     <main class="login-main">
       <div class="form-bg">
         <form onsubmit="return false">
-          <small id="userErr"></small>
           <div class="logo-img">
             <img src="/images/logo2.png" alt="" class="logo-img" />
           </div>
@@ -19,6 +18,7 @@
             <h2>Login to SendIT logistics</h2>
           </div>
           <div class="input-container" id="inputContainer">
+            <small id="userErr" style="color: red"></small>
             <div class="input-field">
               <label for="email" class="col-4">Email</label>
               <input
