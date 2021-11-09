@@ -12,10 +12,7 @@
 //   }).then((message) => alert(message));
 // };
 
-const setErrorFor = (
-  inp,
-  message = `${inp.getAttribute('name')} can not be blank`
-) => {
+const setErrorFor = (inp, message) => {
   inp.style.border = '1px solid red';
   const inputFeild = inp.parentElement;
   const small = inputFeild.querySelector('small');
@@ -31,8 +28,14 @@ const formValidation = (input) => {
   let emptyInput = '';
   input.forEach((inp) => {
     if (inp.value.trim() === '') {
-      emptyInput = 'true';
-      setErrorFor(inp);
+      if (inp.getAttribute('name') === 'password1') {
+        emptyInput = 'true';
+        setErrorFor(inp, 'password can not be blank');
+      } else {
+        const message = `${inp.getAttribute('name')} can not be blank`;
+        emptyInput = 'true';
+        setErrorFor(inp, message);
+      }
     } else if (inp.getAttribute('name') === 'frajile') {
       if (inp.checked) {
         data[inp.getAttribute('name')] = 'the package is frajile';
