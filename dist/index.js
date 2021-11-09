@@ -451,6 +451,7 @@ const postUser = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       localStorage.setItem('user', JSON.stringify(data));
       openUser();
     })
