@@ -540,6 +540,7 @@ const postPackage = (data) => {
   const user = usersData();
   const { _username, _email, auth_token } = user;
   data['username'] = _username;
+  console.log(data);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
     {
@@ -574,7 +575,7 @@ const postPackage = (data) => {
       `;
   // sendEmail(data._email, message);
   fetchPackages();
-  setTimeout(openPackage, 1200);
+  //setTimeout(openPackage, 1200);
 };
 
 const submitPackage = () => {
