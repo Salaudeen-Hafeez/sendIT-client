@@ -23,7 +23,8 @@ const setErrorFor = (inp, message) => {
 
 const displayErr = (data) => {
   const erro = document.getElementById('userErr');
-  erro.innerHTML = Object.values(data);
+  erro.innerHTML = '';
+  setTimeout((erro.innerHTML = Object.values(data)), 1000);
 };
 
 const formValidation = (input) => {
