@@ -25,6 +25,8 @@ const setErrorFor = (
 };
 
 const formValidation = (input) => {
+  const pattern =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const data = {};
   let emptyInput = '';
   input.forEach((inp) => {
@@ -38,7 +40,12 @@ const formValidation = (input) => {
         data[inp.getAttribute('name')] = 'not frajile';
       }
     } else if (inp.getAttribute('name') === 'email') {
-      data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
+      if (pattern.test(inp.value.trim().toLowerCase())) {
+        data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
+      } else {
+        emptyInput = 'true';
+        setErrorFor(inp, 'The password length must be 6 or more');
+      }
     } else if (inp.getAttribute('name') === 'password') {
       if (inp.value.trim().length < 6) {
         emptyInput = 'true';
@@ -342,7 +349,6 @@ const displayPendingPackage = () => {
     Object.keys(packages1).length !== 0
   ) {
     fetchPendingPackages();
-    console.log('Fetching pending data');
     setTimeout(createUserPackage, 1200);
   } else {
     const packageInTrans = packages1.filter(
