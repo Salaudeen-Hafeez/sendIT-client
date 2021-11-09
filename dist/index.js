@@ -534,7 +534,9 @@ const newPackage = () => {
     displayUserPackages();
   }
 };
+
 const postPackage = (data) => {
+  console.log(data);
   const user = usersData();
   const { _username, _email, auth_token } = user;
   fetch(
