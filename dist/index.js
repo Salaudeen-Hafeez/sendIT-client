@@ -351,7 +351,7 @@ const displayUserPackages = () => {
     setTimeout(createUserPackage, 1200);
   }
 };
-loadPackage;
+
 const displayPendingPackage = () => {
   const user = usersData();
   const packages1 = JSON.parse(localStorage.getItem('packages'));
