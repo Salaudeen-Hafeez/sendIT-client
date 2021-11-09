@@ -35,6 +35,8 @@ const clearDisplayErr = () => {
 const formValidation = (input) => {
   const pattern =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const contactPattern =
+    /^[\+]?([0-9][\s]?|[0-9]?)([(][0-9]{3}[)][\s]?|[0-9]{3}[-\s\.]?)[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
   const data = {};
   let emptyInput = '';
   input.forEach((inp) => {
@@ -59,6 +61,16 @@ const formValidation = (input) => {
       } else {
         emptyInput = 'true';
         setErrorFor(inp, 'Invalid email address');
+      }
+    } else if (
+      inp.getAttribute('name') === 'reciever' ||
+      inp.getAttribute('name') === 'sender'
+    ) {
+      if (contactPattern.test(inp.value.trim())) {
+        data[inp.getAttribute('name')] = inp.value.trim();
+      } else {
+        emptyInput = 'true';
+        setErrorFor(inp, 'Invalid phone number');
       }
     } else if (inp.getAttribute('name') === 'password') {
       if (inp.value.trim().length < 6) {
