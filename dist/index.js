@@ -167,10 +167,14 @@ const fetchUserData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
-      console.log(data);
-      localStorage.setItem('user', JSON.stringify(data.user));
-      localStorage.setItem('packages', JSON.stringify(data.packages));
-      openUser();
+      if (data.userErr) {
+        const erro = document.getElementById('userErr');
+        erro.innerHTML = data.userErr;
+      } else {
+        localStorage.setItem('user', JSON.stringify(data.user));
+        localStorage.setItem('packages', JSON.stringify(data.packages));
+        openUser();
+      }
     })
     .catch((err) => {
       console.log(err);
