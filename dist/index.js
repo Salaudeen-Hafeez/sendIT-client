@@ -159,6 +159,8 @@ const openAdmin = () => {
 };
 // Login the user and store the return user's data in localStorage
 const fetchUserData = (data) => {
+  const erro = document.getElementById('userErr');
+  erro.innerHTML = '';
   fetch('https://akera-logistics.herokuapp.com/api/v1/users/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
