@@ -958,17 +958,22 @@ function initMap() {
 }
 
 var searchInput = 'location';
+var autocomplete;
+autocomplete = new google.maps.places.Autocomplete(
+  document.getElementById(searchInput)
+);
+console.log(autocomplete);
 
-$(document).ready(function () {
-  var autocomplete;
-  autocomplete = new google.maps.places.Autocomplete(
-    document.getElementById(searchInput),
-    {
-      types: ['geocode'],
-    }
-  );
+// $(document).ready(function () {
+//   var autocomplete;
+//   autocomplete = new google.maps.places.Autocomplete(
+//     document.getElementById(searchInput),
+//     {
+//       types: ['geocode'],
+//     }
+//   );
 
-  google.maps.event.addListener(autocomplete, 'place_changed', function () {
-    var near_place = autocomplete.getPlace();
-  });
-});
+//   google.maps.event.addListener(autocomplete, 'place_changed', function () {
+//     var near_place = autocomplete.getPlace();
+//   });
+// });
