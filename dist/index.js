@@ -957,12 +957,12 @@ function initMap() {
   });
 }
 
-var searchInput = 'location';
-var autocomplete;
-autocomplete = new google.maps.places.Autocomplete(
-  document.getElementById(searchInput)
-);
-console.log(autocomplete);
+// var searchInput = 'location';
+// var autocomplete;
+// autocomplete = new google.maps.places.Autocomplete(
+//   document.getElementById(searchInput)
+// );
+// console.log(autocomplete);
 
 // $(document).ready(function () {
 //   var autocomplete;
