@@ -11,7 +11,8 @@
 //     Body: message,
 //   }).then((message) => alert(message));
 // };
-
+var x = document.referrer;
+console.log(x);
 const setErrorFor = (inp, message) => {
   inp.style.border = '1px solid red';
   const inputFeild = inp.parentElement;
@@ -969,24 +970,3 @@ function autoCompleteAddress(add) {
   //   );
   // });
 }
-
-// var searchInput = 'location';
-// var autocomplete;
-// autocomplete = new google.maps.places.Autocomplete(
-//   document.getElementById(searchInput)
-// );
-// console.log(autocomplete);
-
-// $(document).ready(function () {
-//   var autocomplete;
-//   autocomplete = new google.maps.places.Autocomplete(
-//     document.getElementById(searchInput),
-//     {
-//       types: ['geocode'],
-//     }
-//   );
-
-//   google.maps.event.addListener(autocomplete, 'place_changed', function () {
-//     var near_place = autocomplete.getPlace();
-//   });
-// });
