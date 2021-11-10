@@ -55,6 +55,13 @@
                 oninput="clearErr(this)"
               />
               <small></small>
+              <input
+                id="address"
+                name="address"
+                value=""
+                type="hidden"
+                placeholder=""
+              />
             </div>
             <div class="input-field">
               <label for="destination" class="col-4">Destination</label>
@@ -115,7 +122,7 @@
     </main>
     <script src="/index.js"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA&callback=initMap"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA&libraries=places&callback=autoCompleteAddress"
       type="text/javascript"
     ></script>
   </body>

@@ -957,6 +957,17 @@ function initMap() {
   });
 }
 
+function autoCompleteAddress() {
+  var input = document.getElementById('location');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.addListener('place_changed', function () {
+    var place = autocomplete.getPlace();
+    document.getElementById('address').value = JSON.stringify(
+      place.address_components
+    );
+  });
+}
+
 // var searchInput = 'location';
 // var autocomplete;
 // autocomplete = new google.maps.places.Autocomplete(
