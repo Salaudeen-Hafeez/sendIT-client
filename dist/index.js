@@ -164,8 +164,7 @@ const createAdmin = () => {
 
 var x = document.referrer;
 const user = usersData();
-const { auth_token } = user;
-if (!auth_token && x !== 'https://akera-logistics.netlify.app') {
+if (!user && x !== 'https://akera-logistics.netlify.app') {
   window.location.href = 'https://akera-logistics.netlify.app/login';
 }
 console.log(x);
