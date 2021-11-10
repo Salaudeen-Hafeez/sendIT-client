@@ -165,10 +165,10 @@ const createAdmin = () => {
 var x = document.referrer;
 var y = window.parent.location;
 console.log(y);
-const user = usersData();
-if (!user || x !== 'https://akera-logistics.netlify.app/login' || x == '') {
-  window.location.href = 'https://akera-logistics.netlify.app/login';
-}
+// const user = usersData();
+// if (!user || x !== 'https://akera-logistics.netlify.app/login' || x == '') {
+//   window.location.href = 'https://akera-logistics.netlify.app/login';
+// }
 console.log(x);
 const openUser = () => {
   const user = usersData();
