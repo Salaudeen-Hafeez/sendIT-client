@@ -166,12 +166,10 @@ var x = document.referrer;
 var y = window.parent.location.href;
 console.log(y);
 const user = usersData();
-if (y == 'https://akera-logistics.netlify.app/') {
+if (x == 'https://akera-logistics.netlify.app/') {
   window.location.href = 'https://akera-logistics.netlify.app/';
-  y = '';
 } else if (!user) {
   window.location.href = 'https://akera-logistics.netlify.app/login';
-  y = '';
 }
 const openUser = () => {
   const user = usersData();
