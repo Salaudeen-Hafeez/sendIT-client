@@ -166,8 +166,8 @@ var x = document.referrer;
 var y = window.parent.location.href;
 console.log(y);
 const user = usersData();
-if (y == 'https://akera-logistics.netlify.app') {
-  window.location.href = 'https://akera-logistics.netlify.app';
+if (y == 'https://akera-logistics.netlify.app/') {
+  window.location.href = 'https://akera-logistics.netlify.app/';
 } else if (!user) {
   window.location.href = 'https://akera-logistics.netlify.app/login';
 }
