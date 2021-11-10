@@ -163,13 +163,14 @@ const createAdmin = () => {
 };
 
 var x = document.referrer;
-var y = window.parent.location;
-console.log(y.href);
-// const user = usersData();
-// if (!user || x !== 'https://akera-logistics.netlify.app/login' || x == '') {
-//   window.location.href = 'https://akera-logistics.netlify.app/login';
-// }
-console.log(x);
+var y = window.parent.location.href;
+console.log(y);
+const user = usersData();
+if (y == 'https://akera-logistics.netlify.app') {
+  window.location.href = 'https://akera-logistics.netlify.app';
+} else if (!user) {
+  window.location.href = 'https://akera-logistics.netlify.app/login';
+}
 const openUser = () => {
   const user = usersData();
   console.log(user);
