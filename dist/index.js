@@ -43,7 +43,7 @@ const formValidation = (input) => {
     if (inp.value.trim() === '') {
       if (inp.getAttribute('name') === 'password1') {
         emptyInput = 'true';
-        setErrorFor(inp, 'password can not be blank');
+        setErrorFor(inp, 'password confirmation can not be blank');
       } else {
         const message = `${inp.getAttribute('name')} can not be blank`;
         emptyInput = 'true';
