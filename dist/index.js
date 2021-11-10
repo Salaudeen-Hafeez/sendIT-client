@@ -957,9 +957,11 @@ function initMap() {
   });
 }
 
-function autoCompleteAddress() {
+function autoCompleteAddress(add) {
   var input = document.getElementById('location');
   var autocomplete = new google.maps.places.Autocomplete(input);
+  var input2 = document.getElementById('destination');
+  var autocomplete2 = new google.maps.places.Autocomplete(input2);
   // autocomplete.addListener('place_changed', function () {
   //   var place = autocomplete.getPlace();
   //   document.getElementById('address').value = JSON.stringify(
