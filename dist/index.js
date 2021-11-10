@@ -11,13 +11,7 @@
 //     Body: message,
 //   }).then((message) => alert(message));
 // };
-var x = document.referrer;
-const user = usersData();
-const { auth_token } = user;
-if (!auth_token && x !== 'https://akera-logistics.netlify.app') {
-  window.location.href = 'https://akera-logistics.netlify.app/login';
-}
-console.log(x);
+
 const setErrorFor = (inp, message) => {
   inp.style.border = '1px solid red';
   const inputFeild = inp.parentElement;
@@ -168,6 +162,13 @@ const createAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 
+var x = document.referrer;
+const user = usersData();
+const { auth_token } = user;
+if (!auth_token && x !== 'https://akera-logistics.netlify.app') {
+  window.location.href = 'https://akera-logistics.netlify.app/login';
+}
+console.log(x);
 const openUser = () => {
   const user = usersData();
   console.log(user);
