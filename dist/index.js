@@ -172,6 +172,7 @@ if (!user && y !== 'https://akera-logistics.netlify.app/') {
   } else if (y.length === 2 && y[0] !== y[1]) {
     window.location.href = 'https://akera-logistics.netlify.app/login';
     y.shift();
+    y.shift();
   }
 }
 const openUser = () => {
