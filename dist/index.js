@@ -162,12 +162,17 @@ const createAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 
-var x = document.referrer;
-var y = window.parent.location.href;
+let y = [];
+y.push(window.parent.location.href);
 console.log(y);
 const user = usersData();
 if (!user && y !== 'https://akera-logistics.netlify.app/') {
-  window.location.href = 'https://akera-logistics.netlify.app/login';
+  if (y.length === 1) {
+    window.location.href = 'https://akera-logistics.netlify.app/login';
+  } else if (y.length === 2 && y[0] !== y[1]) {
+    window.location.href = 'https://akera-logistics.netlify.app/login';
+    y.shift();
+  }
 }
 const openUser = () => {
   const user = usersData();
