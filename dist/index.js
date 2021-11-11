@@ -166,9 +166,7 @@ var x = document.referrer;
 var y = window.parent.location.href;
 console.log(y);
 const user = usersData();
-if (x == 'https://akera-logistics.netlify.app/') {
-  window.location.href = 'https://akera-logistics.netlify.app/';
-} else if (!user) {
+if (!user) {
   window.location.href = 'https://akera-logistics.netlify.app/login';
 }
 const openUser = () => {
