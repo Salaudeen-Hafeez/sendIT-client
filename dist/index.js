@@ -744,7 +744,6 @@ const adminDeletePackage = (e) => {
   const admin = adminsData();
   const parentEl = e.parentElement.parentElement.parentElement.parentElement;
   let button = parentEl.querySelector('button');
-  console.log();
   const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
