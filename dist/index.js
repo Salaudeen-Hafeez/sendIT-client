@@ -760,6 +760,7 @@ const adminDeletePackage = (e) => {
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
       button.click();
+      button.click();
     })
     .catch((err) => {
       console.log(err);
