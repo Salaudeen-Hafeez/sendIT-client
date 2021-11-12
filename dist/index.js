@@ -742,7 +742,7 @@ const adminDeleteUser = (e) => {
 
 const adminDeletePackage = (e) => {
   const admin = adminsData();
-  console.log(e.parentElement.parentElement.parentElement);
+  console.log(e.parentElement.parentElement.parentElement.parentElement);
   const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
