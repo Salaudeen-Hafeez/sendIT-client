@@ -649,6 +649,7 @@ const putPackage = (data, selectedPackage) => {
       console.log(data);
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
+      openPackage();
     })
     .catch((err) => {
       console.log(err);
@@ -685,7 +686,6 @@ const cancelOrder = () => {
   } else {
     const data = { _status: 'Order Canceled' };
     putPackage(data, selectedPackage);
-    openPackage();
   }
 };
 const getPackage = (td) => {
