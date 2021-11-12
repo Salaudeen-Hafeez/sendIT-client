@@ -743,7 +743,8 @@ const adminDeleteUser = (e) => {
 const adminDeletePackage = (e) => {
   const admin = adminsData();
   const parentEl = e.parentElement.parentElement.parentElement.parentElement;
-  console.log(parentEl.querySelector('button'));
+  let button = parentEl.querySelector('button');
+  console.log();
   const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
@@ -758,7 +759,7 @@ const adminDeletePackage = (e) => {
     .then((data) => {
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
-      adminFetchUserPackage();
+      button.click();
     })
     .catch((err) => {
       console.log(err);
