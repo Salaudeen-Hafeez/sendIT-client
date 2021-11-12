@@ -422,6 +422,7 @@ const displayPendingPackage = () => {
 };
 const createPackage = (metrix) => {
   const newPackage = JSON.parse(localStorage.getItem('package'));
+  console.log(newPackage);
   const tableBody = `
           <img 
             src="/images/Lagos4.jpg"
@@ -684,7 +685,7 @@ const cancelOrder = () => {
   } else {
     const data = { _status: 'Order Canceled' };
     putPackage(data, selectedPackage);
-    setTimeout(openPackage(), 1200);
+    openPackage();
   }
 };
 const getPackage = (td) => {
