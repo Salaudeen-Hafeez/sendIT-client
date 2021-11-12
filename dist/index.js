@@ -964,7 +964,7 @@ function initMap() {
   var autocomplete3 = new google.maps.places.Autocomplete(input3);
 }
 
-function autoCompleteAddress(add) {
+function autoCompleteAddress() {
   var input = document.getElementById('location');
   var autocomplete = new google.maps.places.Autocomplete(input);
   var input2 = document.getElementById('destination');
