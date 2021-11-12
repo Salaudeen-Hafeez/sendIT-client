@@ -966,6 +966,8 @@ function autoCompleteAddress(add) {
   var autocomplete = new google.maps.places.Autocomplete(input);
   var input2 = document.getElementById('destination');
   var autocomplete2 = new google.maps.places.Autocomplete(input2);
+  var input3 = document.getElementById('newDestination');
+  var autocomplete2 = new google.maps.places.Autocomplete(input3);
   // autocomplete.addListener('place_changed', function () {
   //   var place = autocomplete.getPlace();
   //   document.getElementById('address').value = JSON.stringify(
