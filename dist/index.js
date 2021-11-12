@@ -684,7 +684,7 @@ const cancelOrder = () => {
   } else {
     const data = { _status: 'Order Canceled' };
     putPackage(data, selectedPackage);
-    // openPackage();
+    setTimeout(openPackage(), 1200);
   }
 };
 const getPackage = (td) => {
