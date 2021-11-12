@@ -570,6 +570,7 @@ const postPackage = (data) => {
     .then((data) => {
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
+      openUser();
     })
     .catch((err) => {
       console.log(err);
@@ -591,7 +592,6 @@ const postPackage = (data) => {
       `;
   // sendEmail(data._email, message);
   fetchPackages();
-  setTimeout(displayUserProfile, 1200);
 };
 
 const submitPackage = () => {
