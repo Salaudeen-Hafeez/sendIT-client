@@ -742,11 +742,11 @@ const adminDeleteUser = (e) => {
 
 const adminDeletePackage = (e) => {
   const admin = adminsData();
-  console.log(e.parentElement.parentElement.parentElement.parentElement);
+  const parentEl = e.parentElement.parentElement.parentElement.parentElement;
+  console.log(parentEl.querySelector('button'));
   const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
-  console.log(username, id);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}`,
     {
