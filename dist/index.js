@@ -194,6 +194,7 @@ if (!user && !admin) {
     }
   }
 }
+
 const openUser = () => {
   const user = usersData();
   console.log(user);
@@ -421,7 +422,6 @@ const displayPendingPackage = () => {
 };
 const createPackage = (metrix) => {
   const newPackage = JSON.parse(localStorage.getItem('package'));
-  console.log(newPackage);
   const tableBody = `
           <img 
             src="/images/Lagos4.jpg"
@@ -470,7 +470,6 @@ const createPackage = (metrix) => {
 
 const loadPackage = () => {
   const admin = adminsData();
-  console.log(admin);
   const packages = document.getElementById('userProfile');
   const status = document.getElementById('updateStatus');
   const location = document.getElementById('location');
@@ -685,7 +684,7 @@ const cancelOrder = () => {
   } else {
     const data = { _status: 'Order Canceled' };
     putPackage(data, selectedPackage);
-    openPackage();
+    // openPackage();
   }
 };
 const getPackage = (td) => {
