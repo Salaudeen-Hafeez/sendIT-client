@@ -124,7 +124,6 @@ const openPackage = () => {
 // Get the stored user data and create the user profile display
 const createUser = () => {
   const user = usersData();
-  displayUserPackages();
   const profile = document.getElementById('userProfile');
   const userProfile = ` <img
           src="/images/Lagos4.jpg"
@@ -592,7 +591,7 @@ const postPackage = (data) => {
       `;
   // sendEmail(data._email, message);
   fetchPackages();
-  setTimeout(openPackage, 1200);
+  setTimeout(displayUserProfile, 1200);
 };
 
 const submitPackage = () => {
