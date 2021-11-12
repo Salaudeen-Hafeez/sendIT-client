@@ -258,10 +258,6 @@ const login = () => {
   }
 };
 
-const loginNewUser = () => {
-  window.location.href = 'login.html';
-};
-
 const displayUserProfile = () => {
   createUser();
 };
@@ -370,11 +366,7 @@ const createUserPackage = () => {
 const displayUserPackages = () => {
   const user = usersData();
   if (!user.auth_token) {
-    localStorage.removeItem('packages');
-    const packag =
-      '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login<p>';
-    localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
-    setTimeout(createUserPackage, 1200);
+    window.location.href = 'login.html';
   } else {
     fetchPackages();
     setTimeout(createUserPackage, 1200);
@@ -385,11 +377,7 @@ const displayPendingPackage = () => {
   const user = usersData();
   const packages1 = JSON.parse(localStorage.getItem('packages'));
   if (!user.auth_token) {
-    localStorage.removeItem('packages');
-    const packag =
-      '<p>Kindly <a onclick ="loginNewUser()">Click here</a> to login</p>';
-    localStorage.setItem('packages', JSON.stringify({ ErrorMessage: packag }));
-    setTimeout(createUserPackage, 1200);
+    window.location.href = 'login.html';
   } else if (
     !packages1 ||
     packages1.length === 0 ||
