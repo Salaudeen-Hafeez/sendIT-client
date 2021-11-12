@@ -109,6 +109,16 @@ const adminsData = () => {
   return admin;
 };
 
+const packageData = () => {
+  const parcel = JSON.parse(localStorage.getItem('package'));
+  return parcel;
+};
+
+const packagesData = () => {
+  const parcels = JSON.parse(localStorage.getItem('packages'));
+  return parcels;
+};
+
 const logOut = () => {
   localStorage.clear();
   window.location.href = '/';
@@ -709,7 +719,6 @@ const completeOrder = () => {
 const adminDeleteUser = (e) => {
   const admin = adminsData();
   const { _email, admin_token } = admin;
-  console.log(e);
   const username = e.value;
   const id = parseInt(e.id);
   console.log(username, id);
@@ -733,6 +742,7 @@ const adminDeleteUser = (e) => {
 
 const adminDeletePackage = (e) => {
   const admin = adminsData();
+  console.log(e.parentElement.parentElement.parentElement);
   const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
@@ -749,7 +759,6 @@ const adminDeletePackage = (e) => {
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
       adminFetchUserPackage();
-      // window.location.reload();
     })
     .catch((err) => {
       console.log(err);
@@ -816,7 +825,6 @@ const packageDisplay = (packages) => {
 };
 const adminDisplayUserPackages = (id) => {
   const userCont = `userCont${id}`;
-  console.log(userCont);
   const packages = JSON.parse(localStorage.getItem('packages'));
   const newPackages = document.getElementById(userCont);
   newPackages.innerHTML = packageDisplay(packages);
@@ -828,7 +836,6 @@ const adminFetchUserPackage = (e) => {
   const { admin_token, _email } = admin;
   const username = e.value;
   const id = e.id;
-  console.log(id);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}/packages`,
     {
@@ -839,6 +846,7 @@ const adminFetchUserPackage = (e) => {
     .then((data) => {
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(data));
+
       adminDisplayUserPackages(id);
     })
     .catch((err) => {
