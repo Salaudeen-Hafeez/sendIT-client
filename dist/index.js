@@ -124,6 +124,7 @@ const openPackage = () => {
 // Get the stored user data and create the user profile display
 const createUser = () => {
   const user = usersData();
+  displayUserPackages();
   const profile = document.getElementById('userProfile');
   const userProfile = ` <img
           src="/images/Lagos4.jpg"
@@ -558,7 +559,6 @@ const postPackage = (data) => {
   const user = usersData();
   const { _username, _email, auth_token } = user;
   data['username'] = _username;
-  console.log(data);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
     {
@@ -569,7 +569,6 @@ const postPackage = (data) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       localStorage.removeItem('package');
       localStorage.setItem('package', JSON.stringify(data));
     })
