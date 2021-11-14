@@ -68,7 +68,7 @@ body {
   position: fixed;
   top: -30%;
   right: -30%;
-  min-height: 30vh;
+  min-height: auto;
   width: 7rem;
   display: flex;
   flex-direction: column;
