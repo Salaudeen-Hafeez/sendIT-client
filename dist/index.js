@@ -628,7 +628,7 @@ const putPackage = (data, selectedPackage) => {
   let email;
   let userid;
   let token;
-  if (!adminsData()) {
+  if (adminsData()) {
     user = adminsData();
     email = user._email;
     userid = user.users_id;
