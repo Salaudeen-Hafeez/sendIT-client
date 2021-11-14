@@ -666,7 +666,7 @@ const updateDestination = () => {
   const input = document.getElementById('newDestination');
   const select1 = document.getElementById('newStatus');
   const newDestination = formValidation([input, select1]);
-  if (!validatedLogin.emptyInput) {
+  if (!newDestination.emptyInput) {
     if (selectedPackage._status === 'Order Canceled') {
       alert('Order has been canceled');
     } else if (admin) {
