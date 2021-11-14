@@ -120,7 +120,7 @@ const packagesData = () => {
 };
 
 const logOut = () => {
-  localStorage.clear();
+  sessionStorage.clear();
   window.location.href = '/';
 };
 const toggleMenu = () => {
@@ -236,7 +236,7 @@ const fetchUserData = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.clear();
+      sessionStorage.clear();
       if (data.userErr) {
         displayErr(data);
       } else {
@@ -259,7 +259,7 @@ const fetchAdminData = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.clear();
+      sessionStorage.clear();
       sessionStorage.setItem('admin', JSON.stringify(data.admin));
       sessionStorage.setItem('users', JSON.stringify(data.users));
       sessionStorage.setItem('packages', JSON.stringify(data.packages));
@@ -305,7 +305,7 @@ const fetchPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('packages');
+      sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(data));
     })
     .catch((err) => {
@@ -326,8 +326,7 @@ const fetchPendingPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
-      localStorage.removeItem('packages');
+      sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(data));
     })
     .catch((err) => {
@@ -416,7 +415,7 @@ const displayPendingPackage = () => {
       (packag) => packag._status === 'In transit'
     );
     if (packageInTrans.length === 0) {
-      localStorage.removeItem('packages');
+      sessionStorage.removeItem('packages');
       const packag = '<h3>No pending packages</h3>';
       sessionStorage.setItem(
         'packages',
@@ -424,7 +423,7 @@ const displayPendingPackage = () => {
       );
       setTimeout(createUserPackage, 1200);
     } else {
-      localStorage.removeItem('packages');
+      sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(packageInTrans));
       setTimeout(createUserPackage, 1200);
     }
@@ -554,7 +553,7 @@ const postAdmin = (data) => {
 };
 
 const signUp = () => {
-  localStorage.clear();
+  sessionStorage.clear();
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
@@ -592,7 +591,7 @@ const postPackage = (data) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('package');
+      sessionStorage.removeItem('package');
       sessionStorage.setItem('package', JSON.stringify(data));
       openUser();
     })
@@ -657,7 +656,7 @@ const putPackage = (data, selectedPackage) => {
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
-      localStorage.removeItem('package');
+      sessionStorage.removeItem('package');
       sessionStorage.setItem('package', JSON.stringify(data));
       openPackage();
     })
@@ -699,7 +698,7 @@ const cancelOrder = () => {
   }
 };
 const getPackage = (td) => {
-  localStorage.removeItem('package');
+  sessionStorage.removeItem('package');
   const parcelId = td.value;
   const userPackage = JSON.parse(sessionStorage.getItem('packages'));
   userPackage.forEach((packageData) => {
@@ -731,7 +730,7 @@ const adminDeleteUser = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('user');
+      sessionStorage.removeItem('user');
       sessionStorage.setItem('user', JSON.stringify(data));
       window.location.reload();
     })
@@ -756,7 +755,7 @@ const adminDeletePackage = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('package');
+      sessionStorage.removeItem('package');
       sessionStorage.setItem('package', JSON.stringify(data));
       button.click();
       button.click();
@@ -845,7 +844,7 @@ const adminFetchUserPackage = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      localStorage.removeItem('packages');
+      sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(data));
 
       adminDisplayUserPackages(id);
@@ -892,7 +891,7 @@ const adminFetchPackages = (cond) => {
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
-      localStorage.removeItem('packages');
+      sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(data));
       displayPackages();
     })
