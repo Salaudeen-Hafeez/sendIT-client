@@ -174,7 +174,6 @@ const createAdmin = () => {
 
 let y = [];
 y.push(window.parent.location.href);
-console.log(y);
 const user = usersData();
 const admin = adminsData();
 if (!user && !admin) {
@@ -207,7 +206,6 @@ if (!user && !admin) {
 
 const openUser = () => {
   const user = usersData();
-  console.log(user);
   if (user.users_id) {
     window.location.href = 'user.html';
   } else {
@@ -218,7 +216,6 @@ const openUser = () => {
 
 const openAdmin = () => {
   const admin = adminsData();
-  console.log(admin);
   if (admin.users_id) {
     window.location.href = 'admin.html';
   } else {
@@ -431,7 +428,6 @@ const displayPendingPackage = () => {
 };
 const createPackage = (metrix) => {
   const newPackage = JSON.parse(sessionStorage.getItem('package'));
-  console.log(newPackage);
   const tableBody = `
           <img 
             src="/images/Lagos4.jpg"
@@ -655,7 +651,6 @@ const putPackage = (data, selectedPackage) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       sessionStorage.removeItem('package');
       sessionStorage.setItem('package', JSON.stringify(data));
       openPackage();
@@ -671,7 +666,6 @@ const updateDestination = () => {
   const input = document.getElementById('newDestination');
   const select1 = document.getElementById('newStatus');
   const newDestination = formValidation([input, select1]);
-  console.log(newDestination);
   if (selectedPackage._status === 'Order Canceled') {
     alert('Order has been canceled');
   } else if (admin) {
@@ -720,7 +714,6 @@ const adminDeleteUser = (e) => {
   const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
-  console.log(username, id);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
     {
@@ -779,7 +772,6 @@ const fetchUsers = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       data.forEach((user) => {
         users += `<li>
         <div class="userDetails">
@@ -799,6 +791,7 @@ const fetchUsers = () => {
       console.log(err);
     });
 };
+
 const packageDisplay = (packages) => {
   let packagesDiv = '';
   if (Array.isArray(packages)) {
@@ -871,7 +864,6 @@ const storePackage = (e) => {
 
 const displayPackages = () => {
   const packages = JSON.parse(sessionStorage.getItem('packages'));
-  console.log(packages);
   const newPackages = document.getElementById('newPackages');
   newPackages.classList.toggle('open');
   newPackages.innerHTML = packageDisplay(packages);
@@ -890,7 +882,6 @@ const adminFetchPackages = (cond) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(data));
       displayPackages();
@@ -948,7 +939,6 @@ function geocodeAddress(parameters, address) {
         };
         // get distance matrix response
         service.getDistanceMatrix(request).then((response) => {
-          console.log(response);
           sessionStorage.setItem('distanceMetrix', JSON.stringify(response));
         });
       }
