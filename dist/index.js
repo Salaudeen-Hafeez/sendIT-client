@@ -100,22 +100,22 @@ const clearErr = (e) => {
   small.style.visibility = 'hidden';
 };
 const usersData = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   return user;
 };
 
 const adminsData = () => {
-  const admin = JSON.parse(localStorage.getItem('admin'));
+  const admin = JSON.parse(sessionStorage.getItem('admin'));
   return admin;
 };
 
 const packageData = () => {
-  const parcel = JSON.parse(localStorage.getItem('package'));
+  const parcel = JSON.parse(sessionStorage.getItem('package'));
   return parcel;
 };
 
 const packagesData = () => {
-  const parcels = JSON.parse(localStorage.getItem('packages'));
+  const parcels = JSON.parse(sessionStorage.getItem('packages'));
   return parcels;
 };
 
@@ -240,8 +240,8 @@ const fetchUserData = (data) => {
       if (data.userErr) {
         displayErr(data);
       } else {
-        localStorage.setItem('user', JSON.stringify(data.user));
-        localStorage.setItem('packages', JSON.stringify(data.packages));
+        sessionStorage.setItem('user', JSON.stringify(data.user));
+        sessionStorage.setItem('packages', JSON.stringify(data.packages));
         openUser();
       }
     })
@@ -260,9 +260,9 @@ const fetchAdminData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.clear();
-      localStorage.setItem('admin', JSON.stringify(data.admin));
-      localStorage.setItem('users', JSON.stringify(data.users));
-      localStorage.setItem('packages', JSON.stringify(data.packages));
+      sessionStorage.setItem('admin', JSON.stringify(data.admin));
+      sessionStorage.setItem('users', JSON.stringify(data.users));
+      sessionStorage.setItem('packages', JSON.stringify(data.packages));
       openAdmin();
     })
     .catch((err) => {
@@ -306,7 +306,7 @@ const fetchPackages = () => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
+      sessionStorage.setItem('packages', JSON.stringify(data));
     })
     .catch((err) => {
       console.log(err);
@@ -328,7 +328,7 @@ const fetchPendingPackages = () => {
     .then((data) => {
       console.log(data);
       localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
+      sessionStorage.setItem('packages', JSON.stringify(data));
     })
     .catch((err) => {
       console.log(err);
@@ -339,7 +339,7 @@ const fetchPendingPackages = () => {
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
-  const packages1 = JSON.parse(localStorage.getItem('packages'));
+  const packages1 = JSON.parse(sessionStorage.getItem('packages'));
   if (packages1.length > 0 && !packages1.packages) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
     packages1.forEach((newPackage) => {
@@ -401,7 +401,7 @@ const displayUserPackages = () => {
 
 const displayPendingPackage = () => {
   const user = usersData();
-  const packages1 = JSON.parse(localStorage.getItem('packages'));
+  const packages1 = JSON.parse(sessionStorage.getItem('packages'));
   if (!user.auth_token) {
     window.location.href = 'login.html';
   } else if (
@@ -418,20 +418,20 @@ const displayPendingPackage = () => {
     if (packageInTrans.length === 0) {
       localStorage.removeItem('packages');
       const packag = '<h3>No pending packages</h3>';
-      localStorage.setItem(
+      sessionStorage.setItem(
         'packages',
         JSON.stringify({ ErrorMessage: packag })
       );
       setTimeout(createUserPackage, 1200);
     } else {
       localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(packageInTrans));
+      sessionStorage.setItem('packages', JSON.stringify(packageInTrans));
       setTimeout(createUserPackage, 1200);
     }
   }
 };
 const createPackage = (metrix) => {
-  const newPackage = JSON.parse(localStorage.getItem('package'));
+  const newPackage = JSON.parse(sessionStorage.getItem('package'));
   console.log(newPackage);
   const tableBody = `
           <img 
@@ -490,7 +490,7 @@ const loadPackage = () => {
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
   }
-  const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
+  const distanceMetrix = JSON.parse(sessionStorage.getItem('distanceMetrix'));
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
@@ -507,7 +507,7 @@ const postUser = (data) => {
       if (data.usernameErr) {
         displayErr(data);
       } else {
-        localStorage.setItem('user', JSON.stringify(data));
+        sessionStorage.setItem('user', JSON.stringify(data));
         openUser();
       }
     })
@@ -536,7 +536,7 @@ const postAdmin = (data) => {
       if (data.adminErr) {
         displayErr(data);
       } else {
-        localStorage.setItem('admin', JSON.stringify(data));
+        sessionStorage.setItem('admin', JSON.stringify(data));
         openAdmin();
       }
     })
@@ -559,7 +559,7 @@ const signUp = () => {
     .getElementById('inputContainer')
     .querySelectorAll('input');
   const validatedUser = formValidation(input);
-  localStorage.setItem('newUser', JSON.stringify(validatedUser.data));
+  sessionStorage.setItem('newUser', JSON.stringify(validatedUser.data));
   if (!validatedUser.emptyInput) {
     if (validatedUser.data.email.includes('@sendit.com')) {
       postAdmin(validatedUser.data);
@@ -570,7 +570,7 @@ const signUp = () => {
 };
 
 const newPackage = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(sessionStorage.getItem('user'));
   if (user.auth_token) {
     window.location.href = 'newpackage.html';
   } else {
@@ -593,7 +593,7 @@ const postPackage = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.removeItem('package');
-      localStorage.setItem('package', JSON.stringify(data));
+      sessionStorage.setItem('package', JSON.stringify(data));
       openUser();
     })
     .catch((err) => {
@@ -658,7 +658,7 @@ const putPackage = (data, selectedPackage) => {
     .then((data) => {
       console.log(data);
       localStorage.removeItem('package');
-      localStorage.setItem('package', JSON.stringify(data));
+      sessionStorage.setItem('package', JSON.stringify(data));
       openPackage();
     })
     .catch((err) => {
@@ -668,7 +668,7 @@ const putPackage = (data, selectedPackage) => {
 
 const updateDestination = () => {
   const admin = adminsData();
-  const selectedPackage = JSON.parse(localStorage.getItem('package'));
+  const selectedPackage = JSON.parse(sessionStorage.getItem('package'));
   const input = document.getElementById('newDestination');
   const select1 = document.getElementById('newStatus');
   const newDestination = formValidation([input, select1]);
@@ -690,7 +690,7 @@ const updateDestination = () => {
 };
 
 const cancelOrder = () => {
-  const selectedPackage = JSON.parse(localStorage.getItem('package'));
+  const selectedPackage = JSON.parse(sessionStorage.getItem('package'));
   if (selectedPackage._status === 'Order Canceled') {
     alert('Order has been canceled');
   } else {
@@ -701,10 +701,10 @@ const cancelOrder = () => {
 const getPackage = (td) => {
   localStorage.removeItem('package');
   const parcelId = td.value;
-  const userPackage = JSON.parse(localStorage.getItem('packages'));
+  const userPackage = JSON.parse(sessionStorage.getItem('packages'));
   userPackage.forEach((packageData) => {
     if (packageData.parcel_id === parseInt(parcelId)) {
-      localStorage.setItem('package', JSON.stringify(packageData));
+      sessionStorage.setItem('package', JSON.stringify(packageData));
     }
   });
   openPackage();
@@ -732,7 +732,7 @@ const adminDeleteUser = (e) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.removeItem('user');
-      localStorage.setItem('user', JSON.stringify(data));
+      sessionStorage.setItem('user', JSON.stringify(data));
       window.location.reload();
     })
     .catch((err) => {
@@ -757,7 +757,7 @@ const adminDeletePackage = (e) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.removeItem('package');
-      localStorage.setItem('package', JSON.stringify(data));
+      sessionStorage.setItem('package', JSON.stringify(data));
       button.click();
       button.click();
     })
@@ -826,7 +826,7 @@ const packageDisplay = (packages) => {
 };
 const adminDisplayUserPackages = (id) => {
   const userCont = `userCont${id}`;
-  const packages = JSON.parse(localStorage.getItem('packages'));
+  const packages = JSON.parse(sessionStorage.getItem('packages'));
   const newPackages = document.getElementById(userCont);
   newPackages.innerHTML = packageDisplay(packages);
   newPackages.classList.toggle('open');
@@ -846,7 +846,7 @@ const adminFetchUserPackage = (e) => {
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
+      sessionStorage.setItem('packages', JSON.stringify(data));
 
       adminDisplayUserPackages(id);
     })
@@ -863,15 +863,15 @@ const showPackages = () => {
 const storePackage = (e) => {
   const packageElement = e.parentElement.parentElement.querySelector('li');
   const trackId = parseInt(packageElement.innerHTML);
-  const packages = JSON.parse(localStorage.getItem('packages'));
+  const packages = JSON.parse(sessionStorage.getItem('packages'));
   const selectedPackage = packages.find(
     (packag) => packag.parcel_id === trackId
   );
-  localStorage.setItem('package', JSON.stringify(selectedPackage));
+  sessionStorage.setItem('package', JSON.stringify(selectedPackage));
 };
 
 const displayPackages = () => {
-  const packages = JSON.parse(localStorage.getItem('packages'));
+  const packages = JSON.parse(sessionStorage.getItem('packages'));
   console.log(packages);
   const newPackages = document.getElementById('newPackages');
   newPackages.classList.toggle('open');
@@ -893,7 +893,7 @@ const adminFetchPackages = (cond) => {
     .then((data) => {
       console.log(data);
       localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
+      sessionStorage.setItem('packages', JSON.stringify(data));
       displayPackages();
     })
     .catch((err) => {
@@ -914,7 +914,7 @@ const fetchDeliveredPackages = () => {
 };
 
 const updatePackage = () => {
-  const selectedPackage = JSON.parse(localStorage.getItem('package'));
+  const selectedPackage = JSON.parse(sessionStorage.getItem('package'));
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
@@ -927,7 +927,7 @@ const updatePackage = () => {
       _status: newInput.data.status,
     };
     putPackage(data, selectedPackage);
-    const updatedPackage = JSON.parse(localStorage.getItem('package'));
+    const updatedPackage = JSON.parse(sessionStorage.getItem('package'));
   }
 };
 
@@ -950,7 +950,7 @@ function geocodeAddress(parameters, address) {
         // get distance matrix response
         service.getDistanceMatrix(request).then((response) => {
           console.log(response);
-          localStorage.setItem('distanceMetrix', JSON.stringify(response));
+          sessionStorage.setItem('distanceMetrix', JSON.stringify(response));
         });
       }
       map.setCenter(results[0].geometry.location);
@@ -966,7 +966,7 @@ function geocodeAddress(parameters, address) {
 
 function initMap() {
   const { _location, _destination } = JSON.parse(
-    localStorage.getItem('package')
+    sessionStorage.getItem('package')
   );
   const bounds = new google.maps.LatLngBounds();
   const map = new google.maps.Map(document.getElementById('map'), {
