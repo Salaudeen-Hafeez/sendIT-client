@@ -126,6 +126,9 @@ a {
   text-decoration: none;
   color: blue;
 }
+a:hover {
+  cursor: pointer;
+}
 
 /* The banner and the introduction contents*/
 #showcase h1 {
