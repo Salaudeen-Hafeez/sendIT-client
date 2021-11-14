@@ -391,7 +391,7 @@ const displayUserPackages = () => {
     window.location.href = 'login.html';
   } else {
     fetchPackages();
-    setTimeout(createUserPackage, 1200);
+    createUserPackage();
   }
 };
 
@@ -406,7 +406,7 @@ const displayPendingPackage = () => {
     Object.keys(packages1).length !== 0
   ) {
     fetchPendingPackages();
-    setTimeout(createUserPackage, 1200);
+    createUserPackage();
   } else {
     const packageInTrans = packages1.filter(
       (packag) => packag._status === 'In transit'
@@ -418,11 +418,11 @@ const displayPendingPackage = () => {
         'packages',
         JSON.stringify({ ErrorMessage: packag })
       );
-      setTimeout(createUserPackage, 1200);
+      createUserPackage();
     } else {
       sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(packageInTrans));
-      setTimeout(createUserPackage, 1200);
+      createUserPackage();
     }
   }
 };
@@ -675,11 +675,11 @@ const updateDestination = () => {
         _status: newDestination.data.status,
       };
       putPackage(data, selectedPackage);
-      setTimeout(openPackage, 1200);
+      openPackage();
     } else {
       const data = { _destination: newDestination.data.destination };
       putPackage(data, selectedPackage);
-      setTimeout(openPackage, 1200);
+      openPackage();
     }
   }
 };
