@@ -181,7 +181,7 @@ if (!user && !admin) {
     y.length === 1 &&
     y[0] !== 'https://akera-logistics.netlify.app/' &&
     y[0] !== 'https://akera-logistics.netlify.app/login' &&
-    y[0] !== 'https://akera-logistics.netlify.app/signup'
+    y[0] !== 'https://akera-logistics.netlify.app/signup.html'
   ) {
     window.location.href = 'https://akera-logistics.netlify.app/login';
   } else if (y.length === 2 && y[0] !== y[1]) {
