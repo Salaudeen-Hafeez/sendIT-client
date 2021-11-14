@@ -666,19 +666,21 @@ const updateDestination = () => {
   const input = document.getElementById('newDestination');
   const select1 = document.getElementById('newStatus');
   const newDestination = formValidation([input, select1]);
-  if (selectedPackage._status === 'Order Canceled') {
-    alert('Order has been canceled');
-  } else if (admin) {
-    const data = {
-      _location: newDestination.data.destination,
-      _status: newDestination.data.status,
-    };
-    putPackage(data, selectedPackage);
-    setTimeout(openPackage, 1200);
-  } else {
-    const data = { _destination: newDestination.data.destination };
-    putPackage(data, selectedPackage);
-    setTimeout(openPackage, 1200);
+  if (!validatedLogin.emptyInput) {
+    if (selectedPackage._status === 'Order Canceled') {
+      alert('Order has been canceled');
+    } else if (admin) {
+      const data = {
+        _location: newDestination.data.destination,
+        _status: newDestination.data.status,
+      };
+      putPackage(data, selectedPackage);
+      setTimeout(openPackage, 1200);
+    } else {
+      const data = { _destination: newDestination.data.destination };
+      putPackage(data, selectedPackage);
+      setTimeout(openPackage, 1200);
+    }
   }
 };
 
