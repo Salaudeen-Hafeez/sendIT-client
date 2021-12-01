@@ -334,7 +334,7 @@ const fetchPendingPackages = () => {
       console.log(err);
     });
 };
-
+submitPackage;
 // Get the stored uaerPackages data and create the display packages
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
@@ -580,7 +580,7 @@ const newPackage = () => {
 
 const postPackage = (data) => {
   const user = usersData();
-  const { _username, _email, auth_token } = user;
+  const { _username, _email, auth_token } = user.user;
   data['username'] = _username;
   console.log(data);
   fetch(
