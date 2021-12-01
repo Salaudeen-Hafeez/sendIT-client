@@ -217,7 +217,7 @@ const openUser = () => {
 
 const openAdmin = () => {
   const admin = adminsData();
-  if (admin.users_id) {
+  if (admin.admin.users_id) {
     window.location.href = 'admin.html';
   } else {
     const input = document.getElementById('errMessage');
