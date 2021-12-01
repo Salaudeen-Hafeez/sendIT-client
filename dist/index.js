@@ -206,10 +206,11 @@ if (!user && !admin) {
 
 const openUser = () => {
   const user = usersData();
+  console.log(user);
   if (user.users_id) {
     window.location.href = 'user.html';
   } else {
-    const input = document.getElementById('password');
+    const input = document.getElementById('errMessage');
     setErrorFor(input, user);
   }
 };
@@ -219,7 +220,7 @@ const openAdmin = () => {
   if (admin.users_id) {
     window.location.href = 'admin.html';
   } else {
-    const input = document.getElementById('password');
+    const input = document.getElementById('errMessage');
     setErrorFor(input, admin);
   }
 };
@@ -499,7 +500,7 @@ const postUser = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      if (data.usernameErr) {
+      if (data.errMessage) {
         displayErr(data);
       } else {
         sessionStorage.setItem('user', JSON.stringify(data));
@@ -509,13 +510,13 @@ const postUser = (data) => {
     .catch((err) => {
       console.log(err);
     });
-  const message = `
-        <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
-        <p>Thank you for choosing sendIT Logistics.</p> <br>
-        <p>Below are the details of your new order</p><br>
-        <p>As always, we shall do our best to get your package 
-        to your desire destination as early as possible and safely.</p>
-      `;
+  // const message = `
+  //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
+  //       <p>Thank you for choosing sendIT Logistics.</p> <br>
+  //       <p>Below are the details of your new order</p><br>
+  //       <p>As always, we shall do our best to get your package
+  //       to your desire destination as early as possible and safely.</p>
+  //     `;
   // sendEmail(data._email, message);
 };
 
@@ -538,13 +539,13 @@ const postAdmin = (data) => {
     .catch((err) => {
       console.log(err);
     });
-  const message = `
-        <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
-        <p>Thank you for choosing sendIT Logistics.</p> <br>
-        <p>Below are the details of your new order</p><br>
-        <p>As always, we shall do our best to get your package 
-        to your desire destination as early as possible and safely.</p>
-      `;
+  // const message = `
+  //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
+  //       <p>Thank you for choosing sendIT Logistics.</p> <br>
+  //       <p>Below are the details of your new order</p><br>
+  //       <p>As always, we shall do our best to get your package
+  //       to your desire destination as early as possible and safely.</p>
+  //     `;
   // sendEmail(data._email, message);
 };
 
