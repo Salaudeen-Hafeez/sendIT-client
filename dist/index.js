@@ -175,7 +175,7 @@ const createAdmin = () => {
 let y = [];
 y.push(window.parent.location.href);
 const user = usersData() || adminsData();
-console.log(user, admin);
+console.log(user);
 if (!user) {
   if (
     y.length === 1 &&
