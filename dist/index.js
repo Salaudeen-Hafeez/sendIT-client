@@ -590,7 +590,7 @@ const postPackage = (data) => {
     .then((data) => {
       sessionStorage.removeItem('package');
       sessionStorage.setItem('package', JSON.stringify(data));
-      // openUser();
+      openUser();
     })
     .catch((err) => {
       console.log(err);
