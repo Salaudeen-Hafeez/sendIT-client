@@ -590,26 +590,26 @@ const postPackage = (data) => {
     .then((data) => {
       sessionStorage.removeItem('package');
       sessionStorage.setItem('package', JSON.stringify(data));
-      openUser();
+      // openUser();
     })
     .catch((err) => {
       console.log(err);
     });
-  const message = `
-        <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
-        <p>Thank you for choosing sendIT Logistics.</p> <br>
-        <p>Below are the details of your new order</p>
-        <ul>
-          <li>${data._name}</li>
-          </li>From:        ${data._location}</li>
-          <li>To:           ${data._destination}</li>
-          <li>Status        ${data._status}</li>
-          <li>Tracking ID:  ${data._id}</li>
-        </ul>
-        <br>
-        <p>As always, we shall do our best to get your package 
-        to your desire destination as early as possible and safely.</p>
-      `;
+  // const message = `
+  //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
+  //       <p>Thank you for choosing sendIT Logistics.</p> <br>
+  //       <p>Below are the details of your new order</p>
+  //       <ul>
+  //         <li>${data._name}</li>
+  //         </li>From:        ${data._location}</li>
+  //         <li>To:           ${data._destination}</li>
+  //         <li>Status        ${data._status}</li>
+  //         <li>Tracking ID:  ${data._id}</li>
+  //       </ul>
+  //       <br>
+  //       <p>As always, we shall do our best to get your package
+  //       to your desire destination as early as possible and safely.</p>
+  //     `;
   // sendEmail(data._email, message);
   fetchPackages();
 };
