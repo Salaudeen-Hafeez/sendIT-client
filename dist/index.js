@@ -191,10 +191,14 @@ if (!users) {
   }
 } else if (users) {
   let token = false;
-  if (users.user.auth_token) {
-    token = true;
-  } else if (users.admin.admin_token) {
-    token = true;
+  if (users.user) {
+    if (users.user.auth_token) {
+      token = true;
+    }
+  } else if (users.admin) {
+    if (users.admin.admin_token) {
+      token = true;
+    }
   }
   if (!token) {
     console.log('There is no token');
