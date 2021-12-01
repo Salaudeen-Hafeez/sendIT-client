@@ -174,9 +174,9 @@ const createAdmin = () => {
 
 let y = [];
 y.push(window.parent.location.href);
-const user = usersData() || adminsData();
-console.log(user);
-if (!user) {
+const users = usersData() || adminsData();
+console.log(users);
+if (!users) {
   console.log('There is no user');
   if (
     y.length === 1 &&
@@ -189,11 +189,11 @@ if (!user) {
     window.location.href = 'https://akera-logistics.netlify.app/login';
     window.parent.location = null;
   }
-} else if (user) {
+} else if (users) {
   let token = false;
-  if (user.user.auth_token) {
+  if (users.user.auth_token) {
     token = true;
-  } else if (user.admin.admin_token) {
+  } else if (users.admin.admin_token) {
     token = true;
   }
   if (!token) {
