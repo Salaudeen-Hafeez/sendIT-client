@@ -190,9 +190,12 @@ if (!user) {
     window.parent.location = null;
   }
 } else if (user) {
-  const token = user.user.auth_token || user.admin.admin_token;
-  console.log('there is user');
-  console.log(user.user.auth_token);
+  let token = false;
+  if (user.user.auth_token) {
+    token = true;
+  } else if (user.admin.admin_token) {
+    token = true;
+  }
   if (!token) {
     console.log('There is no token');
     if (
