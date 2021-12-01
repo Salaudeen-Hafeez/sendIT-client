@@ -193,6 +193,7 @@ if (!user) {
   console.log('there is user');
   console.log(user.user.auth_token);
   if (!user.user.auth_token && !user.admin.admin_token) {
+    console.log('There is no token');
     if (
       y.length === 1 &&
       y[0] !== 'https://akera-logistics.netlify.app/' &&
