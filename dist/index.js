@@ -202,6 +202,7 @@ if (!user) {
     ) {
       window.location.href = 'https://akera-logistics.netlify.app/login';
     } else if (y.length === 2 && y[0] !== y[1]) {
+      console.log('There is no token');
       window.location.href = 'https://akera-logistics.netlify.app/login';
       window.parent.location = null;
     }
