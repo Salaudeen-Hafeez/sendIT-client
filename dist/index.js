@@ -22,13 +22,13 @@ const setErrorFor = (inp, message) => {
 };
 
 const displayErr = (data) => {
-  const erro = document.getElementById('userErr');
+  const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
   erro.innerHTML = Object.values(data);
 };
 
 const clearDisplayErr = () => {
-  const erro = document.getElementById('userErr');
+  const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
 };
 
@@ -235,7 +235,7 @@ const fetchUserData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       sessionStorage.clear();
-      if (data.userErr) {
+      if (data.errMessage) {
         displayErr(data);
       } else {
         sessionStorage.setItem('user', JSON.stringify(data.user));
