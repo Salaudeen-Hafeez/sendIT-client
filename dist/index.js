@@ -177,6 +177,7 @@ y.push(window.parent.location.href);
 const user = usersData() || adminsData();
 console.log(user);
 if (!user) {
+  console.log('There is no user');
   if (
     y.length === 1 &&
     y[0] !== 'https://akera-logistics.netlify.app/' &&
@@ -189,6 +190,8 @@ if (!user) {
     window.parent.location = null;
   }
 } else if (user) {
+  console.log('there is user');
+  console.log(user.user);
   if (!user.user.auth_token && !user.admin.admin_token) {
     if (
       y.length === 1 &&
