@@ -207,7 +207,7 @@ if (!user && !admin) {
 const openUser = () => {
   const user = usersData();
   console.log(user);
-  if (user.users_id) {
+  if (user.user.users_id) {
     window.location.href = 'user.html';
   } else {
     const input = document.getElementById('errMessage');
