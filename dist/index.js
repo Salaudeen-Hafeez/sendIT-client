@@ -295,7 +295,7 @@ const displayAdmin = () => {
 
 const fetchPackages = () => {
   const user = usersData();
-  const { _email, auth_token, users_id, _username } = user;
+  const { _email, auth_token, users_id, _username } = user.user;
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
     {
