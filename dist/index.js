@@ -334,7 +334,7 @@ const fetchPendingPackages = () => {
       console.log(err);
     });
 };
-
+newPackage;
 // Get the stored uaerPackages data and create the display packages
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
@@ -571,7 +571,7 @@ const signUp = () => {
 
 const newPackage = () => {
   const user = JSON.parse(sessionStorage.getItem('user'));
-  if (user.auth_token) {
+  if (user.user.auth_token) {
     window.location.href = 'newpackage.html';
   } else {
     displayUserPackages();
