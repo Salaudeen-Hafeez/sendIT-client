@@ -141,10 +141,10 @@ const createUser = () => {
           class="profile-img"
         />
         <div class="profile-content">
-          <h1>${user._name}</h1>
+          <h1>${user.user._name}</h1>
           <ul>
-            <li id="username">${user._username}</li>
-            <li>${user._email}</li>
+            <li id="username">${user.user._username}</li>
+            <li>${user.user._email}</li>
             <li>${user._status}</li>
             <li><a onclick="displayUserPackages()">My packages</a></li>
             <li><a onclick="displayPendingPackage()">Pending packages</a></li>
