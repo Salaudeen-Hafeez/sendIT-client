@@ -316,7 +316,7 @@ const fetchPackages = () => {
 
 const fetchPendingPackages = () => {
   const user = usersData();
-  const { _email, _username, auth_token } = user;
+  const { _email, _username, auth_token } = user.user;
   const condition = 'In transit';
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${_username}/${auth_token}/packages/${condition}`,
