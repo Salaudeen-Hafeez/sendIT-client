@@ -238,8 +238,7 @@ const fetchUserData = (data) => {
       if (data.errMessage) {
         displayErr(data);
       } else {
-        sessionStorage.setItem('user', JSON.stringify(data.user));
-        sessionStorage.setItem('packages', JSON.stringify(data.packages));
+        sessionStorage.setItem('user', JSON.stringify(data));
         openUser();
       }
     })
@@ -258,9 +257,7 @@ const fetchAdminData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       sessionStorage.clear();
-      sessionStorage.setItem('admin', JSON.stringify(data.admin));
-      sessionStorage.setItem('users', JSON.stringify(data.users));
-      sessionStorage.setItem('packages', JSON.stringify(data.packages));
+      sessionStorage.setItem('admin', JSON.stringify(data));
       openAdmin();
     })
     .catch((err) => {
