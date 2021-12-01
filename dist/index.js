@@ -502,7 +502,7 @@ const loadPackage = () => {
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
-displayAdmin;
+
 const postUser = (data) => {
   clearDisplayErr();
   fetch('https://akera-logistics.herokuapp.com/api/v1/users', {
@@ -777,7 +777,8 @@ const adminDeletePackage = (e) => {
 
 const fetchUsers = () => {
   const admin = adminsData();
-  const { _email, admin_token } = admin;
+  console.log(admin);
+  const { _email, admin_token } = admin.admin;
   let users = '';
   const containerdiv = document.getElementById('usersContainer');
   const container = containerdiv.querySelector('ul');
@@ -843,7 +844,7 @@ const adminDisplayUserPackages = (id) => {
 
 const adminFetchUserPackage = (e) => {
   const admin = adminsData();
-  const { admin_token, _email } = admin;
+  const { admin_token, _email } = admin.admin;
   const username = e.value;
   const id = e.id;
   fetch(
@@ -888,11 +889,10 @@ const displayPackages = () => {
 
 const adminFetchPackages = (cond) => {
   const admin = adminsData();
-  const { _email } = admin;
+  const { _email, admin_token } = admin.admin;
   const condition = cond;
-  const token = admin.admin_token;
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${token}/packages/${condition}`,
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/packages/${condition}`,
     {
       headers: { 'Content-Type': 'application/json' },
     }
