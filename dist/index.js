@@ -334,6 +334,7 @@ const fetchPendingPackages = () => {
       console.log(err);
     });
 };
+
 // Get the stored uaerPackages data and create the display packages
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
@@ -635,14 +636,14 @@ const putPackage = (data, selectedPackage) => {
   let token;
   if (adminsData()) {
     user = adminsData();
-    email = user._email;
-    userid = user.users_id;
-    token = user.admin_token;
+    email = user.admin._email;
+    userid = user.admin.users_id;
+    token = user.admin.admin_token;
   } else {
     user = usersData();
-    email = user._email;
-    userid = user.users_id;
-    token = user.auth_token;
+    email = user.user._email;
+    userid = user.user.users_id;
+    token = user.user.auth_token;
   }
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${parseInt(
