@@ -176,7 +176,7 @@ let y = [];
 y.push(window.parent.location.href);
 const user = usersData();
 const admin = adminsData();
-if (!user && !admin) {
+if (!user.user && !admin.admin) {
   if (
     y.length === 1 &&
     y[0] !== 'https://akera-logistics.netlify.app/' &&
@@ -188,8 +188,8 @@ if (!user && !admin) {
     window.location.href = 'https://akera-logistics.netlify.app/login';
     window.parent.location = null;
   }
-} else if (user && admin) {
-  if (!user.auth_token && !admin.admin_token) {
+} else if (user.user && admin.admin) {
+  if (!user.user.auth_token && !admin.admin.admin_token) {
     if (
       y.length === 1 &&
       y[0] !== 'https://akera-logistics.netlify.app/' &&
