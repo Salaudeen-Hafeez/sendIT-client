@@ -534,7 +534,8 @@ const postAdmin = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      if (data.adminErr) {
+      console.log(data);
+      if (data.errMessage) {
         displayErr(data);
       } else {
         sessionStorage.setItem('admin', JSON.stringify(data));
