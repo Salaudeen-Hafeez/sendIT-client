@@ -176,7 +176,8 @@ let y = [];
 y.push(window.parent.location.href);
 const user = usersData();
 const admin = adminsData();
-if (!user.user && !admin.admin) {
+console.log(user, admin);
+if (!user && !admin) {
   if (
     y.length === 1 &&
     y[0] !== 'https://akera-logistics.netlify.app/' &&
