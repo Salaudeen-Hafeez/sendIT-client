@@ -390,7 +390,7 @@ const createUserPackage = () => {
 };
 const displayUserPackages = () => {
   const user = usersData();
-  if (!user.auth_token) {
+  if (!user.user.auth_token) {
     window.location.href = 'login.html';
   } else {
     fetchPackages();
@@ -401,7 +401,7 @@ const displayUserPackages = () => {
 const displayPendingPackage = () => {
   const user = usersData();
   const packages1 = JSON.parse(sessionStorage.getItem('packages'));
-  if (!user.auth_token) {
+  if (!user.user.auth_token) {
     window.location.href = 'login.html';
   } else if (
     !packages1 ||
