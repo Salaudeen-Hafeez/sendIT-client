@@ -162,11 +162,11 @@ const createAdmin = () => {
           class="profile-img"
         />
         <div class="profile-content">
-          <h1>${admin._name}</h1>
+          <h1>${admin.admin._name}</h1>
           <ul>
-            <li id="adminname">${admin._username}</li>
-            <li>${admin._email}</li>
-            <li>${admin._status}</li>
+            <li id="adminname">${admin.admin._username}</li>
+            <li>${admin.admin._email}</li>
+            <li>${admin.admin._status}</li>
           </ul>
         </div>`;
   profile.innerHTML = adminProfile;
@@ -502,7 +502,7 @@ const loadPackage = () => {
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
-
+displayAdmin;
 const postUser = (data) => {
   clearDisplayErr();
   fetch('https://akera-logistics.herokuapp.com/api/v1/users', {
