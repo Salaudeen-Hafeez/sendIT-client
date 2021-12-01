@@ -208,7 +208,7 @@ if (!user) {
     }
   }
 }
-
+displayUserPackages;
 const openUser = () => {
   const user = usersData();
   console.log(user);
@@ -305,6 +305,7 @@ const fetchPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(data));
     })
@@ -339,6 +340,7 @@ const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
   const packages1 = JSON.parse(sessionStorage.getItem('packages'));
+  console.log(packages1);
   if (packages1.length > 0 && !packages1.packages) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
     packages1.forEach((newPackage) => {
