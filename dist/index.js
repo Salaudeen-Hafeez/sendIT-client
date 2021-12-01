@@ -208,7 +208,7 @@ if (!user) {
     }
   }
 }
-displayUserPackages;
+
 const openUser = () => {
   const user = usersData();
   console.log(user);
