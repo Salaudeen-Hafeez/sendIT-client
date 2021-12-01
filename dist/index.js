@@ -188,7 +188,7 @@ if (!user.user && !admin.admin) {
     window.location.href = 'https://akera-logistics.netlify.app/login';
     window.parent.location = null;
   }
-} else if (user.user && admin.admin) {
+} else if (user.user && admin) {
   if (!user.user.auth_token && !admin.admin.admin_token) {
     if (
       y.length === 1 &&
