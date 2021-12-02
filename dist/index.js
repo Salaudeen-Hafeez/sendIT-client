@@ -176,9 +176,7 @@ let y = [];
 y.push(window.parent.location.href);
 const users = usersData() || adminsData();
 const newUser = JSON.parse(sessionStorage.getItem('newUser'));
-console.log(users);
 if (!users) {
-  console.log('There is no user');
   if (
     y.length === 1 &&
     y[0] !== 'https://akera-logistics.netlify.app/' &&
@@ -202,20 +200,16 @@ if (!users) {
     }
   }
   if (!token) {
-    console.log(y);
     if (
       y.length === 1 &&
       y[0] !== 'https://akera-logistics.netlify.app/' &&
       y[0] !== 'https://akera-logistics.netlify.app/login' &&
       y[0] !== 'https://akera-logistics.netlify.app/signup'
     ) {
-      console.log('I am here');
       if (!newUser) {
         window.location.href = 'https://akera-logistics.netlify.app/login';
       }
     } else if (y.length === 2 && y[0] !== y[1]) {
-      console.log(y);
-      console.log('There is no token');
       window.location.href = 'https://akera-logistics.netlify.app/login';
       window.parent.location = null;
     }
@@ -224,7 +218,6 @@ if (!users) {
 
 const openUser = () => {
   const user = usersData();
-  console.log(user);
   if (user.user.users_id) {
     window.location.href = '/user';
   } else {
@@ -319,7 +312,6 @@ const fetchPackages = () => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       sessionStorage.removeItem('packages');
       sessionStorage.setItem('packages', JSON.stringify(data));
     })
@@ -354,7 +346,6 @@ const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
   const packages1 = JSON.parse(sessionStorage.getItem('packages'));
-  console.log(packages1);
   if (packages1.length > 0 && !packages1.packages) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
     packages1.forEach((newPackage) => {
@@ -418,7 +409,7 @@ const displayPendingPackage = () => {
   const user = usersData();
   const packages1 = JSON.parse(sessionStorage.getItem('packages'));
   if (!user.user.auth_token) {
-    window.location.href = 'login.html';
+    window.location.href = '/login';
   } else if (
     !packages1 ||
     packages1.length === 0 ||
@@ -547,7 +538,6 @@ const postAdmin = (data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       if (data.errMessage) {
         displayErr(data);
       } else {
@@ -597,7 +587,6 @@ const postPackage = (data) => {
   const user = usersData();
   const { _username, _email, auth_token } = user.user;
   data['username'] = _username;
-  console.log(data);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
     {
@@ -783,7 +772,6 @@ const adminDeletePackage = (e) => {
 
 const fetchUsers = () => {
   const admin = adminsData();
-  console.log(admin);
   const { _email, admin_token } = admin.admin;
   if (!admin_token) {
     window.location.href = '/login';
