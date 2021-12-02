@@ -221,7 +221,7 @@ if (!users) {
     }
   }
 }
-fetchUsers;
+
 const openUser = () => {
   const user = usersData();
   console.log(user);
