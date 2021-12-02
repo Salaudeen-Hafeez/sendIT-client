@@ -239,7 +239,7 @@ const openAdmin = () => {
     setErrorFor(input, admin);
   }
 };
-displayAdmin;
+
 // Login the user and store the return user's data in localStorage
 const fetchUserData = (data) => {
   clearDisplayErr();
