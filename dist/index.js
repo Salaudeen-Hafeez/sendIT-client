@@ -201,7 +201,7 @@ if (!users) {
     }
   }
   if (!token) {
-    console.log('There is no token');
+    console.log(y);
     if (
       y.length === 1 &&
       y[0] !== 'https://akera-logistics.netlify.app/' &&
@@ -210,6 +210,7 @@ if (!users) {
     ) {
       window.location.href = 'https://akera-logistics.netlify.app/login';
     } else if (y.length === 2 && y[0] !== y[1]) {
+      console.log(y);
       console.log('There is no token');
       window.location.href = 'https://akera-logistics.netlify.app/login';
       window.parent.location = null;
@@ -237,6 +238,7 @@ const openAdmin = () => {
     setErrorFor(input, admin);
   }
 };
+displayAdmin;
 // Login the user and store the return user's data in localStorage
 const fetchUserData = (data) => {
   clearDisplayErr();
