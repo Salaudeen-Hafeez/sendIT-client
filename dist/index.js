@@ -221,7 +221,7 @@ if (!users) {
     }
   }
 }
-
+fetchUsers;
 const openUser = () => {
   const user = usersData();
   console.log(user);
@@ -407,7 +407,7 @@ const createUserPackage = () => {
 const displayUserPackages = () => {
   const user = usersData();
   if (!user.user.auth_token) {
-    window.location.href = 'login.html';
+    window.location.href = '/login';
   } else {
     fetchPackages();
     setTimeout(createUserPackage, 1200);
@@ -785,19 +785,22 @@ const fetchUsers = () => {
   const admin = adminsData();
   console.log(admin);
   const { _email, admin_token } = admin.admin;
-  let users = '';
-  const containerdiv = document.getElementById('usersContainer');
-  const container = containerdiv.querySelector('ul');
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
-    {
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      data.forEach((user) => {
-        users += `<li>
+  if (!admin_token) {
+    window.location.href = '/login';
+  } else {
+    let users = '';
+    const containerdiv = document.getElementById('usersContainer');
+    const container = containerdiv.querySelector('ul');
+    fetch(
+      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        data.forEach((user) => {
+          users += `<li>
         <div class="userDetails">
           <h2>${user._name}</h2>
           <p>${user._username}</p>
@@ -807,13 +810,14 @@ const fetchUsers = () => {
           <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
       </li>`;
+        });
+        container.innerHTML = users;
+        containerdiv.classList.toggle('open');
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      container.innerHTML = users;
-      containerdiv.classList.toggle('open');
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  }
 };
 
 const packageDisplay = (packages) => {
