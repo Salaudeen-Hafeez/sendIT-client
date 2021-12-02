@@ -723,7 +723,7 @@ const completeOrder = () => {
 
 const adminDeleteUser = (e) => {
   const admin = adminsData();
-  const { _email, admin_token } = admin;
+  const { _email, admin_token } = admin.admin;
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
@@ -735,6 +735,7 @@ const adminDeleteUser = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
+      sessionStorage.removeItem('user');
       sessionStorage.setItem('user', JSON.stringify(data));
       window.location.reload();
     })
