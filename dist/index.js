@@ -175,6 +175,7 @@ const createAdmin = () => {
 let y = [];
 y.push(window.parent.location.href);
 const users = usersData() || adminsData();
+const newUser = JSON.parse(sessionStorage.getItem('newUser'));
 console.log(users);
 if (!users) {
   console.log('There is no user');
@@ -182,7 +183,7 @@ if (!users) {
     y.length === 1 &&
     y[0] !== 'https://akera-logistics.netlify.app/' &&
     y[0] !== 'https://akera-logistics.netlify.app/login' &&
-    y[0] !== 'https://akera-logistics.netlify.app/signup.html'
+    y[0] !== 'https://akera-logistics.netlify.app/signup'
   ) {
     window.location.href = 'https://akera-logistics.netlify.app/login';
   } else if (y.length === 2 && y[0] !== y[1]) {
@@ -209,7 +210,9 @@ if (!users) {
       y[0] !== 'https://akera-logistics.netlify.app/signup'
     ) {
       console.log('I am here');
-      window.location.href = 'https://akera-logistics.netlify.app/login';
+      if (newUser) {
+        window.location.href = 'https://akera-logistics.netlify.app/login';
+      }
     } else if (y.length === 2 && y[0] !== y[1]) {
       console.log(y);
       console.log('There is no token');
