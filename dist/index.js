@@ -745,7 +745,8 @@ const adminDeleteUser = (e) => {
 };
 
 const adminDeletePackage = (e) => {
-  console.log(e.parentElement.querySelector('button'));
+  const status = e.parentElement.querySelector('button').innerHTML;
+  console.log(status);
   const admin = adminsData();
   const parentEl = e.parentElement.parentElement.parentElement.parentElement;
   let button = parentEl.querySelector('button');
@@ -754,7 +755,7 @@ const adminDeletePackage = (e) => {
 
   const id = parseInt(e.id);
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}`,
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${status}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
