@@ -208,6 +208,7 @@ if (!users) {
       y[0] !== 'https://akera-logistics.netlify.app/login' &&
       y[0] !== 'https://akera-logistics.netlify.app/signup'
     ) {
+      console.log('I am here');
       window.location.href = 'https://akera-logistics.netlify.app/login';
     } else if (y.length === 2 && y[0] !== y[1]) {
       console.log(y);
