@@ -223,7 +223,7 @@ const openUser = () => {
   const user = usersData();
   console.log(user);
   if (user.user.users_id) {
-    window.location.href = 'user.html';
+    window.location.href = '/user';
   } else {
     const input = document.getElementById('errMessage');
     setErrorFor(input, user);
@@ -233,7 +233,7 @@ const openUser = () => {
 const openAdmin = () => {
   const admin = adminsData();
   if (admin.admin.users_id) {
-    window.location.href = 'admin.html';
+    window.location.href = '/admin';
   } else {
     const input = document.getElementById('errMessage');
     setErrorFor(input, admin);
