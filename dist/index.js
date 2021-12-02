@@ -735,8 +735,8 @@ const adminDeleteUser = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      sessionStorage.removeItem('user');
-      sessionStorage.setItem('user', JSON.stringify(data));
+      // sessionStorage.removeItem('user');
+      // sessionStorage.setItem('user', JSON.stringify(data));
       window.location.reload();
     })
     .catch((err) => {
