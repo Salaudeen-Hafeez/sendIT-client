@@ -900,22 +900,25 @@ const displayPackages = () => {
 const adminFetchPackages = (cond) => {
   const admin = adminsData();
   const { _email, admin_token } = admin.admin;
-  const condition = cond;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/packages/${condition}`,
-    {
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      sessionStorage.removeItem('packages');
-      sessionStorage.setItem('packages', JSON.stringify(data));
-      displayPackages();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if (!admin_token) {
+    window.location.href = '/login';
+  } else {
+    fetch(
+      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/packages/${cond}`,
+      {
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        sessionStorage.removeItem('packages');
+        sessionStorage.setItem('packages', JSON.stringify(data));
+        displayPackages();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };
 
 const fetchNewPackages = () => {
