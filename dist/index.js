@@ -171,9 +171,21 @@ const createAdmin = () => {
         </div>`;
   profile.innerHTML = adminProfile;
 };
-const pathName = window.location.pathname;
+let pathName = window.location.pathname;
+let authData = null;
 
-const userAuth = (authData) => {
+const userAuth = (authData) => {};
+
+const authentication = () => {
+  authData =
+    JSON.parse(sessionStorage.getItem('/user')) ||
+    JSON.parse(sessionStorage.getItem('/admin'));
+  console.log(authData);
+  userAuth();
+};
+
+authentication(() => {
+  console.log(authData);
   switch (pathName) {
     case '/':
       authData !== null && authData.user
@@ -199,15 +211,7 @@ const userAuth = (authData) => {
     default:
       break;
   }
-};
-
-const authentication = () => {
-  const authData = JSON.parse(sessionStorage.getItem('/user'));
-  console.log(authData);
-  userAuth(authData);
-};
-
-authentication();
+});
 
 // let y = [];
 // y.push(window.parent.location.href);
