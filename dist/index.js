@@ -171,48 +171,49 @@ const createAdmin = () => {
         </div>`;
   profile.innerHTML = adminProfile;
 };
-
-let y = [];
-y.push(window.parent.location.href);
-const users = usersData() || adminsData();
-const newUser = JSON.parse(sessionStorage.getItem('newUser'));
-if (!users) {
-  if (
-    y.length === 1 &&
-    y[0] !== 'https://akera-logistics.netlify.app/' &&
-    y[0] !== 'https://akera-logistics.netlify.app/login' &&
-    y[0] !== 'https://akera-logistics.netlify.app/signup'
-  ) {
-    window.location.href = 'https://akera-logistics.netlify.app/login';
-  } else if (y.length === 2 && y[0] !== y[1]) {
-    window.location.href = 'https://akera-logistics.netlify.app/login';
-    window.parent.location = null;
-  }
-} else if (users) {
-  let token = false;
-  if (users.user) {
-    if (users.user.auth_token) {
-      token = true;
-    }
-  } else if (users.admin) {
-    if (users.admin.admin_token) {
-      token = true;
-    }
-  }
-  if (token) {
-    if (
-      y.length === 1 &&
-      y[0].includes('https://akera-logistics.netlify.app/')
-    ) {
-      if (!newUser) {
-        window.location.href = 'https://akera-logistics.netlify.app/login';
-      }
-    } else if (y.length === 2 && y[0] !== y[1]) {
-      window.location.href = 'https://akera-logistics.netlify.app/login';
-      window.parent.location = null;
-    }
-  }
-}
+const pathName = window.location.pathname;
+// console.log(pathName);
+// let y = [];
+// y.push(window.parent.location.href);
+// const users = usersData() || adminsData();
+// const newUser = JSON.parse(sessionStorage.getItem('newUser'));
+// if (!users) {
+//   if (
+//     y.length === 1 &&
+//     y[0] !== 'https://akera-logistics.netlify.app/' &&
+//     y[0] !== 'https://akera-logistics.netlify.app/login' &&
+//     y[0] !== 'https://akera-logistics.netlify.app/signup'
+//   ) {
+//     window.location.href = 'https://akera-logistics.netlify.app/login';
+//   } else if (y.length === 2 && y[0] !== y[1]) {
+//     window.location.href = 'https://akera-logistics.netlify.app/login';
+//     window.parent.location = null;
+//   }
+// } else if (users) {
+//   let token = false;
+//   if (users.user) {
+//     if (users.user.auth_token) {
+//       token = true;
+//     }
+//   } else if (users.admin) {
+//     if (users.admin.admin_token) {
+//       token = true;
+//     }
+//   }
+//   if (token) {
+//     if (
+//       y.length === 1 &&
+//       y[0].includes('https://akera-logistics.netlify.app/')
+//     ) {
+//       if (!newUser) {
+//         window.location.href = 'https://akera-logistics.netlify.app/login';
+//       }
+//     } else if (y.length === 2 && y[0] !== y[1]) {
+//       window.location.href = 'https://akera-logistics.netlify.app/login';
+//       window.parent.location = null;
+//     }
+//   }
+// }
 
 const openUser = () => {
   const user = usersData();
