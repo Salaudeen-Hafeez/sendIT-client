@@ -172,8 +172,6 @@ const createAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 const pathName = window.location.pathname;
-console.log(pathName);
-console.log(authData);
 
 const userAuth = (authData) => {
   switch (pathName) {
