@@ -186,6 +186,7 @@ const authentication = () => {
 
 authentication(() => {
   console.log(authData);
+  console.log(pathName);
   switch (pathName) {
     case '/':
       authData !== null && authData.user
