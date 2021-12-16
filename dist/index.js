@@ -172,37 +172,45 @@ const createAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 const pathName = window.location.pathname;
-const authData =
-  JSON.parse(sessionStorage.getItem('/user')) ||
-  JSON.parse(sessionStorage.getItem('/admin'));
 console.log(pathName);
 console.log(authData);
 
-switch (pathName) {
-  case '/':
-    authData !== null && authData.user
-      ? window.open('https://akera-logistics.netlify.app/user')
-      : window.open('https://akera-logistics.netlify.app/admin');
+const userAuth = (authData) => {
+  switch (pathName) {
+    case '/':
+      authData !== null && authData.user
+        ? window.open('https://akera-logistics.netlify.app/user')
+        : window.open('https://akera-logistics.netlify.app/admin');
 
-    break;
-  case '/login':
-    authData !== null && authData.user
-      ? window.open('https://akera-logistics.netlify.app/user')
-      : window.open('https://akera-logistics.netlify.app/admin');
+      break;
+    case '/login':
+      authData !== null && authData.user
+        ? window.open('https://akera-logistics.netlify.app/user')
+        : window.open('https://akera-logistics.netlify.app/admin');
 
-    break;
+      break;
 
-  case '/user' || '/admin' || '/package':
-    authData !== null && authData.user
-      ? window.open('https://akera-logistics.netlify.app/user')
-      : authData.admin
-      ? window.open('https://akera-logistics.netlify.app/admin')
-      : window.open('https://akera-logistics.netlify.app/login');
+    case '/user' || '/admin' || '/package':
+      authData !== null && authData.user
+        ? window.open('https://akera-logistics.netlify.app/user')
+        : authData.admin
+        ? window.open('https://akera-logistics.netlify.app/admin')
+        : window.open('https://akera-logistics.netlify.app/login');
 
-    break;
-  default:
-    break;
-}
+      break;
+    default:
+      break;
+  }
+};
+
+const authentication = () => {
+  const authData =
+    JSON.parse(sessionStorage.getItem('/user')) ||
+    JSON.parse(sessionStorage.getItem('/admin'));
+  userAuth(authData);
+};
+
+authentication();
 
 // let y = [];
 // y.push(window.parent.location.href);
