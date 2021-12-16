@@ -234,7 +234,7 @@ if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
   pathNames.splice(0, 2);
   authenticateRoute(pathNames);
 } else {
-  authenticateRoute();
+  authenticateRoute(pathNames);
 }
 
 // let y = [];
