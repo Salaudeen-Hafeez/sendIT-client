@@ -198,10 +198,9 @@ let authData = null;
 let pathNames = [];
 pathNames.push(pathName);
 if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
-  window.location.pathname = pathName;
-  window.location.pathname = null;
+  pathNames.splice(0, 1)
 } else {
-  switch (pathName) {
+  switch (pathNames[0]) {
     case '/':
       authData = usersData() || adminsData();
       authData !== null && authData.user
@@ -227,8 +226,7 @@ if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
 
       break;
     default:
-      break;
-  }
+    }  break;
 }
 
 // let y = [];
