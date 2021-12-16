@@ -214,10 +214,10 @@ const authenticateRoute = (pathNames) => {
     case '/user' || '/admin' || '/package':
       authData = usersData() || adminsData();
       authData !== null && authData.user
-        ? window.open('https://akera-logistics.netlify.app/user')
+        ? (window.location.pathname = '/user')
         : authData.admin
-        ? window.open('https://akera-logistics.netlify.app/admin')
-        : window.open('https://akera-logistics.netlify.app/login');
+        ? (window.location.pathname = '/admin')
+        : (window.location.pathname = '/login');
 
       break;
     default:
