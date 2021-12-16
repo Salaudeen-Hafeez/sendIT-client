@@ -201,7 +201,7 @@ console.log(pathName);
 switch (pathName) {
   case '/':
     authData !== null && authData.user
-      ? window.open('https://akera-logistics.netlify.app/user')
+      ? (window.location.pathname = '/user')
       : window.open('https://akera-logistics.netlify.app/admin');
 
     break;
