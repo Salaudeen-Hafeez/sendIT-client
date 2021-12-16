@@ -181,15 +181,15 @@ const authentication = (userAuth) => {
     JSON.parse(sessionStorage.getItem('/user')) ||
     JSON.parse(sessionStorage.getItem('/admin'));
   console.log(authData);
-  userAuth();
+  userAuth(authData);
 };
 
-authentication(() => {
+authentication((authData) => {
   console.log(authData);
   console.log(pathName);
   switch (pathName) {
     case '/':
-      authData === null && !authData.user
+      authData !== null && authData.user
         ? window.open('https://akera-logistics.netlify.app/user')
         : window.open('https://akera-logistics.netlify.app/admin');
 
