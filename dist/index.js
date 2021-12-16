@@ -195,33 +195,40 @@ let pathName = window.location.pathname;
 
 // checkIfItsDone();
 let authData = null;
-switch (pathName) {
-  case '/':
-    authData = usersData() || adminsData();
-    authData !== null && authData.user
-      ? (window.location.pathname = '/user')
-      : (window.location.pathname = '/admin');
+let pathNames = [];
+pathNames.push(pathName);
+if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
+  window.location.pathname = pathName;
+  window.location.pathname = null;
+} else {
+  switch (pathName) {
+    case '/':
+      authData = usersData() || adminsData();
+      authData !== null && authData.user
+        ? (window.location.pathname = '/user')
+        : (window.location.pathname = '/admin');
 
-    break;
-  case '/login':
-    authData = usersData() || adminsData();
-    authData !== null && authData.user
-      ? window.open('https://akera-logistics.netlify.app/user')
-      : window.open('https://akera-logistics.netlify.app/admin');
+      break;
+    case '/login':
+      authData = usersData() || adminsData();
+      authData !== null && authData.user
+        ? window.open('https://akera-logistics.netlify.app/user')
+        : window.open('https://akera-logistics.netlify.app/admin');
 
-    break;
+      break;
 
-  case '/user' || '/admin' || '/package':
-    authData = usersData() || adminsData();
-    authData !== null && authData.user
-      ? window.open('https://akera-logistics.netlify.app/user')
-      : authData.admin
-      ? window.open('https://akera-logistics.netlify.app/admin')
-      : window.open('https://akera-logistics.netlify.app/login');
+    case '/user' || '/admin' || '/package':
+      authData = usersData() || adminsData();
+      authData !== null && authData.user
+        ? window.open('https://akera-logistics.netlify.app/user')
+        : authData.admin
+        ? window.open('https://akera-logistics.netlify.app/admin')
+        : window.open('https://akera-logistics.netlify.app/login');
 
-    break;
-  default:
-    break;
+      break;
+    default:
+      break;
+  }
 }
 
 // let y = [];
