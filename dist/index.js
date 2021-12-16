@@ -218,9 +218,6 @@ const openUser = () => {
   const user = usersData();
   if (user.user.users_id) {
     window.location.href = '/user';
-  } else {
-    const input = document.getElementById('errMessage');
-    setErrorFor(input, user);
   }
 };
 
@@ -228,9 +225,6 @@ const openAdmin = () => {
   const admin = adminsData();
   if (admin.admin.users_id) {
     window.location.href = '/admin';
-  } else {
-    const input = document.getElementById('errMessage');
-    setErrorFor(input, admin);
   }
 };
 
@@ -267,8 +261,12 @@ const fetchAdminData = (data) => {
     .then((resp) => resp.json())
     .then((data) => {
       sessionStorage.clear();
-      sessionStorage.setItem('admin', JSON.stringify(data));
-      openAdmin();
+      if (data.errMessage) {
+        displayErr(data);
+      } else {
+        sessionStorage.setItem('admin', JSON.stringify(data));
+        openAdmin();
+      }
     })
     .catch((err) => {
       console.log(err);
