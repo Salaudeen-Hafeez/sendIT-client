@@ -231,7 +231,7 @@ let authData = null;
 
 if (pathName !== null) {
   authenticateRoute(pathName);
-  window.location.pathname = null;
+  window.parent.location = null;
 }
 
 // let y = [];
