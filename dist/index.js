@@ -189,7 +189,7 @@ authentication(() => {
   console.log(pathName);
   switch (pathName) {
     case '/':
-      authData !== null && authData.user
+      authData === null && !authData.user
         ? window.open('https://akera-logistics.netlify.app/user')
         : window.open('https://akera-logistics.netlify.app/admin');
 
