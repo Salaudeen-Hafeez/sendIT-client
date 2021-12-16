@@ -202,9 +202,7 @@ const userAuth = (authData) => {
 };
 
 const authentication = () => {
-  const authData =
-    JSON.parse(sessionStorage.getItem('/user')) ||
-    JSON.parse(sessionStorage.getItem('/admin'));
+  const authData = JSON.parse(sessionStorage.getItem('/user'));
   console.log(authData);
   userAuth(authData);
 };
