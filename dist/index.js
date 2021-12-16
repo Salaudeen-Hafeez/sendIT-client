@@ -230,11 +230,14 @@ let pathNames = [];
 pathNames.push(pathName);
 if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
   pathNames.splice(0, 2);
+  window.location.pathname = null;
 } else if (pathNames.length === 2 && pathNames[0] !== pathNames[1]) {
   pathNames.splice(0, 2);
   authenticateRoute(pathNames);
+  window.location.pathname = null;
 } else {
   authenticateRoute(pathNames);
+  window.location.pathname = null;
 }
 
 // let y = [];
