@@ -172,7 +172,7 @@ const createAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 const pathName = window.location.pathname;
-// console.log(pathName);
+console.log(pathName);
 // let y = [];
 // y.push(window.parent.location.href);
 // const users = usersData() || adminsData();
