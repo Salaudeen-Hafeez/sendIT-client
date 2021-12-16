@@ -199,12 +199,10 @@ if (!users) {
       token = true;
     }
   }
-  if (!token) {
+  if (token) {
     if (
       y.length === 1 &&
-      y[0] !== 'https://akera-logistics.netlify.app/' &&
-      y[0] !== 'https://akera-logistics.netlify.app/login' &&
-      y[0] !== 'https://akera-logistics.netlify.app/signup'
+      y[0].includes('https://akera-logistics.netlify.app/')
     ) {
       if (!newUser) {
         window.location.href = 'https://akera-logistics.netlify.app/login';
@@ -746,7 +744,6 @@ const adminDeleteUser = (e) => {
 
 const adminDeletePackage = (e) => {
   const status = e.parentElement.querySelector('button').innerHTML;
-  console.log(status);
   const admin = adminsData();
   const parentEl = e.parentElement.parentElement.parentElement.parentElement;
   let button = parentEl.querySelector('button');
