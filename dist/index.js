@@ -194,12 +194,7 @@ let pathName = window.location.pathname;
 // };
 
 // checkIfItsDone();
-let authData = null;
-let pathNames = [];
-pathNames.push(pathName);
-if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
-  pathNames.splice(0, 1);
-} else {
+const authenticateRoute = (pathNames) => {
   switch (pathNames[0]) {
     case '/':
       authData = usersData() || adminsData();
@@ -228,6 +223,18 @@ if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
     default:
       break;
   }
+};
+
+let authData = null;
+let pathNames = [];
+pathNames.push(pathName);
+if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
+  pathNames.splice(0, 2);
+} else if (pathNames.length === 2 && pathNames[0] !== pathNames[1]) {
+  pathNames.splice(0, 2);
+  authenticateRoute(pathNames);
+} else {
+  authenticateRoute();
 }
 
 // let y = [];
