@@ -175,29 +175,29 @@ const pathName = window.location.pathname;
 const authData =
   JSON.parse(sessionStorage.getItem('/user')) ||
   JSON.parse(sessionStorage.getItem('/admin'));
-
+console.log(pathName);
 console.log(authData);
 
 switch (pathName) {
   case '/':
     authData !== null && authData.user
-      ? (window.location.pathname = '/user')
-      : (window.location.pathname = '/admin');
+      ? window.open('https://akera-logistics.netlify.app/user')
+      : window.open('https://akera-logistics.netlify.app/admin');
 
     break;
   case '/login':
     authData !== null && authData.user
-      ? (window.location.pathname = '/user')
-      : (window.location.pathname = '/admin');
+      ? window.open('https://akera-logistics.netlify.app/user')
+      : window.open('https://akera-logistics.netlify.app/admin');
 
     break;
 
   case '/user' || '/admin' || '/package':
     authData !== null && authData.user
-      ? (window.location.pathname = '/user')
+      ? window.open('https://akera-logistics.netlify.app/user')
       : authData.admin
-      ? (window.location.pathname = '/admin')
-      : (window.location.pathname = '/login');
+      ? window.open('https://akera-logistics.netlify.app/admin')
+      : window.open('https://akera-logistics.netlify.app/login');
 
     break;
   default:
