@@ -129,7 +129,7 @@ const toggleMenu = () => {
 };
 
 const openPackage = () => {
-  window.location.href = 'package.html';
+  window.location.href = 'package';
 };
 // Get the stored user data and create the user profile display
 const createUser = () => {
@@ -173,10 +173,37 @@ const createAdmin = () => {
 };
 const pathName = window.location.pathname;
 const authData =
-  JSON.parse(sessionStorage.getItem('user')) ||
-  JSON.parse(sessionStorage.getItem('admin'));
+  JSON.parse(sessionStorage.getItem('/user')) ||
+  JSON.parse(sessionStorage.getItem('/admin'));
 
 console.log(authData);
+
+switch (pathName) {
+  case '/':
+    authData !== null && authData.user
+      ? (window.location.pathname = '/user')
+      : (window.location.pathname = '/admin');
+
+    break;
+  case '/login':
+    authData !== null && authData.user
+      ? (window.location.pathname = '/user')
+      : (window.location.pathname = '/admin');
+
+    break;
+
+  case '/user' || '/admin' || '/package':
+    authData !== null && authData.user
+      ? (window.location.pathname = '/user')
+      : authData.admin
+      ? (window.location.pathname = '/admin')
+      : (window.location.pathname = '/login');
+
+    break;
+  default:
+    break;
+}
+
 // let y = [];
 // y.push(window.parent.location.href);
 // const users = usersData() || adminsData();
@@ -578,7 +605,7 @@ const signUp = () => {
 const newPackage = () => {
   const user = JSON.parse(sessionStorage.getItem('user'));
   if (user.user.auth_token) {
-    window.location.href = 'newpackage.html';
+    window.location.href = 'newpackage';
   } else {
     displayUserPackages();
   }
