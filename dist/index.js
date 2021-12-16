@@ -203,6 +203,7 @@ switch (pathName) {
 
     break;
   case '/login':
+    const authData = usersData() || adminsData();
     authData !== null && authData.user
       ? window.open('https://akera-logistics.netlify.app/user')
       : window.open('https://akera-logistics.netlify.app/admin');
@@ -210,6 +211,7 @@ switch (pathName) {
     break;
 
   case '/user' || '/admin' || '/package':
+    const authData = usersData() || adminsData();
     authData !== null && authData.user
       ? window.open('https://akera-logistics.netlify.app/user')
       : authData.admin
