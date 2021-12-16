@@ -171,7 +171,7 @@ const createAdmin = () => {
         </div>`;
   profile.innerHTML = adminProfile;
 };
-let pathName = window.location.pathname;
+let pathName = window.location.href;
 
 // const isItDoneYet = new Promise((resolve, reject) => {
 //   if (done) {
@@ -196,28 +196,30 @@ let pathName = window.location.pathname;
 // checkIfItsDone();
 const authenticateRoute = (pathName) => {
   switch (pathName) {
-    case '/':
+    case 'https://akera-logistics.netlify.app':
       authData = usersData() || adminsData();
       authData !== null && authData.user
-        ? (window.location.pathname = '/user')
-        : (window.location.pathname = '/admin');
+        ? (window.location.href = 'https://akera-logistics.netlify.app/user')
+        : (window.location.href = 'https://akera-logistics.netlify.app/admin');
 
       break;
-    case '/login':
+    case 'https://akera-logistics.netlify.app/login':
       authData = usersData() || adminsData();
       authData !== null && authData.user
-        ? window.open('https://akera-logistics.netlify.app/user')
-        : window.open('https://akera-logistics.netlify.app/admin');
+        ? (window.location.href = 'https://akera-logistics.netlify.app/user')
+        : (window.location.href = 'https://akera-logistics.netlify.app/admin');
 
       break;
 
-    case '/user' || '/admin' || '/package':
+    case 'https://akera-logistics.netlify.app/user' ||
+      'https://akera-logistics.netlify.app/admin' ||
+      'https://akera-logistics.netlify.app/package':
       authData = usersData() || adminsData();
       authData !== null && authData.user
-        ? (window.location.pathname = '/user')
+        ? (window.location.href = 'https://akera-logistics.netlify.app/user')
         : authData.admin
-        ? (window.location.pathname = '/admin')
-        : (window.location.pathname = '/login');
+        ? (window.location.href = 'https://akera-logistics.netlify.app/admin')
+        : (window.location.href = 'https://akera-logistics.netlify.app/login');
 
       break;
     default:
@@ -227,9 +229,9 @@ const authenticateRoute = (pathName) => {
 
 let authData = null;
 
-if (pathName !== '') {
+if (pathName !== null) {
   authenticateRoute(pathName);
-  window.location.pathname = '';
+  window.location.pathname = null;
 }
 
 // let y = [];
