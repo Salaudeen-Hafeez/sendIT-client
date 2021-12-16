@@ -194,8 +194,8 @@ let pathName = window.location.href;
 // };
 
 // checkIfItsDone();
-const authenticateRoute = (pathName) => {
-  switch (pathName) {
+const authenticateRoute = (pathNames) => {
+  switch (pathNames[0]) {
     case 'https://akera-logistics.netlify.app':
       authData = usersData() || adminsData();
       authData !== null && authData.user
@@ -228,10 +228,13 @@ const authenticateRoute = (pathName) => {
 };
 
 let authData = null;
+let pathNames = [];
+pathNames.push(pathName);
 
-if (pathName !== null) {
-  authenticateRoute(pathName);
-  window.parent.location = null;
+if (pathName !== null && pathNames.length === 1) {
+  authenticateRoute(pathName[0]);
+} else {
+  pathNames.splice(0, 0);
 }
 
 // let y = [];
