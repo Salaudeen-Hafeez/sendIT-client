@@ -194,9 +194,10 @@ let pathName = window.location.pathname;
 // };
 
 // checkIfItsDone();
+let authData = null;
 switch (pathName) {
   case '/':
-    let authData = usersData() || adminsData();
+    authData = usersData() || adminsData();
     authData !== null && authData.user
       ? (window.location.pathname = '/user')
       : (window.location.pathname = '/admin');
