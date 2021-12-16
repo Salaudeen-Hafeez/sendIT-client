@@ -172,51 +172,61 @@ const createAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 let pathName = window.location.pathname;
-let authData = null;
 
-const userAuth = (authData) => {};
+// const isItDoneYet = new Promise((resolve, reject) => {
+//   if (done) {
+//     const workDone = 'Here is the thing I built';
+//     resolve(workDone);
+//   } else {
+//     const why = 'Still working on something else';
+//     reject(why);
+//   }
+// });
 
-const authentication = (userAuth) => {
-  authData =
-    JSON.parse(sessionStorage.getItem('/user')) ||
-    JSON.parse(sessionStorage.getItem('/admin'));
-  console.log(authData);
-  userAuth(authData);
-};
+// const checkIfItsDone = () => {
+//   isItDoneYet
+//     .then((ok) => {
+//       console.log(ok);
+//     })
+//     .catch((err) => {
+//       console.error(err);
+//     });
+// };
 
-authentication((authData) => {
-  console.log(authData);
-  console.log(pathName);
-  switch (pathName) {
-    case '/':
-      authData !== null && authData.user
-        ? window.open('https://akera-logistics.netlify.app/user')
-        : window.open('https://akera-logistics.netlify.app/admin');
+// checkIfItsDone();
+let authData = usersData() || adminsData();
 
-      break;
-    case '/login':
-      authData !== null && authData.user
-        ? window.open('https://akera-logistics.netlify.app/user')
-        : window.open('https://akera-logistics.netlify.app/admin');
+console.log(authData);
+console.log(pathName);
+switch (pathName) {
+  case '/':
+    authData !== null && authData.user
+      ? window.open('https://akera-logistics.netlify.app/user')
+      : window.open('https://akera-logistics.netlify.app/admin');
 
-      break;
+    break;
+  case '/login':
+    authData !== null && authData.user
+      ? window.open('https://akera-logistics.netlify.app/user')
+      : window.open('https://akera-logistics.netlify.app/admin');
 
-    case '/user' || '/admin' || '/package':
-      authData !== null && authData.user
-        ? window.open('https://akera-logistics.netlify.app/user')
-        : authData.admin
-        ? window.open('https://akera-logistics.netlify.app/admin')
-        : window.open('https://akera-logistics.netlify.app/login');
+    break;
 
-      break;
-    default:
-      break;
-  }
-});
+  case '/user' || '/admin' || '/package':
+    authData !== null && authData.user
+      ? window.open('https://akera-logistics.netlify.app/user')
+      : authData.admin
+      ? window.open('https://akera-logistics.netlify.app/admin')
+      : window.open('https://akera-logistics.netlify.app/login');
+
+    break;
+  default:
+    break;
+}
 
 // let y = [];
 // y.push(window.parent.location.href);
-// const users = usersData() || adminsData();
+
 // const newUser = JSON.parse(sessionStorage.getItem('newUser'));
 // if (!users) {
 //   if (
