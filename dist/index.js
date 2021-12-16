@@ -194,8 +194,8 @@ let pathName = window.location.pathname;
 // };
 
 // checkIfItsDone();
-const authenticateRoute = (pathNames) => {
-  switch (pathNames[0]) {
+const authenticateRoute = (pathName) => {
+  switch (pathName) {
     case '/':
       authData = usersData() || adminsData();
       authData !== null && authData.user
@@ -226,18 +226,10 @@ const authenticateRoute = (pathNames) => {
 };
 
 let authData = null;
-let pathNames = [];
-pathNames.push(pathName);
-if (pathNames.length === 2 && pathNames[0] === pathNames[1]) {
-  pathNames.splice(0, 2);
-  window.location.pathname = null;
-} else if (pathNames.length === 2 && pathNames[0] !== pathNames[1]) {
-  pathNames.splice(0, 2);
-  authenticateRoute(pathNames);
-  window.location.pathname = null;
-} else {
-  authenticateRoute(pathNames);
-  window.location.pathname = null;
+
+if (pathName !== '') {
+  authenticateRoute(pathName);
+  window.location.pathname = '';
 }
 
 // let y = [];
