@@ -171,50 +171,27 @@ const createAdmin = () => {
         </div>`;
   profile.innerHTML = adminProfile;
 };
+
+const authData = usersData() || adminsData();
 let pathName = window.location.href;
 
-// const isItDoneYet = new Promise((resolve, reject) => {
-//   if (done) {
-//     const workDone = 'Here is the thing I built';
-//     resolve(workDone);
-//   } else {
-//     const why = 'Still working on something else';
-//     reject(why);
-//   }
-// });
-
-// const checkIfItsDone = () => {
-//   isItDoneYet
-//     .then((ok) => {
-//       console.log(ok);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//     });
-// };
-
-// checkIfItsDone();
 const authenticateRoute = (pathNames) => {
   switch (pathNames[0]) {
     case 'https://akera-logistics.netlify.app':
-      authData = usersData() || adminsData();
       authData !== null && authData.user
         ? (window.location.href = 'https://akera-logistics.netlify.app/user')
         : (window.location.href = 'https://akera-logistics.netlify.app/admin');
 
       break;
     case 'https://akera-logistics.netlify.app/login':
-      authData = usersData() || adminsData();
       authData !== null && authData.user
         ? (window.location.href = 'https://akera-logistics.netlify.app/user')
         : (window.location.href = 'https://akera-logistics.netlify.app/admin');
 
       break;
-
     case 'https://akera-logistics.netlify.app/user' ||
       'https://akera-logistics.netlify.app/admin' ||
       'https://akera-logistics.netlify.app/package':
-      authData = usersData() || adminsData();
       authData !== null && authData.user
         ? (window.location.href = 'https://akera-logistics.netlify.app/user')
         : authData.admin
@@ -227,57 +204,7 @@ const authenticateRoute = (pathNames) => {
   }
 };
 
-let authData = null;
-let pathNames = [];
-pathNames.push(pathName);
-
-if (pathName !== null && pathNames.length === 1) {
-  authenticateRoute(pathName[0]);
-} else {
-  pathNames.splice(0, 0);
-}
-
-// let y = [];
-// y.push(window.parent.location.href);
-
-// const newUser = JSON.parse(sessionStorage.getItem('newUser'));
-// if (!users) {
-//   if (
-//     y.length === 1 &&
-//     y[0] !== 'https://akera-logistics.netlify.app/' &&
-//     y[0] !== 'https://akera-logistics.netlify.app/login' &&
-//     y[0] !== 'https://akera-logistics.netlify.app/signup'
-//   ) {
-//     window.location.href = 'https://akera-logistics.netlify.app/login';
-//   } else if (y.length === 2 && y[0] !== y[1]) {
-//     window.location.href = 'https://akera-logistics.netlify.app/login';
-//     window.parent.location = null;
-//   }
-// } else if (users) {
-//   let token = false;
-//   if (users.user) {
-//     if (users.user.auth_token) {
-//       token = true;
-//     }
-//   } else if (users.admin) {
-//     if (users.admin.admin_token) {
-//       token = true;
-//     }
-//   }
-//   if (token) {
-//     if (
-//       y.length === 1 &&
-//       y[0].includes('https://akera-logistics.netlify.app/')
-//     ) {
-//       if (!newUser) {
-//         window.location.href = 'https://akera-logistics.netlify.app/login';
-//       }
-//     } else if (y.length === 2 && y[0] !== y[1]) {
-//       window.location.href = 'https://akera-logistics.netlify.app/login';
-//       window.parent.location = null;
-//     }
-//   }
-// }
+authenticateRoute(pathName);
 
 const openUser = () => {
   const user = usersData();
