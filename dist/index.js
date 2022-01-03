@@ -177,9 +177,7 @@ let pathName = window.location.href;
 let pathNames = [];
 pathNames.push(pathName);
 pathNames.map((path) => console.log(path));
-console.log(pathName);
-console.log(authData);
-
+console.log(pathNames.length);
 const authenticateRoute = (pathName) => {
   switch (pathName) {
     case 'https://akera-logistics.netlify.app/':
