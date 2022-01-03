@@ -182,18 +182,18 @@ const authenticateRoute = (pathName) => {
     case 'https://akera-logistics.netlify.app/':
       if (authData !== null && authData.user) {
         console.log(authData);
-        window.location.href = 'https://akera-logistics.netlify.app/user';
+        window.location.replace('https://akera-logistics.netlify.app/user');
       } else {
         console.log(authData);
-        window.location.href = 'https://akera-logistics.netlify.app/admin';
+        window.location.replace('https://akera-logistics.netlify.app/admin');
       }
     case 'https://akera-logistics.netlify.app/login':
       if (authData !== null && authData.user) {
         console.log(authData);
-        window.location.href = 'https://akera-logistics.netlify.app/user';
+        window.location.replace('https://akera-logistics.netlify.app/user');
       } else {
         console.log(authData);
-        window.location.href = 'https://akera-logistics.netlify.app/admin';
+        window.location.replace('https://akera-logistics.netlify.app/admin');
       }
 
       break;
@@ -202,13 +202,13 @@ const authenticateRoute = (pathName) => {
       'https://akera-logistics.netlify.app/package':
       if (authData !== null && authData.user) {
         console.log(authData);
-        window.location.href = 'https://akera-logistics.netlify.app/user';
+        window.location.replace('https://akera-logistics.netlify.app/user)';
       } else if (authData !== null && authData.admin) {
         console.log(authData);
-        window.location.href = 'https://akera-logistics.netlify.app/admin';
+        window.location.replace('https://akera-logistics.netlify.app/admin');
       } else {
         console.log(authData);
-        window.location.href = 'https://akera-logistics.netlify.app/login';
+        window.location.replace('https://akera-logistics.netlify.app/login');
       }
       break;
     default:
@@ -218,7 +218,7 @@ const authenticateRoute = (pathName) => {
 const pathN = sessionStorage.getItem('path');
 console.log(pathN);
 
-//authenticateRoute(pathName);
+authenticateRoute(pathName);
 
 const openUser = () => {
   const user = usersData();
