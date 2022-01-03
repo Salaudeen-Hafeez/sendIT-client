@@ -202,7 +202,7 @@ const authenticateRoute = (pathName) => {
       'https://akera-logistics.netlify.app/package':
       if (authData !== null && authData.user) {
         console.log(authData);
-        window.location.replace('https://akera-logistics.netlify.app/user)';
+        window.location.replace('https://akera-logistics.netlify.app/user');
       } else if (authData !== null && authData.admin) {
         console.log(authData);
         window.location.replace('https://akera-logistics.netlify.app/admin');
