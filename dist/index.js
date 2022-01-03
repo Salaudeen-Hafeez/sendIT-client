@@ -174,6 +174,7 @@ const createAdmin = () => {
 
 const authData = usersData() || adminsData();
 let pathName = window.location.href;
+sessionStorage.setItem('path', pathName);
 let pathNames = [];
 pathNames.push(pathName);
 pathNames.map((path) => console.log(path));
@@ -216,6 +217,8 @@ const authenticateRoute = (pathName) => {
       break;
   }
 };
+const pathN = sessionStorage.getItem('path');
+console.log(pathN);
 
 //authenticateRoute(pathName);
 
