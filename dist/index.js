@@ -174,7 +174,7 @@ const createAdmin = () => {
 
 const authData = usersData() || adminsData();
 let pathName = window.location.href;
-const prePath = window.history.previous.href;
+const prePath = document.referrer;
 console.log(prePath);
 sessionStorage.setItem('path', pathName);
 const authenticateRoute = (pathName) => {
