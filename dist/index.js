@@ -178,7 +178,7 @@ console.log(pathName);
 console.log(authData);
 if (authData.user) {
   console.log('It is a user');
-} else if (authData.admin) {
+} else if (true) {
   ('It is an admin');
 }
 const authenticateRoute = (pathNames) => {
