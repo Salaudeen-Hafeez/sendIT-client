@@ -174,6 +174,9 @@ const createAdmin = () => {
 
 const authData = usersData() || adminsData();
 let pathName = window.location.href;
+let pathNames = [];
+pathNames.push(pathName);
+pathNames.map((path) => console.log(path));
 console.log(pathName);
 console.log(authData);
 
