@@ -219,7 +219,7 @@ const authenticateRoute = (pathName) => {
   }
 };
 
-authenticateRoute(pathName);
+//authenticateRoute(pathName);
 
 const openUser = () => {
   const user = usersData();
