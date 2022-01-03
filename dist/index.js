@@ -176,34 +176,40 @@ const authData = usersData() || adminsData();
 let pathName = window.location.href;
 console.log(pathName);
 console.log(authData);
-if (authData.user) {
-  console.log('It is a user');
-} else if (authData.admin) {
-  console.log('It is an admin');
-}
+
 const authenticateRoute = (pathNames) => {
   switch (pathNames[0]) {
     case 'https://akera-logistics.netlify.app/':
-      authData !== null && authData.user
-        ? (window.location.href = 'https://akera-logistics.netlify.app/user')
-        : (window.location.href = 'https://akera-logistics.netlify.app/admin');
-
-      break;
+      if (authData !== null && authData.user) {
+        console.log(authData);
+        window.location.href = 'https://akera-logistics.netlify.app/user';
+      } else {
+        console.log(authData);
+        window.location.href = 'https://akera-logistics.netlify.app/admin';
+      }
     case 'https://akera-logistics.netlify.app/login':
-      authData !== null && authData.user
-        ? (window.location.href = 'https://akera-logistics.netlify.app/user')
-        : (window.location.href = 'https://akera-logistics.netlify.app/admin');
+      if (authData !== null && authData.user) {
+        console.log(authData);
+        window.location.href = 'https://akera-logistics.netlify.app/user';
+      } else {
+        console.log(authData);
+        window.location.href = 'https://akera-logistics.netlify.app/admin';
+      }
 
       break;
     case 'https://akera-logistics.netlify.app/user' ||
       'https://akera-logistics.netlify.app/admin' ||
       'https://akera-logistics.netlify.app/package':
-      authData !== null && authData.user
-        ? (window.location.href = 'https://akera-logistics.netlify.app/user')
-        : authData.admin
-        ? (window.location.href = 'https://akera-logistics.netlify.app/admin')
-        : (window.location.href = 'https://akera-logistics.netlify.app/login');
-
+      if (authData !== null && authData.user) {
+        console.log(authData);
+        window.location.href = 'https://akera-logistics.netlify.app/user';
+      } else if (authData !== null && authData.admin) {
+        console.log(authData);
+        window.location.href = 'https://akera-logistics.netlify.app/admin';
+      } else {
+        console.log(authData);
+        window.location.href = 'https://akera-logistics.netlify.app/login';
+      }
       break;
     default:
       break;
