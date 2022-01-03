@@ -174,11 +174,9 @@ const createAdmin = () => {
 
 const authData = usersData() || adminsData();
 let pathName = window.location.href;
+const prePath = window.history.previous.href;
+console.log(prePath);
 sessionStorage.setItem('path', pathName);
-let pathNames = [];
-pathNames.push(pathName);
-pathNames.map((path) => console.log(path));
-console.log(pathNames.length);
 const authenticateRoute = (pathName) => {
   switch (pathName) {
     case 'https://akera-logistics.netlify.app/':
