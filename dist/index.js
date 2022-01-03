@@ -176,9 +176,14 @@ const authData = usersData() || adminsData();
 let pathName = window.location.href;
 console.log(pathName);
 console.log(authData);
+if (authData.user) {
+  console.log('It is a user');
+} else if (authData.admin) {
+  ('It is an admin');
+}
 const authenticateRoute = (pathNames) => {
   switch (pathNames[0]) {
-    case 'https://akera-logistics.netlify.app':
+    case 'https://akera-logistics.netlify.app/':
       authData !== null && authData.user
         ? (window.location.href = 'https://akera-logistics.netlify.app/user')
         : (window.location.href = 'https://akera-logistics.netlify.app/admin');
