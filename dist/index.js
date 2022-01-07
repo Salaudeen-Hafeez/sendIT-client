@@ -178,8 +178,6 @@ console.log(pathName);
 let pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
-localStorage.setItem('paths', pathNames);
-const paths = localStorage.getItem('paths');
 console.log(pathNames);
 const authenticateRoute = (pathName) => {
   switch (pathName) {
@@ -219,11 +217,10 @@ const authenticateRoute = (pathName) => {
       break;
   }
 };
-const pathN = localStorage.getItem('path');
-console.log(pathN);
 
 if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathName);
+  console.log(pathNames[1]);
+  authenticateRoute(pathNames[1]);
 }
 
 const openUser = () => {
