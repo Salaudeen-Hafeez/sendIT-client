@@ -222,7 +222,9 @@ const authenticateRoute = (pathName) => {
 const pathN = localStorage.getItem('path');
 console.log(pathN);
 
-// authenticateRoute(pathName);
+if (pathNames[0] !== pathNames[1]) {
+  authenticateRoute(pathName);
+}
 
 const openUser = () => {
   const user = usersData();
