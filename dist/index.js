@@ -176,7 +176,10 @@ const authData = usersData() || adminsData();
 let pathName = window.location.href;
 console.log(pathName);
 localStorage.setItem('path', pathName);
-console.log(localStorage.getItem('path'));
+let pathNames = [localStorage.getItem('path')];
+pathNames.push(pathName);
+localStorage.setItem('paths', pathNames);
+console.log(localStorage.getItem('paths'));
 const authenticateRoute = (pathName) => {
   switch (pathName) {
     case 'https://akera-logistics.netlify.app/':
@@ -218,7 +221,7 @@ const authenticateRoute = (pathName) => {
 const pathN = localStorage.getItem('path');
 console.log(pathN);
 
-authenticateRoute(pathName);
+// authenticateRoute(pathName);
 
 const openUser = () => {
   const user = usersData();
