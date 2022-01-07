@@ -180,7 +180,7 @@ localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 localStorage.setItem('paths', pathNames);
 const paths = localStorage.getItem('paths');
-console.log(path.length);
+console.log(paths.length);
 const authenticateRoute = (pathName) => {
   switch (pathName) {
     case 'https://akera-logistics.netlify.app/':
