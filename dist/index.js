@@ -175,8 +175,8 @@ const createAdmin = () => {
 const authData = usersData() || adminsData();
 let pathName = window.location.href;
 console.log(pathName);
-localStorage.setItem('path', pathName);
 let pathNames = [localStorage.getItem('path')];
+localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 localStorage.setItem('paths', pathNames);
 console.log(localStorage.getItem('paths'));
