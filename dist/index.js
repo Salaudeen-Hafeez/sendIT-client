@@ -188,16 +188,12 @@ const authenticateRoute = (pathName) => {
         window.location.replace('https://akera-logistics.netlify.app/user');
       } else if (authData !== null && authData.admin) {
         window.location.replace('https://akera-logistics.netlify.app/admin');
-      } else if (packag !== null) {
-        window.location.replace('https://akera-logistics.netlify.app/package');
       }
     case '/login':
       if (authData !== null && authData.user) {
         window.location.replace('https://akera-logistics.netlify.app/user');
       } else if (authData !== null && authData.admin) {
         window.location.replace('https://akera-logistics.netlify.app/admin');
-      } else if (packag !== null) {
-        window.location.replace('https://akera-logistics.netlify.app/package');
       }
 
       break;
