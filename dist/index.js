@@ -175,16 +175,15 @@ const createAdmin = () => {
 const authData = usersData() || adminsData();
 const packag = localStorage.getItem('package');
 
-let pathName = window.location.href;
+let pathName = location.pathname;
 console.log(pathName);
-console.log(location.pathname);
 let pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 
 const authenticateRoute = (pathName) => {
   switch (pathName) {
-    case 'https://akera-logistics.netlify.app/':
+    case '/':
       if (authData !== null && authData.user) {
         window.location.replace('https://akera-logistics.netlify.app/user');
       } else if (authData !== null && authData.admin) {
@@ -192,7 +191,7 @@ const authenticateRoute = (pathName) => {
       } else if (packag !== null) {
         window.location.replace('https://akera-logistics.netlify.app/package');
       }
-    case 'https://akera-logistics.netlify.app/login':
+    case '/login':
       if (authData !== null && authData.user) {
         window.location.replace('https://akera-logistics.netlify.app/user');
       } else if (authData !== null && authData.admin) {
@@ -202,21 +201,21 @@ const authenticateRoute = (pathName) => {
       }
 
       break;
-    case 'https://akera-logistics.netlify.app/user':
+    case '/user':
       if (authData !== null && authData.user) {
         window.location.replace('https://akera-logistics.netlify.app/user');
       } else {
         window.location.replace('https://akera-logistics.netlify.app/login');
       }
       break;
-    case 'https://akera-logistics.netlify.app/admin':
+    case '/admin':
       if (authData !== null && authData.admin) {
         window.location.replace('https://akera-logistics.netlify.app/admin');
       } else {
         window.location.replace('https://akera-logistics.netlify.app/login');
       }
       break;
-    case 'https://akera-logistics.netlify.app/package':
+    case '/package':
       if (packag !== null) {
         window.location.replace('https://akera-logistics.netlify.app/package');
       } else {
