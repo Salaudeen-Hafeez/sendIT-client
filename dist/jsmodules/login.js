@@ -29,4 +29,4 @@ window.login = async () => {
   }
 };
 
-window.clearErr = clearErr();
+window.clearErr = clearErr(e);
