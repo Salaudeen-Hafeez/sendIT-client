@@ -29,8 +29,11 @@ window.createProfile = () => {
         </div>`;
   profile.innerHTML = userProfile;
 };
-
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
+};
+window.logOut = () => {
+  localStorage.clear();
+  window.location.href = '/';
 };
