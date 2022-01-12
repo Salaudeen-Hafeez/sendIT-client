@@ -1,7 +1,7 @@
 import { formValidation } from './validateForm.js';
 import { postData } from './httpFetch/postData.js';
 import { displayErr } from './errMessages.js';
-import { createProfile, openAdmin, openUser } from './createProfile';
+import { createProfile, openAdmin, openUser } from './createProfile.js';
 // Login the user and store the return user's data in localStorage
 
 const loginUrl = 'https://akera-logistics.herokuapp.com/api/v1/users/login';
