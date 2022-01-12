@@ -1,7 +1,7 @@
-import { adminsData, usersData } from './users/datas.js';
-
 const authenticateRoute = (pathName) => {
-  const authData = usersData() || adminsData();
+  const authData =
+    JSON.parse(localStorage.getItem('user')) ||
+    JSON.parse(localStorage.getItem('admin'));
   const packag = localStorage.getItem('package');
   switch (pathName) {
     case '/':

@@ -1,8 +1,6 @@
 // const apiKey = 'AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA';
 
 import { authenticateRoute } from './routAuth.js';
-import { clearErr } from './clearErr.js';
-import { displayUserProfile, login } from './login.js';
 
 // const setErrorFor = (inp, message) => {
 //   inp.style.border = '1px solid red';
@@ -86,7 +84,7 @@ import { displayUserProfile, login } from './login.js';
 //   return { emptyInput, data };
 // };
 
-window.clearErr = clearErr;
+// window.clearErr = clearErr;
 // const usersData = () => {
 //   const user = JSON.parse(localStorage.getItem('user'));
 //   return user;
@@ -168,7 +166,7 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathNames[1]);
 }
-window.login = login;
+// window.login = login;
 
 // const openUser = () => {
 //   const user = usersData();
@@ -243,7 +241,7 @@ window.login = login;
 //   }
 // };
 
-window.displayUserProfile = displayUserProfile;
+// window.displayUserProfile = displayUserProfile;
 
 // const displayAdmin = () => {
 //   createAdmin();

@@ -1,9 +1,8 @@
 // Get the stored user data and create the user profile display
-
-import { adminsData, usersData } from './users/datas.js';
-
-const createProfile = () => {
-  const user = usersData() || adminsData();
+window.createProfile = () => {
+  const user =
+    JSON.parse(localStorage.getItem('user')) ||
+    JSON.parse(localStorage.getItem('admin'));
   let profileData;
   if (user !== null) {
     if (user.user) {
@@ -12,7 +11,6 @@ const createProfile = () => {
       profileData = user.admin;
     }
   }
-
   const profile = document.getElementById('userProfile');
   const userProfile = ` <img
           src="/images/Lagos4.jpg"
@@ -31,19 +29,3 @@ const createProfile = () => {
         </div>`;
   profile.innerHTML = userProfile;
 };
-
-const openUser = () => {
-  const user = usersData();
-  if (user.user.users_id) {
-    window.location.href = '/user';
-  }
-};
-
-const openAdmin = () => {
-  const user = adminsData();
-  if (user.admin.users_id) {
-    window.location.href = '/admin';
-  }
-};
-
-export { createProfile, openUser, openAdmin };
