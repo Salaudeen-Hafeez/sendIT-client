@@ -227,7 +227,7 @@ const fetchAdminData = (data) => {
       console.log(err);
     });
 };
-const login = () => {
+window.login = () => {
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
