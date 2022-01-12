@@ -42,7 +42,7 @@ window.logOut = () => {
 };
 window.displayUserPackages = async () => {
   const { user, packages } = JSON.parse(localStorage.getItem('user'));
-  if (!user.user.auth_token) {
+  if (!user.auth_token) {
     window.location.href = '/login';
   } else {
     createUserPackage(packages);
