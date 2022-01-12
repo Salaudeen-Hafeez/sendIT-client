@@ -50,6 +50,6 @@ window.displayUserPackages = async () => {
     const userPackages = await fetchData(userPackageUrl);
     localStorage.removeItem('packages');
     localStorage.setItem('packages', JSON.stringify(data));
-    setTimeout(createUserPackage(), 1200);
+    createUserPackage();
   }
 };
