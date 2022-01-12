@@ -1,6 +1,6 @@
 // const apiKey = 'AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA';
 
-import authenticateRoute from './routAuth';
+import { authenticateRoute } from './routAuth.js';
 
 const setErrorFor = (inp, message) => {
   inp.style.border = '1px solid red';

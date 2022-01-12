@@ -48,4 +48,4 @@ const authenticateRoute = (pathName) => {
   }
 };
 
-export default authenticateRoute;
+export { authenticateRoute };
