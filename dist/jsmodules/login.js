@@ -1,6 +1,6 @@
 import { formValidation } from './validateForm.js';
 import { postData } from './httpFetch/postData.js';
-import { displayErr } from './errMessages.js';
+import { displayErr, clearErr } from './errMessages.js';
 window.login = async () => {
   localStorage.clear();
   const input = document
@@ -28,3 +28,5 @@ window.login = async () => {
     }
   }
 };
+
+window.clearErr = clearErr();
