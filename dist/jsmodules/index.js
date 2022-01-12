@@ -107,11 +107,11 @@ window.clearErr = clearErr;
 //   return parcels;
 // };
 
-const logOut = () => {
+window.logOut = () => {
   localStorage.clear();
   window.location.href = '/';
 };
-const toggleMenu = () => {
+window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
 };
