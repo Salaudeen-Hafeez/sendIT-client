@@ -2,8 +2,8 @@
 
 import { adminsData, usersData } from './users/datas.js';
 
-const user = usersData() || adminsData();
 const createProfile = () => {
+  const user = usersData() || adminsData();
   let profileData;
   if (user !== null) {
     if (user.user) {
@@ -33,12 +33,14 @@ const createProfile = () => {
 };
 
 const openUser = () => {
+  const user = usersData();
   if (user.user.users_id) {
     window.location.href = '/user';
   }
 };
 
 const openAdmin = () => {
+  const user = adminsData();
   if (user.admin.users_id) {
     window.location.href = '/admin';
   }
