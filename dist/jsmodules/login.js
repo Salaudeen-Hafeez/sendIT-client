@@ -51,6 +51,7 @@ const fetchAdminData = (data) => {
     });
 };
 const login = () => {
+  localStorage.clear();
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');

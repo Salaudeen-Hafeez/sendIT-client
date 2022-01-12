@@ -9,6 +9,7 @@ const postData = async (url, data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((err) => {
@@ -22,6 +23,7 @@ const postData = async (url, data) => {
   //       to your desire destination as early as possible and safely.</p>
   //     `;
   // sendEmail(data._email, message);
+  console.log(returnData);
   return returnData;
 };
 
