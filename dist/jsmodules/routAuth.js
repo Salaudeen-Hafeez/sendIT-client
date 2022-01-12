@@ -1,3 +1,5 @@
+import { adminsData, usersData } from './users/datas.js';
+
 const authenticateRoute = (pathName) => {
   const authData = usersData() || adminsData();
   const packag = localStorage.getItem('package');
