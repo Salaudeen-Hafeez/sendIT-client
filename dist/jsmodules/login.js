@@ -28,5 +28,3 @@ window.login = async () => {
     }
   }
 };
-
-export { login, displayUserProfile, displayAdmin };
