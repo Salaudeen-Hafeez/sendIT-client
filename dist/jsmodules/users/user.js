@@ -41,10 +41,27 @@ window.logOut = () => {
   window.location.href = '/';
 };
 window.displayUserPackages = async () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { user, packages } = JSON.parse(localStorage.getItem('user'));
   if (!user.user.auth_token) {
     window.location.href = '/login';
   } else {
-    createUserPackage();
+    createUserPackage(packages);
+  }
+};
+
+window.displayPendingPackage = () => {
+  const { user, packages } = JSON.parse(localStorage.getItem('user'));
+  if (!user.auth_token) {
+    window.location.href = '/login';
+  } else {
+    const packageInTrans = packages.filter(
+      (packag) => packag._status === 'In transit'
+    );
+    if (packageInTrans.length === 0) {
+      const packag = { errMessage: 'No pending packages' };
+      createUserPackage(packag);
+    } else {
+      createUserPackage(packageInTrans);
+    }
   }
 };

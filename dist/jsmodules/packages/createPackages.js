@@ -47,13 +47,13 @@ const createPackage = (metrix) => {
 };
 
 // Get the stored uaerPackages data and create the display packages
-const createUserPackage = () => {
+const createUserPackage = (packages) => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
   const user = JSON.parse(localStorage.getItem('user'));
-  if (user.packages.length > 0 && !user.packages.packages) {
+  if (packages.length > 0 && !packages.errMessage) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
-    user.packages.forEach((newPackage) => {
+    packages.forEach((newPackage) => {
       const tableBody = `
       <div class="package" id="userPackage">
       <img
@@ -95,7 +95,7 @@ const createUserPackage = () => {
     });
   } else {
     displayPackage += `<h3 style="text-align: center; color: red">${Object.values(
-      user.packages
+      packages
     )}</h3>`;
   }
   packagesDiv.innerHTML = displayPackage;
