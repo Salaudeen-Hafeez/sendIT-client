@@ -1,5 +1,5 @@
 // Get the stored user data and create the user profile display
-createProfile = () => {
+window.createProfile = () => {
   const user =
     JSON.parse(localStorage.getItem('user')) ||
     JSON.parse(localStorage.getItem('admin'));
@@ -30,7 +30,7 @@ createProfile = () => {
   profile.innerHTML = userProfile;
 };
 
-toggleMenu = () => {
+window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
 };
