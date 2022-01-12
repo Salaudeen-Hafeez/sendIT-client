@@ -1,5 +1,5 @@
-import { fetchData } from '../httpFetch/fetchData';
-import { createUserPackage } from '../packages/createPackages';
+import { fetchData } from '../httpFetch/fetchData.js';
+import { createUserPackage } from '../packages/createPackages.js';
 
 // Get the stored user data and create the user profile display
 window.createProfile = () => {
