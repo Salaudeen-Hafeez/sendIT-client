@@ -50,7 +50,7 @@ const fetchAdminData = (data) => {
       console.log(err);
     });
 };
-const login = () => {
+const login = async () => {
   localStorage.clear();
   const input = document
     .getElementById('inputContainer')
@@ -59,7 +59,7 @@ const login = () => {
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
     if (!email.includes('@sendit.com')) {
-      const user = postData(loginUrl, data);
+      const user = await postData(loginUrl, data);
       if (user.errMessage) {
         displayErr(user);
       } else {
