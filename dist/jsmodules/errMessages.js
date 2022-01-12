@@ -3,11 +3,11 @@ const displayErr = (data) => {
   erro.innerHTML = '';
   erro.innerHTML = Object.values(data);
 };
-const clearErr = (e) => {
-  e.style.border = '1px solid lightgreen';
-  const small = e.parentElement.querySelector('small');
-  small.style.visibility = 'hidden';
-};
+// const clearErr = (e) => {
+//   e.style.border = '1px solid lightgreen';
+//   const small = e.parentElement.querySelector('small');
+//   small.style.visibility = 'hidden';
+// };
 const clearDisplayErr = () => {
   const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
@@ -21,4 +21,4 @@ const setErrorFor = (inp, message) => {
   small.innerHTML = message;
 };
 
-export { displayErr, clearErr, clearDisplayErr, setErrorFor };
+export { displayErr, clearDisplayErr, setErrorFor };
