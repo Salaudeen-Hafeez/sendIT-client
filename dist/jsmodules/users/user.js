@@ -49,7 +49,7 @@ window.displayUserPackages = async () => {
   } else {
     const userPackages = await fetchData(userPackageUrl);
     localStorage.removeItem('packages');
-    localStorage.setItem('packages', JSON.stringify(data));
+    localStorage.setItem('packages', JSON.stringify(userPackages));
     createUserPackage();
   }
 };
