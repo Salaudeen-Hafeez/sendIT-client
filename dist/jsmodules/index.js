@@ -2,6 +2,7 @@
 
 import { authenticateRoute } from './routAuth.js';
 import { clearErr } from './clearErr.js';
+import { login } from './login.js';
 
 const setErrorFor = (inp, message) => {
   inp.style.border = '1px solid red';
@@ -12,16 +13,16 @@ const setErrorFor = (inp, message) => {
   small.innerHTML = message;
 };
 
-const displayErr = (data) => {
-  const erro = document.getElementById('errMessage');
-  erro.innerHTML = '';
-  erro.innerHTML = Object.values(data);
-};
+// const displayErr = (data) => {
+//   const erro = document.getElementById('errMessage');
+//   erro.innerHTML = '';
+//   erro.innerHTML = Object.values(data);
+// };
 
-const clearDisplayErr = () => {
-  const erro = document.getElementById('errMessage');
-  erro.innerHTML = '';
-};
+// const clearDisplayErr = () => {
+//   const erro = document.getElementById('errMessage');
+//   erro.innerHTML = '';
+// };
 
 // const formValidation = (input) => {
 //   const pattern =
@@ -86,25 +87,25 @@ const clearDisplayErr = () => {
 // };
 
 window.clearErr = clearErr;
-const usersData = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  return user;
-};
+// const usersData = () => {
+//   const user = JSON.parse(localStorage.getItem('user'));
+//   return user;
+// };
 
-const adminsData = () => {
-  const admin = JSON.parse(localStorage.getItem('admin'));
-  return admin;
-};
+// const adminsData = () => {
+//   const admin = JSON.parse(localStorage.getItem('admin'));
+//   return admin;
+// };
 
-const packageData = () => {
-  const parcel = JSON.parse(localStorage.getItem('package'));
-  return parcel;
-};
+// const packageData = () => {
+//   const parcel = JSON.parse(localStorage.getItem('package'));
+//   return parcel;
+// };
 
-const packagesData = () => {
-  const parcels = JSON.parse(localStorage.getItem('packages'));
-  return parcels;
-};
+// const packagesData = () => {
+//   const parcels = JSON.parse(localStorage.getItem('packages'));
+//   return parcels;
+// };
 
 const logOut = () => {
   localStorage.clear();
@@ -118,46 +119,46 @@ const toggleMenu = () => {
 const openPackage = () => {
   window.location.href = 'package';
 };
-// Get the stored user data and create the user profile display
-const createUser = () => {
-  const user = usersData();
-  const profile = document.getElementById('userProfile');
-  const userProfile = ` <img
-          src="/images/Lagos4.jpg"
-          alt="profile picture"
-          class="profile-img"
-        />
-        <div class="profile-content">
-          <h1>${user.user._name}</h1>
-          <ul>
-            <li id="username">${user.user._username}</li>
-            <li>${user.user._email}</li>
-            <li>${user._status}</li>
-            <li><a onclick="displayUserPackages()">My packages</a></li>
-            <li><a onclick="displayPendingPackage()">Pending packages</a></li>
-          </ul>
-        </div>`;
-  profile.innerHTML = userProfile;
-};
+// // Get the stored user data and create the user profile display
+// const createUser = () => {
+//   const user = usersData();
+//   const profile = document.getElementById('userProfile');
+//   const userProfile = ` <img
+//           src="/images/Lagos4.jpg"
+//           alt="profile picture"
+//           class="profile-img"
+//         />
+//         <div class="profile-content">
+//           <h1>${user.user._name}</h1>
+//           <ul>
+//             <li id="username">${user.user._username}</li>
+//             <li>${user.user._email}</li>
+//             <li>${user._status}</li>
+//             <li><a onclick="displayUserPackages()">My packages</a></li>
+//             <li><a onclick="displayPendingPackage()">Pending packages</a></li>
+//           </ul>
+//         </div>`;
+//   profile.innerHTML = userProfile;
+// };
 
-const createAdmin = () => {
-  const admin = adminsData();
-  const profile = document.getElementById('userProfile');
-  const adminProfile = ` <img
-          src="/images/Lagos4.jpg"
-          alt="profile picture"
-          class="profile-img"
-        />
-        <div class="profile-content">
-          <h1>${admin.admin._name}</h1>
-          <ul>
-            <li id="adminname">${admin.admin._username}</li>
-            <li>${admin.admin._email}</li>
-            <li>${admin.admin._status}</li>
-          </ul>
-        </div>`;
-  profile.innerHTML = adminProfile;
-};
+// const createAdmin = () => {
+//   const admin = adminsData();
+//   const profile = document.getElementById('userProfile');
+//   const adminProfile = ` <img
+//           src="/images/Lagos4.jpg"
+//           alt="profile picture"
+//           class="profile-img"
+//         />
+//         <div class="profile-content">
+//           <h1>${admin.admin._name}</h1>
+//           <ul>
+//             <li id="adminname">${admin.admin._username}</li>
+//             <li>${admin.admin._email}</li>
+//             <li>${admin.admin._status}</li>
+//           </ul>
+//         </div>`;
+//   profile.innerHTML = adminProfile;
+// };
 
 let pathName = location.pathname;
 let pathNames = [localStorage.getItem('path')];
@@ -167,20 +168,21 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathNames[1]);
 }
+window.login = login;
 
-const openUser = () => {
-  const user = usersData();
-  if (user.user.users_id) {
-    window.location.href = '/user';
-  }
-};
+// const openUser = () => {
+//   const user = usersData();
+//   if (user.user.users_id) {
+//     window.location.href = '/user';
+//   }
+// };
 
-const openAdmin = () => {
-  const admin = adminsData();
-  if (admin.admin.users_id) {
-    window.location.href = '/admin';
-  }
-};
+// const openAdmin = () => {
+//   const admin = adminsData();
+//   if (admin.admin.users_id) {
+//     window.location.href = '/admin';
+//   }
+// };
 
 // // Login the user and store the return user's data in localStorage
 // const fetchUserData = (data) => {
@@ -250,101 +252,102 @@ const openAdmin = () => {
 // };
 // Use the username from the stored user to get the user packages
 
-const fetchPackages = () => {
-  const user = usersData();
-  const { _email, auth_token, users_id, _username } = user.user;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
-    {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// const fetchPackages = () => {
+//   const user = usersData();
+//   const { _email, auth_token, users_id, _username } = user.user;
+//   fetch(
+//     `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
+//     {
+//       method: 'GET',
+//       headers: { 'Content-Type': 'application/json' },
+//     }
+//   )
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.removeItem('packages');
+//       localStorage.setItem('packages', JSON.stringify(data));
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
-const fetchPendingPackages = () => {
-  const user = usersData();
-  const { _email, _username, auth_token } = user.user;
-  const condition = 'In transit';
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${_username}/${auth_token}/packages/${condition}`,
-    {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// const fetchPendingPackages = () => {
+//   const user = usersData();
+//   const { _email, _username, auth_token } = user.user;
+//   const condition = 'In transit';
+//   fetch(
+//     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${_username}/${auth_token}/packages/${condition}`,
+//     {
+//       method: 'GET',
+//       headers: { 'Content-Type': 'application/json' },
+//     }
+//   )
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.removeItem('packages');
+//       localStorage.setItem('packages', JSON.stringify(data));
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
-// Get the stored uaerPackages data and create the display packages
-const createUserPackage = () => {
-  const packagesDiv = document.getElementById('packages');
-  let displayPackage = '';
-  const packages1 = JSON.parse(localStorage.getItem('packages'));
-  if (packages1.length > 0 && !packages1.packages) {
-    displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
-    packages1.forEach((newPackage) => {
-      const tableBody = `
-      <div class="package" id="userPackage">
-      <img
-            src="/images/Lagos4.jpg"
-            alt="profile picture"
-            class="profile-img"
-          />
-          <div class="profile-content">
-            <table>
-              <thead>
-                <tr class="thead">
-                  <th colspan="2">${newPackage._name}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>location</td>
-                  <td>${newPackage._location}</td>
-                </tr>
-                <tr>
-                  <td>Destination</td>
-                  <td>${newPackage._destination}</td>
-                </tr>
-                <tr>
-                  <td>Reciever</td>
-                  <td>${newPackage._reciever}</td>
-                </tr>
-                <tr>
-                  <td colspan="2" class="td-status">
-                    <button onclick="getPackage(this)" value= "${newPackage.parcel_id}" id="parcel-id">${newPackage._status}</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        </div>`;
-      displayPackage += tableBody;
-    });
-  } else {
-    displayPackage += `<h3 style="text-align: center; color: red">${Object.values(
-      packages1
-    )}</h3>`;
-  }
-  packagesDiv.innerHTML = displayPackage;
-};
+// // Get the stored uaerPackages data and create the display packages
+// const createUserPackage = () => {
+//   const packagesDiv = document.getElementById('packages');
+//   let displayPackage = '';
+//   const packages1 = JSON.parse(localStorage.getItem('packages'));
+//   if (packages1.length > 0 && !packages1.packages) {
+//     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
+//     packages1.forEach((newPackage) => {
+//       const tableBody = `
+//       <div class="package" id="userPackage">
+//       <img
+//             src="/images/Lagos4.jpg"
+//             alt="profile picture"
+//             class="profile-img"
+//           />
+//           <div class="profile-content">
+//             <table>
+//               <thead>
+//                 <tr class="thead">
+//                   <th colspan="2">${newPackage._name}</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 <tr>
+//                   <td>location</td>
+//                   <td>${newPackage._location}</td>
+//                 </tr>
+//                 <tr>
+//                   <td>Destination</td>
+//                   <td>${newPackage._destination}</td>
+//                 </tr>
+//                 <tr>
+//                   <td>Reciever</td>
+//                   <td>${newPackage._reciever}</td>
+//                 </tr>
+//                 <tr>
+//                   <td colspan="2" class="td-status">
+//                     <button onclick="getPackage(this)" value= "${newPackage.parcel_id}" id="parcel-id">${newPackage._status}</button>
+//                   </td>
+//                 </tr>
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>
+//         </div>`;
+//       displayPackage += tableBody;
+//     });
+//   } else {
+//     displayPackage += `<h3 style="text-align: center; color: red">${Object.values(
+//       packages1
+//     )}</h3>`;
+//   }
+//   packagesDiv.innerHTML = displayPackage;
+// };
+
 const displayUserPackages = () => {
   const user = usersData();
   if (!user.user.auth_token) {
@@ -386,53 +389,53 @@ const displayPendingPackage = () => {
     }
   }
 };
-const createPackage = (metrix) => {
-  const newPackage = JSON.parse(localStorage.getItem('package'));
-  const tableBody = `
-          <img 
-            src="/images/Lagos4.jpg"
-            alt="profile picture"
-            class="package-img"
-          />
-          <div class="profile-content">
-            <table>
-              <thead>
-                <tr class="thead">
-                  <th colspan="2">${newPackage._name}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Present location</td>
-                  <td>${newPackage._location}</td>
-                </tr>
-                <tr>
-                  <td>Destination</td>
-                  <td>${newPackage._destination}</td>
-                </tr>
-                <tr>
-                  <td>Reciever mobile number</td>
-                  <td>${newPackage._reciever}</td>
-                </tr>
-                <tr>
-                  <td>Distance</td>
-                  <td>${metrix.distance.text}</td>
-                </tr>
-                <tr>
-                  <td>Duration</td>
-                  <td>${metrix.duration.text}</td>
-                </tr>
-                <tr>
-                  <td colspan="2" class="td-status">
-                    <a href="">${newPackage._status}</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>`;
-  return tableBody;
-};
+// const createPackage = (metrix) => {
+//   const newPackage = JSON.parse(localStorage.getItem('package'));
+//   const tableBody = `
+//           <img
+//             src="/images/Lagos4.jpg"
+//             alt="profile picture"
+//             class="package-img"
+//           />
+//           <div class="profile-content">
+//             <table>
+//               <thead>
+//                 <tr class="thead">
+//                   <th colspan="2">${newPackage._name}</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 <tr>
+//                   <td>Present location</td>
+//                   <td>${newPackage._location}</td>
+//                 </tr>
+//                 <tr>
+//                   <td>Destination</td>
+//                   <td>${newPackage._destination}</td>
+//                 </tr>
+//                 <tr>
+//                   <td>Reciever mobile number</td>
+//                   <td>${newPackage._reciever}</td>
+//                 </tr>
+//                 <tr>
+//                   <td>Distance</td>
+//                   <td>${metrix.distance.text}</td>
+//                 </tr>
+//                 <tr>
+//                   <td>Duration</td>
+//                   <td>${metrix.duration.text}</td>
+//                 </tr>
+//                 <tr>
+//                   <td colspan="2" class="td-status">
+//                     <a href="">${newPackage._status}</a>
+//                   </td>
+//                 </tr>
+//               </tbody>
+//             </table>
+//           </div>
+//         </div>`;
+//   return tableBody;
+// };
 
 const loadPackage = () => {
   const admin = adminsData();
@@ -450,63 +453,63 @@ const loadPackage = () => {
   packages.innerHTML = packageData;
 };
 
-const postUser = (data) => {
-  clearDisplayErr();
-  fetch('https://akera-logistics.herokuapp.com/api/v1/users', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      if (data.errMessage) {
-        displayErr(data);
-      } else {
-        localStorage.setItem('user', JSON.stringify(data));
-        openUser();
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  // const message = `
-  //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
-  //       <p>Thank you for choosing sendIT Logistics.</p> <br>
-  //       <p>Below are the details of your new order</p><br>
-  //       <p>As always, we shall do our best to get your package
-  //       to your desire destination as early as possible and safely.</p>
-  //     `;
-  // sendEmail(data._email, message);
-};
+// const postUser = (data) => {
+//   clearDisplayErr();
+//   fetch('https://akera-logistics.herokuapp.com/api/v1/users', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data),
+//   })
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       if (data.errMessage) {
+//         displayErr(data);
+//       } else {
+//         localStorage.setItem('user', JSON.stringify(data));
+//         openUser();
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+//   // const message = `
+//   //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
+//   //       <p>Thank you for choosing sendIT Logistics.</p> <br>
+//   //       <p>Below are the details of your new order</p><br>
+//   //       <p>As always, we shall do our best to get your package
+//   //       to your desire destination as early as possible and safely.</p>
+//   //     `;
+//   // sendEmail(data._email, message);
+// };
 
-const postAdmin = (data) => {
-  clearDisplayErr();
-  fetch('https://akera-logistics.herokuapp.com/api/v1/users/admins', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      if (data.errMessage) {
-        displayErr(data);
-      } else {
-        localStorage.setItem('admin', JSON.stringify(data));
-        openAdmin();
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  // const message = `
-  //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
-  //       <p>Thank you for choosing sendIT Logistics.</p> <br>
-  //       <p>Below are the details of your new order</p><br>
-  //       <p>As always, we shall do our best to get your package
-  //       to your desire destination as early as possible and safely.</p>
-  //     `;
-  // sendEmail(data._email, message);
-};
+// const postAdmin = (data) => {
+//   clearDisplayErr();
+//   fetch('https://akera-logistics.herokuapp.com/api/v1/users/admins', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data),
+//   })
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       if (data.errMessage) {
+//         displayErr(data);
+//       } else {
+//         localStorage.setItem('admin', JSON.stringify(data));
+//         openAdmin();
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+//   // const message = `
+//   //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
+//   //       <p>Thank you for choosing sendIT Logistics.</p> <br>
+//   //       <p>Below are the details of your new order</p><br>
+//   //       <p>As always, we shall do our best to get your package
+//   //       to your desire destination as early as possible and safely.</p>
+//   //     `;
+//   // sendEmail(data._email, message);
+// };
 
 const signUp = () => {
   localStorage.clear();
@@ -533,45 +536,45 @@ const newPackage = () => {
   }
 };
 
-const postPackage = (data) => {
-  const user = usersData();
-  const { _username, _email, auth_token } = user.user;
-  data['username'] = _username;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('package');
-      localStorage.setItem('package', JSON.stringify(data));
-      openUser();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  // const message = `
-  //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
-  //       <p>Thank you for choosing sendIT Logistics.</p> <br>
-  //       <p>Below are the details of your new order</p>
-  //       <ul>
-  //         <li>${data._name}</li>
-  //         </li>From:        ${data._location}</li>
-  //         <li>To:           ${data._destination}</li>
-  //         <li>Status        ${data._status}</li>
-  //         <li>Tracking ID:  ${data._id}</li>
-  //       </ul>
-  //       <br>
-  //       <p>As always, we shall do our best to get your package
-  //       to your desire destination as early as possible and safely.</p>
-  //     `;
-  // sendEmail(data._email, message);
-  fetchPackages();
-};
+// const postPackage = (data) => {
+//   const user = usersData();
+//   const { _username, _email, auth_token } = user.user;
+//   data['username'] = _username;
+//   fetch(
+//     `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`,
+//     {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(data),
+//     }
+//   )
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.removeItem('package');
+//       localStorage.setItem('package', JSON.stringify(data));
+//       openUser();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+//   // const message = `
+//   //       <h2>Dear Mr/Mrs ${data._name}</h2>, <br>
+//   //       <p>Thank you for choosing sendIT Logistics.</p> <br>
+//   //       <p>Below are the details of your new order</p>
+//   //       <ul>
+//   //         <li>${data._name}</li>
+//   //         </li>From:        ${data._location}</li>
+//   //         <li>To:           ${data._destination}</li>
+//   //         <li>Status        ${data._status}</li>
+//   //         <li>Tracking ID:  ${data._id}</li>
+//   //       </ul>
+//   //       <br>
+//   //       <p>As always, we shall do our best to get your package
+//   //       to your desire destination as early as possible and safely.</p>
+//   //     `;
+//   // sendEmail(data._email, message);
+//   fetchPackages();
+// };
 
 const submitPackage = () => {
   const input = document
@@ -583,42 +586,42 @@ const submitPackage = () => {
   }
 };
 
-const putPackage = (data, selectedPackage) => {
-  let user;
-  let email;
-  let userid;
-  let token;
-  if (adminsData()) {
-    user = adminsData();
-    email = user.admin._email;
-    userid = user.admin.users_id;
-    token = user.admin.admin_token;
-  } else {
-    user = usersData();
-    email = user.user._email;
-    userid = user.user.users_id;
-    token = user.user.auth_token;
-  }
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${parseInt(
-      selectedPackage.parcel_id
-    )}`,
-    {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('package');
-      localStorage.setItem('package', JSON.stringify(data));
-      openPackage();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// const putPackage = (data, selectedPackage) => {
+//   let user;
+//   let email;
+//   let userid;
+//   let token;
+//   if (adminsData()) {
+//     user = adminsData();
+//     email = user.admin._email;
+//     userid = user.admin.users_id;
+//     token = user.admin.admin_token;
+//   } else {
+//     user = usersData();
+//     email = user.user._email;
+//     userid = user.user.users_id;
+//     token = user.user.auth_token;
+//   }
+//   fetch(
+//     `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${parseInt(
+//       selectedPackage.parcel_id
+//     )}`,
+//     {
+//       method: 'PUT',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(data),
+//     }
+//   )
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.removeItem('package');
+//       localStorage.setItem('package', JSON.stringify(data));
+//       openPackage();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
 const updateDestination = () => {
   const admin = adminsData();
@@ -671,94 +674,94 @@ const completeOrder = () => {
 
 // Delete data from database
 
-const adminDeleteUser = (e) => {
-  const admin = adminsData();
-  const { _email, admin_token } = admin.admin;
-  const username = e.value;
-  const id = parseInt(e.id);
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
-    {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      // localStorage.removeItem('user');
-      // localStorage.setItem('user', JSON.stringify(data));
-      window.location.reload();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// const adminDeleteUser = (e) => {
+//   const admin = adminsData();
+//   const { _email, admin_token } = admin.admin;
+//   const username = e.value;
+//   const id = parseInt(e.id);
+//   fetch(
+//     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
+//     {
+//       method: 'DELETE',
+//       headers: { 'Content-Type': 'application/json' },
+//     }
+//   )
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       // localStorage.removeItem('user');
+//       // localStorage.setItem('user', JSON.stringify(data));
+//       window.location.reload();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
-const adminDeletePackage = (e) => {
-  const status = e.parentElement.querySelector('button').innerHTML;
-  const admin = adminsData();
-  const parentEl = e.parentElement.parentElement.parentElement.parentElement;
-  let button = parentEl.querySelector('button');
-  const { _email, admin_token } = admin.admin;
-  const username = e.value;
+// const adminDeletePackage = (e) => {
+//   const status = e.parentElement.querySelector('button').innerHTML;
+//   const admin = adminsData();
+//   const parentEl = e.parentElement.parentElement.parentElement.parentElement;
+//   let button = parentEl.querySelector('button');
+//   const { _email, admin_token } = admin.admin;
+//   const username = e.value;
 
-  const id = parseInt(e.id);
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${status}`,
-    {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('package');
-      localStorage.setItem('package', JSON.stringify(data));
-      button.click();
-      button.click();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+//   const id = parseInt(e.id);
+//   fetch(
+//     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${status}`,
+//     {
+//       method: 'DELETE',
+//       headers: { 'Content-Type': 'application/json' },
+//     }
+//   )
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.removeItem('package');
+//       localStorage.setItem('package', JSON.stringify(data));
+//       button.click();
+//       button.click();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
-const fetchUsers = () => {
-  const admin = adminsData();
-  const { _email, admin_token } = admin.admin;
-  if (!admin_token) {
-    window.location.href = '/login';
-  } else {
-    let users = '';
-    const containerdiv = document.getElementById('usersContainer');
-    const container = containerdiv.querySelector('ul');
-    fetch(
-      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
-      {
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        data.forEach((user) => {
-          users += `<li>
-        <div class="userDetails">
-          <h2>${user._name}</h2>
-          <p>${user._username}</p>
-          <p>${user._email}</p>
-          <button onclick="adminFetchUserPackage(this)" value= "${user._username}" id="${user.users_id}">packages</button>
-          <button onclick="adminDeleteUser(this)" value= "${user._username}" id="${user.users_id}">delete user</button>
-          <div class="userCont" id="userCont${user.users_id}"></div>
-        </div>
-      </li>`;
-        });
-        container.innerHTML = users;
-        containerdiv.classList.toggle('open');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-};
+// const fetchUsers = () => {
+//   const admin = adminsData();
+//   const { _email, admin_token } = admin.admin;
+//   if (!admin_token) {
+//     window.location.href = '/login';
+//   } else {
+//     let users = '';
+//     const containerdiv = document.getElementById('usersContainer');
+//     const container = containerdiv.querySelector('ul');
+//     fetch(
+//       `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
+//       {
+//         headers: { 'Content-Type': 'application/json' },
+//       }
+//     )
+//       .then((resp) => resp.json())
+//       .then((data) => {
+//         data.forEach((user) => {
+//           users += `<li>
+//         <div class="userDetails">
+//           <h2>${user._name}</h2>
+//           <p>${user._username}</p>
+//           <p>${user._email}</p>
+//           <button onclick="adminFetchUserPackage(this)" value= "${user._username}" id="${user.users_id}">packages</button>
+//           <button onclick="adminDeleteUser(this)" value= "${user._username}" id="${user.users_id}">delete user</button>
+//           <div class="userCont" id="userCont${user.users_id}"></div>
+//         </div>
+//       </li>`;
+//         });
+//         container.innerHTML = users;
+//         containerdiv.classList.toggle('open');
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   }
+// };
 
 const packageDisplay = (packages) => {
   let packagesDiv = '';
@@ -792,28 +795,28 @@ const adminDisplayUserPackages = (id) => {
   newPackages.classList.toggle('open');
 };
 
-const adminFetchUserPackage = (e) => {
-  const admin = adminsData();
-  const { admin_token, _email } = admin.admin;
-  const username = e.value;
-  const id = e.id;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}/packages`,
-    {
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
+// const adminFetchUserPackage = (e) => {
+//   const admin = adminsData();
+//   const { admin_token, _email } = admin.admin;
+//   const username = e.value;
+//   const id = e.id;
+//   fetch(
+//     `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${id}/${_email}/${admin_token}/packages`,
+//     {
+//       headers: { 'Content-Type': 'application/json' },
+//     }
+//   )
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.removeItem('packages');
+//       localStorage.setItem('packages', JSON.stringify(data));
 
-      adminDisplayUserPackages(id);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+//       adminDisplayUserPackages(id);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
 const showPackages = () => {
   const packages = document.querySelector('.packageContainer');
@@ -837,29 +840,29 @@ const displayPackages = () => {
   newPackages.innerHTML = packageDisplay(packages);
 };
 
-const adminFetchPackages = (cond) => {
-  const admin = adminsData();
-  const { _email, admin_token } = admin.admin;
-  if (!admin_token) {
-    window.location.href = '/login';
-  } else {
-    fetch(
-      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/packages/${cond}`,
-      {
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        localStorage.removeItem('packages');
-        localStorage.setItem('packages', JSON.stringify(data));
-        displayPackages();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-};
+// const adminFetchPackages = (cond) => {
+//   const admin = adminsData();
+//   const { _email, admin_token } = admin.admin;
+//   if (!admin_token) {
+//     window.location.href = '/login';
+//   } else {
+//     fetch(
+//       `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/packages/${cond}`,
+//       {
+//         headers: { 'Content-Type': 'application/json' },
+//       }
+//     )
+//       .then((resp) => resp.json())
+//       .then((data) => {
+//         localStorage.removeItem('packages');
+//         localStorage.setItem('packages', JSON.stringify(data));
+//         displayPackages();
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   }
+// };
 
 const fetchNewPackages = () => {
   adminFetchPackages('At the location');
