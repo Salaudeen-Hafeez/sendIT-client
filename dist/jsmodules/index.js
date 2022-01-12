@@ -23,67 +23,67 @@ const clearDisplayErr = () => {
   erro.innerHTML = '';
 };
 
-const formValidation = (input) => {
-  const pattern =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const contactPattern =
-    /^[\+]?([0-9][\s]?|[0-9]?)([(][0-9]{3}[)][\s]?|[0-9]{3}[-\s\.]?)[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-  const data = {};
-  let emptyInput = '';
-  input.forEach((inp) => {
-    if (inp.value.trim() === '') {
-      if (inp.getAttribute('name') === 'password1') {
-        emptyInput = 'true';
-        setErrorFor(inp, 'password confirmation can not be blank');
-      } else {
-        const message = `${inp.getAttribute('name')} can not be blank`;
-        emptyInput = 'true';
-        setErrorFor(inp, message);
-      }
-    } else if (inp.getAttribute('name') === 'frajile') {
-      if (inp.checked) {
-        data[inp.getAttribute('name')] = 'the package is frajile';
-      } else {
-        data[inp.getAttribute('name')] = 'not frajile';
-      }
-    } else if (inp.getAttribute('name') === 'email') {
-      if (pattern.test(inp.value.trim().toLowerCase())) {
-        data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
-      } else {
-        emptyInput = 'true';
-        setErrorFor(inp, 'Invalid email address');
-      }
-    } else if (
-      inp.getAttribute('name') === 'reciever' ||
-      inp.getAttribute('name') === 'sender'
-    ) {
-      if (contactPattern.test(inp.value.trim())) {
-        data[inp.getAttribute('name')] = inp.value.trim();
-      } else {
-        emptyInput = 'true';
-        setErrorFor(inp, 'Invalid phone number');
-      }
-    } else if (inp.getAttribute('name') === 'password') {
-      if (inp.value.trim().length < 6) {
-        emptyInput = 'true';
-        setErrorFor(inp, 'The password length must be 6 or more character');
-      } else {
-        data[inp.getAttribute('name')] = inp.value.trim();
-      }
-    } else if (inp.getAttribute('name') === 'password1') {
-      if (inp.value.trim().length < 6) {
-        emptyInput = 'true';
-        setErrorFor(inp, 'The password length must be 6 or more');
-      } else if (data.password !== inp.value.trim()) {
-        emptyInput = 'true';
-        setErrorFor(inp, 'The password does not match');
-      }
-    } else {
-      data[inp.getAttribute('name')] = inp.value.trim();
-    }
-  });
-  return { emptyInput, data };
-};
+// const formValidation = (input) => {
+//   const pattern =
+//     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//   const contactPattern =
+//     /^[\+]?([0-9][\s]?|[0-9]?)([(][0-9]{3}[)][\s]?|[0-9]{3}[-\s\.]?)[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+//   const data = {};
+//   let emptyInput = '';
+//   input.forEach((inp) => {
+//     if (inp.value.trim() === '') {
+//       if (inp.getAttribute('name') === 'password1') {
+//         emptyInput = 'true';
+//         setErrorFor(inp, 'password confirmation can not be blank');
+//       } else {
+//         const message = `${inp.getAttribute('name')} can not be blank`;
+//         emptyInput = 'true';
+//         setErrorFor(inp, message);
+//       }
+//     } else if (inp.getAttribute('name') === 'frajile') {
+//       if (inp.checked) {
+//         data[inp.getAttribute('name')] = 'the package is frajile';
+//       } else {
+//         data[inp.getAttribute('name')] = 'not frajile';
+//       }
+//     } else if (inp.getAttribute('name') === 'email') {
+//       if (pattern.test(inp.value.trim().toLowerCase())) {
+//         data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
+//       } else {
+//         emptyInput = 'true';
+//         setErrorFor(inp, 'Invalid email address');
+//       }
+//     } else if (
+//       inp.getAttribute('name') === 'reciever' ||
+//       inp.getAttribute('name') === 'sender'
+//     ) {
+//       if (contactPattern.test(inp.value.trim())) {
+//         data[inp.getAttribute('name')] = inp.value.trim();
+//       } else {
+//         emptyInput = 'true';
+//         setErrorFor(inp, 'Invalid phone number');
+//       }
+//     } else if (inp.getAttribute('name') === 'password') {
+//       if (inp.value.trim().length < 6) {
+//         emptyInput = 'true';
+//         setErrorFor(inp, 'The password length must be 6 or more character');
+//       } else {
+//         data[inp.getAttribute('name')] = inp.value.trim();
+//       }
+//     } else if (inp.getAttribute('name') === 'password1') {
+//       if (inp.value.trim().length < 6) {
+//         emptyInput = 'true';
+//         setErrorFor(inp, 'The password length must be 6 or more');
+//       } else if (data.password !== inp.value.trim()) {
+//         emptyInput = 'true';
+//         setErrorFor(inp, 'The password does not match');
+//       }
+//     } else {
+//       data[inp.getAttribute('name')] = inp.value.trim();
+//     }
+//   });
+//   return { emptyInput, data };
+// };
 
 window.clearErr = clearErr;
 const usersData = () => {
@@ -160,7 +160,6 @@ const createAdmin = () => {
 };
 
 let pathName = location.pathname;
-console.log(pathName);
 let pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
@@ -183,72 +182,72 @@ const openAdmin = () => {
   }
 };
 
-// Login the user and store the return user's data in localStorage
-const fetchUserData = (data) => {
-  clearDisplayErr();
-  fetch('https://akera-logistics.herokuapp.com/api/v1/users/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.clear();
-      if (data.errMessage) {
-        displayErr(data);
-      } else {
-        localStorage.setItem('user', JSON.stringify(data));
-        openUser();
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// // Login the user and store the return user's data in localStorage
+// const fetchUserData = (data) => {
+//   clearDisplayErr();
+//   fetch('https://akera-logistics.herokuapp.com/api/v1/users/login', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data),
+//   })
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.clear();
+//       if (data.errMessage) {
+//         displayErr(data);
+//       } else {
+//         localStorage.setItem('user', JSON.stringify(data));
+//         openUser();
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
-// Login the user and store the return admin's data in localStorage
-const fetchAdminData = (data) => {
-  fetch('https://akera-logistics.herokuapp.com/api/v1/users/admins/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.clear();
-      if (data.errMessage) {
-        displayErr(data);
-      } else {
-        localStorage.setItem('admin', JSON.stringify(data));
-        openAdmin();
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-window.login = () => {
-  const input = document
-    .getElementById('inputContainer')
-    .querySelectorAll('input');
-  const email = input[0].value.trim().toLowerCase();
-  const validatedLogin = formValidation(input);
-  if (!validatedLogin.emptyInput) {
-    if (!email.includes('@sendit.com')) {
-      fetchUserData(validatedLogin.data);
-    } else {
-      fetchAdminData(validatedLogin.data);
-    }
-  }
-};
+// // Login the user and store the return admin's data in localStorage
+// const fetchAdminData = (data) => {
+//   fetch('https://akera-logistics.herokuapp.com/api/v1/users/admins/login', {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data),
+//   })
+//     .then((resp) => resp.json())
+//     .then((data) => {
+//       localStorage.clear();
+//       if (data.errMessage) {
+//         displayErr(data);
+//       } else {
+//         localStorage.setItem('admin', JSON.stringify(data));
+//         openAdmin();
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+// window.login = () => {
+//   const input = document
+//     .getElementById('inputContainer')
+//     .querySelectorAll('input');
+//   const email = input[0].value.trim().toLowerCase();
+//   const validatedLogin = formValidation(input);
+//   if (!validatedLogin.emptyInput) {
+//     if (!email.includes('@sendit.com')) {
+//       fetchUserData(validatedLogin.data);
+//     } else {
+//       fetchAdminData(validatedLogin.data);
+//     }
+//   }
+// };
 
-const displayUserProfile = () => {
-  createUser();
-};
+// const displayUserProfile = () => {
+//   createUser();
+// };
 
-const displayAdmin = () => {
-  createAdmin();
-};
+// const displayAdmin = () => {
+//   createAdmin();
+// };
 // Use the username from the stored user to get the user packages
 
 const fetchPackages = () => {
