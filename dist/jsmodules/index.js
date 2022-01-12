@@ -1,6 +1,7 @@
 // const apiKey = 'AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA';
 
 import { authenticateRoute } from './routAuth.js';
+import { clearErr } from './clearErr.js';
 
 const setErrorFor = (inp, message) => {
   inp.style.border = '1px solid red';
@@ -84,11 +85,7 @@ const formValidation = (input) => {
   return { emptyInput, data };
 };
 
-const clearErr = (e) => {
-  e.style.border = '1px solid lightgreen';
-  const small = e.parentElement.querySelector('small');
-  small.style.visibility = 'hidden';
-};
+window.clearErr = clearErr;
 const usersData = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   return user;
