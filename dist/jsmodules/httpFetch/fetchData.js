@@ -1,11 +1,9 @@
 import { clearDisplayErr } from '../errMessages.js';
-
-const postData = async (url, data) => {
+const fetchData = async (url) => {
   clearDisplayErr();
   let returnData = await fetch(url, {
-    method: 'POST',
+    method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
   })
     .then((resp) => resp.json())
     .then((data) => {
@@ -16,4 +14,4 @@ const postData = async (url, data) => {
     });
   return returnData;
 };
-export { postData };
+export { fetchData };
