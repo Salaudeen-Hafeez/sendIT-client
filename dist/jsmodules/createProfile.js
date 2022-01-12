@@ -1,5 +1,7 @@
 // Get the stored user data and create the user profile display
 
+import { adminsData, usersData } from './users/datas.js';
+
 const user = usersData() || adminsData();
 const createProfile = () => {
   let profileData;

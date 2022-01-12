@@ -1,3 +1,5 @@
+import { clearDisplayErr } from '../errMessages.js';
+
 const postData = async (url, data) => {
   clearDisplayErr();
   let returnData = await fetch(url, {
