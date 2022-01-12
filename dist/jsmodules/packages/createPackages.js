@@ -50,10 +50,10 @@ const createPackage = (metrix) => {
 const createUserPackage = () => {
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
-  const packages1 = JSON.parse(localStorage.getItem('packages'));
-  if (packages1.length > 0 && !packages1.packages) {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user.packages.length > 0 && !user.packages.packages) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
-    packages1.forEach((newPackage) => {
+    user.packages.forEach((newPackage) => {
       const tableBody = `
       <div class="package" id="userPackage">
       <img
@@ -95,7 +95,7 @@ const createUserPackage = () => {
     });
   } else {
     displayPackage += `<h3 style="text-align: center; color: red">${Object.values(
-      packages1
+      user.packages
     )}</h3>`;
   }
   packagesDiv.innerHTML = displayPackage;
