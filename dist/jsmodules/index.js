@@ -240,7 +240,6 @@ if (pathNames[0] !== pathNames[1]) {
 //     }
 //   }
 // };
-
 // window.displayUserProfile = displayUserProfile;
 
 // const displayAdmin = () => {
@@ -344,47 +343,47 @@ if (pathNames[0] !== pathNames[1]) {
 //   packagesDiv.innerHTML = displayPackage;
 // };
 
-const displayUserPackages = () => {
-  const user = usersData();
-  if (!user.user.auth_token) {
-    window.location.href = '/login';
-  } else {
-    fetchPackages();
-    setTimeout(createUserPackage, 1200);
-  }
-};
+// const displayUserPackages = () => {
+//   const user = usersData();
+//   if (!user.user.auth_token) {
+//     window.location.href = '/login';
+//   } else {
+//     fetchPackages();
+//     setTimeout(createUserPackage, 1200);
+//   }
+// };
 
-const displayPendingPackage = () => {
-  const user = usersData();
-  const packages1 = JSON.parse(localStorage.getItem('packages'));
-  if (!user.user.auth_token) {
-    window.location.href = '/login';
-  } else if (
-    !packages1 ||
-    packages1.length === 0 ||
-    Object.keys(packages1).length !== 0
-  ) {
-    fetchPendingPackages();
-    setTimeout(createUserPackage, 1200);
-  } else {
-    const packageInTrans = packages1.filter(
-      (packag) => packag._status === 'In transit'
-    );
-    if (packageInTrans.length === 0) {
-      localStorage.removeItem('packages');
-      const packag = '<h3>No pending packages</h3>';
-      localStorage.setItem(
-        'packages',
-        JSON.stringify({ ErrorMessage: packag })
-      );
-      setTimeout(createUserPackage, 1200);
-    } else {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(packageInTrans));
-      setTimeout(createUserPackage, 1200);
-    }
-  }
-};
+// const displayPendingPackage = () => {
+//   const user = usersData();
+//   const packages1 = JSON.parse(localStorage.getItem('packages'));
+//   if (!user.user.auth_token) {
+//     window.location.href = '/login';
+//   } else if (
+//     !packages1 ||
+//     packages1.length === 0 ||
+//     Object.keys(packages1).length !== 0
+//   ) {
+//     fetchPendingPackages();
+//     setTimeout(createUserPackage, 1200);
+//   } else {
+//     const packageInTrans = packages1.filter(
+//       (packag) => packag._status === 'In transit'
+//     );
+//     if (packageInTrans.length === 0) {
+//       localStorage.removeItem('packages');
+//       const packag = '<h3>No pending packages</h3>';
+//       localStorage.setItem(
+//         'packages',
+//         JSON.stringify({ ErrorMessage: packag })
+//       );
+//       setTimeout(createUserPackage, 1200);
+//     } else {
+//       localStorage.removeItem('packages');
+//       localStorage.setItem('packages', JSON.stringify(packageInTrans));
+//       setTimeout(createUserPackage, 1200);
+//     }
+//   }
+// };
 // const createPackage = (metrix) => {
 //   const newPackage = JSON.parse(localStorage.getItem('package'));
 //   const tableBody = `
@@ -433,21 +432,21 @@ const displayPendingPackage = () => {
 //   return tableBody;
 // };
 
-const loadPackage = () => {
-  const admin = adminsData();
-  const packages = document.getElementById('userProfile');
-  const status = document.getElementById('updateStatus');
-  const location = document.getElementById('location');
-  const heading = document.getElementById('heading');
-  if (admin) {
-    status.classList.toggle('open');
-    location.innerHTML = 'New location';
-    heading.innerHTML = 'Fill the form below to update the package status';
-  }
-  const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
-  const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
-  packages.innerHTML = packageData;
-};
+// const loadPackage = () => {
+//   const admin = adminsData();
+//   const packages = document.getElementById('userProfile');
+//   const status = document.getElementById('updateStatus');
+//   const location = document.getElementById('location');
+//   const heading = document.getElementById('heading');
+//   if (admin) {
+//     status.classList.toggle('open');
+//     location.innerHTML = 'New location';
+//     heading.innerHTML = 'Fill the form below to update the package status';
+//   }
+//   const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
+//   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
+//   packages.innerHTML = packageData;
+// };
 
 // const postUser = (data) => {
 //   clearDisplayErr();
@@ -652,17 +651,17 @@ const cancelOrder = () => {
     putPackage(data, selectedPackage);
   }
 };
-const getPackage = (td) => {
-  localStorage.removeItem('package');
-  const parcelId = td.value;
-  const userPackage = JSON.parse(localStorage.getItem('packages'));
-  userPackage.forEach((packageData) => {
-    if (packageData.parcel_id === parseInt(parcelId)) {
-      localStorage.setItem('package', JSON.stringify(packageData));
-    }
-  });
-  openPackage();
-};
+// const getPackage = (td) => {
+//   localStorage.removeItem('package');
+//   const parcelId = td.value;
+//   const userPackage = JSON.parse(localStorage.getItem('packages'));
+//   userPackage.forEach((packageData) => {
+//     if (packageData.parcel_id === parseInt(parcelId)) {
+//       localStorage.setItem('package', JSON.stringify(packageData));
+//     }
+//   });
+//   openPackage();
+// };
 
 const completeOrder = () => {
   window.history.go(-1);
@@ -922,7 +921,7 @@ function geocodeAddress(parameters, address) {
     );
 }
 
-function initMap() {
+window.initMap = () => {
   const { _location, _destination } = JSON.parse(
     localStorage.getItem('package')
   );
@@ -943,7 +942,7 @@ function initMap() {
   });
   var input3 = document.getElementById('newDestination');
   var autocomplete3 = new google.maps.places.Autocomplete(input3);
-}
+};
 
 function autoCompleteAddress() {
   var input = document.getElementById('location');

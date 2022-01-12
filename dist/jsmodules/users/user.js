@@ -1,4 +1,3 @@
-import { fetchData } from '../httpFetch/fetchData.js';
 import { createUserPackage } from '../packages/createPackages.js';
 
 // Get the stored user data and create the user profile display
@@ -58,10 +57,20 @@ window.displayPendingPackage = () => {
       (packag) => packag._status === 'In transit'
     );
     if (packageInTrans.length === 0) {
-      const packag = { errMessage: 'No pending packages' };
+      const packag = { errMessage: 'You do not have package in transit' };
       createUserPackage(packag);
     } else {
       createUserPackage(packageInTrans);
     }
   }
+};
+
+window.getPackage = (td) => {
+  const parcelId = parseInt(td.value);
+  const { packages } = JSON.parse(localStorage.getItem('user'));
+  const packag = packages.filter((packageData) => {
+    packageData.parcel_id === parcelId;
+  });
+  localStorage.setItem('package', JSON.stringify(packag));
+  window.location.href = '/package';
 };
