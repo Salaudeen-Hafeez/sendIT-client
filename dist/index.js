@@ -190,10 +190,10 @@ const authenticateRoute = (pathName) => {
         window.location.replace('https://akera-logistics.netlify.app/admin');
       }
     case '/login':
-      if (authData !== null && authData.user) {
-        if (authData.user.auth_token) {
+      if (authData !== null) {
+        if (authData.user && authData.user.auth_token) {
           window.location.replace('https://akera-logistics.netlify.app/user');
-        } else if (authData.admin.admin_token) {
+        } else if (authData.admin && authData.admin.admin_token) {
           window.location.replace('https://akera-logistics.netlify.app/admin');
         } else {
           window.location.replace('https://akera-logistics.netlify.app/login');
