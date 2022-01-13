@@ -48,13 +48,14 @@ window.updateDestination = async () => {
         _location: data1.destination,
         _status: data1.status,
       };
-      const deletedPackage = await putPackage(userUpdateUrl, data);
-      localStorage.setItem('package', JSON.stringify(deletedPackage));
+      const updatedPackage = await putPackage(userUpdateUrl, data);
+      localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     } else {
       const data = { _destination: data1.destination };
-      const deletedPackage = await putPackage(userUpdateUrl, data);
-      localStorage.setItem('package', JSON.stringify(deletedPackage));
+      const updatedPackage = await putPackage(userUpdateUrl, data);
+      console.log(updatedPackage);
+      localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     }
   }
