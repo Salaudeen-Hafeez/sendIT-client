@@ -67,7 +67,7 @@ window.displayPendingPackage = () => {
 
 window.getPackage = (td) => {
   const parcelId = td.value;
-  console.log(parcelId);
+  console.log(typeof parcelId);
   const { packages } = JSON.parse(localStorage.getItem('user'));
   console.log(packages);
   const packag = packages.filter((packageData) => {
