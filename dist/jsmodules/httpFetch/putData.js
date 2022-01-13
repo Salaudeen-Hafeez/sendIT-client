@@ -6,6 +6,7 @@ const putPackage = async (url, data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((err) => {
