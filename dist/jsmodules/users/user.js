@@ -72,6 +72,6 @@ window.getPackage = (td) => {
     (packageData) => packageData.parcel_id === parcelId
   );
   console.log(packag);
-  localStorage.setItem('package', JSON.stringify(packag));
+  localStorage.setItem('package', JSON.stringify(packag[0]));
   window.location.href = '/package';
 };
