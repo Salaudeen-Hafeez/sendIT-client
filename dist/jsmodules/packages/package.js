@@ -64,7 +64,9 @@ const initMap = () => {
 
   const add = [];
   const parameters = { geocoder, map, add, service };
+  console.log(addresses);
   addresses.forEach((address) => {
+    console.log(address);
     geocodeAddress(parameters, address);
   });
   var input3 = document.getElementById('newDestination');
