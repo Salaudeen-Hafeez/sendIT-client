@@ -48,7 +48,7 @@ function geocodeAddress(parameters, address) {
     );
 }
 
-window.initMap = function () {
+window.initMap = () => {
   const { _location, _destination } = JSON.parse(
     localStorage.getItem('package')
   );
