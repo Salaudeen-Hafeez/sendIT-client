@@ -52,10 +52,10 @@ window.updateDestination = async () => {
       localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     } else {
-      const addres = data1.destination;
+      const add = data1.destination;
       console.log(addres);
       const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ addres }).then(({ results }) => {
+      geocoder.geocode({ address: add }).then(({ results }) => {
         console.log(results);
       });
       const data = { _destination: data1.destination };
