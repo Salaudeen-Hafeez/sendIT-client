@@ -52,18 +52,18 @@ window.updateDestination = async () => {
       localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     } else {
-      const add = data1.destination;
-      console.log(add);
-      const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: add }).then(({ results, status }) => {
-        console.log(results);
-        console.log(status);
-      });
+      //   const add = data1.destination;
+      //   console.log(add);
+      //   const geocoder = new google.maps.Geocoder();
+      //   geocoder.geocode({ address: add }).then(({ results, status }) => {
+      //     console.log(results);
+      //     console.log(status);
+      //   });
       const data = { _destination: data1.destination };
       const updatedPackage = await putPackage(userUpdateUrl, data);
       console.log(updatedPackage);
       localStorage.setItem('package', JSON.stringify(updatedPackage));
-      // window.location.reload();
+      window.location.reload();
     }
   }
 };
@@ -91,6 +91,7 @@ function geocodeAddress(parameters, address) {
         };
         // get distance matrix response
         service.getDistanceMatrix(request).then((response) => {
+          console.log(response);
           localStorage.setItem('distanceMetrix', JSON.stringify(response));
         });
       }
@@ -105,30 +106,25 @@ function geocodeAddress(parameters, address) {
     );
 }
 
-const initMap = () => {
-  const { _location, _destination } = JSON.parse(
-    localStorage.getItem('package')
-  );
-  const bounds = new google.maps.LatLngBounds();
-  const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 6.5095, lng: 3.3711 },
-    zoom: 8,
-  });
-  // initialize services
-  const geocoder = new google.maps.Geocoder();
-  const service = new google.maps.DistanceMatrixService();
-  const addresses = [_destination, _location];
+const { _location, _destination } = JSON.parse(localStorage.getItem('package'));
+const bounds = new google.maps.LatLngBounds();
+const map = new google.maps.Map(document.getElementById('map'), {
+  center: { lat: 6.5095, lng: 3.3711 },
+  zoom: 8,
+});
+// initialize services
+const geocoder = new google.maps.Geocoder();
+const service = new google.maps.DistanceMatrixService();
+const addresses = [_destination, _location];
 
-  const add = [];
-  const parameters = { geocoder, map, add, service };
+const add = [];
+const parameters = { geocoder, map, add, service };
 
-  addresses.forEach((address) => {
-    geocodeAddress(parameters, address);
-  });
-  var input3 = document.getElementById('newDestination');
-  var autocomplete3 = new google.maps.places.Autocomplete(input3);
-};
-initMap();
+addresses.forEach((address) => {
+  geocodeAddress(parameters, address);
+});
+var input3 = document.getElementById('newDestination');
+var autocomplete3 = new google.maps.places.Autocomplete(input3);
 
 window.autoCompleteAddress = function () {
   var input = document.getElementById('location');
