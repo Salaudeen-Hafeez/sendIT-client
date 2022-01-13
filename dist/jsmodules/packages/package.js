@@ -9,8 +9,8 @@ const geocodeAddress = async (geocoder, address) => {
     .geocode({ address })
     .then(({ results }) => {
       return {
-        distMtrxAdd: results[0].formatted_address,
-        mapMrkAdd: results[0].geometry.location,
+        add1: results[0].formatted_address,
+        add2: results[0].geometry.location,
       };
     })
     .catch((e) =>
@@ -45,9 +45,9 @@ const service = new google.maps.DistanceMatrixService();
 const addresses = [_destination, _location];
 const add = [];
 addresses.forEach((address) => {
-  const { distMtrxAdd, mapMrkAdd } = await geocodeAddress(geocoder, address);
-  add.push(distMtrxAdd);
-  map.setCenter(mapMrkAdd);
+  const { add1, add2 } = await geocodeAddress(geocoder, address);
+  add1.push(distMtrxAdd);
+  map.setCenter(add2);
   new google.maps.Marker({
     map,
     mapMrkAdd,
