@@ -33,7 +33,8 @@ window.cancelOrder = async () => {
     )}`;
     const data = { _status: 'Order Canceled' };
     const deletedPackage = await putPackage(cancelUrl, data);
-    console.log(deletedPackage);
+    localStorage.setItem('package', JSON.stringify(deletedPackage));
+    window.location.reload();
   }
 };
 
