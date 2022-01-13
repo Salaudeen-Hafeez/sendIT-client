@@ -47,7 +47,7 @@ const service = new google.maps.DistanceMatrixService();
 const addresses = [_destination, _location];
 const add = [];
 addresses.forEach((address) => {
-  const { add1, add2 } = geocodeAddress(geocoder, address);
+  const { add1, add2 } = await geocodeAddress(geocoder, address);
   add.push(add1);
   map.setCenter(add2);
   new google.maps.Marker({
