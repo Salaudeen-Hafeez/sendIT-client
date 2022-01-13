@@ -39,7 +39,7 @@ window.logOut = () => {
   localStorage.clear();
   window.location.href = '/';
 };
-window.displayUserPackages = async () => {
+window.displayUserPackages = () => {
   const { user, packages } = JSON.parse(localStorage.getItem('user'));
   if (!user.auth_token) {
     window.location.href = '/login';
@@ -67,11 +67,9 @@ window.displayPendingPackage = () => {
 window.getPackage = (td) => {
   const parcelId = parseInt(td.value);
   const { packages } = JSON.parse(localStorage.getItem('user'));
-  console.log(packages);
   const packag = packages.filter(
     (packageData) => packageData.parcel_id === parcelId
   );
-  console.log(packag);
   localStorage.setItem('package', JSON.stringify(packag[0]));
   window.location.href = '/package';
 };

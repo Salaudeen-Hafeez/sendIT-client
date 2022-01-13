@@ -3,6 +3,61 @@ import { userUpdateUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
 
+// Google map API call and services
+const geocodeAddress = async (geocoder, address) => {
+  let geocodeResult = await geocoder
+    .geocode({ address })
+    .then(({ results }) => {
+      return {
+        distMtrxAdd: results[0].formatted_address,
+        mapMrkAdd: results[0].geometry.location,
+      };
+    })
+    .catch((e) =>
+      alert(`Geocode was not successful for the following reason: ${e}`)
+    );
+  return geocodeResult;
+};
+const getDistance = async (service, add) => {
+  const request = {
+    origins: [add[0]],
+    destinations: [add[1]],
+    travelMode: google.maps.TravelMode.DRIVING,
+    unitSystem: google.maps.UnitSystem.METRIC,
+    avoidHighways: false,
+    avoidTolls: false,
+  };
+  // get distance matrix response
+  let distance = await service.getDistanceMatrix(request).then((response) => {
+    return response;
+  });
+  return distance;
+};
+const { _location, _destination } = JSON.parse(localStorage.getItem('package'));
+const bounds = new google.maps.LatLngBounds();
+const map = new google.maps.Map(document.getElementById('map'), {
+  center: { lat: 6.5095, lng: 3.3711 },
+  zoom: 8,
+});
+// initialize services
+const geocoder = new google.maps.Geocoder();
+const service = new google.maps.DistanceMatrixService();
+const addresses = [_destination, _location];
+const add = [];
+addresses.forEach((address) => {
+  const { distMtrxAdd, mapMrkAdd } = await geocodeAddress(geocoder, address);
+  add.push(distMtrxAdd);
+  map.setCenter(mapMrkAdd);
+  new google.maps.Marker({
+    map,
+    mapMrkAdd,
+  });
+});
+window.clearErr = (e) => {
+  e.style.border = '1px solid lightgreen';
+  const small = e.parentElement.querySelector('small');
+  small.style.visibility = 'hidden';
+};
 window.loadPackage = () => {
   const admin = JSON.parse(localStorage.getItem('admin'));
   const packages = document.getElementById('userProfile');
@@ -14,7 +69,7 @@ window.loadPackage = () => {
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
   }
-  const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
+  const distanceMetrix = await getDistance(service, add);
   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
@@ -67,62 +122,7 @@ window.updateDestination = async () => {
     }
   }
 };
-window.clearErr = (e) => {
-  e.style.border = '1px solid lightgreen';
-  const small = e.parentElement.querySelector('small');
-  small.style.visibility = 'hidden';
-};
 
-// Google map API call and services
-const geocodeAddress = (parameters, address) => {
-  const { geocoder, map, add, service } = parameters;
-  geocoder
-    .geocode({ address })
-    .then(({ results }) => {
-      add.push(results[0].formatted_address);
-      if (add.length >> 1) {
-        const request = {
-          origins: [add[0]],
-          destinations: [add[1]],
-          travelMode: google.maps.TravelMode.DRIVING,
-          unitSystem: google.maps.UnitSystem.METRIC,
-          avoidHighways: false,
-          avoidTolls: false,
-        };
-        // get distance matrix response
-        service.getDistanceMatrix(request).then((response) => {
-          console.log(response);
-          localStorage.setItem('distanceMetrix', JSON.stringify(response));
-        });
-      }
-      map.setCenter(results[0].geometry.location);
-      new google.maps.Marker({
-        map,
-        position: results[0].geometry.location,
-      });
-    })
-    .catch((e) =>
-      alert(`Geocode was not successful for the following reason: ${e}`)
-    );
-};
-
-const { _location, _destination } = JSON.parse(localStorage.getItem('package'));
-const bounds = new google.maps.LatLngBounds();
-const map = new google.maps.Map(document.getElementById('map'), {
-  center: { lat: 6.5095, lng: 3.3711 },
-  zoom: 8,
-});
-// initialize services
-const geocoder = new google.maps.Geocoder();
-const service = new google.maps.DistanceMatrixService();
-const addresses = [_destination, _location];
-
-const add = [];
-const parameters = { geocoder, map, add, service };
-
-addresses.forEach((address) => {
-  geocodeAddress(parameters, address);
-});
 var input3 = document.getElementById('newDestination');
 var autocomplete3 = new google.maps.places.Autocomplete(input3);
 
