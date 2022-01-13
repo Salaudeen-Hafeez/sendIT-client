@@ -64,17 +64,12 @@ window.displayPendingPackage = () => {
     }
   }
 };
-
 window.getPackage = (td) => {
   const parcelId = parseInt(td.value);
-  console.log(typeof parcelId);
   const { packages } = JSON.parse(localStorage.getItem('user'));
-  console.log(packages);
   const packag = packages.filter((packageData) => {
-    console.log(typeof packageData.parcel_id);
-    packageData.parcel_id === parseInt(parcelId);
+    packageData.parcel_id === parcelId;
+    localStorage.setItem('package', JSON.stringify(packag));
   });
-  console.log(packag);
-  localStorage.setItem('package', JSON.stringify(packag));
-  //window.location.href = '/package';
+  window.location.href = '/package';
 };
