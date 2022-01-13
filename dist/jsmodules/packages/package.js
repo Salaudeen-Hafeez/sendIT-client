@@ -74,7 +74,7 @@ window.clearErr = (e) => {
 };
 
 // Google map API call and services
-function geocodeAddress(parameters, address) {
+const geocodeAddress = (parameters, address) => {
   const { geocoder, map, add, service } = parameters;
   geocoder
     .geocode({ address })
@@ -104,7 +104,7 @@ function geocodeAddress(parameters, address) {
     .catch((e) =>
       alert(`Geocode was not successful for the following reason: ${e}`)
     );
-}
+};
 
 const { _location, _destination } = JSON.parse(localStorage.getItem('package'));
 const bounds = new google.maps.LatLngBounds();
