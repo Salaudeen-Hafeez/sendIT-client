@@ -53,7 +53,7 @@ window.updateDestination = async () => {
       window.location.reload();
     } else {
       const add = data1.destination;
-      console.log(addres);
+      console.log(add);
       const geocoder = new google.maps.Geocoder();
       geocoder.geocode({ address: add }).then(({ results }) => {
         console.log(results);
