@@ -69,7 +69,8 @@ window.getPackage = (td) => {
   const { packages } = JSON.parse(localStorage.getItem('user'));
   const packag = packages.filter((packageData) => {
     packageData.parcel_id === parcelId;
-    localStorage.setItem('package', JSON.stringify(packag));
   });
+  console.log(packag);
+  localStorage.setItem('package', JSON.stringify(packag));
   window.location.href = '/package';
 };
