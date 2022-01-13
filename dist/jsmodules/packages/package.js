@@ -58,7 +58,7 @@ window.clearErr = (e) => {
   const small = e.parentElement.querySelector('small');
   small.style.visibility = 'hidden';
 };
-window.loadPackage = () => {
+window.loadPackage = async () => {
   const admin = JSON.parse(localStorage.getItem('admin'));
   const packages = document.getElementById('userProfile');
   const status = document.getElementById('updateStatus');
@@ -69,8 +69,8 @@ window.loadPackage = () => {
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
   }
-  const distanceMetrix = await getDistance(service, add);
-  const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
+  const distMetrix = await getDistance(service, add);
+  const packageData = createPackage(distMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
 
