@@ -40,12 +40,12 @@ const map = new google.maps.Map(document.getElementById('map'), {
   zoom: 8,
 });
 // initialize services
-const geocoder = new google.maps.Geocoder();
+const geocoder1 = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 const addresses = [_destination, _location];
 const add = [];
 addresses.forEach((addres) => {
-  const { add1, add2 } = geocodeAddress(geocoder, addres);
+  const { add1, add2 } = geocodeAddress(geocoder1, addres);
   add1.push(distMtrxAdd);
   map.setCenter(add2);
   new google.maps.Marker({
