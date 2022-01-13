@@ -71,8 +71,8 @@ window.loadPackage = async () => {
     heading.innerHTML = 'Fill the form below to update the package status';
   }
   const distMetrix = await getDistance(service, add);
-  const dist = distMetrix.rows[0].elements[0].distance.text;
-  const durat = distMetrix.rows[0].elements[0].duration.text;
+  const dist = distMetrix.rows[0].elements[0].distance.txt.match(/\d/g);
+  const durat = distMetrix.rows[0].elements[0].duration.txt.match(/\d/g);
   console.log(dist);
   console.log(durat);
   const packageData = createPackage(distMetrix.rows[0].elements[0]);
