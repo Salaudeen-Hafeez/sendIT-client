@@ -50,7 +50,7 @@ addresses.forEach((address) => {
   map.setCenter(add2);
   new google.maps.Marker({
     map,
-    mapMrkAdd,
+    add2,
   });
 });
 window.clearErr = (e) => {
