@@ -64,13 +64,19 @@ window.loadPackage = async () => {
   const status = document.getElementById('updateStatus');
   const location = document.getElementById('location');
   const heading = document.getElementById('heading');
+  const cost = document.getElementById('cost');
   if (admin) {
     status.classList.toggle('open');
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
   }
   const distMetrix = await getDistance(service, add);
+  const dist = distMetrix.rows[0].elements[0].distance.text;
+  const durat = distMetrix.rows[0].elements[0].duration.text;
+  console.log(dist);
+  console.log(durat);
   const packageData = createPackage(distMetrix.rows[0].elements[0]);
+
   packages.innerHTML = packageData;
 };
 
