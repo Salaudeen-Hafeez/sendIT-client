@@ -52,6 +52,10 @@ window.updateDestination = async () => {
       localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     } else {
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode(data1.destination).then(({ results }) => {
+        console.log(results);
+      });
       const data = { _destination: data1.destination };
       const updatedPackage = await putPackage(userUpdateUrl, data);
       console.log(updatedPackage);
@@ -122,15 +126,10 @@ const initMap = () => {
   var autocomplete3 = new google.maps.places.Autocomplete(input3);
 };
 initMap();
+
 window.autoCompleteAddress = function () {
   var input = document.getElementById('location');
   var autocomplete = new google.maps.places.Autocomplete(input);
   var input2 = document.getElementById('destination');
   var autocomplete2 = new google.maps.places.Autocomplete(input2);
-  // autocomplete.addListener('place_changed', function () {
-  //   var place = autocomplete.getPlace();
-  //   document.getElementById('address').value = JSON.stringify(
-  //     place.address_components
-  //   );
-  // });
 };
