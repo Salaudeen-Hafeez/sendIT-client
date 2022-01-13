@@ -108,7 +108,9 @@ window.updateDestination = async () => {
       window.location.reload();
     } else {
       const data = { _destination: data1.destination };
-      const add = [data1.destination, _location];
+      const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
+      console.log(add2);
+      const add = [add2, _location];
       const distMetrix = await getDistance(service, add);
       console.log(distMetrix);
       const updatedPackage = await putPackage(userUpdateUrl, data);
