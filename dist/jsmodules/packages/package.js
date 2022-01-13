@@ -16,7 +16,6 @@ const geocodeAddress = async (geocoder, address) => {
     .catch((e) =>
       alert(`Geocode was not successful for the following reason: ${e}`)
     );
-  console.log(geocodeResult);
   return geocodeResult;
 };
 const getDistance = async (service, add) => {
@@ -32,7 +31,6 @@ const getDistance = async (service, add) => {
   let distance = await service.getDistanceMatrix(request).then((response) => {
     return response;
   });
-  console.log(distance);
   return distance;
 };
 const { _location, _destination } = JSON.parse(localStorage.getItem('package'));
@@ -55,7 +53,6 @@ addresses.forEach(async (address) => {
     position: add2,
   });
 });
-console.log(add);
 window.clearErr = (e) => {
   e.style.border = '1px solid lightgreen';
   const small = e.parentElement.querySelector('small');
@@ -73,7 +70,6 @@ window.loadPackage = async () => {
     heading.innerHTML = 'Fill the form below to update the package status';
   }
   const distMetrix = await getDistance(service, add);
-  console.log(distMetrix);
   const packageData = createPackage(distMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
@@ -111,14 +107,10 @@ window.updateDestination = async () => {
       localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     } else {
-      //   const add = data1.destination;
-      //   console.log(add);
-      //   const geocoder = new google.maps.Geocoder();
-      //   geocoder.geocode({ address: add }).then(({ results, status }) => {
-      //     console.log(results);
-      //     console.log(status);
-      //   });
       const data = { _destination: data1.destination };
+      const add = [data1.destination, _location];
+      const distMetrix = await getDistance(service, add);
+      console.log(distMetrix);
       const updatedPackage = await putPackage(userUpdateUrl, data);
       console.log(updatedPackage);
       localStorage.setItem('package', JSON.stringify(updatedPackage));
