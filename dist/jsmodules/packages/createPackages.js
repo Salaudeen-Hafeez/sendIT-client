@@ -1,5 +1,5 @@
 const createPackage = (metrix) => {
-  const newPackage = JSON.parse(localStorage.getItem('package'))[0];
+  const newPackage = JSON.parse(localStorage.getItem('package'));
   const tableBody = `
           <img 
             src="/images/Lagos4.jpg"
