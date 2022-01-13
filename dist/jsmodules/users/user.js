@@ -67,10 +67,12 @@ window.displayPendingPackage = () => {
 
 window.getPackage = (td) => {
   const parcelId = parseInt(td.value);
+  console.log(parcelId);
   const { packages } = JSON.parse(localStorage.getItem('user'));
+  console.log(packages);
   const packag = packages.filter((packageData) => {
     packageData.parcel_id === parcelId;
   });
   localStorage.setItem('package', JSON.stringify(packag));
-  window.location.href = '/package';
+  //window.location.href = '/package';
 };
