@@ -13,3 +13,5 @@ const putPackage = async (url, data) => {
     });
   return returnData;
 };
+
+export { putPackage };

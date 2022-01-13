@@ -1,3 +1,4 @@
+import { putPackage } from '../httpFetch/putData.js';
 import { createPackage } from './createPackages.js';
 
 window.loadPackage = () => {
