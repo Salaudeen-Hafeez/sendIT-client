@@ -55,8 +55,9 @@ window.updateDestination = async () => {
       const add = data1.destination;
       console.log(add);
       const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: add }).then(({ results }) => {
+      geocoder.geocode({ address: add }).then(({ results, status }) => {
         console.log(results);
+        console.log(status);
       });
       const data = { _destination: data1.destination };
       const updatedPackage = await putPackage(userUpdateUrl, data);
