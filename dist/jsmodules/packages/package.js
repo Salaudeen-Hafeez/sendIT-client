@@ -114,7 +114,7 @@ window.updateDestination = async () => {
       const updatedPackage = await putPackage(userUpdateUrl, data);
       console.log(updatedPackage);
       localStorage.setItem('package', JSON.stringify(updatedPackage));
-      window.location.reload();
+      // window.location.reload();
     }
   }
 };
