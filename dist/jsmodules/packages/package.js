@@ -11,9 +11,9 @@ window.loadPackage = () => {
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
   }
-  const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
-  // const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
-  packages.innerHTML = packageData;
+  //   const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
+  //   // const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
+  //   packages.innerHTML = packageData;
 };
 
 // Google map API call and services
