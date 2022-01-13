@@ -48,7 +48,7 @@ function geocodeAddress(parameters, address) {
     );
 }
 
-window.initMap = () => {
+window.initMap = function () {
   const { _location, _destination } = JSON.parse(
     localStorage.getItem('package')
   );
@@ -71,7 +71,7 @@ window.initMap = () => {
   var autocomplete3 = new google.maps.places.Autocomplete(input3);
 };
 
-window.autoCompleteAddress = () => {
+window.autoCompleteAddress = function () {
   var input = document.getElementById('location');
   var autocomplete = new google.maps.places.Autocomplete(input);
   var input2 = document.getElementById('destination');
