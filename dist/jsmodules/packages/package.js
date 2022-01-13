@@ -16,6 +16,7 @@ const geocodeAddress = async (geocoder, address) => {
     .catch((e) =>
       alert(`Geocode was not successful for the following reason: ${e}`)
     );
+  console.log(geocodeResult);
   return geocodeResult;
 };
 const getDistance = async (service, add) => {
@@ -31,6 +32,7 @@ const getDistance = async (service, add) => {
   let distance = await service.getDistanceMatrix(request).then((response) => {
     return response;
   });
+  console.log(distance);
   return distance;
 };
 const { _location, _destination } = JSON.parse(localStorage.getItem('package'));
