@@ -52,7 +52,7 @@ addresses.forEach((address) => {
   map.setCenter(add2);
   new google.maps.Marker({
     map,
-    add2,
+    position: add2,
   });
 });
 console.log(add);
