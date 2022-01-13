@@ -70,6 +70,7 @@ window.loadPackage = async () => {
     heading.innerHTML = 'Fill the form below to update the package status';
   }
   const distMetrix = await getDistance(service, add);
+  console.log(distMetrix);
   const packageData = createPackage(distMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
