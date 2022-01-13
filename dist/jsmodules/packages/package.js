@@ -52,23 +52,24 @@ window.initMap = function () {
   const { _location, _destination } = JSON.parse(
     localStorage.getItem('package')
   );
-  const bounds = new google.maps.LatLngBounds();
-  const map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 6.5095, lng: 3.3711 },
-    zoom: 8,
-  });
-  // initialize services
-  const geocoder = new google.maps.Geocoder();
-  const service = new google.maps.DistanceMatrixService();
-  const addresses = [_destination, _location];
+  console.log(_destination);
+  //   const bounds = new google.maps.LatLngBounds();
+  //   const map = new google.maps.Map(document.getElementById('map'), {
+  //     center: { lat: 6.5095, lng: 3.3711 },
+  //     zoom: 8,
+  //   });
+  //   // initialize services
+  //   const geocoder = new google.maps.Geocoder();
+  //   const service = new google.maps.DistanceMatrixService();
+  //   const addresses = [_destination, _location];
 
-  const add = [];
-  const parameters = { geocoder, map, add, service };
-  addresses.forEach((address) => {
-    geocodeAddress(parameters, address);
-  });
-  var input3 = document.getElementById('newDestination');
-  var autocomplete3 = new google.maps.places.Autocomplete(input3);
+  //   const add = [];
+  //   const parameters = { geocoder, map, add, service };
+  //   addresses.forEach((address) => {
+  //     geocodeAddress(parameters, address);
+  //   });
+  //   var input3 = document.getElementById('newDestination');
+  //   var autocomplete3 = new google.maps.places.Autocomplete(input3);
 };
 
 window.autoCompleteAddress = function () {
