@@ -52,6 +52,7 @@ const initMap = () => {
   const { _location, _destination } = JSON.parse(
     localStorage.getItem('package')
   );
+  console.log(_destination);
   const bounds = new google.maps.LatLngBounds();
   const map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 6.5095, lng: 3.3711 },
@@ -64,7 +65,7 @@ const initMap = () => {
 
   const add = [];
   const parameters = { geocoder, map, add, service };
-  console.log(addresses);
+
   addresses.forEach((address) => {
     console.log(address);
     geocodeAddress(parameters, address);
