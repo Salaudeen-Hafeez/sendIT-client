@@ -112,11 +112,14 @@ window.updateDestination = async () => {
       console.log(add2);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
-      console.log(distMetrix.rows[0].elements[0].status);
-      const updatedPackage = await putPackage(userUpdateUrl, data);
-      console.log(updatedPackage);
-      localStorage.setItem('package', JSON.stringify(updatedPackage));
-      // window.location.reload();
+      if (distMetrix.rows[0].elements[0].status === 'OK') {
+        const updatedPackage = await putPackage(userUpdateUrl, data);
+        localStorage.setItem('package', JSON.stringify(updatedPackage));
+        window.location.reload();
+      } else {
+        const errMessage = document.getElementById('userProfile');
+        errMessage.innerHTML = 'Destination address entered not found';
+      }
     }
   }
 };
