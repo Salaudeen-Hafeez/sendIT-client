@@ -66,12 +66,12 @@ window.displayPendingPackage = () => {
 };
 
 window.getPackage = (td) => {
-  const parcelId = parseInt(td.value);
+  const parcelId = td.value;
   console.log(parcelId);
   const { packages } = JSON.parse(localStorage.getItem('user'));
   console.log(packages);
   const packag = packages.filter((packageData) => {
-    packageData.parcel_id === parcelId;
+    packageData.parcel_id === parseInt(arcelId);
   });
   console.log(packag);
   localStorage.setItem('package', JSON.stringify(packag));
