@@ -73,5 +73,5 @@ window.getPackage = (td) => {
   );
   console.log(packag);
   localStorage.setItem('package', JSON.stringify(packag));
-  //window.location.href = '/package';
+  window.location.href = '/package';
 };
