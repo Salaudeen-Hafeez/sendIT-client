@@ -21,10 +21,9 @@ window.completeOrder = () => {
 };
 
 window.cancelOrder = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
   const { _status, parcel_id } = JSON.parse(localStorage.getItem('package'));
-  const { _email, users_id, auth_token } = JSON.parse(
-    localStorage.getItem('user').user
-  );
+  const { _email, users_id, auth_token } = user.user;
   if (_status === 'Order Canceled') {
     alert('Order has been canceled');
   } else {
