@@ -117,7 +117,7 @@ window.updateDestination = async () => {
         localStorage.setItem('package', JSON.stringify(updatedPackage));
         window.location.reload();
       } else {
-        const errMessage = document.getElementById('userProfile');
+        const errMessage = document.getElementById('errMessage');
         errMessage.innerHTML = 'Destination address entered not found';
       }
     }
