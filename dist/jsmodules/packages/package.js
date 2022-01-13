@@ -46,7 +46,7 @@ const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 const addresses = [_destination, _location];
 const add = [];
-addresses.forEach((address) => {
+addresses.forEach(async (address) => {
   const { add1, add2 } = await geocodeAddress(geocoder, address);
   add.push(add1);
   map.setCenter(add2);
