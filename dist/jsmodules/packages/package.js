@@ -24,10 +24,11 @@ window.completeOrder = () => {
 };
 
 window.cancelOrder = async () => {
-  if (_status === 'Order Canceled') {
-    alert('Order has been canceled');
+  const { _status } = JSON.parse(localStorage.getItem('package'));
+  if (_status === 'Order Cancelled') {
+    alert('Order has been cancelled');
   } else {
-    const data = { _status: 'Order Canceled' };
+    const data = { _status: 'Order Cancelled' };
     const deletedPackage = await putPackage(userUpdateUrl, data);
     localStorage.setItem('package', JSON.stringify(deletedPackage));
     window.location.reload();
@@ -35,13 +36,13 @@ window.cancelOrder = async () => {
 };
 window.updateDestination = async () => {
   const admin = JSON.parse(localStorage.getItem('admin'));
-  const { _status } = JSON.parse(localStorage.getItem('package'));
   const input = document.getElementById('newDestination');
   const select1 = document.getElementById('newStatus');
   const { data: data1, emptyInput } = formValidation([input, select1]);
   if (!emptyInput) {
-    if (_status === 'Order Canceled') {
-      alert('Order has been canceled');
+    const { _status } = JSON.parse(localStorage.getItem('package'));
+    if (_status === 'Order Cancelled') {
+      alert('Order has been cancelled');
     } else if (admin) {
       const data = {
         _location: data1.destination,
