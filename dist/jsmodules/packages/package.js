@@ -16,6 +16,27 @@ window.loadPackage = () => {
   packages.innerHTML = packageData;
 };
 
+window.completeOrder = () => {
+  window.history.go(-1);
+};
+
+window.cancelOrder = () => {
+  const { _status, parcel_id } = JSON.parse(localStorage.getItem('package'));
+  const { _email, users_id, auth_token } = JSON.parse(
+    localStorage.getItem('user').user
+  );
+  if (_status === 'Order Canceled') {
+    alert('Order has been canceled');
+  } else {
+    const cancelUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${parseInt(
+      parcel_id
+    )}`;
+    const data = { _status: 'Order Canceled' };
+    const deletedPackage = putPackage(url, data);
+    console.log(deletedPackage);
+  }
+};
+
 // Google map API call and services
 function geocodeAddress(parameters, address) {
   const { geocoder, map, add, service } = parameters;
