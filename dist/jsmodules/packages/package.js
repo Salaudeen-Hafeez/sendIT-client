@@ -53,6 +53,7 @@ addresses.forEach((address) => {
     add2,
   });
 });
+console.log(add);
 window.clearErr = (e) => {
   e.style.border = '1px solid lightgreen';
   const small = e.parentElement.querySelector('small');
