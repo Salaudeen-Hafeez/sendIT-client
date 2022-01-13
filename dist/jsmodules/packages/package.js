@@ -1,4 +1,6 @@
 import { putPackage } from '../httpFetch/putData.js';
+import { userUpdateUrl } from '../httpFetch/urls.js';
+import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
 
 window.loadPackage = () => {
@@ -22,20 +24,44 @@ window.completeOrder = () => {
 };
 
 window.cancelOrder = async () => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  const { _status, parcel_id } = JSON.parse(localStorage.getItem('package'));
-  const { _email, users_id, auth_token } = user.user;
   if (_status === 'Order Canceled') {
     alert('Order has been canceled');
   } else {
-    const cancelUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${parseInt(
-      parcel_id
-    )}`;
     const data = { _status: 'Order Canceled' };
-    const deletedPackage = await putPackage(cancelUrl, data);
+    const deletedPackage = await putPackage(userUpdateUrl, data);
     localStorage.setItem('package', JSON.stringify(deletedPackage));
     window.location.reload();
   }
+};
+window.updateDestination = async () => {
+  const admin = JSON.parse(localStorage.getItem('admin'));
+  const { _status } = JSON.parse(localStorage.getItem('package'));
+  const input = document.getElementById('newDestination');
+  const select1 = document.getElementById('newStatus');
+  const { data: data1, emptyInput } = formValidation([input, select1]);
+  if (!emptyInput) {
+    if (_status === 'Order Canceled') {
+      alert('Order has been canceled');
+    } else if (admin) {
+      const data = {
+        _location: data1.destination,
+        _status: data1.status,
+      };
+      const deletedPackage = await putPackage(userUpdateUrl, data);
+      localStorage.setItem('package', JSON.stringify(deletedPackage));
+      window.location.reload();
+    } else {
+      const data = { _destination: data1.destination };
+      const deletedPackage = await putPackage(userUpdateUrl, data);
+      localStorage.setItem('package', JSON.stringify(deletedPackage));
+      window.location.reload();
+    }
+  }
+};
+window.clearErr = (e) => {
+  e.style.border = '1px solid lightgreen';
+  const small = e.parentElement.querySelector('small');
+  small.style.visibility = 'hidden';
 };
 
 // Google map API call and services
