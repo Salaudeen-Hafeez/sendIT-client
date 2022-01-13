@@ -11,9 +11,9 @@ window.loadPackage = () => {
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
   }
-  //   const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
-  //   const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
-  //   packages.innerHTML = packageData;
+  const distanceMetrix = JSON.parse(localStorage.getItem('distanceMetrix'));
+  const packageData = createPackage(distanceMetrix.rows[0].elements[0]);
+  packages.innerHTML = packageData;
 };
 
 // Google map API call and services
@@ -52,7 +52,6 @@ const initMap = () => {
   const { _location, _destination } = JSON.parse(
     localStorage.getItem('package')
   );
-  console.log(_destination);
   const bounds = new google.maps.LatLngBounds();
   const map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: 6.5095, lng: 3.3711 },
@@ -67,7 +66,6 @@ const initMap = () => {
   const parameters = { geocoder, map, add, service };
 
   addresses.forEach((address) => {
-    console.log(address);
     geocodeAddress(parameters, address);
   });
   var input3 = document.getElementById('newDestination');
