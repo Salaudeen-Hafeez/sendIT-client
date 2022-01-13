@@ -73,6 +73,7 @@ window.getPackage = (td) => {
   const packag = packages.filter((packageData) => {
     packageData.parcel_id === parcelId;
   });
+  console.log(packag);
   localStorage.setItem('package', JSON.stringify(packag));
   //window.location.href = '/package';
 };
