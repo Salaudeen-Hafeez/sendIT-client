@@ -52,6 +52,7 @@ window.updateDestination = async () => {
       localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     } else {
+      console.log(data1.destination);
       const geocoder = new google.maps.Geocoder();
       geocoder.geocode(data1.destination).then(({ results }) => {
         console.log(results);
@@ -60,7 +61,7 @@ window.updateDestination = async () => {
       const updatedPackage = await putPackage(userUpdateUrl, data);
       console.log(updatedPackage);
       localStorage.setItem('package', JSON.stringify(updatedPackage));
-      window.location.reload();
+      // window.location.reload();
     }
   }
 };
