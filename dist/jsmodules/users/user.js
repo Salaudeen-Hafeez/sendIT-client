@@ -71,7 +71,7 @@ window.getPackage = (td) => {
   const { packages } = JSON.parse(localStorage.getItem('user'));
   console.log(packages);
   const packag = packages.filter((packageData) => {
-    packageData.parcel_id === parseInt(arcelId);
+    packageData.parcel_id === parseInt(parcelId);
   });
   console.log(packag);
   localStorage.setItem('package', JSON.stringify(packag));
