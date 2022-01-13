@@ -32,7 +32,7 @@ window.cancelOrder = () => {
       parcel_id
     )}`;
     const data = { _status: 'Order Canceled' };
-    const deletedPackage = putPackage(url, data);
+    const deletedPackage = putPackage(cancelUrl, data);
     console.log(deletedPackage);
   }
 };
