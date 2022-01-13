@@ -21,7 +21,7 @@ window.completeOrder = () => {
   window.history.go(-1);
 };
 
-window.cancelOrder = () => {
+window.cancelOrder = async () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const { _status, parcel_id } = JSON.parse(localStorage.getItem('package'));
   const { _email, users_id, auth_token } = user.user;
@@ -32,7 +32,7 @@ window.cancelOrder = () => {
       parcel_id
     )}`;
     const data = { _status: 'Order Canceled' };
-    const deletedPackage = putPackage(cancelUrl, data);
+    const deletedPackage = await putPackage(cancelUrl, data);
     console.log(deletedPackage);
   }
 };
