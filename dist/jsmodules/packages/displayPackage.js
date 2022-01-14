@@ -25,7 +25,7 @@ const packageDisplay = (packages) => {
     });
   } else {
     packagesDiv = `<li>
-    <h4 style="padding-top: 5px; color: red;">No packages</h4></li>`;
+    <p style="padding-top:5px;font-weight:800;text-align:center;color:red;">No packages</p></li>`;
   }
   return packagesDiv;
 };
