@@ -15,7 +15,7 @@ const packageDisplay = (packages) => {
           break;
       }
       packagesDiv += `<li>
-        <div style="margin-bottom:8px; cursor: pointer" onclick="getPackage()" value= "${packag.parcel_id}" id="parcel-id">
+        <div style="margin-bottom:8px; cursor: pointer" onclick="getPackage(this)" value= "${packag.parcel_id}" id="parcel-id">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p>To: ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
