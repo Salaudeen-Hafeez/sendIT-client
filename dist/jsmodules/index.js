@@ -618,39 +618,39 @@ const submitPackage = () => {
 //     });
 // };
 
-const updateDestination = () => {
-  const admin = adminsData();
-  const selectedPackage = JSON.parse(localStorage.getItem('package'));
-  const input = document.getElementById('newDestination');
-  const select1 = document.getElementById('newStatus');
-  const newDestination = formValidation([input, select1]);
-  if (!newDestination.emptyInput) {
-    if (selectedPackage._status === 'Order Canceled') {
-      alert('Order has been canceled');
-    } else if (admin) {
-      const data = {
-        _location: newDestination.data.destination,
-        _status: newDestination.data.status,
-      };
-      putPackage(data, selectedPackage);
-      setTimeout(openPackage, 1200);
-    } else {
-      const data = { _destination: newDestination.data.destination };
-      putPackage(data, selectedPackage);
-      setTimeout(openPackage, 1200);
-    }
-  }
-};
+// const updateDestination = () => {
+//   const admin = adminsData();
+//   const selectedPackage = JSON.parse(localStorage.getItem('package'));
+//   const input = document.getElementById('newDestination');
+//   const select1 = document.getElementById('newStatus');
+//   const newDestination = formValidation([input, select1]);
+//   if (!newDestination.emptyInput) {
+//     if (selectedPackage._status === 'Order Canceled') {
+//       alert('Order has been canceled');
+//     } else if (admin) {
+//       const data = {
+//         _location: newDestination.data.destination,
+//         _status: newDestination.data.status,
+//       };
+//       putPackage(data, selectedPackage);
+//       setTimeout(openPackage, 1200);
+//     } else {
+//       const data = { _destination: newDestination.data.destination };
+//       putPackage(data, selectedPackage);
+//       setTimeout(openPackage, 1200);
+//     }
+//   }
+// };
 
-const cancelOrder = () => {
-  const selectedPackage = JSON.parse(localStorage.getItem('package'));
-  if (selectedPackage._status === 'Order Canceled') {
-    alert('Order has been canceled');
-  } else {
-    const data = { _status: 'Order Canceled' };
-    putPackage(data, selectedPackage);
-  }
-};
+// const cancelOrder = () => {
+//   const selectedPackage = JSON.parse(localStorage.getItem('package'));
+//   if (selectedPackage._status === 'Order Canceled') {
+//     alert('Order has been canceled');
+//   } else {
+//     const data = { _status: 'Order Canceled' };
+//     putPackage(data, selectedPackage);
+//   }
+// };
 // const getPackage = (td) => {
 //   localStorage.removeItem('package');
 //   const parcelId = td.value;
@@ -663,9 +663,9 @@ const cancelOrder = () => {
 //   openPackage();
 // };
 
-const completeOrder = () => {
-  window.history.go(-1);
-};
+// const completeOrder = () => {
+//   window.history.go(-1);
+// };
 
 // Delete data from database
 
