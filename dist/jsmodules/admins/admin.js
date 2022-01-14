@@ -33,6 +33,7 @@ window.fetchUsers = (user1 = users) => {
           <p>${user._email}</p>
           <button onclick="adminFetchUserPackage(this)" value= "${user._username}" id="${user.users_id}">packages</button>
           <button onclick="adminDeleteUser(this)" value= "${user._username}" id="${user.users_id}">delete user</button>
+          <div class="userCont" id="userConts${user.users_id}"></div>
         </div>
         <div class="userCont" id="userCont${user.users_id}"></div>
         </div>
@@ -54,9 +55,9 @@ window.adminDeleteUser = (e) => {
   const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
-  const userCont = `userCont${id}`;
+  const userCont = `userConts${id}`;
   const newPackages = document.getElementById(userCont);
-  console.log(newPackages.innerHTML);
+  console.log(newPackages.innerHTML.innerHTML);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
     {
@@ -67,8 +68,8 @@ window.adminDeleteUser = (e) => {
     .then((resp) => resp.json())
     .then((data) => {
       if (!data.errMessage) {
-        newPackages.innerHTML = `<li>
-    <p style="font-weight:800;text-align:center;color:red;">User deleted</p></li>`;
+        newPackages.innerHTML = `
+    <p style="font-weight:800;text-align:center;color:red;">User deleted</p>`;
         newPackages.classList.toggle('open');
       }
     })
