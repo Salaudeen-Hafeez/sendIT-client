@@ -20,7 +20,7 @@ window.login = async () => {
         window.location.href = '/user';
       }
     } else {
-      const admin = postData(adminLoginUrl, data);
+      const admin = await postData(adminLoginUrl, data);
       if (admin.errMessage) {
         displayErr(admin);
       } else {
