@@ -58,23 +58,25 @@ window.adminDeleteUser = (e) => {
   const userCont = `userConts${id}`;
   const newPackages = document.getElementById(userCont);
   console.log(newPackages.innerHTML);
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
-    {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      if (!data.errMessage) {
-        newPackages.innerHTML = 'User deleted';
+  if (newPackages.innerHTML === 'User deleted') {
+    newPackages.classList.toggle('open');
+  } else {
+    fetch(
+      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
       }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  newPackages.classList.toggle('open');
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        newPackages.innerHTML = 'User deleted';
+        newPackages.classList.toggle('open');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };
 window.getPackage = (e) => {
   localStorage.removeItem('package');
