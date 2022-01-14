@@ -48,7 +48,9 @@ window.adminFetchUserPackage = (e) => {
   const packag = packages.filter((packag) => {
     packag._username === username;
   });
+  console.log(packag);
   newPackages.innerHTML = packageDisplay(packag);
+  console.log(newPackages);
   newPackages.classList.toggle('open');
 };
 window.logOut = () => {
