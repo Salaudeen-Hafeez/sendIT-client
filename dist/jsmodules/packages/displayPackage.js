@@ -3,7 +3,7 @@ const packageDisplay = (packages) => {
   if (Array.isArray(packages) && packages.length !== 0) {
     packages.forEach((packag) => {
       packagesDiv += `<li>
-        <div style="padding-bottom:3px; cursor: pointer" onclick="getPackage(this)" value= "${packag.parcel_id}" id="parcel-id">
+        <div style="margin-bottom:8px; cursor: pointer" onclick="getPackage(this)" value= "${packag.parcel_id}" id="parcel-id">
           <h4 style="color:red">${packag._name}</h4>
           <p>${packag._destination}</p>
           <p style="color:green">${packag._status}</p>
