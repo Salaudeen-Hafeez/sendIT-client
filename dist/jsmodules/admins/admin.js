@@ -53,8 +53,9 @@ window.getPackage = (e) => {
   localStorage.removeItem('package');
   const parcelId = parseInt(e.id);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
+  console.log(packag1);
   localStorage.setItem('package', JSON.stringify(packag1));
-  window.location.href = '/package';
+  // window.location.href = '/package';
 };
 window.logOut = () => {
   localStorage.clear();
