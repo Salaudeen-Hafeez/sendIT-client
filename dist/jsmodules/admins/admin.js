@@ -44,9 +44,11 @@ window.adminFetchUserPackage = (e) => {
   console.log(username);
   console.log(id);
   const userCont = `userCont${id}`;
-  const packages = JSON.parse(localStorage.getItem('packages'));
   const newPackages = document.getElementById(userCont);
-  newPackages.innerHTML = packageDisplay(packages);
+  const packag = packages.filter((packag) => {
+    packag._username === username;
+  });
+  newPackages.innerHTML = packageDisplay(packag);
   newPackages.classList.toggle('open');
 };
 window.logOut = () => {
