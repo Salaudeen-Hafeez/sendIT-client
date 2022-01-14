@@ -1,3 +1,5 @@
+import { packageDisplay } from '../packages/displayPackage.js';
+
 const { admin, users, packages } = JSON.parse(localStorage.getItem('admin'));
 let userul = '';
 const containerdiv = document.getElementById('usersContainer');
@@ -35,6 +37,17 @@ window.fetchUsers = () => {
   });
   container.innerHTML = userul;
   containerdiv.classList.toggle('open');
+};
+window.adminFetchUserPackage = (e) => {
+  const username = e.value;
+  const id = e.id;
+  console.log(username);
+  console.log(id);
+  const userCont = `userCont${id}`;
+  const packages = JSON.parse(localStorage.getItem('packages'));
+  const newPackages = document.getElementById(userCont);
+  newPackages.innerHTML = packageDisplay(packages);
+  newPackages.classList.toggle('open');
 };
 window.logOut = () => {
   localStorage.clear();
