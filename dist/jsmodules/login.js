@@ -1,8 +1,7 @@
 import { formValidation } from './validateForm.js';
 import { postData } from './httpFetch/postData.js';
 import { displayErr } from './errMessages.js';
-
-const loginUrl = 'https://akera-logistics.herokuapp.com/api/v1/users/login';
+import { loginUrl } from './httpFetch/urls.js';
 window.login = async () => {
   localStorage.clear();
   const input = document
