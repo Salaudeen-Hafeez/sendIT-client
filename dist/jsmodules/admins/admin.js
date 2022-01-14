@@ -71,6 +71,7 @@ window.adminDeleteUser = (e) => {
       if (data.errMessage) {
         newPackages = `<li>
     <p style="padding-top:5px;font-weight:800;text-align:center;color:red;">User deleted</p></li>`;
+        newPackages.classList.toggle('open');
       }
     })
     .catch((err) => {
