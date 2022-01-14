@@ -8,7 +8,7 @@ const packageDisplay = (packages) => {
           color = '#095F06';
           break;
         case 'Delivered':
-          color = 'blue';
+          color = '#07199D';
           break;
         default:
           color = 'red';
@@ -16,7 +16,7 @@ const packageDisplay = (packages) => {
       }
       packagesDiv += `<li>
         <div style="margin-bottom:8px; cursor: pointer" onclick="getPackage(this)" value= "${packag.parcel_id}" id="parcel-id">
-          <h4 style="font-weight:800;color:#D70C0C">${packag._name}</h4>
+          <h4 style="font-weight:800;color:#8D9824">${packag._name}</h4>
           <p>${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
