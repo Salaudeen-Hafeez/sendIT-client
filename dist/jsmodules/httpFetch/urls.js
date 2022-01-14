@@ -13,6 +13,7 @@ if (user.user) {
   userid = user.admin.users_id;
   token = user.admin.admin_token;  
 }
+console.log(email)
 const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${userid}/${token}/packages/${parseInt(
     parcel_id
   )}`;
