@@ -33,7 +33,12 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
-const { _location, _destination } = JSON.parse(localStorage.getItem('package'));
+const user =
+  JSON.parse(localStorage.getItem('admin')) ||
+  JSON.parse(localStorage.getItem('user'));
+const { _location, _destination, _status } = JSON.parse(
+  localStorage.getItem('package')
+);
 const bounds = new google.maps.LatLngBounds();
 const map = new google.maps.Map(document.getElementById('map'), {
   center: { lat: 6.5095, lng: 3.3711 },
@@ -73,14 +78,17 @@ window.loadPackage = async () => {
   const distMetrix = await getDistance(service, add);
   const dist = distMetrix.rows[0].elements[0].distance.text.replace(/\D/g, '');
   const durat = distMetrix.rows[0].elements[0].duration.text.replace(/\D/g, '');
-  console.log(parseInt(dist));
-  console.log(parseInt(durat.replace(/\D/g, '')));
   const packageData = createPackage(distMetrix.rows[0].elements[0]);
-
   packages.innerHTML = packageData;
 };
+window.okay = () => {
+  if (user.admin) {
+    window.location.href = '/admin';
+  } else {
+    window.location.href = '/user';
+  }
+};
 window.cancelOrder = async () => {
-  const { _status } = JSON.parse(localStorage.getItem('package'));
   if (_status === 'Order Cancelled') {
     alert('Order has been cancelled');
   } else {
@@ -91,15 +99,13 @@ window.cancelOrder = async () => {
   }
 };
 window.updateDestination = async () => {
-  const admin = JSON.parse(localStorage.getItem('admin'));
   const input = document.getElementById('newDestination');
   const select1 = document.getElementById('newStatus');
   const { data: data1, emptyInput } = formValidation([input, select1]);
   if (!emptyInput) {
-    const { _status } = JSON.parse(localStorage.getItem('package'));
     if (_status === 'Order Cancelled') {
       alert('Order has been cancelled');
-    } else if (admin) {
+    } else if (user.admin) {
       const data = {
         _location: data1.destination,
         _status: data1.status,
