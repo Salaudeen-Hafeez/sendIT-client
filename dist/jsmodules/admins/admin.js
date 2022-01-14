@@ -51,12 +51,10 @@ window.adminFetchUserPackage = (e) => {
 };
 window.getPackage = (e) => {
   localStorage.removeItem('package');
-  console.log(e);
-  const parcelId = e.id;
-  console.log(parcelId);
+  const parcelId = parseInt(e.id);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
   localStorage.setItem('package', JSON.stringify(packag1));
-  //window.location.href = '/package';
+  window.location.href = '/package';
 };
 window.logOut = () => {
   localStorage.clear();
