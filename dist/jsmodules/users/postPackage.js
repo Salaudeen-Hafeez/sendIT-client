@@ -1,5 +1,5 @@
 import { postData } from '../httpFetch/postData.js';
-import { postPackageUrl } from '../httpFetch/urls.js';
+import postPackageUrl from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 
 window.submitPackage = async () => {
