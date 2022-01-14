@@ -21,8 +21,8 @@ window.displayAdmin = () => {
         </div>`;
   profile.innerHTML = adminProfile;
 };
-window.fetchUsers = () => {
-  users.forEach((user) => {
+window.fetchUsers = (user1 = users) => {
+  user1.forEach((user) => {
     userul += `<li>
         <div>
         <div class="userDetails">
@@ -63,6 +63,7 @@ window.adminDeleteUser = (e) => {
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
+      fetchUsers(data);
       //window.location.reload();
     })
     .catch((err) => {
