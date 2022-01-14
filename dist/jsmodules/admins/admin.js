@@ -83,3 +83,7 @@ window.logOut = () => {
   localStorage.clear();
   window.location.href = '/';
 };
+window.toggleMenu = () => {
+  const navLink = document.querySelector('.nav-link');
+  navLink.classList.toggle('open');
+};
