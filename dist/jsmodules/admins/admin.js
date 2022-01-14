@@ -51,7 +51,7 @@ window.adminFetchUserPackage = (e) => {
 };
 window.getPackage = (e) => {
   localStorage.removeItem('package');
-  console.log(td);
+  console.log(e);
   const parcelId = e.id;
   console.log(parcelId);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
