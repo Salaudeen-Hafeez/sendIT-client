@@ -58,7 +58,6 @@ window.adminDeleteUser = (e) => {
   const userCont = `userCont${id}`;
   console.log(userCont);
   const newPackages = document.getElementById(userCont);
-  console.log(newPackages.innerHTML);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
     {
@@ -69,7 +68,7 @@ window.adminDeleteUser = (e) => {
     .then((resp) => resp.json())
     .then((data) => {
       if (data.errMessage) {
-        newPackages = `<li>
+        newPackages.innerHTML = `<li>
     <p style="padding-top:5px;font-weight:800;text-align:center;color:red;">User deleted</p></li>`;
         newPackages.classList.toggle('open');
       }
