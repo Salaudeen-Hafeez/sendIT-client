@@ -9,6 +9,7 @@ window.submitPackage = async () => {
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
     console.log(postPackageUrl);
+    data['username'] = _username;
     const postedData = await postData(postPackageUrl, data);
     console.log(postedData);
     localStorage.removeItem('package');
