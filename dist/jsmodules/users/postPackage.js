@@ -13,7 +13,7 @@ window.submitPackage = async () => {
     console.log(postedData);
     localStorage.removeItem('package');
     localStorage.setItem('package', JSON.stringify(postedData));
-    //window.location.href = '/package';
+    window.location.href = '/package';
   }
 };
 window.clearErr = (e) => {
