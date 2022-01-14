@@ -1,7 +1,7 @@
 import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
-const { _username } = JSON.parse(localStorage.getItem('user'));
+const { _username } = JSON.parse(localStorage.getItem('user')).user;
 window.submitPackage = async () => {
   const input = document
     .getElementById('inputContainer')
