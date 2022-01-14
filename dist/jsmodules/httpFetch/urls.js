@@ -1,6 +1,6 @@
 const user =
   JSON.parse(localStorage.getItem('user')) ||
-  JSON.parse(localStorage.getItem('user'));
+  JSON.parse(localStorage.getItem('admin'));
 const packag = JSON.parse(localStorage.getItem('package'));
 let email, userid, token, username, id;
 if (packag !== null) {
@@ -18,7 +18,6 @@ if (user !== null) {
     token = user.admin.admin_token;
   }
 }
-console.log(email);
 const loginUrl = 'https://akera-logistics.herokuapp.com/api/v1/users/login';
 const adminLoginUrl =
   'https://akera-logistics.herokuapp.com/api/v1/users/admins/login';
