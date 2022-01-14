@@ -1,9 +1,11 @@
 const user =
   JSON.parse(localStorage.getItem('user')) ||
   JSON.parse(localStorage.getItem('user'));
-const { parcel_id } = JSON.parse(localStorage.getItem('package'));
-let email, userid, token, username;
-const id = parseInt(parcel_id);
+const packag = JSON.parse(localStorage.getItem('package'));
+let email, userid, token, username, id;
+if (packag !== null) {
+  id = parseInt(packag.parcel_id);
+}
 if (user !== null) {
   if (user.user) {
     email = user.user._email;
