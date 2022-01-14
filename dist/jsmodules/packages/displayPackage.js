@@ -1,6 +1,6 @@
 const packageDisplay = (packages) => {
   let packagesDiv = '';
-  if (Array.isArray(packages)) {
+  if (Array.isArray(packages) && packages.length !== 0) {
     packages.forEach((packag) => {
       packagesDiv += `<li>
         <div class="userDetails" style="background: #DDDDB9;">
@@ -16,9 +16,7 @@ const packageDisplay = (packages) => {
     });
   } else {
     packagesDiv = `<li>
-    <h3 style="padding-top: 5px; color: red;">${Object.values(
-      packages
-    )}</h3></li>`;
+    <h3 style="padding-top: 5px; color: red;">No packages</h3></li>`;
   }
   return packagesDiv;
 };

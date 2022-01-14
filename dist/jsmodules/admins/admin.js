@@ -41,8 +41,6 @@ window.fetchUsers = () => {
 window.adminFetchUserPackage = (e) => {
   const username = e.value;
   const id = e.id;
-  console.log(username);
-  console.log(id);
   const userCont = `userCont${id}`;
   const newPackages = document.getElementById(userCont);
   const packag = packages.filter((packag) => packag._username === username);
