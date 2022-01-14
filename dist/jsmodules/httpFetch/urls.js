@@ -19,7 +19,7 @@ if (user !== null) {
   }
 }
 console.log(email);
-const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${userid}/${token}/packages/${id}`;
+const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${id}`;
 const adminUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${id}`;
 const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${email}/${token}/packages`;
 export { userUpdateUrl, adminUpdateUrl, postPackageUrl };
