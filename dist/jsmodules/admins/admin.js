@@ -22,7 +22,6 @@ window.displayAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 window.fetchUsers = () => {
-  console.log(users);
   users.forEach((user) => {
     userul += `<li>
         <div>
@@ -48,6 +47,26 @@ window.adminFetchUserPackage = (e) => {
   const packag = packages.filter((packag) => packag._username === username);
   newPackages.innerHTML = packageDisplay(packag);
   newPackages.classList.toggle('open');
+};
+window.adminDeleteUser = (e) => {
+  const { _email, admin_token } = admin.admin;
+  const username = e.value;
+  const id = parseInt(e.id);
+  fetch(
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
+    {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+      window.location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 window.getPackage = (e) => {
   localStorage.removeItem('package');
