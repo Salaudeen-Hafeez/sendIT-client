@@ -1,5 +1,5 @@
 import { putPackage } from '../httpFetch/putData.js';
-import { userUpdateUrl } from '../httpFetch/urls.js';
+import { adminUpdateUrl, userUpdateUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
 
@@ -64,13 +64,12 @@ window.clearErr = (e) => {
   small.style.visibility = 'hidden';
 };
 window.loadPackage = async () => {
-  const admin = JSON.parse(localStorage.getItem('admin'));
   const packages = document.getElementById('userProfile');
   const status = document.getElementById('updateStatus');
   const location = document.getElementById('location');
   const heading = document.getElementById('heading');
   const cost = document.getElementById('cost');
-  if (admin) {
+  if (user.admin) {
     status.classList.toggle('open');
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
@@ -110,7 +109,8 @@ window.updateDestination = async () => {
         _location: data1.destination,
         _status: data1.status,
       };
-      const updatedPackage = await putPackage(userUpdateUrl, data);
+      console.log(data);
+      const updatedPackage = await putPackage(adminUpdateUrl, data);
       localStorage.setItem('package', JSON.stringify(updatedPackage));
       window.location.reload();
     } else {
