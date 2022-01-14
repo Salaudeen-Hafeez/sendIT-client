@@ -79,11 +79,6 @@ window.loadPackage = async () => {
 
   packages.innerHTML = packageData;
 };
-
-window.completeOrder = () => {
-  window.history.go(-1);
-};
-
 window.cancelOrder = async () => {
   const { _status } = JSON.parse(localStorage.getItem('package'));
   if (_status === 'Order Cancelled') {

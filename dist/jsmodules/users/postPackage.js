@@ -2,8 +2,8 @@ import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 const input = document.getElementById('location');
-new google.maps.places.Autocomplete(input);
 const input2 = document.getElementById('destination');
+new google.maps.places.Autocomplete(input);
 new google.maps.places.Autocomplete(input2);
 const user = JSON.parse(localStorage.getItem('user'));
 window.submitPackage = async () => {
