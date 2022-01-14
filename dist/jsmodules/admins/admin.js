@@ -22,6 +22,7 @@ window.displayAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 window.fetchUsers = (user1 = users) => {
+  console.log(user1);
   user1.forEach((user) => {
     userul += `<li>
         <div>
