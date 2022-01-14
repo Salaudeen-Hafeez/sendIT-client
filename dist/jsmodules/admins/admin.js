@@ -10,7 +10,7 @@ window.displayAdmin = () => {
           class="profile-img"
         />
         <div class="profile-content">
-          <h1>${admin.admin._name}</h1>
+          <h1>${admin._name}</h1>
           <ul>
             <li id="adminname">${admin._username}</li>
             <li>${admin._email}</li>
@@ -34,4 +34,8 @@ window.fetchUsers = () => {
   });
   container.innerHTML = users;
   containerdiv.classList.toggle('open');
+};
+window.logOut = () => {
+  localStorage.clear();
+  window.location.href = '/';
 };
