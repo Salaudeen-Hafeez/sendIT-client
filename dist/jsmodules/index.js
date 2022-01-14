@@ -162,7 +162,6 @@ let pathName = location.pathname;
 let pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
-
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathNames[1]);
 }
@@ -571,15 +570,15 @@ const newPackage = () => {
 //   fetchPackages();
 // };
 
-const submitPackage = () => {
-  const input = document
-    .getElementById('inputContainer')
-    .querySelectorAll('input');
-  const validatedInput = formValidation(input);
-  if (!validatedInput.emptyInput) {
-    postPackage(validatedInput.data);
-  }
-};
+// const submitPackage = () => {
+//   const input = document
+//     .getElementById('inputContainer')
+//     .querySelectorAll('input');
+//   const validatedInput = formValidation(input);
+//   if (!validatedInput.emptyInput) {
+//     postPackage(validatedInput.data);
+//   }
+// };
 
 // const putPackage = (data, selectedPackage) => {
 //   let user;
