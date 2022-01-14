@@ -109,11 +109,9 @@ window.updateDestination = async () => {
         _location: data1.destination,
         _status: data1.status,
       };
-      console.log(data);
       const updatedPackage = await putPackage(adminUpdateUrl, data);
-      console.log(updatedPackage);
       localStorage.setItem('package', JSON.stringify(updatedPackage));
-      //window.location.reload();
+      window.location.reload();
     } else {
       const data = { _destination: data1.destination };
       const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
