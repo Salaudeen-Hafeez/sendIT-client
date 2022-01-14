@@ -45,6 +45,7 @@ window.adminFetchUserPackage = (e) => {
   console.log(id);
   const userCont = `userCont${id}`;
   const newPackages = document.getElementById(userCont);
+  console.log(packages);
   const packag = packages.filter((packag) => {
     packag._username === username;
   });
