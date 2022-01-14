@@ -45,15 +45,8 @@ window.adminFetchUserPackage = (e) => {
   console.log(id);
   const userCont = `userCont${id}`;
   const newPackages = document.getElementById(userCont);
-  console.log(packages);
-  const packag = packages.filter((packag) => {
-    console.log(packag._username);
-    console.log(username);
-    packag._username === username;
-  });
-  console.log(packag);
+  const packag = packages.filter((packag) => packag._username === username);
   newPackages.innerHTML = packageDisplay(packag);
-  console.log(newPackages);
   newPackages.classList.toggle('open');
 };
 window.logOut = () => {

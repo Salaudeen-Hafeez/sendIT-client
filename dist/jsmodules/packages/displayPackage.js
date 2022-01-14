@@ -20,7 +20,6 @@ const packageDisplay = (packages) => {
       packages
     )}</h3></li>`;
   }
-  console.log(packagesDiv);
   return packagesDiv;
 };
 
