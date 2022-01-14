@@ -49,10 +49,10 @@ window.adminFetchUserPackage = (e) => {
   newPackages.innerHTML = packageDisplay(packag);
   newPackages.classList.toggle('open');
 };
-window.getPackage = (td) => {
+window.getPackage = (e) => {
   localStorage.removeItem('package');
   console.log(td);
-  const parcelId = td.value;
+  const parcelId = e.id;
   console.log(parcelId);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
   localStorage.setItem('package', JSON.stringify(packag1));
