@@ -50,7 +50,7 @@ window.adminFetchUserPackage = (e) => {
 };
 window.adminDeleteUser = (e) => {
   console.log(admin);
-  const { _email, admin_token } = admin.admin;
+  const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
