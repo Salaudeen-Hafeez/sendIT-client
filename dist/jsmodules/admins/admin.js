@@ -33,7 +33,7 @@ window.fetchUsers = () => {
         </div>
       </li>`;
   });
-  container.innerHTML = users;
+  container.innerHTML = userul;
   containerdiv.classList.toggle('open');
 };
 window.logOut = () => {
