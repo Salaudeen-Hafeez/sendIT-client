@@ -8,11 +8,12 @@ window.submitPackage = async () => {
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
+    console.log(postPackageUrl);
     const postedData = await postData(postPackageUrl, data);
+    console.log(postedData);
     localStorage.removeItem('package');
     localStorage.setItem('package', JSON.stringify(postedData));
-    console.log(postedData);
-    // window.location.href = '/package';
+    //window.location.href = '/package';
   }
 };
 window.clearErr = (e) => {
