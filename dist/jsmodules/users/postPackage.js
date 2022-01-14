@@ -2,14 +2,13 @@ import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 const user = JSON.parse(localStorage.getItem('user'));
-console.log(user.user);
 window.submitPackage = async () => {
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
-    data['username'] = user.user_username;
+    data['username'] = user.user._username;
     const postedData = await postData(postPackageUrl, data);
     console.log(postedData);
     localStorage.removeItem('package');
