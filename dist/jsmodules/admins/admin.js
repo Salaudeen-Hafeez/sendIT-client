@@ -49,6 +49,14 @@ window.adminFetchUserPackage = (e) => {
   newPackages.innerHTML = packageDisplay(packag);
   newPackages.classList.toggle('open');
 };
+window.getPackage = (td) => {
+  localStorage.removeItem('package');
+  const parcelId = td.value;
+  console.log(parcelId);
+  const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
+  localStorage.setItem('package', JSON.stringify(packag1));
+  window.location.href = '/package';
+};
 window.logOut = () => {
   localStorage.clear();
   window.location.href = '/';
