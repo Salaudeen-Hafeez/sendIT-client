@@ -56,6 +56,7 @@ window.adminDeleteUser = (e) => {
   const username = e.value;
   const id = parseInt(e.id);
   const userCont = `userCont${id}`;
+  console.log(userCont);
   const newPackages = document.getElementById(userCont);
   console.log(newPackages.innerHTML);
   fetch(
@@ -67,7 +68,7 @@ window.adminDeleteUser = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      if (!data.errMessage) {
+      if (data.errMessage) {
         newPackages = `<li>
     <p style="padding-top:5px;font-weight:800;text-align:center;color:red;">User deleted</p></li>`;
       }
