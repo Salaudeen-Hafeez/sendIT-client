@@ -159,8 +159,11 @@ import { authenticateRoute } from './routAuth.js';
 // };
 
 let pathName = location.pathname;
+const pathNames = [localStorage.getItem('path')];
+localStorage.setItem('path', pathName);
+pathNames.push(pathName);
 console.log(pathName);
-if (pathName === '/') {
+if (pathNames[0] === pathNames[1] && pathNames[1] === '/') {
   authenticateRoute(pathName);
 }
 // window.login = login;
