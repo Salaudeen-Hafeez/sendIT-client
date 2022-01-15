@@ -9,7 +9,7 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1] && pathNames[1] === '/user') {
   authenticateRoute(pathName);
 }
-user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('package'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 
