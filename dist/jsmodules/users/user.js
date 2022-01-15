@@ -47,6 +47,7 @@ window.logOut = async () => {
   window.location.href = '/';
 };
 window.displayUserPackages = () => {
+  const packages = JSON.parse(localStorage.getItem('package'));
   if (!user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -56,6 +57,7 @@ window.displayUserPackages = () => {
 };
 
 window.displayPendingPackage = () => {
+  const packages = JSON.parse(localStorage.getItem('package'));
   if (!user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -71,6 +73,7 @@ window.displayPendingPackage = () => {
   }
 };
 window.getPackage = (td) => {
+  const packages = JSON.parse(localStorage.getItem('package'));
   const parcelId = parseInt(td.value);
   const packag = packages.filter(
     (packageData) => packageData.parcel_id === parcelId
