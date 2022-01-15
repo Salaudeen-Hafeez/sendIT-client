@@ -867,7 +867,6 @@ const storePackage = (e) => {
 // const fetchDeliveredPackages = () => {
 //   adminFetchPackages('Delivered');
 // };
-adminFetchPackages;
 const updatePackage = () => {
   const selectedPackage = JSON.parse(localStorage.getItem('package'));
   const input = document
