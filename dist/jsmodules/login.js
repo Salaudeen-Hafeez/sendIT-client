@@ -36,7 +36,7 @@ window.login = async () => {
       } else {
         localStorage.setItem('admin', JSON.stringify(admin));
         localStorage.setItem('users', JSON.stringify(user.user));
-        localStorage.setItem('packages', JSON.stringify(package));
+        localStorage.setItem('packages', JSON.stringify(packages));
         localStorage.setItem('admtoken', JSON.stringify(user.user.admin_token));
         //window.location.href = '/admin';
       }
