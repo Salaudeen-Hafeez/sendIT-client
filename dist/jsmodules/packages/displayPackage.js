@@ -18,8 +18,8 @@ const packageDisplay = (packages) => {
       packagesDiv += `<li>
         <div style="margin-bottom:8px;text-align:center;cursor:pointer" onclick="getPackage(this)" id="${packag.parcel_id}">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
-          <p><h5>Pickup location:</h5> ${packag._location}</p>
-          <p><h5>Going to:</h5> ${packag._destination}</p>
+          <p><span style="font-weight:500">Pickup location:</span> ${packag._location}</p>
+          <p><span style="font-weight:500">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
           <button style="width:90%;font-weight:500;background-color:#056973;color:white" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
         </div>
