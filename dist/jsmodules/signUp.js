@@ -1,7 +1,7 @@
-import { displayErr } from './errMessages';
-import { postData } from './httpFetch/postData';
-import { postAdmUrl } from './httpFetch/urls';
-import { formValidation } from './validateForm';
+import { displayErr } from './errMessages.js';
+import { postData } from './httpFetch/postData.js';
+import { postAdmUrl } from './httpFetch/urls.js';
+import { formValidation } from './validateForm.js';
 
 window.signUp = async () => {
   localStorage.clear();
