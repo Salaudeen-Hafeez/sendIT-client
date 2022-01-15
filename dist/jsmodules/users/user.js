@@ -2,6 +2,7 @@ import { createUserPackage } from '../packages/createPackages.js';
 import { authenticateRoute } from '../routAuth.js';
 
 // Get the stored user data and create the user profile display
+localStorage.clear();
 let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
