@@ -1,6 +1,6 @@
 import { displayErr } from './errMessages.js';
 import { postData } from './httpFetch/postData.js';
-import { postAdmUrl } from './httpFetch/urls.js';
+import { postAdmUrl, postUsrUrl } from './httpFetch/urls.js';
 import { formValidation } from './validateForm.js';
 
 window.signUp = async () => {
@@ -10,7 +10,7 @@ window.signUp = async () => {
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
   localStorage.setItem('newUser', JSON.stringify(data));
-  if (emptyInput) {
+  if (!emptyInput) {
     if (data.email.includes('@sendit.com')) {
       const adminData = await postData(postAdmUrl, data);
       if (adminData.errMessage) {
