@@ -3,7 +3,7 @@ import { authenticateRoute } from '../routAuth.js';
 
 // Get the stored user data and create the user profile display
 let pathName = location.pathname;
-if (pathName !== '/user') {
+if (pathName === '/user') {
   authenticateRoute(pathName);
 }
 window.createProfile = () => {

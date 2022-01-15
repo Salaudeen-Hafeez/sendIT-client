@@ -3,7 +3,7 @@ import { postData } from './httpFetch/postData.js';
 import { displayErr } from './errMessages.js';
 import { adminLoginUrl, loginUrl } from './httpFetch/urls.js';
 let pathName = location.pathname;
-if (pathName !== '/login') {
+if (pathName === '/login') {
   authenticateRoute(pathName);
 }
 window.login = async () => {

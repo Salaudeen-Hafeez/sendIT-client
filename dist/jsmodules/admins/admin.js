@@ -1,7 +1,7 @@
 import { packageDisplay } from '../packages/displayPackage.js';
 import { authenticateRoute } from '../routAuth.js';
 let pathName = location.pathname;
-if (pathName !== '/admin') {
+if (pathName === '/admin') {
   authenticateRoute(pathName);
 }
 const { admin, users, packages } = JSON.parse(localStorage.getItem('admin'));
