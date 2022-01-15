@@ -157,10 +157,10 @@ import { authenticateRoute, pathNames } from './routAuth.js';
 //         </div>`;
 //   profile.innerHTML = adminProfile;
 // };
-const pathName = pathNames();
-if (pathName[0] !== pathName[1]) {
-  console.log(pathName);
-  authenticateRoute(pathName[1]);
+
+let pathName = location.pathname;
+if (pathName !== '/') {
+  authenticateRoute(pathName);
 }
 // window.login = login;
 
@@ -502,21 +502,21 @@ if (pathName[0] !== pathName[1]) {
 //   // sendEmail(data._email, message);
 // };
 
-const signUp = () => {
-  localStorage.clear();
-  const input = document
-    .getElementById('inputContainer')
-    .querySelectorAll('input');
-  const validatedUser = formValidation(input);
-  localStorage.setItem('newUser', JSON.stringify(validatedUser.data));
-  if (!validatedUser.emptyInput) {
-    if (validatedUser.data.email.includes('@sendit.com')) {
-      postAdmin(validatedUser.data);
-    } else {
-      postUser(validatedUser.data);
-    }
-  }
-};
+// const signUp = () => {
+//   localStorage.clear();
+//   const input = document
+//     .getElementById('inputContainer')
+//     .querySelectorAll('input');
+//   const validatedUser = formValidation(input);
+//   localStorage.setItem('newUser', JSON.stringify(validatedUser.data));
+//   if (!validatedUser.emptyInput) {
+//     if (validatedUser.data.email.includes('@sendit.com')) {
+//       postAdmin(validatedUser.data);
+//     } else {
+//       postUser(validatedUser.data);
+//     }
+//   }
+// };
 
 const newPackage = () => {
   const user = JSON.parse(localStorage.getItem('user'));

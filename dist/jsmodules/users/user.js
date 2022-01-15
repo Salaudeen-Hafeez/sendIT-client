@@ -2,9 +2,9 @@ import { createUserPackage } from '../packages/createPackages.js';
 import { authenticateRoute, pathNames } from '../routAuth.js';
 
 // Get the stored user data and create the user profile display
-const pathName = pathNames();
-if (pathName[0] !== pathName[1]) {
-  authenticateRoute(pathName[1]);
+let pathName = location.pathname;
+if (pathName !== '/user') {
+  authenticateRoute(pathName);
 }
 window.createProfile = () => {
   const user =

@@ -2,7 +2,6 @@ import { displayErr } from './errMessages.js';
 import { postData } from './httpFetch/postData.js';
 import { postAdmUrl, postUsrUrl } from './httpFetch/urls.js';
 import { formValidation } from './validateForm.js';
-
 window.signUp = async () => {
   localStorage.clear();
   const input = document

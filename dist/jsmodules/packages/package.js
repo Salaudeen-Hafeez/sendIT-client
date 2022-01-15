@@ -3,10 +3,9 @@ import { adminUpdateUrl, userUpdateUrl } from '../httpFetch/urls.js';
 import { authenticateRoute, pathNames } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
-const pathName = pathNames();
-if (pathName[0] !== pathName[1]) {
-  console.log(pathName);
-  authenticateRoute(pathName[1]);
+let pathName = location.pathname;
+if (pathName !== '/package') {
+  authenticateRoute(pathName);
 }
 // Google map API call and services
 const geocodeAddress = async (geocoder, address) => {
