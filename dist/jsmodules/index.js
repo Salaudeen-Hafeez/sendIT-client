@@ -105,18 +105,18 @@ import { authenticateRoute } from './routAuth.js';
 //   return parcels;
 // };
 
-window.logOut = () => {
-  localStorage.clear();
-  window.location.href = '/';
-};
-window.toggleMenu = () => {
-  const navLink = document.querySelector('.nav-link');
-  navLink.classList.toggle('open');
-};
+// window.logOut = () => {
+//   localStorage.clear();
+//   window.location.href = '/';
+// };
+// window.toggleMenu = () => {
+//   const navLink = document.querySelector('.nav-link');
+//   navLink.classList.toggle('open');
+// };
 
-const openPackage = () => {
-  window.location.href = 'package';
-};
+// const openPackage = () => {
+//   window.location.href = 'package';
+// };
 // // Get the stored user data and create the user profile display
 // const createUser = () => {
 //   const user = usersData();
@@ -163,8 +163,6 @@ let pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
-  console.log(pathNames[0]);
-  console.log(pathNames[1]);
   authenticateRoute(pathNames[1]);
 }
 // window.login = login;
@@ -790,7 +788,6 @@ const adminDisplayUserPackages = (id) => {
   newPackages.innerHTML = packageDisplay(packages);
   newPackages.classList.toggle('open');
 };
-getPackage;
 // const adminFetchUserPackage = (e) => {
 //   const admin = adminsData();
 //   const { admin_token, _email } = admin.admin;
@@ -828,7 +825,6 @@ const storePackage = (e) => {
   );
   localStorage.setItem('package', JSON.stringify(selectedPackage));
 };
-pathName;
 // const displayPackages = () => {
 //   const packages = JSON.parse(localStorage.getItem('packages'));
 //   const newPackages = document.getElementById('newPackages');
