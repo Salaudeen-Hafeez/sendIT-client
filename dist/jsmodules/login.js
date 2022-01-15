@@ -25,7 +25,7 @@ window.login = async () => {
         displayErr(user);
       } else {
         localStorage.setItem('user', JSON.stringify(user.user));
-        localStorage.setItem('package', JSON.stringify(package));
+        localStorage.setItem('package', JSON.stringify(user.packages));
         localStorage.setItem('token', JSON.stringify(user.user.auth_token));
         //window.location.href = '/user';
       }
