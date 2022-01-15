@@ -7,6 +7,10 @@ if (pathName[0] !== pathName[1]) {
   console.log(pathName);
   authenticateRoute(pathName[1]);
 }
+window.toggleMenu = () => {
+  const navLink = document.querySelector('.nav-link');
+  navLink.classList.toggle('open');
+};
 const input = document.getElementById('location');
 const input2 = document.getElementById('destination');
 new google.maps.places.Autocomplete(input);
