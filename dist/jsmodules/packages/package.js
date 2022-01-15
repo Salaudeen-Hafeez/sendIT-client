@@ -41,7 +41,8 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
-const user = JSON.parse(localStorage.getItem('admin'));
+const user = JSON.parse(localStorage.getItem('user'));
+const admin = JSON.parse(localStorage.getItem('admin'));
 
 const { _location, _destination, _status } = JSON.parse(
   localStorage.getItem('package')
@@ -76,7 +77,7 @@ window.loadPackage = async () => {
   const location = document.getElementById('location');
   const heading = document.getElementById('heading');
   const cost = document.getElementById('cost');
-  if (user.admin) {
+  if (admin !== null) {
     status.classList.toggle('open');
     location.innerHTML = 'New location';
     heading.innerHTML = 'Fill the form below to update the package status';
@@ -88,7 +89,7 @@ window.loadPackage = async () => {
   packages.innerHTML = packageData;
 };
 window.okay = () => {
-  if (user.admin) {
+  if (admin !== null) {
     window.location.href = '/admin';
   } else {
     window.location.href = '/user';
@@ -111,7 +112,7 @@ window.updateDestination = async () => {
   if (!emptyInput) {
     if (_status === 'Order Cancelled') {
       alert('Order has been cancelled');
-    } else if (user.admin) {
+    } else if (admin !== null) {
       const data = {
         _location: data1.destination,
         _status: data1.status,
@@ -122,7 +123,6 @@ window.updateDestination = async () => {
     } else {
       const data = { _destination: data1.destination };
       const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
-      console.log(add2);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
