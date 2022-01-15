@@ -101,7 +101,8 @@ window.cancelOrder = async () => {
   } else {
     const data = { _status: 'Order Cancelled' };
     const deletedPackage = await putPackage(userUpdateUrl, data);
-    localStorage.setItem('package', JSON.stringify(deletedPackage));
+    localStorage.setItem('package', JSON.stringify(deletedPackage.package));
+    localStorage.setItem('packages', JSON.stringify(deletedPackage.packages));
     window.location.reload();
   }
 };
