@@ -4,7 +4,11 @@ import { displayErr } from './errMessages.js';
 import { adminLoginUrl, loginUrl } from './httpFetch/urls.js';
 import { authenticateRoute } from './routAuth.js';
 let pathName = location.pathname;
-if (pathName === '/login') {
+const pathNames = [localStorage.getItem('path')];
+localStorage.setItem('path', pathName);
+pathNames.push(pathName);
+console.log(pathName);
+if (pathNames[0] !== pathNames[1] && pathNames[1] === '/login') {
   authenticateRoute(pathName);
 }
 window.login = async () => {

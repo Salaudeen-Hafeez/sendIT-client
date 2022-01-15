@@ -3,7 +3,10 @@ import { authenticateRoute } from '../routAuth.js';
 
 // Get the stored user data and create the user profile display
 let pathName = location.pathname;
-if (pathName === '/user') {
+const pathNames = [localStorage.getItem('path')];
+localStorage.setItem('path', pathName);
+pathNames.push(pathName);
+if (pathNames[0] !== pathNames[1] && pathNames[1] === '/user') {
   authenticateRoute(pathName);
 }
 window.createProfile = () => {

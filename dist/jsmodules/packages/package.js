@@ -4,7 +4,11 @@ import { authenticateRoute } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
 let pathName = location.pathname;
-if (pathName === '/package') {
+const pathNames = [localStorage.getItem('path')];
+localStorage.setItem('path', pathName);
+pathNames.push(pathName);
+console.log(pathName);
+if (pathNames[0] !== pathNames[1] && pathNames[1] === '/package') {
   authenticateRoute(pathName);
 }
 // Google map API call and services
