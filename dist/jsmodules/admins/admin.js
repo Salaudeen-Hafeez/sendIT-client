@@ -5,6 +5,17 @@ let userul = '';
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
+const adminFetchPackages = (cond) => {
+  const { admin_token } = admin;
+  if (!admin_token) {
+    window.location.href = '/login';
+  } else {
+    const packag = packages.filter((packag) => packag._status === cond);
+    const displayPackage = packageDisplay(packag);
+    newPackages.innerHTML = displayPackage;
+    newPackages.classList.toggle('open');
+  }
+};
 window.displayAdmin = () => {
   const profile = document.getElementById('userProfile');
   const adminProfile = ` <img
@@ -99,16 +110,7 @@ window.showPackages = () => {
   packages.classList.toggle('open');
 };
 window.fetchNewPackages = () => {
-  const cond = 'At the location';
-  const { admin_token } = admin;
-  if (!admin_token) {
-    window.location.href = '/login';
-  } else {
-    const packag = packages.filter((packag) => packag._status === cond);
-    const displayPackage = packageDisplay(packag);
-    newPackages.innerHTML = displayPackage;
-    newPackages.classList.toggle('open');
-  }
+  adminFetchPackages('At the location');
 };
 
 window.fetchPackagesInTransit = () => {
