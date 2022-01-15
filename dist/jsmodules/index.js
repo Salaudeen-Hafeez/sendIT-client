@@ -163,6 +163,8 @@ let pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
+  console.log(pathNames[0]);
+  console.log(pathNames[1]);
   authenticateRoute(pathNames[1]);
 }
 // window.login = login;
@@ -826,13 +828,13 @@ const storePackage = (e) => {
   );
   localStorage.setItem('package', JSON.stringify(selectedPackage));
 };
-
-const displayPackages = () => {
-  const packages = JSON.parse(localStorage.getItem('packages'));
-  const newPackages = document.getElementById('newPackages');
-  newPackages.classList.toggle('open');
-  newPackages.innerHTML = packageDisplay(packages);
-};
+pathName;
+// const displayPackages = () => {
+//   const packages = JSON.parse(localStorage.getItem('packages'));
+//   const newPackages = document.getElementById('newPackages');
+//   newPackages.classList.toggle('open');
+//   newPackages.innerHTML = packageDisplay(packages);
+// };
 
 // const adminFetchPackages = (cond) => {
 //   const admin = adminsData();
@@ -858,18 +860,18 @@ const displayPackages = () => {
 //   }
 // };
 
-const fetchNewPackages = () => {
-  adminFetchPackages('At the location');
-};
+// const fetchNewPackages = () => {
+//   adminFetchPackages('At the location');
+// };
 
-const fetchPackagesInTransit = () => {
-  adminFetchPackages('In transit');
-};
+// const fetchPackagesInTransit = () => {
+//   adminFetchPackages('In transit');
+// };
 
-const fetchDeliveredPackages = () => {
-  adminFetchPackages('Delivered');
-};
-
+// const fetchDeliveredPackages = () => {
+//   adminFetchPackages('Delivered');
+// };
+adminFetchPackages;
 const updatePackage = () => {
   const selectedPackage = JSON.parse(localStorage.getItem('package'));
   const input = document
