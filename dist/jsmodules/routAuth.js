@@ -3,7 +3,6 @@ const authenticateRoute = (pathName) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
   const packag = localStorage.getItem('package');
-  console.log(authData);
   switch (pathName) {
     case '/':
       if (user !== null || admin !== null) {
