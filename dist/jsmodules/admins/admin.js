@@ -4,6 +4,7 @@ const { admin, users, packages } = JSON.parse(localStorage.getItem('admin'));
 let userul = '';
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
+const newPackages = document.getElementById('newPackages');
 window.displayAdmin = () => {
   const profile = document.getElementById('userProfile');
   const adminProfile = ` <img
@@ -105,8 +106,8 @@ window.fetchNewPackages = () => {
   } else {
     const packag = packages.filter((packag) => packag._status === cond);
     const displayPackage = packageDisplay(packag);
-    container.innerHTML = displayPackage;
-    containerdiv.classList.toggle('open');
+    newPackages.innerHTML = displayPackage;
+    newPackages.classList.toggle('open');
   }
 };
 
