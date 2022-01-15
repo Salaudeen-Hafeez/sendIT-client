@@ -35,9 +35,11 @@ window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
 };
-window.logOut = () => {
+window.logOut = async () => {
   localStorage.clear();
-  window.location.href = '/';
+  if (!user) {
+    window.location.href = '/';
+  }
 };
 window.displayUserPackages = () => {
   const { user, packages } = JSON.parse(localStorage.getItem('user'));
