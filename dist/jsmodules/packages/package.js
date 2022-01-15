@@ -128,9 +128,9 @@ window.updateDestination = async () => {
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const updPack = await putPackage(userUpdateUrl, data);
         console.log(updPack);
-        //localStorage.setItem('package', JSON.stringify(updPack.package));
-        //localStorage.setItem('packages', JSON.stringify(updPack.packages));
-        // window.location.reload();
+        localStorage.setItem('package', JSON.stringify(updPack.package));
+        localStorage.setItem('packages', JSON.stringify(updPack.packages));
+        window.location.reload();
       } else {
         const errMessage = document.getElementById('errMessage');
         errMessage.innerHTML = 'Destination address entered not found';
