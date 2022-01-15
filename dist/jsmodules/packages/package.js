@@ -117,9 +117,9 @@ window.updateDestination = async () => {
         _location: data1.destination,
         _status: data1.status,
       };
-      const { package, packages } = await putPackage(adminUpdateUrl, data);
-      localStorage.setItem('package', JSON.stringify(package));
-      localStorage.setItem('package', JSON.stringify(packages));
+      const updatedPackage = await putPackage(adminUpdateUrl, data);
+      localStorage.setItem('package', JSON.stringify(updatedPackage.package));
+      localStorage.setItem('packages', JSON.stringify(updatedPackage.packages));
       window.location.reload();
     } else {
       const data = { _destination: data1.destination };
