@@ -15,13 +15,10 @@ const admin = JSON.parse(localStorage.getItem('admin'));
 
 window.createProfile = () => {
   let profileData;
-  if (user !== null && user.auth_token) {
-    profileData = user;
-  } else if (admin !== null && admin.admin_token) {
-    profileData = admin;
-  }
-  const profile = document.getElementById('userProfile');
-  const userProfile = ` <img
+  if (user !== null || admin !== null) {
+    profileData = user || admin;
+    const profile = document.getElementById('userProfile');
+    const userProfile = ` <img
           src="/images/Lagos4.jpg"
           alt="profile picture"
           class="profile-img"
@@ -36,7 +33,8 @@ window.createProfile = () => {
             <li><a onclick="displayPendingPackage()">Pending packages</a></li>
           </ul>
         </div>`;
-  profile.innerHTML = userProfile;
+    profile.innerHTML = userProfile;
+  }
 };
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
