@@ -10,7 +10,7 @@ if (pathNames[0] !== pathNames[1] && pathNames[1] === '/user') {
   authenticateRoute(pathName);
 }
 const user = JSON.parse(localStorage.getItem('user'));
-const packages = JSON.parse(localStorage.getItem('package'));
+const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 
 window.createProfile = () => {
@@ -47,7 +47,6 @@ window.logOut = async () => {
   window.location.href = '/';
 };
 window.displayUserPackages = () => {
-  const packages = JSON.parse(localStorage.getItem('package'));
   if (!user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -57,7 +56,6 @@ window.displayUserPackages = () => {
 };
 
 window.displayPendingPackage = () => {
-  const packages = JSON.parse(localStorage.getItem('package'));
   if (!user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -73,7 +71,6 @@ window.displayPendingPackage = () => {
   }
 };
 window.getPackage = (td) => {
-  const packages = JSON.parse(localStorage.getItem('package'));
   const parcelId = parseInt(td.value);
   const packag = packages.filter(
     (packageData) => packageData.parcel_id === parcelId
