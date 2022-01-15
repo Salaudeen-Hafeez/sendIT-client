@@ -26,7 +26,6 @@ window.login = async () => {
       } else {
         localStorage.setItem('user', JSON.stringify(user.user));
         localStorage.setItem('packages', JSON.stringify(user.packages));
-        localStorage.setItem('token', JSON.stringify(user.user.auth_token));
         window.location.href = '/user';
       }
     } else {
@@ -34,10 +33,9 @@ window.login = async () => {
       if (admin.errMessage) {
         displayErr(admin);
       } else {
-        localStorage.setItem('admin', JSON.stringify(admin));
-        localStorage.setItem('users', JSON.stringify(user.user));
-        localStorage.setItem('packages', JSON.stringify(packages));
-        localStorage.setItem('admtoken', JSON.stringify(user.user.admin_token));
+        localStorage.setItem('admin', JSON.stringify(admin.admin));
+        localStorage.setItem('users', JSON.stringify(admin.users));
+        localStorage.setItem('packages', JSON.stringify(admin.packages));
         window.location.href = '/admin';
       }
     }
