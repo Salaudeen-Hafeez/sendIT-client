@@ -130,7 +130,7 @@ window.updateDestination = async () => {
         console.log(updPack);
         localStorage.setItem('package', JSON.stringify(updPack.package));
         localStorage.setItem('packages', JSON.stringify(updPack.packages));
-        window.location.reload();
+        // window.location.reload();
       } else {
         const errMessage = document.getElementById('errMessage');
         errMessage.innerHTML = 'Destination address entered not found';
