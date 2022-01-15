@@ -157,10 +157,11 @@ import { authenticateRoute, pathNames } from './routAuth.js';
 //         </div>`;
 //   profile.innerHTML = adminProfile;
 // };
-// const pathName = pathNames();
-// if (pathName[0] !== pathName[1]) {
-authenticateRoute(pathName[1]);
-//}
+const pathName = pathNames();
+if (pathName[0] !== pathName[1]) {
+  console.log(pathName);
+  authenticateRoute(pathName[1]);
+}
 // window.login = login;
 
 // const openUser = () => {
