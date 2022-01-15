@@ -15,7 +15,7 @@ const admin = JSON.parse(localStorage.getItem('admin'));
 
 window.createProfile = () => {
   let profileData;
-  if (user.auth_token) {
+  if (user !== null && user.auth_token) {
     profileData = user;
   } else if (admin.admin_token) {
     profileData = admin;
@@ -47,7 +47,7 @@ window.logOut = async () => {
   window.location.href = '/';
 };
 window.displayUserPackages = () => {
-  if (!user.auth_token) {
+  if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
     createUserPackage(packages);
@@ -55,7 +55,7 @@ window.displayUserPackages = () => {
 };
 
 window.displayPendingPackage = () => {
-  if (!user.auth_token) {
+  if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
     const packageInTrans = packages.filter(
