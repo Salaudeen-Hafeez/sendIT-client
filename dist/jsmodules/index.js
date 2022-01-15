@@ -157,9 +157,9 @@ import { authenticateRoute, pathNames, pathNames } from './routAuth.js';
 //         </div>`;
 //   profile.innerHTML = adminProfile;
 // };
-const pathNames = pathNames();
-if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathNames[1]);
+const pathName = pathNames();
+if (pathName[0] !== pathName[1]) {
+  authenticateRoute(pathName[1]);
 }
 // window.login = login;
 
