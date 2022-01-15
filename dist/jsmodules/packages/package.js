@@ -75,8 +75,8 @@ window.loadPackage = async () => {
     heading.innerHTML = 'Fill the form below to update the package status';
   }
   const distMetrix = await getDistance(service, add);
-  const dist = distMetrix.rows[0].elements[0].distance.text.replace(/\D/g, '');
-  const durat = distMetrix.rows[0].elements[0].duration.text.replace(/\D/g, '');
+  // const dist = distMetrix.rows[0].elements[0].distance.text.replace(/\D/g, '');
+  // const durat = distMetrix.rows[0].elements[0].duration.text.replace(/\D/g, '');
   const packageData = createPackage(distMetrix.rows[0].elements[0]);
   packages.innerHTML = packageData;
 };
