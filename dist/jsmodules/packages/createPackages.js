@@ -48,9 +48,9 @@ const createPackage = (metrix) => {
 
 // Get the stored uaerPackages data and create the display packages
 const createUserPackage = (packages) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
-  const user = JSON.parse(localStorage.getItem('user'));
   if (packages.length > 0 && !packages.errMessage) {
     displayPackage += '<h1 style="text-align:center;">My Packages</h1>';
     packages.forEach((newPackage) => {
