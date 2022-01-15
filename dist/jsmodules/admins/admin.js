@@ -8,13 +8,16 @@ console.log(pathName);
 if (pathNames[0] !== pathNames[1] && pathNames[1] === '/admin') {
   authenticateRoute(pathName);
 }
-const { admin, users, packages } = JSON.parse(localStorage.getItem('admin'));
+const { _name, _username, _email, _status, admin_token } = JSON.parse(
+  localStorage.getItem('admin')
+);
+const users = JSON.parse(localStorage.getItem('users'));
+const packages = JSON.parse(localStorage.getItem('packages'));
 let userul = '';
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
 const adminFetchPackages = (cond) => {
-  const { admin_token } = admin;
   if (!admin_token) {
     window.location.href = '/login';
   } else {
@@ -32,19 +35,18 @@ window.displayAdmin = () => {
           class="profile-img"
         />
         <div class="profile-content">
-          <h1>${admin._name}</h1>
+          <h1>${_name}</h1>
           <ul>
-            <li id="adminname">${admin._username}</li>
-            <li>${admin._email}</li>
-            <li>${admin._status}</li>
+            <li id="adminname">${_username}</li>
+            <li>${_email}</li>
+            <li>${_status}</li>
           </ul>
         </div>`;
   profile.innerHTML = adminProfile;
 };
-window.fetchUsers = (user1 = users) => {
+window.fetchUsers = () => {
   userul = '';
-  console.log(user1);
-  user1.forEach((user) => {
+  users.forEach((user) => {
     userul += `<li>
         <div>
         <div class="userDetails">
@@ -72,7 +74,6 @@ window.adminFetchUserPackage = (e) => {
   newPackages.classList.toggle('open');
 };
 window.adminDeleteUser = (e) => {
-  const { _email, admin_token } = admin;
   const username = e.value;
   const id = parseInt(e.id);
   const userCont = `userConts${id}`;
