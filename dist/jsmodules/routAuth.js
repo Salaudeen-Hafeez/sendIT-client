@@ -1,4 +1,5 @@
 const authenticateRoute = (pathName) => {
+  console.log(pathName);
   const authData =
     JSON.parse(localStorage.getItem('user')) ||
     JSON.parse(localStorage.getItem('admin'));

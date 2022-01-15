@@ -37,7 +37,7 @@ window.toggleMenu = () => {
 };
 window.logOut = async () => {
   localStorage.clear();
-  setTimeout((window.location.href = '/'), 1000);
+  window.location.href = '/';
 };
 window.displayUserPackages = () => {
   const { user, packages } = JSON.parse(localStorage.getItem('user'));
