@@ -2,6 +2,7 @@ import { formValidation } from './validateForm.js';
 import { postData } from './httpFetch/postData.js';
 import { displayErr } from './errMessages.js';
 import { adminLoginUrl, loginUrl } from './httpFetch/urls.js';
+import { authenticateRoute } from './routAuth.js';
 let pathName = location.pathname;
 if (pathName === '/login') {
   authenticateRoute(pathName);
