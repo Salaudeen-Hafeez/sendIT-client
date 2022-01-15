@@ -159,6 +159,7 @@ import { authenticateRoute } from './routAuth.js';
 // };
 
 let pathName = location.pathname;
+console.log(pathName);
 if (pathName !== '/') {
   authenticateRoute(pathName);
 }
