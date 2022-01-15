@@ -1,6 +1,12 @@
 import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
+import { authenticateRoute, pathNames } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
+const pathName = pathNames();
+if (pathName[0] !== pathName[1]) {
+  console.log(pathName);
+  authenticateRoute(pathName[1]);
+}
 const input = document.getElementById('location');
 const input2 = document.getElementById('destination');
 new google.maps.places.Autocomplete(input);

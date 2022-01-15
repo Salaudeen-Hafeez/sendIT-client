@@ -1,5 +1,11 @@
 import { packageDisplay } from '../packages/displayPackage.js';
+import { authenticateRoute, pathNames } from '../routAuth.js';
 
+const pathName = pathNames();
+if (pathName[0] !== pathName[1]) {
+  console.log(pathName);
+  authenticateRoute(pathName[1]);
+}
 const { admin, users, packages } = JSON.parse(localStorage.getItem('admin'));
 let userul = '';
 const containerdiv = document.getElementById('usersContainer');
