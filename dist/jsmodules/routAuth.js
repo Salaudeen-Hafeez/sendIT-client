@@ -24,6 +24,7 @@ const authenticateRoute = (pathName) => {
       }
       break;
     case '/user':
+      console.log('Inside user');
       if (user !== null && user.auth_token) {
         window.location.replace('https://akera-logistics.netlify.app/user');
       } else {
