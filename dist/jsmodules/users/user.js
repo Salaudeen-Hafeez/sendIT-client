@@ -50,6 +50,7 @@ window.displayUserPackages = () => {
   if (!user.auth_token) {
     window.location.href = '/login';
   } else {
+    console.log(packages);
     createUserPackage(packages);
   }
 };

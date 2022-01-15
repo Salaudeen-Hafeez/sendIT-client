@@ -48,7 +48,6 @@ const createPackage = (metrix) => {
 
 // Get the stored uaerPackages data and create the display packages
 const createUserPackage = (packages) => {
-  const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packages');
   let displayPackage = '';
   if (packages.length > 0 && !packages.errMessage) {
