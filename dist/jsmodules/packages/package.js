@@ -41,7 +41,6 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
-const user = JSON.parse(localStorage.getItem('user'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 
 const { _location, _destination, _status } = JSON.parse(
@@ -118,8 +117,9 @@ window.updateDestination = async () => {
         _location: data1.destination,
         _status: data1.status,
       };
-      const updatedPackage = await putPackage(adminUpdateUrl, data);
-      localStorage.setItem('package', JSON.stringify(updatedPackage));
+      const { package, packages } = await putPackage(adminUpdateUrl, data);
+      localStorage.setItem('package', JSON.stringify(package));
+      localStorage.setItem('package', JSON.stringify(packages));
       window.location.reload();
     } else {
       const data = { _destination: data1.destination };
