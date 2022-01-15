@@ -7,21 +7,21 @@ const packageDisplay = (packages) => {
       switch (packag._status) {
         case 'In transit':
           color = '#095F06';
-          addres = `Going to: ${packag._destination}`;
+          addres = `<span style="font-weight:800;color:${color}">Going to:</span> ${packag._destination}`;
           break;
         case 'Delivered':
           color = '#07199D';
-          addres = `Delivered to: ${packag._destination}`;
+          addres = `<span style="font-weight:800;color:${color}">Delivered to:</span> ${packag._destination}`;
           break;
         default:
           color = 'red';
-          addres = `Pickup location: ${packag._location}`;
+          addres = `<span style="font-weight:800;color:${color}">Pickup location:</span> ${packag._location}`;
           break;
       }
       packagesDiv += `<li>
         <div style="margin-bottom:8px;text-align:center;cursor:pointer" onclick="getPackage(this)" id="${packag.parcel_id}">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
-          <p>To: ${addres}</p>
+          <p>${addres}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
       </li>
