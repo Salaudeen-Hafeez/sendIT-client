@@ -1,10 +1,10 @@
 import { createUserPackage } from '../packages/createPackages.js';
 
-const user =
-  JSON.parse(localStorage.getItem('user')) ||
-  JSON.parse(localStorage.getItem('admin'));
 // Get the stored user data and create the user profile display
 window.createProfile = () => {
+  const user =
+    JSON.parse(localStorage.getItem('user')) ||
+    JSON.parse(localStorage.getItem('admin'));
   let profileData;
   if (user !== null) {
     if (user.user) {
