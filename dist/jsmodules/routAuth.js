@@ -18,6 +18,7 @@ const authenticateRoute = (pathName) => {
       } else {
         window.location.replace('https://akera-logistics.netlify.app/');
       }
+      break;
     case '/login':
       if (authData !== null) {
         if (authData.user && authData.user.auth_token) {
