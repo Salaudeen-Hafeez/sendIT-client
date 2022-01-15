@@ -34,10 +34,12 @@ const authenticateRoute = (pathName) => {
 
       break;
     case '/user':
-      if (authData !== null && authData.user) {
-        window.location.replace('https://akera-logistics.netlify.app/user');
-      } else {
-        window.location.replace('https://akera-logistics.netlify.app/login');
+      if (authData !== null) {
+        if (authData.user) {
+          window.location.replace('https://akera-logistics.netlify.app/user');
+        } else {
+          window.location.replace('https://akera-logistics.netlify.app/login');
+        }
       }
       break;
     case '/admin':

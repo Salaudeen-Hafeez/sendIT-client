@@ -24,8 +24,10 @@ window.login = async () => {
       if (user.errMessage) {
         displayErr(user);
       } else {
-        localStorage.setItem('user', JSON.stringify(user));
-        window.location.href = '/user';
+        localStorage.setItem('user', JSON.stringify(user.user));
+        localStorage.setItem('package', JSON.stringify(package));
+        localStorage.setItem('token', JSON.stringify(user.user.auth_token));
+        //window.location.href = '/user';
       }
     } else {
       const admin = await postData(adminLoginUrl, data);
@@ -33,7 +35,10 @@ window.login = async () => {
         displayErr(admin);
       } else {
         localStorage.setItem('admin', JSON.stringify(admin));
-        window.location.href = '/admin';
+        localStorage.setItem('users', JSON.stringify(user.user));
+        localStorage.setItem('packages', JSON.stringify(package));
+        localStorage.setItem('admtoken', JSON.stringify(user.user.admin_token));
+        //window.location.href = '/admin';
       }
     }
   }

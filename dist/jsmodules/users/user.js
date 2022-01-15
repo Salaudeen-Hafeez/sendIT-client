@@ -9,17 +9,16 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1] && pathNames[1] === '/user') {
   authenticateRoute(pathName);
 }
+user = JSON.parse(localStorage.getItem('user'));
+const packages = JSON.parse(localStorage.getItem('package'));
+const admin = JSON.parse(localStorage.getItem('admin'));
+
 window.createProfile = () => {
-  const user =
-    JSON.parse(localStorage.getItem('user')) ||
-    JSON.parse(localStorage.getItem('admin'));
   let profileData;
-  if (user !== null) {
-    if (user.user) {
-      profileData = user.user;
-    } else {
-      profileData = user.admin;
-    }
+  if (user.auth_token) {
+    profileData = user;
+  } else if (admin.admin_token) {
+    profileData = admin;
   }
   const profile = document.getElementById('userProfile');
   const userProfile = ` <img
@@ -48,7 +47,6 @@ window.logOut = async () => {
   window.location.href = '/';
 };
 window.displayUserPackages = () => {
-  const { user, packages } = JSON.parse(localStorage.getItem('user'));
   if (!user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -57,7 +55,6 @@ window.displayUserPackages = () => {
 };
 
 window.displayPendingPackage = () => {
-  const { user, packages } = JSON.parse(localStorage.getItem('user'));
   if (!user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -74,7 +71,6 @@ window.displayPendingPackage = () => {
 };
 window.getPackage = (td) => {
   const parcelId = parseInt(td.value);
-  const { packages } = JSON.parse(localStorage.getItem('user'));
   const packag = packages.filter(
     (packageData) => packageData.parcel_id === parcelId
   );

@@ -41,9 +41,8 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
-const user =
-  JSON.parse(localStorage.getItem('admin')) ||
-  JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('admin'));
+
 const { _location, _destination, _status } = JSON.parse(
   localStorage.getItem('package')
 );
