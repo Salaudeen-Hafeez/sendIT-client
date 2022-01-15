@@ -5,7 +5,7 @@ const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 console.log(pathName);
-if (pathNames[0] !== pathNames[1] && pathNames[1] === '/admin') {
+if (pathNames[1] !== '/admin' && pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
 const { _name, _username, _email, _status, admin_token } = JSON.parse(
