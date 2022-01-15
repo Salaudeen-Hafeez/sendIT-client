@@ -10,7 +10,7 @@ if (user !== null) {
   username = user._username;
   userid = user.users_id;
   token = user.auth_token;
-} else {
+} else if (admin !== null) {
   email = admin._email;
   userid = admin.users_id;
   token = admin.admin_token;
