@@ -160,7 +160,7 @@ import { authenticateRoute } from './routAuth.js';
 
 let pathName = location.pathname;
 console.log(pathName);
-if (pathName !== '/') {
+if (pathName === '/') {
   authenticateRoute(pathName);
 }
 // window.login = login;
