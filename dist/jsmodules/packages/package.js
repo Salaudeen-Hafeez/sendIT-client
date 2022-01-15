@@ -126,8 +126,10 @@ window.updateDestination = async () => {
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
-        const updatedPackage = await putPackage(userUpdateUrl, data);
-        localStorage.setItem('package', JSON.stringify(updatedPackage));
+        const updPack = await putPackage(userUpdateUrl, data);
+        console.log(updPack);
+        localStorage.setItem('package', JSON.stringify(updPack.package));
+        localStorage.setItem('packages', JSON.stringify(updPack.packages));
         window.location.reload();
       } else {
         const errMessage = document.getElementById('errMessage');
