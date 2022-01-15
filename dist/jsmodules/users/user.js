@@ -17,7 +17,7 @@ window.createProfile = () => {
   let profileData;
   if (user !== null && user.auth_token) {
     profileData = user;
-  } else if (admin.admin_token) {
+  } else if (admin !== null && admin.admin_token) {
     profileData = admin;
   }
   const profile = document.getElementById('userProfile');
