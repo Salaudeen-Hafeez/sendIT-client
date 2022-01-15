@@ -1,6 +1,6 @@
 // const apiKey = 'AIzaSyD9LtzkCH903RTWTMDehYnSmOVitAhBtwA';
 
-import { authenticateRoute } from './routAuth.js';
+import { authenticateRoute, pathNames, pathNames } from './routAuth.js';
 
 // const setErrorFor = (inp, message) => {
 //   inp.style.border = '1px solid red';
@@ -157,11 +157,7 @@ import { authenticateRoute } from './routAuth.js';
 //         </div>`;
 //   profile.innerHTML = adminProfile;
 // };
-
-let pathName = location.pathname;
-let pathNames = [localStorage.getItem('path')];
-localStorage.setItem('path', pathName);
-pathNames.push(pathName);
+const pathNames = pathNames();
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathNames[1]);
 }

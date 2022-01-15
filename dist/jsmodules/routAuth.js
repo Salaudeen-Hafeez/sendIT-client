@@ -50,5 +50,12 @@ const authenticateRoute = (pathName) => {
       break;
   }
 };
+const pathNames = () => {
+  let pathName = location.pathname;
+  let pathNames = [localStorage.getItem('path')];
+  localStorage.setItem('path', pathName);
+  pathNames.push(pathName);
+  return pathNames;
+};
 
-export { authenticateRoute };
+export { authenticateRoute, pathNames };
