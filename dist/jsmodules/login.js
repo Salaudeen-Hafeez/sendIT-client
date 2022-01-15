@@ -27,7 +27,7 @@ window.login = async () => {
         localStorage.setItem('user', JSON.stringify(user.user));
         localStorage.setItem('packages', JSON.stringify(user.packages));
         localStorage.setItem('token', JSON.stringify(user.user.auth_token));
-        //window.location.href = '/user';
+        window.location.href = '/user';
       }
     } else {
       const admin = await postData(adminLoginUrl, data);
@@ -38,7 +38,7 @@ window.login = async () => {
         localStorage.setItem('users', JSON.stringify(user.user));
         localStorage.setItem('packages', JSON.stringify(packages));
         localStorage.setItem('admtoken', JSON.stringify(user.user.admin_token));
-        //window.location.href = '/admin';
+        window.location.href = '/admin';
       }
     }
   }
