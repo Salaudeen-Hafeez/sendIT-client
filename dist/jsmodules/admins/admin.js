@@ -93,3 +93,27 @@ window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
 };
+window.showPackages = () => {
+  const packages = document.querySelector('.packageContainer');
+  packages.classList.toggle('open');
+};
+window.fetchNewPackages = () => {
+  const cond = 'At the location';
+  const { admin_token } = admin;
+  if (!admin_token) {
+    window.location.href = '/login';
+  } else {
+    const packag = packages.filter((packag) => packag._status === cond);
+    const displayPackage = packageDisplay(packag);
+    container.innerHTML = displayPackage;
+    containerdiv.classList.toggle('open');
+  }
+};
+
+window.fetchPackagesInTransit = () => {
+  adminFetchPackages('In transit');
+};
+
+window.fetchDeliveredPackages = () => {
+  adminFetchPackages('Delivered');
+};

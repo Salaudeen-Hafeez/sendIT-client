@@ -812,10 +812,10 @@ getPackage;
 //     });
 // };
 
-const showPackages = () => {
-  const packages = document.querySelector('.packageContainer');
-  packages.classList.toggle('open');
-};
+// const showPackages = () => {
+//   const packages = document.querySelector('.packageContainer');
+//   packages.classList.toggle('open');
+// };
 
 const storePackage = (e) => {
   const packageElement = e.parentElement.parentElement.querySelector('li');
