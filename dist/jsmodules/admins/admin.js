@@ -1,5 +1,5 @@
 import { packageDisplay } from '../packages/displayPackage.js';
-import { authenticateRoute, pathNames } from '../routAuth.js';
+import { authenticateRoute } from '../routAuth.js';
 let pathName = location.pathname;
 if (pathName !== '/admin') {
   authenticateRoute(pathName);

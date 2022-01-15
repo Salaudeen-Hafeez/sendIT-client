@@ -1,5 +1,5 @@
 import { createUserPackage } from '../packages/createPackages.js';
-import { authenticateRoute, pathNames } from '../routAuth.js';
+import { authenticateRoute } from '../routAuth.js';
 
 // Get the stored user data and create the user profile display
 let pathName = location.pathname;

@@ -1,6 +1,6 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { adminUpdateUrl, userUpdateUrl } from '../httpFetch/urls.js';
-import { authenticateRoute, pathNames } from '../routAuth.js';
+import { authenticateRoute } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
 let pathName = location.pathname;
