@@ -16,12 +16,12 @@ const packageDisplay = (packages) => {
           break;
       }
       packagesDiv += `<li>
-        <div style="margin-bottom:8px;text-align:center;cursor:pointer" onclick="getPackage(this)" id="${packag.parcel_id}">
+        <div style="margin-bottom:8px;cursor:pointer" onclick="getPackage(this)" id="${packag.parcel_id}">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Pickup location:</span> ${packag._location}</p>
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
-          <button style="width:90%;font-weight:500;background-color:#056973;color:white" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
+          <button style="width:90%;border-radius:10px;font-weight:500;background-color:#056973;color:white" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
         </div>
       </li>
     `;
