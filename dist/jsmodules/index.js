@@ -167,7 +167,6 @@ if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
 // window.login = login;
-
 // const openUser = () => {
 //   const user = usersData();
 //   if (user.user.users_id) {
