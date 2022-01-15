@@ -1,6 +1,11 @@
 import { createUserPackage } from '../packages/createPackages.js';
+import { authenticateRoute, pathNames } from '../routAuth.js';
 
 // Get the stored user data and create the user profile display
+const pathName = pathNames();
+if (pathName[0] !== pathName[1]) {
+  authenticateRoute(pathName[1]);
+}
 window.createProfile = () => {
   const user =
     JSON.parse(localStorage.getItem('user')) ||
