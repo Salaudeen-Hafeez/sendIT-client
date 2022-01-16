@@ -5,9 +5,9 @@ const authenticateRoute = (pathName) => {
   switch (pathName) {
     case '/':
       if (user !== null && user.auth_token) {
-        window.location.replace('https://akera-logistics.netlify.app/user');
+        window.location.href = '/user';
       } else if (admin !== null && admin.admin_token) {
-        window.location.replace('https://akera-logistics.netlify.app/admin');
+        window.location.href = '/admin';
       } else {
         break;
       }
@@ -15,9 +15,9 @@ const authenticateRoute = (pathName) => {
       break;
     case '/login':
       if (user !== null && user.auth_token) {
-        window.location.replace('https://akera-logistics.netlify.app/user');
+        window.location.href = '/user';
       } else if (admin !== null && admin.admin_token) {
-        window.location.replace('https://akera-logistics.netlify.app/admin');
+        window.location.href = '/admin';
       } else {
         break;
       }
@@ -26,34 +26,34 @@ const authenticateRoute = (pathName) => {
       if (user !== null && user.auth_token) {
         break;
       } else {
-        window.location.replace('https://akera-logistics.netlify.app/login');
+        window.location.href = '/login';
       }
       break;
     case '/admin':
       if (admin !== null && admin.admin_token) {
         break;
       } else {
-        window.location.replace('https://akera-logistics.netlify.app/login');
+        window.location.href = '/login';
       }
       break;
     case '/package':
       if (packag !== null) {
         break;
       } else if (user !== null) {
-        window.location.replace('https://akera-logistics.netlify.app/user');
+        window.location.href = '/user';
       } else {
-        window.location.replace('https://akera-logistics.netlify.app/login');
+        window.location.href = '/login';
       }
       break;
     case '/newpackage':
       if (user !== null && user.auth_token) {
         break;
       } else {
-        window.location.replace('https://akera-logistics.netlify.app/login');
+        window.location.href = '/login';
       }
       break;
     default:
-      window.location.replace('https://akera-logistics.netlify.app/404');
+      window.location.href = '/404';
       break;
   }
 };
