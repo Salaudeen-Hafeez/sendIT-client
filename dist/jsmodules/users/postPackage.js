@@ -28,8 +28,10 @@ window.submitPackage = async () => {
     const postedData = await postData(postPackageUrl, data);
     console.log(postedData);
     localStorage.removeItem('package');
-    localStorage.setItem('package', JSON.stringify(postedData));
-    //window.location.href = '/package';
+    localStorage.removeItem('packages');
+    localStorage.setItem('package', JSON.stringify(postedData.package));
+    localStorage.setItem('packages', JSON.stringify(postedData.packages));
+    window.location.href = '/package';
   }
 };
 window.clearErr = (e) => {
