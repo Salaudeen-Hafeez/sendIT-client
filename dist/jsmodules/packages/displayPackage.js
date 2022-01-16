@@ -22,15 +22,13 @@ const packageDisplay = (packages) => {
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
-        <div style="width:90%;text-align:right;"> 
-        <a style="font-weight:500;color:#056973 onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</a>
-        </div>
+        <button style="width:90%;border-radius:10px;font-weight:500;background-color:#056973;color:white" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
       </li>
     `;
     });
   } else {
     packagesDiv = `<li>
-    <p style="padding-top:5px;font-weight:800;text-align:center;color:red;">No packages</p></li>`;
+    <p class="btn">No packages</p></li>`;
   }
   return packagesDiv;
 };
