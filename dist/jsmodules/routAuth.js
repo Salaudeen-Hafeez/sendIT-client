@@ -47,6 +47,9 @@ const authenticateRoute = (pathName) => {
         window.location.replace('https://akera-logistics.netlify.app/login');
       }
       break;
+    case '/newpackage':
+      window.location.replace('https://akera-logistics.netlify.app/newpackage');
+      break;
     default:
       window.location.replace('https://akera-logistics.netlify.app/404');
       break;

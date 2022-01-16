@@ -304,10 +304,11 @@ input {
 .delete {
   border: 0px;
   position: relative;
+  color: #1f4399;
   left: 160px;
   padding: 5px 10px;
   background-color: white;
-  font-weight: 600;
+  font-weight: 700;
 }
 .delete:hover {
   color: white;
@@ -373,7 +374,6 @@ user-profile
     rgba(255, 255, 255, 0.5)
   );
 }
-
 .user-profile .package-img {
   width: 95%;
   border-radius: 10px;
@@ -415,12 +415,13 @@ td {
   );
 }
 .new-package {
-  width: 100%;
+  width: 95%;
   display: block;
   background: #c6f1dd;
+  font-weight: 800;
   border: 1px solid darkgreen;
   border-radius: 15px;
-  color: #333;
+  color: #1f4399;
   text-align: center;
   margin: 1rem 0;
   padding: 1rem 0;
