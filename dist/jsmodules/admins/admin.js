@@ -99,6 +99,35 @@ window.adminDeleteUser = (e) => {
       });
   }
 };
+window.adminDeletePackage = (e) => {
+  console.log(e);
+  const status = e.parentElement.querySelector('button').innerHTML;
+  const parentEl = e.parentElement.parentElement.parentElement.parentElement;
+  console.log(status);
+  let button = parentEl.querySelector('button');
+  const { _email, admin_token } = admin;
+  const username = e.value;
+  const id = parseInt(e.id);
+  console.log(username, id);
+  fetch(
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${status}`,
+    {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+      // localStorage.removeItem('package');
+      // localStorage.setItem('package', JSON.stringify(data));
+      // button.click();
+      // button.click();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 window.getPackage = (e) => {
   localStorage.removeItem('package');
   const parcelId = parseInt(e.id);
