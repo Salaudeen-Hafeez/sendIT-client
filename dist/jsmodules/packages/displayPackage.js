@@ -15,7 +15,7 @@ const packageDisplay = (packages) => {
           color = 'red';
           break;
       }
-      packagesDiv += `<li style="margin:8px;">
+      packagesDiv += `<li>
         <div style="cursor:pointer" onclick="getPackage(this)">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Pickup location:</span> ${packag._location}</p>
