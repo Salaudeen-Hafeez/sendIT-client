@@ -101,7 +101,8 @@ window.adminDeleteUser = (e) => {
   }
 };
 window.adminDeletePackage = (e) => {
-  console.log(e.parentElement.parentElement.id);
+  const parent = e.parentElement.parentElement.previousElementSibling;
+  console.log(parent);
   const stat = e.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
@@ -117,7 +118,11 @@ window.adminDeletePackage = (e) => {
     .then((data) => {
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(data));
-      adminFetchPackages(status);
+      if (parentId === 'newPackages') {
+        adminFetchPackages(status);
+      } else {
+        adminFetchUserPackage();
+      }
     })
     .catch((err) => {
       console.log(err);
