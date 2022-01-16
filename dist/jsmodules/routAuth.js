@@ -10,7 +10,7 @@ const authenticateRoute = (pathName) => {
       } else if (admin !== null && admin.admin_token) {
         window.location.replace('https://akera-logistics.netlify.app/admin');
       } else {
-        window.location.replace('https://akera-logistics.netlify.app/');
+        break;
       }
 
       break;
@@ -20,27 +20,27 @@ const authenticateRoute = (pathName) => {
       } else if (admin !== null && admin.admin_token) {
         window.location.replace('https://akera-logistics.netlify.app/admin');
       } else {
-        window.location.replace('https://akera-logistics.netlify.app/login');
+        break;
       }
       break;
     case '/user':
       console.log('Inside user');
       if (user !== null && user.auth_token) {
-        window.location.replace('https://akera-logistics.netlify.app/user');
+        break;
       } else {
         window.location.replace('https://akera-logistics.netlify.app/login');
       }
       break;
     case '/admin':
       if (admin !== null && admin.admin_token) {
-        window.location.replace('https://akera-logistics.netlify.app/admin');
+        break;
       } else {
         window.location.replace('https://akera-logistics.netlify.app/login');
       }
       break;
     case '/package':
       if (packag !== null) {
-        window.location.replace('https://akera-logistics.netlify.app/package');
+        break;
       } else if (user !== null) {
         window.location.replace('https://akera-logistics.netlify.app/user');
       } else {
