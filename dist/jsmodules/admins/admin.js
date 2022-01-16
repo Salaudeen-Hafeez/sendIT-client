@@ -116,10 +116,9 @@ window.adminDeletePackage = (e) => {
     .then((resp) => resp.json())
     .then((data) => {
       console.log(data);
-      // localStorage.removeItem('package');
-      // localStorage.setItem('package', JSON.stringify(data));
-      // button.click();
-      // button.click();
+      localStorage.removeItem('packages');
+      localStorage.setItem('packages', JSON.stringify(data));
+      adminFetchPackages(status);
     })
     .catch((err) => {
       console.log(err);
