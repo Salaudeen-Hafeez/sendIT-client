@@ -101,12 +101,10 @@ window.adminDeleteUser = (e) => {
 };
 window.adminDeletePackage = (e) => {
   console.log(e);
-  const status = e.parentElement.querySelector('div');
-  const stat = status.querySelectorAll('p')[3].innerHTML;
-  console.log(stat);
+  const stat = e.parentElement.querySelector('div');
+  const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
   const id = parseInt(e.id);
-  console.log(username, id);
   fetch(
     `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${status}`,
     {
