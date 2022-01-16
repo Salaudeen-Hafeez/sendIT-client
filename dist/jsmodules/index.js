@@ -242,7 +242,6 @@ if (pathNames[0] !== pathNames[1]) {
 //   }
 // };
 // window.displayUserProfile = displayUserProfile;
-adminDeletePackage;
 // const displayAdmin = () => {
 //   createAdmin();
 // };
