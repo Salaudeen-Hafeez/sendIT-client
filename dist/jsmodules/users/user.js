@@ -50,7 +50,7 @@ window.displayUserPackages = () => {
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
-    packagesDiv = packageDisplay(packages);
+    packagesDiv.innerHTML = packageDisplay(packages);
   }
 };
 
@@ -63,9 +63,9 @@ window.displayPendingPackage = () => {
     );
     if (packageInTrans.length === 0) {
       const packag = { errMessage: 'You do not have package in transit' };
-      packagesDiv = packageDisplay(packag);
+      packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      packagesDiv = packageDisplay(packageInTrans);
+      packagesDiv.innerHTML = packageDisplay(packageInTrans);
     }
   }
 };
