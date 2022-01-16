@@ -102,10 +102,11 @@ window.adminDeleteUser = (e) => {
   }
 };
 window.adminDeletePackage = (e) => {
-  const sibling = e.parentElement.parentElement.previousElementSibling;
+  const sibling =
+    e.parentElement.parentElement.parentElement.previousElementSibling;
   const button = sibling.querySelector('button');
   console.log(button);
-  const stat = e.parentElement.querySelector('div');
+  const stat = e.parentElement.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
   const id = parseInt(e.id);

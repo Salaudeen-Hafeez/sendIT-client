@@ -14,14 +14,16 @@ const packageDisplay = (packages, cond = 'hidden') => {
           color = 'red';
           break;
       }
-      packagesDiv += `<li style="margin:8px; text-align:center">
+      packagesDiv += `<li style="margin:8px;">
         <div style="cursor:pointer" id="${packag.parcel_id}" onclick="getPackage(this)">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Pickup location:</span> ${packag._location}</p>
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
+        <div style="with:100%; text-align:right">
         <button class="delete" style="visibility: ${cond};" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
+        </div>
       </li>
     `;
     });
