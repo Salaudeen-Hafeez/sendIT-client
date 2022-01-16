@@ -305,13 +305,13 @@ input {
   border: 0px;
   position: relative;
   left: 160px;
+  padding: 5px 10px;
   background-color: white;
   font-weight: 600;
 }
 .delete:hover {
   color: white;
   border-radius: 0.8rem;
-  padding: 5px 10px;
   background-color: #ad0903;
 }
 user-profile
