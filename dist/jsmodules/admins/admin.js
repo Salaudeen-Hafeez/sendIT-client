@@ -102,8 +102,8 @@ window.adminDeleteUser = (e) => {
 window.adminDeletePackage = (e) => {
   console.log(e);
   const stat = e.parentElement.querySelector('div');
-  const status = stat.querySelectorAll('p')[3];
-  console.log(status.value);
+  const status = stat.querySelectorAll('p')[3].innerHTML;
+  console.log(typeof status);
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
