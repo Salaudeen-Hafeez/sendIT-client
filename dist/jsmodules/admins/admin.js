@@ -107,7 +107,7 @@ window.adminDeletePackage = (e) => {
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${status}`,
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${'At the location'}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
