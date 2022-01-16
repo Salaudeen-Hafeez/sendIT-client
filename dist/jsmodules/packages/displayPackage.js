@@ -15,7 +15,7 @@ const packageDisplay = (packages, cond = 'hidden') => {
           break;
       }
       packagesDiv += `<li style="margin:8px;">
-        <div style="cursor:pointer" onclick="getPackage(this)">
+        <div style="cursor:pointer" id="${packag.parcel_id}" onclick="getPackage(this)">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Pickup location:</span> ${packag._location}</p>
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
