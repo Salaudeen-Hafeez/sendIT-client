@@ -150,7 +150,7 @@ window.showPackages = () => {
   packages.classList.toggle('open');
 };
 window.fetchNewPackages = () => {
-  adminFetchPackages('At the location');
+  adminFetchPackages('Ready for pickup');
 };
 
 window.fetchPackagesInTransit = () => {
