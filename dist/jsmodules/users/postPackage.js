@@ -1,11 +1,13 @@
 import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
-import { authenticateRoute, pathNames } from '../routAuth.js';
+import { authenticateRoute } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
-const pathName = pathNames();
-if (pathName[0] !== pathName[1]) {
-  console.log(pathName);
-  authenticateRoute(pathName[1]);
+let pathName = location.pathname;
+const pathNames = [localStorage.getItem('path')];
+localStorage.setItem('path', pathName);
+pathNames.push(pathName);
+if (pathNames[0] !== pathNames[1]) {
+  authenticateRoute(pathName);
 }
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
