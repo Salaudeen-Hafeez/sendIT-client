@@ -303,7 +303,6 @@ input {
 }
 .delete {
   border: 0px;
-  float: right;
   padding: 5px 10px;
   margin-right: 10px;
   background-color: white;
