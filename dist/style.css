@@ -301,12 +301,8 @@ input {
   width: 95%;
   padding: 12px;
 }
-.deleteDiv {
-  display: flex;
-  justify-content: space-between;
-}
 .delete {
-  border-radius: 0px;
+  border: 0px;
   background-color: white;
   font-weight: 600;
   font-size: 2px;
