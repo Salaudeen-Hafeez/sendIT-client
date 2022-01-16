@@ -10,7 +10,6 @@ if (pathNames[0] !== pathNames[1]) {
 const { _name, _username, _email, _status, admin_token } = JSON.parse(
   localStorage.getItem('admin')
 );
-const showDeleteBtn = 'visible';
 const users = JSON.parse(localStorage.getItem('users'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 let userul = '';
@@ -23,7 +22,7 @@ const adminFetchPackages = (cond) => {
     window.location.href = '/login';
   } else {
     const packag = packages.filter((packag) => packag._status === cond);
-    const displayPackage = packageDisplay(packag, showDeleteBtn);
+    const displayPackage = packageDisplay(packag);
     newPackages.innerHTML = displayPackage;
     newPackages.classList.toggle('open');
   }
@@ -72,7 +71,7 @@ window.adminFetchUserPackage = (e) => {
   const userCont = `userCont${id}`;
   const newPackages = document.getElementById(userCont);
   const packag = packages.filter((packag) => packag._username === username);
-  newPackages.innerHTML = packageDisplay(packag, showDeleteBtn);
+  newPackages.innerHTML = packageDisplay(packag);
   newPackages.classList.toggle('open');
 };
 window.adminDeleteUser = (e) => {
@@ -102,11 +101,10 @@ window.adminDeleteUser = (e) => {
   }
 };
 window.adminDeletePackage = (e) => {
-  const sibling =
-    e.parentElement.parentElement.parentElement.previousElementSibling;
+  const sibling = e.parentElement.parentElement.previousElementSibling;
   const button = sibling.querySelector('button');
   console.log(button);
-  const stat = e.parentElement.parentElement.querySelector('div');
+  const stat = e.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
   const id = parseInt(e.id);
@@ -152,7 +150,7 @@ window.showPackages = () => {
   packages.classList.toggle('open');
 };
 window.fetchNewPackages = () => {
-  adminFetchPackages('Ready for pickup');
+  adminFetchPackages('At the location');
 };
 
 window.fetchPackagesInTransit = () => {

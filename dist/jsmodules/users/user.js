@@ -63,9 +63,9 @@ window.displayPendingPackage = () => {
     );
     if (packageInTrans.length === 0) {
       const packag = { errMessage: 'You do not have package in transit' };
-      packagesDiv.innerHTML = packageDisplay(packag);
+      packagesDiv.innerHTML = packageDisplay(packag, 'view details');
     } else {
-      packagesDiv.innerHTML = packageDisplay(packageInTrans);
+      packagesDiv.innerHTML = packageDisplay(packageInTrans, 'view details');
     }
   }
 };
