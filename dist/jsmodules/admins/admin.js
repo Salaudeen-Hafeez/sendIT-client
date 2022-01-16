@@ -101,7 +101,8 @@ window.adminDeleteUser = (e) => {
   }
 };
 window.adminDeletePackage = (e) => {
-  const parent = e.parentElement.parentElement.previousElementSibling;
+  const sibling = e.parentElement.parentElement.previousElementSibling;
+  const button = sibling.querySelector('button');
   console.log(parent);
   const stat = e.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
@@ -121,7 +122,7 @@ window.adminDeletePackage = (e) => {
       if (parentId === 'newPackages') {
         adminFetchPackages(status);
       } else {
-        adminFetchUserPackage();
+        button.click();
       }
     })
     .catch((err) => {
