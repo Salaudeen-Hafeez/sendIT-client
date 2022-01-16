@@ -1,4 +1,4 @@
-const packageDisplay = (packages, cond = 'delete') => {
+const packageDisplay = (packages, labels = 'delete') => {
   let packagesDiv = '';
   let color;
   if (Array.isArray(packages) && packages.length !== 0) {
