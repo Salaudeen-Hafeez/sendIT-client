@@ -120,10 +120,11 @@ window.adminDeletePackage = (e) => {
     .then((data) => {
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(data));
-      if (parentId === 'newPackages') {
-        adminFetchPackages(status);
-      } else {
+      if (button !== null) {
         button.click();
+        button.click();
+      } else {
+        adminFetchPackages(status);
       }
     })
     .catch((err) => {
