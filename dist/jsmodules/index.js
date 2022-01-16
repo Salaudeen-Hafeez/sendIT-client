@@ -164,9 +164,7 @@ localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 console.log(pathName);
 if (pathNames[0] !== pathNames[1]) {
-  if (pathNames[0] === '/') {
-    authenticateRoute(pathName);
-  }
+  authenticateRoute(pathName);
 }
 // window.login = login;
 // const openUser = () => {

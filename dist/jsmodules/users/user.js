@@ -8,9 +8,7 @@ localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 console.log(pathNames);
 if (pathNames[0] !== pathNames[1]) {
-  if (pathNames[0] !== '/user') {
-    authenticateRoute(pathName);
-  }
+  authenticateRoute(pathName);
 }
 const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('packages'));
