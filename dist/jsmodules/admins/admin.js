@@ -102,7 +102,7 @@ window.adminDeleteUser = (e) => {
 window.adminDeletePackage = (e) => {
   console.log(e);
   const status = e.parentElement.querySelector('div');
-  console.log(status.id);
+  console.log(status.value);
   const username = e.value;
   const id = parseInt(e.id);
   console.log(username, id);
