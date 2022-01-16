@@ -1,4 +1,4 @@
-import { createUserPackage } from '../packages/createPackages.js';
+import { packageDisplay } from '../packages/displayPackage.js';
 import { authenticateRoute } from '../routAuth.js';
 
 // Get the stored user data and create the user profile display
@@ -49,7 +49,8 @@ window.displayUserPackages = () => {
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
-    createUserPackage(packages);
+    const packagesDiv = document.getElementById('packages');
+    packagesDiv = packageDisplay(packages);
   }
 };
 
@@ -62,9 +63,9 @@ window.displayPendingPackage = () => {
     );
     if (packageInTrans.length === 0) {
       const packag = { errMessage: 'You do not have package in transit' };
-      createUserPackage(packag);
+      packagesDiv = packageDisplay(packag);
     } else {
-      createUserPackage(packageInTrans);
+      packagesDiv = packageDisplay(packageInTrans);
     }
   }
 };
