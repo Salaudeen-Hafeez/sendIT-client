@@ -72,6 +72,8 @@ window.displayPendingPackage = () => {
 window.getPackage = (e) => {
   localStorage.removeItem('package');
   const parcelId = parseInt(e.id);
+  console.log(e);
+  console.log(parcelId);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
