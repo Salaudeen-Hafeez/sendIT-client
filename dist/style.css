@@ -304,14 +304,15 @@ input {
 .delete {
   border: 0px;
   float: right;
-  padding-right: 10px;
+  padding: 5px 10px;
+  margin-right: 10px;
   background-color: white;
   font-weight: 600;
 }
 .delete:hover {
   color: white;
   border-radius: 0.8rem;
-  background-color: #932a1b;
+  background-color: #ad0903;
 }
 user-profile
 /*User profile design*/
