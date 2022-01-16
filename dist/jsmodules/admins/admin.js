@@ -4,21 +4,19 @@ let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
-console.log(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
 const { _name, _username, _email, _status, admin_token } = JSON.parse(
   localStorage.getItem('admin')
 );
-const users = JSON.parse(localStorage.getItem('users'));
-const packages = JSON.parse(localStorage.getItem('packages'));
+let users = JSON.parse(localStorage.getItem('users'));
+let packages = JSON.parse(localStorage.getItem('packages'));
 let userul = '';
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
 const adminFetchPackages = (cond) => {
-  const packages = JSON.parse(localStorage.getItem('packages'));
   if (!admin_token) {
     window.location.href = '/login';
   } else {
@@ -101,10 +99,8 @@ window.adminDeleteUser = (e) => {
   }
 };
 window.adminDeletePackage = (e) => {
-  console.log(e);
   const stat = e.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
-  console.log(status);
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
@@ -116,7 +112,6 @@ window.adminDeletePackage = (e) => {
   )
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       localStorage.removeItem('packages');
       localStorage.setItem('packages', JSON.stringify(data));
       adminFetchPackages(status);
