@@ -65,6 +65,7 @@ window.fetchUsers = () => {
   containerdiv.classList.toggle('open');
 };
 window.adminFetchUserPackage = (e) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   const username = e.value;
   const id = e.id;
   const userCont = `userCont${id}`;
@@ -100,6 +101,7 @@ window.adminDeleteUser = (e) => {
   }
 };
 window.adminDeletePackage = (e) => {
+  console.log(e.parentElement.parentElement);
   const stat = e.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
