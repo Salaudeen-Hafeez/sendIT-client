@@ -415,7 +415,6 @@ td {
   );
 }
 .new-package {
-  width: 95%;
   display: block;
   background: #c6f1dd;
   font-weight: 800;
@@ -423,7 +422,7 @@ td {
   border-radius: 15px;
   color: #1f4399;
   text-align: center;
-  margin: 1rem 0;
+  margin: 0 1rem;
   padding: 1rem 0;
 }
 .cancelbtn {
