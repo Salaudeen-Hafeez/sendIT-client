@@ -1,5 +1,4 @@
 const authenticateRoute = (pathName) => {
-  console.log(pathName);
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
   const packag = localStorage.getItem('package');
@@ -24,7 +23,6 @@ const authenticateRoute = (pathName) => {
       }
       break;
     case '/user':
-      console.log('Inside user');
       if (user !== null && user.auth_token) {
         break;
       } else {
@@ -48,7 +46,11 @@ const authenticateRoute = (pathName) => {
       }
       break;
     case '/newpackage':
-      window.location.replace('https://akera-logistics.netlify.app/newpackage');
+      if (user !== null && user.auth_token) {
+        break;
+      } else {
+        window.location.replace('https://akera-logistics.netlify.app/login');
+      }
       break;
     default:
       window.location.replace('https://akera-logistics.netlify.app/404');
