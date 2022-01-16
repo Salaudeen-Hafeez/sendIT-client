@@ -48,6 +48,7 @@ const authenticateRoute = (pathName) => {
       }
       break;
     default:
+      window.location.replace('https://akera-logistics.netlify.app/404');
       break;
   }
 };
