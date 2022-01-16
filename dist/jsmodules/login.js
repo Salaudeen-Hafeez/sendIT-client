@@ -8,7 +8,9 @@ const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathName);
+  if (pathNames[0] === '/login') {
+    authenticateRoute(pathName);
+  }
 }
 window.login = async () => {
   localStorage.clear();

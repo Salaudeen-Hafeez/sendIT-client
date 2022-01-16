@@ -164,7 +164,9 @@ localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 console.log(pathName);
 if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathName);
+  if (pathNames[0] === '/') {
+    authenticateRoute(pathName);
+  }
 }
 // window.login = login;
 // const openUser = () => {
@@ -240,7 +242,7 @@ if (pathNames[0] !== pathNames[1]) {
 //   }
 // };
 // window.displayUserProfile = displayUserProfile;
-
+adminDeletePackage;
 // const displayAdmin = () => {
 //   createAdmin();
 // };
