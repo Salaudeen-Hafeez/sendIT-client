@@ -302,9 +302,9 @@ input {
   padding: 12px;
 }
 .delete {
-  border: 0px none;
+  border: 0px white;
   position: relative;
-  right: 10px;
+  left: 10px;
   padding: 5px 10px;
   font-weight: 600;
 }
