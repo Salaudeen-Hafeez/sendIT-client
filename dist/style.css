@@ -44,7 +44,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  list-style-type: none;
 }
 .nav-bar a {
   padding: 0.5rem;
@@ -77,7 +76,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  list-style-type: none;
+
   background: linear-gradient(
     to left bottom,
     rgba(255, 255, 255, 0.8),
@@ -90,9 +89,7 @@ body {
   top: 6%;
   right: 1%;
 }
-.nav-link ul {
-  list-style-type: none;
-}
+
 .nav-link a {
   display: inline-block;
   width: 7rem;
@@ -357,7 +354,6 @@ user-profile
 }
 .profile-content ul {
   margin-top: 0.5rem;
-  list-style-type: none;
 }
 .packages {
   border-radius: 1rem;
@@ -518,11 +514,6 @@ input:focus {
   padding: 1rem;
   visibility: visible;
 }
-
-.packageContainer ul {
-  list-style-type: none;
-}
-
 .newPackages {
   height: 0rem;
   visibility: hidden;
@@ -553,12 +544,10 @@ input:focus {
   cursor: pointer;
 }
 .userUl {
-  list-style-type: none;
   display: grid;
   grid-template-columns: repeat(2, 20rem [col-start]);
 }
 .packageUl {
-  list-style-type: none;
   display: grid;
   grid-template-columns: repeat(2, 20rem [col-start]);
 }
