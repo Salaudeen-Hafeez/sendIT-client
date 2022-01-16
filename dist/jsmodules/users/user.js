@@ -78,6 +78,9 @@ window.getPackage = (e) => {
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
 };
+window.adminDeletePackage = (e) => {
+  getPackage(e);
+};
 // window.getPackage = (td) => {
 //   const parcelId = parseInt(td.value);
 //   console.log(td);
