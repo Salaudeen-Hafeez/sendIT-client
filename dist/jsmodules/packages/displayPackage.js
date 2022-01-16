@@ -1,6 +1,5 @@
-const packageDisplay = (packages) => {
+const packageDisplay = (packages, cond = 'hidden') => {
   let packagesDiv = '';
-  let addres;
   let color;
   if (Array.isArray(packages) && packages.length !== 0) {
     packages.forEach((packag) => {
@@ -22,7 +21,7 @@ const packageDisplay = (packages) => {
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
-        <button class="delete" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
+        <button class="delete" style="visibility: ${cond};" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
       </li>
     `;
     });

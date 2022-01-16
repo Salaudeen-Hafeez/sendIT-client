@@ -10,6 +10,7 @@ if (pathNames[0] !== pathNames[1]) {
 const { _name, _username, _email, _status, admin_token } = JSON.parse(
   localStorage.getItem('admin')
 );
+const showDeleteBtn = 'visible';
 const users = JSON.parse(localStorage.getItem('users'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 let userul = '';
@@ -22,7 +23,7 @@ const adminFetchPackages = (cond) => {
     window.location.href = '/login';
   } else {
     const packag = packages.filter((packag) => packag._status === cond);
-    const displayPackage = packageDisplay(packag);
+    const displayPackage = packageDisplay(packag, showDeleteBtn);
     newPackages.innerHTML = displayPackage;
     newPackages.classList.toggle('open');
   }
@@ -71,7 +72,7 @@ window.adminFetchUserPackage = (e) => {
   const userCont = `userCont${id}`;
   const newPackages = document.getElementById(userCont);
   const packag = packages.filter((packag) => packag._username === username);
-  newPackages.innerHTML = packageDisplay(packag);
+  newPackages.innerHTML = packageDisplay(packag, showDeleteBtn);
   newPackages.classList.toggle('open');
 };
 window.adminDeleteUser = (e) => {
