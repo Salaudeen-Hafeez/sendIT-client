@@ -16,7 +16,7 @@ const packageDisplay = (packages) => {
           break;
       }
       packagesDiv += `<li style="margin-bottom:8px;">
-        <div style="cursor:pointer" onclick="getPackage(this)" value="${packag._status}">
+        <div style="cursor:pointer" onclick="getPackage(this)">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Pickup location:</span> ${packag._location}</p>
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
