@@ -13,6 +13,7 @@ if (pathNames[0] !== pathNames[1]) {
 const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
+const packagesDiv = document.getElementById('packages');
 
 window.createProfile = () => {
   let profileData;
@@ -49,7 +50,6 @@ window.displayUserPackages = () => {
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
-    const packagesDiv = document.getElementById('packages');
     packagesDiv = packageDisplay(packages);
   }
 };
