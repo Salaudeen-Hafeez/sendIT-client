@@ -10,13 +10,14 @@ if (pathNames[0] !== pathNames[1]) {
 const { _name, _username, _email, _status, admin_token } = JSON.parse(
   localStorage.getItem('admin')
 );
-let users = JSON.parse(localStorage.getItem('users'));
-let packages = JSON.parse(localStorage.getItem('packages'));
+const users = JSON.parse(localStorage.getItem('users'));
+const packages = JSON.parse(localStorage.getItem('packages'));
 let userul = '';
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
 const adminFetchPackages = (cond) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   if (!admin_token) {
     window.location.href = '/login';
   } else {
