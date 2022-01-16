@@ -302,10 +302,11 @@ input {
   padding: 12px;
 }
 .delete {
-  border: 0px white;
+  border: 0px;
   position: relative;
-  left: 100px;
+  left: 140px;
   padding: 5px 10px;
+  background-color: white;
   font-weight: 600;
 }
 .delete:hover {
