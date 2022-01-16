@@ -15,14 +15,14 @@ const packageDisplay = (packages) => {
           color = 'red';
           break;
       }
-      packagesDiv += `<li style="margin-bottom:8px;">
+      packagesDiv += `<li style="margin:8px;">
         <div style="cursor:pointer" onclick="getPackage(this)">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Pickup location:</span> ${packag._location}</p>
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <div class="deleteDiv">
             <p style="font-weight:800;color:${color}">${packag._status}</p>
-            <button class="delete" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
+            <a class="delete" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</a>
           </div>
         </div>
        
