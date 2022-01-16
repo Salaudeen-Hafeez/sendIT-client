@@ -22,7 +22,7 @@ const packageDisplay = (packages) => {
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
-        <button style="width:90%;text-align:right;font-weight:500;color:#056973 onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
+        <a style="width:90%;text-align:right;font-weight:500;color:#056973 onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</a>
       </li>
     `;
     });
