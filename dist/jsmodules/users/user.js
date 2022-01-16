@@ -50,7 +50,7 @@ window.displayUserPackages = () => {
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
-    packagesDiv.innerHTML = packageDisplay(packages);
+    packagesDiv.innerHTML = packageDisplay(packages, 'view details');
   }
 };
 
