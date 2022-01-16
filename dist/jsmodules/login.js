@@ -10,7 +10,7 @@ pathNames.push(pathName);
 console.log(pathNames);
 if (pathNames[0] !== pathNames[1]) {
   console.log('Did authenticate');
-  if (pathNames[0] === '/login') {
+  if (pathNames[0] !== '/login') {
     console.log('Did authenticate');
     authenticateRoute(pathName);
   }

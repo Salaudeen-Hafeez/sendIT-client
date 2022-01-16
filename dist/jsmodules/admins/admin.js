@@ -5,7 +5,7 @@ const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
-  if (pathNames[0] === '/admin') {
+  if (pathNames[0] !== '/admin') {
     authenticateRoute(pathName);
   }
 }

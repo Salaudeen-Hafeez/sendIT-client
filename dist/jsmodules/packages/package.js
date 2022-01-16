@@ -9,7 +9,7 @@ localStorage.setItem('path', pathName);
 pathNames.push(pathName);
 console.log(pathName);
 if (pathNames[0] !== pathNames[1]) {
-  if (pathNames[0] === '/package') {
+  if (pathNames[0] !== '/package') {
     authenticateRoute(pathName);
   }
 }
