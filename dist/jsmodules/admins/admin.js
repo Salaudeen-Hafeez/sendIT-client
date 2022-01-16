@@ -18,6 +18,7 @@ const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
 const adminFetchPackages = (cond) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   if (!admin_token) {
     window.location.href = '/login';
   } else {
