@@ -136,8 +136,7 @@ window.changeLocation = async (e) => {
       const updPack = await putPackage(userUpdateUrl, data);
       localStorage.setItem('packages', JSON.stringify(updPack.packages));
     } else {
-      const errMessage = document.getElementById('errMessage');
-      errMessage.innerHTML = 'Destination address entered not found';
+      alert('Destination address entered not found');
     }
   }
 };
