@@ -9,7 +9,7 @@ const createPackage = ({ distance, duration, fare }) => {
           <p><span style="font-weight:800">Going to:</span> ${_destination}</p>
           <p><span style="font-weight:800">Distance:</span> ${distance}</p>
           <p><span style="font-weight:800">Duration:</span> ${duration}</p>
-          <p><span style="font-weight:800">Total cost:</span> ${fare}</p>
+          <p><span style="font-weight:800">Total cost:</span> #${fare}</p>
           <p style="font-weight:800;color:blue">${_status}</p>
         </div>
         <button class="delete" onclick="adminDeletePackage(this)" value= "${_username}" id="${parcel_id}">Okay</button>

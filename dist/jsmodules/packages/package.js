@@ -49,7 +49,7 @@ const cost = (dist, dur) => {
   }
   const totalcost = ((dist + dur) / 1000) * multiplier;
   console.log(totalcost);
-  return totalcost;
+  return Math.round(totalcost);
 };
 const getDistance = async (service, add) => {
   const request = {
