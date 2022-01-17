@@ -1,48 +1,19 @@
 const createPackage = (metrix) => {
-  const newPackage = JSON.parse(localStorage.getItem('package'));
+  const { parcel_id, _name, _location, _destination, _status, _username } =
+    JSON.parse(localStorage.getItem('package'));
   const tableBody = `
-          <img 
-            src="/images/Lagos4.jpg"
-            alt="profile picture"
-            class="package-img"
-          />
-          <div class="profile-content">
-            <table>
-              <thead>
-                <tr class="thead">
-                  <th colspan="2">${newPackage._name}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Present location</td>
-                  <td>${newPackage._location}</td>
-                </tr>
-                <tr>
-                  <td>Destination</td>
-                  <td>${newPackage._destination}</td>
-                </tr>
-                <tr>
-                  <td>Reciever mobile number</td>
-                  <td>${newPackage._reciever}</td>
-                </tr>
-                <tr>
-                  <td>Distance</td>
-                  <td>${metrix.distance.text}</td>
-                </tr>
-                <tr>
-                  <td>Duration</td>
-                  <td>${metrix.duration.text}</td>
-                </tr>
-                <tr>
-                  <td colspan="2" class="td-status">
-                    <a href="">${newPackage._status}</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>`;
+          <li style="margin:8px;">
+        <div style="cursor:pointer" id="${parcel_id}" onclick="getPackage(this)">
+          <p style="font-weight:800;color:#056973">${_name}</p>
+          <p><span style="font-weight:800">Pickup location:</span> ${_location}</p>
+          <p><span style="font-weight:800">Going to:</span> ${_destination}</p>
+          <p><span style="font-weight:800">Going to:</span> ${metrix.distance.tex}</p>
+          <p><span style="font-weight:800">Going to:</span> ${metrix.duration.text}</p>
+          <p style="font-weight:800;color:${color}">${_status}</p>
+        </div>
+        <button class="delete" onclick="adminDeletePackage(this)" value= "${_username}" id="${parcel_id}">${labels}</button>
+      </li>
+    `;
   return tableBody;
 };
 export { createPackage };
