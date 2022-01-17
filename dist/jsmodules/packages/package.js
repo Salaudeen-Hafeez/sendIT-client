@@ -1,5 +1,5 @@
 import { putPackage } from '../httpFetch/putData.js';
-import { adminUpdateUrl, userUpdateUrl } from '../httpFetch/urls.js';
+import { adminUpdateUrl } from '../httpFetch/urls.js';
 import { authenticateRoute } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
@@ -145,20 +145,20 @@ window.updateDestination = async () => {
       localStorage.setItem('packages', JSON.stringify(updatedPackage.packages));
       window.location.reload();
     } else {
-      const data = { _destination: data1.destination };
-      const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
-      const add = [_location, add2];
-      const distMetrix = await getDistance(service, add);
-      if (distMetrix.rows[0].elements[0].status === 'OK') {
-        const updPack = await putPackage(userUpdateUrl, data);
-        console.log(updPack);
-        localStorage.setItem('package', JSON.stringify(updPack.package));
-        localStorage.setItem('packages', JSON.stringify(updPack.packages));
-        window.location.reload();
-      } else {
-        const errMessage = document.getElementById('errMessage');
-        errMessage.innerHTML = 'Destination address entered not found';
-      }
+      // const data = { _destination: data1.destination };
+      // const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
+      // const add = [_location, add2];
+      // const distMetrix = await getDistance(service, add);
+      // if (distMetrix.rows[0].elements[0].status === 'OK') {
+      //   const updPack = await putPackage(userUpdateUrl, data);
+      //   console.log(updPack);
+      //   localStorage.setItem('package', JSON.stringify(updPack.package));
+      //   localStorage.setItem('packages', JSON.stringify(updPack.packages));
+      //   window.location.reload();
+      // } else {
+      //   const errMessage = document.getElementById('errMessage');
+      //   errMessage.innerHTML = 'Destination address entered not found';
+      // }
     }
   }
 };
