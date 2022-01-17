@@ -601,3 +601,47 @@ input:focus {
   font-weight: 600;
   color: white;
 }
+
+.packg {
+  margin: 10px;
+  margin-top: 50px;
+}
+.packName {
+  text-align: center;
+  font-weight: 800;
+  color: #056973;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.packinfo {
+  display: flex;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+.confirmOrd {
+  display: flex;
+  box-shadow: 3px 3px 5px;
+  border-radius: 10px;
+  margin: 5px;
+  justify-content: space-between;
+}
+.confirmOrd button {
+  background: #5aac5a;
+  border-style: none;
+  color: #500a099f;
+  font-weight: 800;
+  width: 25%;
+}
+.confirmOrd button:hover {
+  background: green;
+  color: white;
+}
+.confirmOrd p {
+  background: green;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  width: 50%;
+  font-size: 20px;
+  font-weight: 800;
+}

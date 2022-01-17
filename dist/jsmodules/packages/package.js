@@ -95,28 +95,11 @@ addresses.forEach(async (address) => {
     position: add2,
   });
 });
-window.clearErr = (e) => {
-  e.style.border = '1px solid lightgreen';
-  const small = e.parentElement.querySelector('small');
-  small.style.visibility = 'hidden';
-};
 window.loadPackage = async () => {
-  const packages = document.getElementById('userProfile');
-  const status = document.getElementById('updateStatus');
-  const location = document.getElementById('location');
-  const heading = document.getElementById('heading');
-  if (admin !== null) {
-    status.classList.toggle('open');
-    location.innerHTML = 'New location';
-    heading.innerHTML = 'Fill the form below to update the package status';
-  }
+  const packages = document.getElementById('packagePage1');
   const distMetrix = await getDistance(service, add);
-  // const dist = distMetrix.rows[0].elements[0].distance.text.replace(/\D/g, '');
-  // const durat = distMetrix.rows[0].elements[0].duration.text.replace(/\D/g, '');
-
   const { distance, duration } = distMetrix.rows[0].elements[0];
   const tripFare = cost(distance.value, duration.value);
-  console.log(tripFare);
   const metrixData = {
     distance: distance.text,
     duration: duration.text,

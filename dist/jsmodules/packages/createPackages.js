@@ -2,18 +2,34 @@ const createPackage = ({ distance, duration, fare }) => {
   const { parcel_id, _name, _location, _destination, _status, _username } =
     JSON.parse(localStorage.getItem('package'));
   const tableBody = `
-          <li style="margin:8px;">
-        <div>
-          <p style="font-weight:800;color:#056973">${_name}</p>
-          <p><span style="font-weight:800">Pickup location:</span> ${_location}</p>
-          <p><span style="font-weight:800">Going to:</span> ${_destination}</p>
-          <p><span style="font-weight:800">Distance:</span> ${distance}</p>
-          <p><span style="font-weight:800">Duration:</span> ${duration}</p>
-          <p><span style="font-weight:800">Total cost:</span> ${fare}</p>
-          <p style="font-weight:800;color:blue">${_status}</p>
-        </div>
-        <button class="delete" onclick="adminDeletePackage(this)" value= "${_username}" id="${parcel_id}">Okay</button>
-      </li>
+        <div class="packg">
+        <p class="packName">${_name}</p>
+        <p class="packinfo">
+          <span>Pickup location:</span>${_location}
+        </p>
+        <p class="packinfo"><span>Going to:</span>${_destination}</p>
+        <p style="font-weight: 800; color: blue">${_status}</p>
+        <div id="mapcontainer">
+            <div id="map"></div>
+          </div>
+        <p class="packinfo"><span>Distance:</span> ${distance}</p>
+        <p class="packinfo"><span>Duration:</span>${duration}</p>
+      </div>
+      <div class="confirmOrd">
+        <button
+          style="border-radius: 10px 0px 0px 10px"
+          onclick="adminDeletePackage(this)"
+        >
+          Cancel
+        </button>
+        <p>${fare}</p>
+        <button
+          style="border-radius: 0px 10px 10px 0px"
+          onclick="adminDeletePackage(this)"
+        >
+          Okay
+        </button>
+      </div>
     `;
   return tableBody;
 };
