@@ -1,6 +1,18 @@
 const createPackage = ({ distance, duration, fare }) => {
   const { parcel_id, _name, _location, _destination, _status, _username } =
     JSON.parse(localStorage.getItem('package'));
+  let color;
+  switch (_status) {
+    case 'In transit':
+      color = '#095F06';
+      break;
+    case 'Delivered':
+      color = '#0000FF';
+      break;
+    default:
+      color = 'red';
+      break;
+  }
   const tableBody = `
         <div class="packg">
         <p class="packName">${_name}</p>
@@ -8,7 +20,7 @@ const createPackage = ({ distance, duration, fare }) => {
           <span>Pickup location:</span>${_location}
         </p>
         <p class="packinfo"><span>Going to:</span>${_destination}</p>
-        <p style="font-weight:800;color: blue;text-align: right;">${_status}</p>
+        <p class="packinfo" style="color:${color}"><span>Status:</span>${_status}</p>
         </div>
         `;
   const tableBody1 = `
