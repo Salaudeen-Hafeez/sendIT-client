@@ -24,7 +24,7 @@ const createPackage = ({ distance, duration, fare }) => {
         </div>
         `;
   const tableBody1 = `
-        <div style="margin:15px 0;">
+        <div style="margin:15px 10px;">
         <p class="packinfo"><span>Distance:</span> ${distance}</p>
         <p class="packinfo"><span>Duration:</span>${duration}</p>
         </div>
