@@ -91,21 +91,19 @@ window.changeLocation = async (e) => {
   )}`;
   const input = prompt('Enter new destination');
   console.log(input);
-  if (!emptyInput) {
-    if (_status === 'Order Cancelled') {
-      alert('Order has been cancelled');
+  if (_status === 'Order Cancelled') {
+    alert('Order has been cancelled');
+  } else {
+    const data = { _destination: input };
+    const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
+    const add = [_location, add2];
+    const distMetrix = await getDistance(service, add);
+    if (distMetrix.rows[0].elements[0].status === 'OK') {
+      const updPack = await putPackage(userUpdateUrl, data);
+      localStorage.setItem('packages', JSON.stringify(updPack.packages));
     } else {
-      const data = { _destination: input };
-      const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
-      const add = [_location, add2];
-      const distMetrix = await getDistance(service, add);
-      if (distMetrix.rows[0].elements[0].status === 'OK') {
-        const updPack = await putPackage(userUpdateUrl, data);
-        localStorage.setItem('packages', JSON.stringify(updPack.packages));
-      } else {
-        const errMessage = document.getElementById('errMessage');
-        errMessage.innerHTML = 'Destination address entered not found';
-      }
+      const errMessage = document.getElementById('errMessage');
+      errMessage.innerHTML = 'Destination address entered not found';
     }
   }
 };
