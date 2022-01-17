@@ -542,15 +542,15 @@ input:focus {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.userUl {
-  display: grid;
-  grid-template-columns: repeat(2, 20rem [col-start]);
+.packages {
+  display: block;
+  text-align: center;
 }
+.userUl,
 .packageUl {
   display: grid;
   grid-template-columns: repeat(2, 20rem [col-start]);
 }
-
 .admindataarrange {
   display: flex;
   flex-direction: column;
