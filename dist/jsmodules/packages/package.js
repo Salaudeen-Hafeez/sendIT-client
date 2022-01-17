@@ -25,6 +25,10 @@ const geocodeAddress = async (geocoder, address) => {
     );
   return geocodeResult;
 };
+const toNaira = Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'NGN',
+});
 const cost = (dist, dur) => {
   let multiplier;
   switch (dist) {
@@ -48,8 +52,9 @@ const cost = (dist, dur) => {
       break;
   }
   const totalcost = ((dist + dur) / 1000) * multiplier;
-  console.log(totalcost);
-  return Math.round(totalcost);
+  const naira = toNaira.format(Math.round(totalcost));
+  console.log(naira);
+  return naira;
 };
 const getDistance = async (service, add) => {
   const request = {
