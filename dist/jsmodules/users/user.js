@@ -91,7 +91,9 @@ window.changeLocation = async (e) => {
   )}`;
   const input = prompt('Enter new destination');
   console.log(input);
-  if (_status === 'Order Cancelled') {
+  console.log(e.parentElemet.querySelectorAll('p'));
+  const status = e.parentElemet.querySelectorAll('p')[3].innerHTML;
+  if (status === 'Order Cancelled') {
     alert('Order has been cancelled');
   } else {
     const data = { _destination: input };
