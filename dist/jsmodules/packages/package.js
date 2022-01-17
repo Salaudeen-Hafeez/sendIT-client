@@ -27,6 +27,7 @@ const geocodeAddress = async (geocoder, address) => {
 };
 const cost = (dist, dur) => {
   const totalcost = ((dist * 1000 + dur * 60) / 1000) * 300;
+  console.log(totalcost);
   return totalcost;
 };
 const getDistance = async (service, add) => {
@@ -86,9 +87,10 @@ window.loadPackage = async () => {
   const distMetrix = await getDistance(service, add);
   // const dist = distMetrix.rows[0].elements[0].distance.text.replace(/\D/g, '');
   // const durat = distMetrix.rows[0].elements[0].duration.text.replace(/\D/g, '');
-  console.log(distMetrix);
+
   const { distance, duration } = distMetrix.rows[0].elements[0];
   const tripFare = cost(distance.value, duration.value);
+  console.log(tripFare);
   const metrixData = {
     distance: distance.text,
     duration: duration.text,
