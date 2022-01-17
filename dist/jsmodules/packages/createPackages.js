@@ -9,12 +9,13 @@ const createPackage = ({ distance, duration, fare }) => {
         </p>
         <p class="packinfo"><span>Going to:</span>${_destination}</p>
         <p style="font-weight: 800; color: blue">${_status}</p>
-        <div id="mapcontainer">
-            <div id="map"></div>
-          </div>
+        </div>
+        `;
+  const tableBody1 = `
+        <div>
         <p class="packinfo"><span>Distance:</span> ${distance}</p>
         <p class="packinfo"><span>Duration:</span>${duration}</p>
-      </div>
+        </div>
       <div class="confirmOrd">
         <button
           style="border-radius: 10px 0px 0px 10px"
@@ -30,7 +31,7 @@ const createPackage = ({ distance, duration, fare }) => {
           Okay
         </button>
       </div>
-    `;
-  return tableBody;
+      `;
+  return { tableBody, tableBody1 };
 };
 export { createPackage };

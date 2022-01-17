@@ -97,6 +97,7 @@ addresses.forEach(async (address) => {
 });
 window.loadPackage = async () => {
   const packages = document.getElementById('packagePage1');
+  const packages2 = document.getElementById('packagePage2');
   const distMetrix = await getDistance(service, add);
   const { distance, duration } = distMetrix.rows[0].elements[0];
   const tripFare = cost(distance.value, duration.value);
@@ -105,8 +106,9 @@ window.loadPackage = async () => {
     duration: duration.text,
     fare: tripFare,
   };
-  const packageData = createPackage(metrixData);
-  packages.innerHTML = packageData;
+  const { tableBody, tableBody1 } = createPackage(metrixData);
+  packages.innerHTML = tableBody;
+  packages2.innerHTML = tableBody1;
 };
 window.okay = () => {
   if (admin !== null) {
