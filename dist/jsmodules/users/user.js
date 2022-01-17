@@ -92,6 +92,7 @@ window.changeLocation = async (e) => {
     e.id
   )}`;
   const input = prompt('Enter new destination');
+  console.log(input);
   const { data: data1, emptyInput } = formValidation([input]);
   if (!emptyInput) {
     if (_status === 'Order Cancelled') {

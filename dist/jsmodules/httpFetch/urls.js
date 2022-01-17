@@ -20,7 +20,6 @@ const postAdmUrl = 'https://akera-logistics.herokuapp.com/api/v1/users/admins';
 const postUsrUrl = 'https://akera-logistics.herokuapp.com/api/v1/users';
 const adminLoginUrl =
   'https://akera-logistics.herokuapp.com/api/v1/users/admins/login';
-const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${id}`;
 const adminUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userid}/${token}/packages/${id}`;
 const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${email}/${token}/packages`;
 export {
