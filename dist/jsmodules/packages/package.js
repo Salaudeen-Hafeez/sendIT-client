@@ -26,7 +26,31 @@ const geocodeAddress = async (geocoder, address) => {
   return geocodeResult;
 };
 const cost = (dist, dur) => {
-  const totalcost = ((dist + dur) / 1000) * 300;
+  let multiplier;
+  switch (dist) {
+    case dist <= 5000:
+      multiplier = 300;
+      break;
+    case 5000 <= dist <= 10000:
+      multiplier = 250;
+      break;
+    case 10000 <= dist <= 20000:
+      multiplier = 200;
+      break;
+    case 20000 <= dist <= 50000:
+      multiplier = 150;
+      break;
+    case 50000 <= dist <= 100000:
+      multiplier = 100;
+      break;
+    case 100000 <= dist <= 200000:
+      multiplier = 80;
+      break;
+    default:
+      multiplier = 20;
+      break;
+  }
+  const totalcost = ((dist + dur) / 1000) * multiplier;
   console.log(totalcost);
   return totalcost;
 };
