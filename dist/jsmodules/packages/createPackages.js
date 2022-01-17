@@ -8,7 +8,7 @@ const createPackage = ({ distance, duration, fare }) => {
           <span>Pickup location:</span>${_location}
         </p>
         <p class="packinfo"><span>Going to:</span>${_destination}</p>
-        <p style="font-weight: 800; color: blue text-align: left;">${_status}</p>
+        <p style="font-weight: 800; color: blue; text-align: left;">${_status}</p>
         </div>
         `;
   const tableBody1 = `
