@@ -50,7 +50,15 @@ window.displayUserPackages = () => {
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
-    packagesDiv.innerHTML = packageDisplay(packages, 'view details');
+    if (packages.length === 0) {
+      const packag = { errMessage: 'You do not have packages' };
+      packagesDiv.innerHTML = packageDisplay(packag);
+    } else {
+      packagesDiv.innerHTML = packageDisplay(
+        packageInTrans,
+        'change destination'
+      );
+    }
   }
 };
 
@@ -63,9 +71,12 @@ window.displayPendingPackage = () => {
     );
     if (packageInTrans.length === 0) {
       const packag = { errMessage: 'You do not have package in transit' };
-      packagesDiv.innerHTML = packageDisplay(packag, 'view details');
+      packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      packagesDiv.innerHTML = packageDisplay(packageInTrans, 'view details');
+      packagesDiv.innerHTML = packageDisplay(
+        packageInTrans,
+        'change destination'
+      );
     }
   }
 };
