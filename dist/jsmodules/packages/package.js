@@ -35,16 +35,16 @@ const cost = (dist, dur) => {
       multiplier = 250;
       break;
     case 10000 <= dist <= 50000:
-      multiplier = 200;
-      break;
-    case 50000 <= dist <= 100000:
       multiplier = 190;
       break;
+    case 50000 <= dist <= 100000:
+      multiplier = 120;
+      break;
     case 100000 <= dist <= 200000:
-      multiplier = 100;
+      multiplier = 60;
       break;
     default:
-      multiplier = 50;
+      multiplier = 30;
       break;
   }
   const totalcost = ((dist + dur) / 1000) * multiplier;
