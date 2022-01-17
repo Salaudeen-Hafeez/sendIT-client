@@ -357,11 +357,7 @@ user-profile
 .profile-content ul {
   margin-top: 0.5rem;
 }
-.packages {
-  border-radius: 1rem;
-  margin: 1.2rem 0.7rem 0;
-  padding: 1rem 0;
-}
+
 .package {
   border-radius: 1rem;
   margin: 1.2rem 0.7rem 0;
@@ -379,9 +375,7 @@ user-profile
   width: 95%;
   border-radius: 10px;
 }
-.packages h2 {
-  text-align: center;
-}
+
 table,
 td,
 th {
@@ -539,7 +533,6 @@ input:focus {
   background-color: aliceblue;
   border-radius: 0.5rem;
 }
-
 .userDetails button {
   width: 75%;
   padding: 0.5rem 0;
