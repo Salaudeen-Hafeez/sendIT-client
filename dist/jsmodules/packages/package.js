@@ -117,7 +117,7 @@ window.okay = () => {
     window.location.href = '/user';
   }
 };
-window.cancelOrder = async () => {
+window.canceleOrder = async () => {
   if (_status === 'Order Cancelled') {
     alert('Order has been cancelled');
   } else {
@@ -162,13 +162,3 @@ window.updateDestination = async () => {
     }
   }
 };
-
-// const input3 = document.getElementById('newDestination');
-// new google.maps.places.Autocomplete(input3);
-
-// window.autoCompleteAddress = function () {
-//   const input = document.getElementById('location');
-//   const input2 = document.getElementById('destination');
-//   new google.maps.places.Autocomplete(input);
-//   new google.maps.places.Autocomplete(input2);
-// };

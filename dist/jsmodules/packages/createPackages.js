@@ -31,14 +31,14 @@ const createPackage = ({ distance, duration, fare }) => {
       <div class="confirmOrd">
         <button
           style="border-radius: 10px 0px 0px 10px"
-          onclick="adminDeletePackage(this)"
+          onclick="canceleOrder(this)"
         >
           Cancel
         </button>
         <p>${fare}</p>
         <button
           style="border-radius: 0px 10px 10px 0px"
-          onclick="adminDeletePackage(this)"
+          onclick="okay(this)"
         >
           Okay
         </button>
