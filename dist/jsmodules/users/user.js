@@ -1,5 +1,8 @@
+import { putPackage } from '../httpFetch/putData.js';
+import { userUpdateUrl } from '../httpFetch/urls.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 import { authenticateRoute } from '../routAuth.js';
+import { formValidation } from '../validateForm.js';
 
 // Get the stored user data and create the user profile display
 let pathName = location.pathname;
@@ -14,7 +17,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 const packagesDiv = document.getElementById('packages');
-
+const { users_id, _email, auth_token } = user;
 window.createProfile = () => {
   let profileData;
   if (user !== null || admin !== null) {
@@ -80,23 +83,31 @@ window.displayPendingPackage = () => {
 window.getPackage = (e) => {
   localStorage.removeItem('package');
   const parcelId = parseInt(e.id);
-  console.log(e);
-  console.log(parcelId);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
 };
-window.adminDeletePackage = (e) => {
-  getPackage(e);
+window.changeLocation = (e) => {
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${parseInt(
+    e.id
+  )}`;
+  const input = prompt('Enter new destination');
+  const { data: data1, emptyInput } = formValidation([input]);
+  if (!emptyInput) {
+    if (_status === 'Order Cancelled') {
+      alert('Order has been cancelled');
+    } else {
+      const data = { _destination: data1.destination };
+      const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
+      const add = [_location, add2];
+      const distMetrix = await getDistance(service, add);
+      if (distMetrix.rows[0].elements[0].status === 'OK') {
+        const updPack = await putPackage(userUpdateUrl, data);
+        localStorage.setItem('packages', JSON.stringify(updPack.packages));
+      } else {
+        const errMessage = document.getElementById('errMessage');
+        errMessage.innerHTML = 'Destination address entered not found';
+      }
+    }
+  }
 };
-// window.getPackage = (td) => {
-//   const parcelId = parseInt(td.value);
-//   console.log(td);
-//   console.log(parcelId);
-//   const packag = packages.filter(
-//     (packageData) => packageData.parcel_id === parcelId
-//   );
-//   localStorage.removeItem('package');
-//   localStorage.setItem('package', JSON.stringify(packag[0]));
-//   //window.location.href = '/package';
-// };
