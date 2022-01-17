@@ -12,7 +12,7 @@ const createPackage = ({ distance, duration, fare }) => {
           <p><span style="font-weight:800">Total cost:</span> ${fare}</p>
           <p style="font-weight:800;color:blue">${_status}</p>
         </div>
-        <button class="delete" onclick="adminDeletePackage(this)" value= "${_username}" id="${parcel_id}">${labels}</button>
+        <button class="delete" onclick="adminDeletePackage(this)" value= "${_username}" id="${parcel_id}">Okay</button>
       </li>
     `;
   return tableBody;
