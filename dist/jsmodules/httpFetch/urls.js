@@ -26,7 +26,6 @@ export {
   loginUrl,
   postAdmUrl,
   postUsrUrl,
-  userUpdateUrl,
   adminUpdateUrl,
   postPackageUrl,
   adminLoginUrl,
