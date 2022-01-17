@@ -54,10 +54,7 @@ window.displayUserPackages = () => {
       const packag = { errMessage: 'You do not have packages' };
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      packagesDiv.innerHTML = packageDisplay(
-        packageInTrans,
-        'change destination'
-      );
+      packagesDiv.innerHTML = packageDisplay(packages, 'change destination');
     }
   }
 };
