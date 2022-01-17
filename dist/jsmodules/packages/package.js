@@ -163,12 +163,12 @@ window.updateDestination = async () => {
   }
 };
 
-const input3 = document.getElementById('newDestination');
-new google.maps.places.Autocomplete(input3);
+// const input3 = document.getElementById('newDestination');
+// new google.maps.places.Autocomplete(input3);
 
-window.autoCompleteAddress = function () {
-  const input = document.getElementById('location');
-  const input2 = document.getElementById('destination');
-  new google.maps.places.Autocomplete(input);
-  new google.maps.places.Autocomplete(input2);
-};
+// window.autoCompleteAddress = function () {
+//   const input = document.getElementById('location');
+//   const input2 = document.getElementById('destination');
+//   new google.maps.places.Autocomplete(input);
+//   new google.maps.places.Autocomplete(input2);
+// };
