@@ -42,6 +42,8 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
+const geocoder = new google.maps.Geocoder();
+const service = new google.maps.DistanceMatrixService();
 const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
