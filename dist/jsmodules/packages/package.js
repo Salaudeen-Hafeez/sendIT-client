@@ -7,7 +7,6 @@ let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
-console.log(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
@@ -140,12 +139,12 @@ window.updateDestination = async () => {
   }
 };
 
-var input3 = document.getElementById('newDestination');
-var autocomplete3 = new google.maps.places.Autocomplete(input3);
+const input3 = document.getElementById('newDestination');
+new google.maps.places.Autocomplete(input3);
 
 window.autoCompleteAddress = function () {
-  var input = document.getElementById('location');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  var input2 = document.getElementById('destination');
-  var autocomplete2 = new google.maps.places.Autocomplete(input2);
+  const input = document.getElementById('location');
+  const input2 = document.getElementById('destination');
+  new google.maps.places.Autocomplete(input);
+  new google.maps.places.Autocomplete(input2);
 };

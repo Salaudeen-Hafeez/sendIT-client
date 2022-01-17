@@ -425,6 +425,11 @@ td {
   margin: 0 1rem;
   padding: 1rem 0;
 }
+.new-package:hover {
+  box-shadow: 6px 6px 10px #9ebab0;
+  background: #46a346;
+  color: white;
+}
 .cancelbtn {
   width: 100%;
   display: flex;
