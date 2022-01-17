@@ -416,7 +416,7 @@ td {
   );
 }
 .new-package {
-  display: block;
+  display: grid;
   background: #c6f1dd;
   font-weight: 800;
   border: 1px solid darkgreen;
@@ -425,6 +425,7 @@ td {
   text-align: center;
   margin: 0 1rem;
   padding: 1rem 0;
+  grid-template-columns: repeat(2, 20rem [col-start]);
 }
 .new-package:hover {
   box-shadow: 6px 6px 10px #9ebab0;
