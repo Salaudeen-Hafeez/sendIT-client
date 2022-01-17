@@ -25,6 +25,10 @@ const geocodeAddress = async (geocoder, address) => {
     );
   return geocodeResult;
 };
+const cost = (dist, dur) => {
+  const totalcost = ((dist * 1000 + dur * 60) / 1000) * 300;
+  return totalcost;
+};
 const getDistance = async (service, add) => {
   const request = {
     origins: [add[0]],
@@ -74,7 +78,6 @@ window.loadPackage = async () => {
   const status = document.getElementById('updateStatus');
   const location = document.getElementById('location');
   const heading = document.getElementById('heading');
-  const cost = document.getElementById('cost');
   if (admin !== null) {
     status.classList.toggle('open');
     location.innerHTML = 'New location';
@@ -84,7 +87,14 @@ window.loadPackage = async () => {
   // const dist = distMetrix.rows[0].elements[0].distance.text.replace(/\D/g, '');
   // const durat = distMetrix.rows[0].elements[0].duration.text.replace(/\D/g, '');
   console.log(distMetrix);
-  const packageData = createPackage(distMetrix.rows[0].elements[0]);
+  const { distance, duration } = distMetrix.rows[0].elements[0];
+  const tripFare = cost(distance.value, duration.value);
+  const metrixData = {
+    distance: distance.text,
+    duration: duration.text,
+    fare: tripFare,
+  };
+  const packageData = createPackage(metrixData);
   packages.innerHTML = packageData;
 };
 window.okay = () => {
