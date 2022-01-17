@@ -1,7 +1,6 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 import { authenticateRoute } from '../routAuth.js';
-import { formValidation } from '../validateForm.js';
 
 // Get the stored user data and create the user profile display
 let pathName = location.pathname;
@@ -92,12 +91,11 @@ window.changeLocation = async (e) => {
   )}`;
   const input = prompt('Enter new destination');
   console.log(input);
-  const { data: data1, emptyInput } = formValidation([input]);
   if (!emptyInput) {
     if (_status === 'Order Cancelled') {
       alert('Order has been cancelled');
     } else {
-      const data = { _destination: data1.destination };
+      const data = { _destination: input };
       const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
