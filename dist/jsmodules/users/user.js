@@ -123,7 +123,7 @@ window.changeLocation = async (e) => {
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
   const input = prompt('Enter new destination');
   console.log(input);
-  const packag = packages.filter((pack = pack.parcel_id === id));
+  const packag = packages.filter((pack) => pack.parcel_id === id);
   const { _status, _location } = packag[0];
   if (_status === 'Order Cancelled') {
     alert('Order has been cancelled');
