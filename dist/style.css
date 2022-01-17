@@ -543,8 +543,8 @@ input:focus {
   cursor: pointer;
 }
 .packages {
-  display: block;
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 .userUl,
 .packageUl {
