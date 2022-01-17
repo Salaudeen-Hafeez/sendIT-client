@@ -26,9 +26,7 @@ const geocodeAddress = async (geocoder, address) => {
   return geocodeResult;
 };
 const cost = (dist, dur) => {
-  console.log(typeof dist);
-  console.log(typeof dur);
-  const totalcost = ((dist * 1000 + dur * 60) / 1000) * 300;
+  const totalcost = ((dist + dur) / 1000) * 300;
   console.log(totalcost);
   return totalcost;
 };
