@@ -91,13 +91,13 @@ window.changeLocation = async (e) => {
   )}`;
   const input = prompt('Enter new destination');
   console.log(input);
-  console.log(e.parentElement);
+  console.log(e.parentElement.querySelectorAll('p'));
   const status = e.parentElemet;
   if (status === 'Order Cancelled') {
     alert('Order has been cancelled');
   } else {
     const data = { _destination: input };
-    const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
+    const { add1: add2 } = await geocodeAddress(geocoder, input);
     const add = [_location, add2];
     const distMetrix = await getDistance(service, add);
     if (distMetrix.rows[0].elements[0].status === 'OK') {
