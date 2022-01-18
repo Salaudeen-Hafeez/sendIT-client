@@ -33,7 +33,7 @@ const cost = (dist, dur) => {
   let multiplier;
   switch (dist) {
     case dist <= 10000:
-      multiplier = 300;
+      multiplier = 400;
       break;
     case 10000 <= dist <= 30000:
       multiplier = 250;
