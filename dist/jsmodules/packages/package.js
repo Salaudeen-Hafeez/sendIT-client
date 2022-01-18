@@ -1,7 +1,5 @@
 import { putPackage } from '../httpFetch/putData.js';
-import { adminUpdateUrl } from '../httpFetch/urls.js';
 import { authenticateRoute } from '../routAuth.js';
-import { formValidation } from '../validateForm.js';
 import { createPackage } from './createPackages.js';
 let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
@@ -126,39 +124,5 @@ window.canceleOrder = async () => {
     localStorage.setItem('package', JSON.stringify(deletedPackage.package));
     localStorage.setItem('packages', JSON.stringify(deletedPackage.packages));
     window.location.reload();
-  }
-};
-window.updateDestination = async () => {
-  const input = document.getElementById('newDestination');
-  const select1 = document.getElementById('newStatus');
-  const { data: data1, emptyInput } = formValidation([input, select1]);
-  if (!emptyInput) {
-    if (_status === 'Order Cancelled') {
-      alert('Order has been cancelled');
-    } else if (admin !== null) {
-      const data = {
-        _location: data1.destination,
-        _status: data1.status,
-      };
-      const updatedPackage = await putPackage(adminUpdateUrl, data);
-      localStorage.setItem('package', JSON.stringify(updatedPackage.package));
-      localStorage.setItem('packages', JSON.stringify(updatedPackage.packages));
-      window.location.reload();
-    } else {
-      // const data = { _destination: data1.destination };
-      // const { add1: add2 } = await geocodeAddress(geocoder, data1.destination);
-      // const add = [_location, add2];
-      // const distMetrix = await getDistance(service, add);
-      // if (distMetrix.rows[0].elements[0].status === 'OK') {
-      //   const updPack = await putPackage(userUpdateUrl, data);
-      //   console.log(updPack);
-      //   localStorage.setItem('package', JSON.stringify(updPack.package));
-      //   localStorage.setItem('packages', JSON.stringify(updPack.packages));
-      //   window.location.reload();
-      // } else {
-      //   const errMessage = document.getElementById('errMessage');
-      //   errMessage.innerHTML = 'Destination address entered not found';
-      // }
-    }
   }
 };
