@@ -516,7 +516,6 @@ input:focus {
 
 .userDetails {
   text-align: center;
-  max-width: 20rem;
   padding: 0.8rem;
   margin: 0.5rem;
   background-color: aliceblue;
@@ -690,7 +689,7 @@ input:focus {
   .userDetails {
     width: 95%;
     padding: 10px;
-    margin: 10px;
+    margin: 5px 10px;
     border-radius: 10px;
   }
 }
