@@ -74,17 +74,17 @@ window.submitPackage = async () => {
   const distMetrix = await getDistance(service, add);
   const { distance, duration } = distMetrix.rows[0].elements[0];
   const tripFare = cost(distance.value, duration.value);
-  data['cost'] = tripFare;
-  console.log(data);
-  // if (!emptyInput) {
-  //   data['username'] = user._username;
-  //   const postedData = await postData(postPackageUrl, data);
-  //   localStorage.removeItem('package');
-  //   localStorage.removeItem('packages');
-  //   localStorage.setItem('package', JSON.stringify(postedData.package));
-  //   localStorage.setItem('packages', JSON.stringify(postedData.packages));
-  //   window.location.href = '/package';
-  // }
+  if (!emptyInput) {
+    data['username'] = user._username;
+    data['cost'] = tripFare;
+    console.log(data);
+    // const postedData = await postData(postPackageUrl, data);
+    // localStorage.removeItem('package');
+    // localStorage.removeItem('packages');
+    // localStorage.setItem('package', JSON.stringify(postedData.package));
+    // localStorage.setItem('packages', JSON.stringify(postedData.packages));
+    // window.location.href = '/package';
+  }
 };
 window.clearErr = (e) => {
   e.style.border = '1px solid lightgreen';
