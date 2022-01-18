@@ -666,9 +666,12 @@ input:focus {
   display: flex;
   justify-content: space-between;
 }
-.packageli {
+.packagediv {
+  cursor: pointer;
   margin: 8px;
 }
 .packageli:hover {
-  background-color: #c6f1dd;
+  padding: 3px;
+  border-radius: 8px;
+  background-color: #eaeaea;
 }

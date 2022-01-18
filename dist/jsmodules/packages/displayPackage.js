@@ -19,8 +19,8 @@ const packageDisplay = (packages, labels) => {
           color = 'red';
           break;
       }
-      packagesDiv += `<li class="packageli">
-        <div style="cursor:pointer" id="${packag.parcel_id}" onclick="getPackage(this)">
+      packagesDiv += `<li>
+        <div class="packageDiv" id="${packag.parcel_id}" onclick="getPackage(this)">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Pickup location:</span> ${packag._location}</p>
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
