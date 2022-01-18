@@ -47,7 +47,7 @@ const getDistance = async (service, add) => {
 };
 const admin = JSON.parse(localStorage.getItem('admin'));
 
-const { _location, _destination, _status } = JSON.parse(
+const { _location, _destination, _status, _cost } = JSON.parse(
   localStorage.getItem('package')
 );
 const bounds = new google.maps.LatLngBounds();
@@ -77,7 +77,7 @@ window.loadPackage = async () => {
   const metrixData = {
     distance: distance.text,
     duration: duration.text,
-    fare: tripFare,
+    fare: _cost,
   };
   const { tableBody, tableBody1 } = createPackage(metrixData);
   packages.innerHTML = tableBody;
