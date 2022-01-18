@@ -85,7 +85,7 @@ body {
   z-index: 1;
   transition: all 150ms ease-out;
 }
-.nav-link.open {
+.nav-link {
   top: 6%;
   right: 1%;
 }
@@ -301,12 +301,16 @@ input {
   width: 95%;
   padding: 12px;
 }
-.delete {
+.delete,
+.delete1 {
   border: 0px;
   color: #1f4399;
   padding: 5px 10px;
   background-color: white;
   font-weight: 900;
+}
+.delete1.open {
+  visibility: 'hidden';
 }
 .delete:hover {
   color: white;
