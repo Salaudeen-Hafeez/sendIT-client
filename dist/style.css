@@ -527,12 +527,6 @@ input:focus {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-
-.userUl,
-.packageUl {
-  display: grid;
-  grid-template-columns: repeat(2, 20rem [col-start]);
-}
 .admindataarrange {
   display: flex;
   flex-direction: column;
@@ -664,4 +658,16 @@ input:focus {
   border-radius: 8px;
   box-shadow: 2px 3px 4px #eaeaea, 2px 3px 4px #ffffff;
   background-color: aliceblue;
+}
+@media screen and (min-width: 768px) {
+  .userUl,
+  .packageUl {
+    display: grid;
+    grid-template-columns: repeat(2, 28rem [col-start]);
+  }
+}
+@media screen and (min-width: 768px) {
+  .packageDiv {
+    background: aliceblue;
+  }
 }
