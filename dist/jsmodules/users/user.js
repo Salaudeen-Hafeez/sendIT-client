@@ -90,7 +90,7 @@ window.displayUserPackages = () => {
       const packag = { errMessage: 'You do not have packages' };
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      packagesDiv.innerHTML = packageDisplay(packages, 'amount');
+      packagesDiv.innerHTML = packageDisplay(packages, 'Cancele');
     }
   }
 };
@@ -108,7 +108,7 @@ window.displayPendingPackage = () => {
       const packag = { errMessage: 'You do not have package in transit' };
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      packagesDiv.innerHTML = packageDisplay(packageInTrans, 'amount');
+      packagesDiv.innerHTML = packageDisplay(packageInTrans, 'Cancele');
     }
   }
 };

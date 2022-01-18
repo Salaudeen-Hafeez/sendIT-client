@@ -1,8 +1,13 @@
-const packageDisplay = (packages, label = 'delete') => {
+const packageDisplay = (packages) => {
+  const user = JSON.parse(localStorage.getItem('user'));
   let packagesDiv = '';
   let color;
+  let label = 'delete';
   if (Array.isArray(packages) && packages.length !== 0) {
     packages.forEach((packag) => {
+      if (user) {
+        label = packag._cost;
+      }
       switch (packag._status) {
         case 'In transit':
           color = '#095F06';
