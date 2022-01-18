@@ -122,6 +122,7 @@ window.getPackage = (e) => {
 window.updatePackage = async (e) => {
   try {
     const id = parseInt(e.id);
+    console.log(e.parenetElement.parenetElement.querySelectorAll('p')[2]);
     const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
     const input = prompt('Enter new destination');
     if (input !== null) {
