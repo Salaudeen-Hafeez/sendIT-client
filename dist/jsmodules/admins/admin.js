@@ -8,7 +8,7 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
-const { _name, _username, _email, _status, admin_token } = JSON.parse(
+const { _name, users_id, _username, _email, _status, admin_token } = JSON.parse(
   localStorage.getItem('admin')
 );
 const geocoder = new google.maps.Geocoder();
