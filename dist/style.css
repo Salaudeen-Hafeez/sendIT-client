@@ -653,6 +653,7 @@ input:focus {
   cursor: pointer;
   margin: 1px;
   padding: 8px;
+  background: aliceblue;
 }
 .packageDiv:hover {
   border-radius: 8px;
@@ -674,15 +675,10 @@ input:focus {
     box-sizing: border-box;
   }
 }
-@media screen and (min-width: 320px) {
-  .userUl,
-  .packageUl {
-    display: flex;
-    flex-direction: column;
-  }
-  .packageDiv,
-  .userUl li {
-    margin: 10px;
+@media screen and (max-width: 320px) {
+  .userUl li .packageDiv {
     width: 95%;
+    padding: 10px;
+    border-radius: 10px;
   }
 }
