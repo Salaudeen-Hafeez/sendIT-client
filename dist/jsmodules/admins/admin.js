@@ -46,7 +46,6 @@ const service = new google.maps.DistanceMatrixService();
 const users = JSON.parse(localStorage.getItem('users'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 let userul = '';
-let deleBtn = false;
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
@@ -55,9 +54,8 @@ const adminFetchPackages = (cond) => {
   if (!admin_token) {
     window.location.href = '/login';
   } else {
-    deleBtn = !deleBtn;
     const packag = packages.filter((packag) => packag._status === cond);
-    const displayPackage = packageDisplay(packag, deleBtn);
+    const displayPackage = packageDisplay(packag);
     newPackages.innerHTML = displayPackage;
     newPackages.classList.toggle('open');
   }
@@ -102,12 +100,11 @@ window.fetchUsers = () => {
 window.adminFetchUserPackage = (e) => {
   const packages = JSON.parse(localStorage.getItem('packages'));
   const username = e.value;
-  deleBtn = !deleBtn;
   const id = e.id;
   const userCont = `userCont${id}`;
   const newPackages = document.getElementById(userCont);
   const packag = packages.filter((packag) => packag._username === username);
-  newPackages.innerHTML = packageDisplay(packag, deleBtn);
+  newPackages.innerHTML = packageDisplay(packag);
   newPackages.classList.toggle('open');
 };
 window.adminDeleteUser = (e) => {
