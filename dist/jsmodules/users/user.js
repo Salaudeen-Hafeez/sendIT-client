@@ -139,7 +139,7 @@ window.updatePackage = async (e) => {
         if (distMetrix.rows[0].elements[0].status === 'OK') {
           const packag = await putPackage(userUpdateUrl, data);
           localStorage.setItem('packages', JSON.stringify(packag.packages));
-          destP.innerHTML = `Going to: ${packag.package._destination}`;
+          destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
         } else {
           alert('Destination address entered not found');
         }
