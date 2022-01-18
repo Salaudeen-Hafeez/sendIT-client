@@ -683,7 +683,6 @@ input:focus {
   .packageDiv,
   .userUl li {
     margin: 10px;
-    flex-basis: calc(100% - 40px);
-    box-sizing: border-box;
+    width: 95%;
   }
 }
