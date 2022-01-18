@@ -47,7 +47,6 @@ const service = new google.maps.DistanceMatrixService();
 const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
-const packagesDiv = document.getElementById('packages');
 const { users_id, _email, auth_token } = user;
 window.createProfile = () => {
   let profileData;
@@ -70,7 +69,7 @@ window.createProfile = () => {
         </div>`;
     const button = `<button class="shwPackages" onclick="displayUserPackages()">My Packages</button
           ><button class="shwPackages"onclick="displayPendingPackage()">Pending Packages</button>
-          <ul id="packages" class="packageUl"></ul>`;
+          <ul id="packagesUl" class="packageUl"></ul>`;
     profile.innerHTML = userProfile;
     packagBtn.innerHTML = button;
   }
@@ -84,6 +83,7 @@ window.logOut = async () => {
   window.location.href = '/';
 };
 window.displayUserPackages = () => {
+  const packagesDiv = document.getElementById('packagesUl');
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -98,6 +98,7 @@ window.displayUserPackages = () => {
 };
 
 window.displayPendingPackage = () => {
+  const packagesDiv = document.getElementById('packagesUl');
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
