@@ -123,7 +123,7 @@ window.getPackage = (e) => {
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
 };
-window.changeLocation = async (e) => {
+window.updatePackage = async (e) => {
   const id = parseInt(e.id);
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
   const input = prompt('Enter new destination');

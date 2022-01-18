@@ -1,6 +1,11 @@
 const packageDisplay = (packages, labels) => {
+  const admin = JSON.parse(localStorage.getItem('admin'));
   let packagesDiv = '';
+  let visible = 'hidden';
   let color;
+  if (admin) {
+    visible = 'visible';
+  }
   if (Array.isArray(packages) && packages.length !== 0) {
     packages.forEach((packag) => {
       switch (packag._status) {
@@ -21,7 +26,8 @@ const packageDisplay = (packages, labels) => {
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
-        <button class="delete" onclick="changeLocation(this)" value= "${packag._username}" id="${packag.parcel_id}">${labels}</button>
+        <button class="delete" onclick="updatePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">${labels}</button>
+        <button class="delete" style="visibility:${visible}" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
       </li>
     `;
     });
