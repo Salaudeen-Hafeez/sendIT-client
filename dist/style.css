@@ -668,6 +668,7 @@ input:focus {
 }
 @media screen and (min-width: 320px) {
   .packageDiv {
+    border-radius: 10px;
     background: aliceblue;
   }
 }
