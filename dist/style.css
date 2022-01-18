@@ -646,3 +646,21 @@ input:focus {
   font-size: 20px;
   font-weight: 800;
 }
+.packagesBtn {
+  display: flex;
+  flex-direction: column;
+}
+.shwPackages {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-style: none;
+  background: #5aac5a;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px;
+}
+.shwPackages:hover {
+  background: #067a06;
+  color: white;
+  box-shadow: 2px 3px 5px #5aac5a, 2px 3px 5px #5aac5a;
+}
