@@ -26,8 +26,10 @@ const packageDisplay = (packages, labels) => {
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
           <p style="font-weight:800;color:${color}">${packag._status}</p>
         </div>
-        <div class="deleteDiv"><button class="delete" style="visibility:${visible}" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
-        <button class="delete" onclick="updatePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">${labels}</button></div>
+        <div class="deleteDiv">
+        <button class="delete" style="visibility:${visible}" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
+        <button class="delete" onclick="updatePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">${labels}</button>
+        </div>
       </li>
     `;
     });
