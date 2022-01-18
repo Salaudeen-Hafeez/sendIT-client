@@ -1,7 +1,6 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 import { authenticateRoute } from '../routAuth.js';
-localStorage.clear();
 // Get the stored user data and create the user profile display
 let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
