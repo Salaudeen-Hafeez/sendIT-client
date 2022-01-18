@@ -85,7 +85,7 @@ body {
   z-index: 1;
   transition: all 150ms ease-out;
 }
-.nav-link {
+ {
   top: 6%;
   right: 1%;
 }
@@ -309,8 +309,8 @@ input {
   background-color: white;
   font-weight: 900;
 }
-.delete1.open1 {
-  visibility: 'hidden';
+.delete1.close {
+  visibility: hidden;
 }
 .delete:hover {
   color: white;
