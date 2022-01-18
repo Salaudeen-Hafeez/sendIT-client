@@ -665,8 +665,7 @@ input:focus {
     display: flex;
     flex-wrap: wrap;
   }
-  .packageDiv,
-  .userUl li {
+  .packageDiv {
     width: 50%;
     box-sizing: border-box;
   }
