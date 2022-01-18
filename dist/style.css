@@ -20,7 +20,7 @@ body {
   position: sticky;
   z-index: 4;
   top: 0px;
-  background: #c6f1dd;
+  background: aliceblue;
 }
 .logo-img {
   position: absolute;
@@ -674,3 +674,4 @@ input:focus {
   box-shadow: 2px 3px 4px #eaeaea, 2px 3px 4px #ffffff;
   background-color: aliceblue;
 }
+.logo
