@@ -675,12 +675,13 @@ input:focus {
     box-sizing: border-box;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px) {
   .packageUl,
   .userUl {
     width: 100%;
   }
-  .packageDiv {
+  .packageDiv,
+  .userUl li {
     width: 95%;
     padding: 10px;
     border-radius: 10px;
