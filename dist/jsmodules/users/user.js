@@ -44,7 +44,6 @@ const getDistance = async (service, add) => {
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 const user = JSON.parse(localStorage.getItem('user'));
-const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 const { users_id, _email, auth_token } = user;
 window.createProfile = () => {
@@ -82,6 +81,7 @@ window.logOut = async () => {
   window.location.href = '/';
 };
 window.displayUserPackages = () => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
@@ -96,6 +96,7 @@ window.displayUserPackages = () => {
 };
 
 window.displayPendingPackage = () => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
@@ -112,6 +113,7 @@ window.displayPendingPackage = () => {
   }
 };
 window.getPackage = (e) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   localStorage.removeItem('package');
   const parcelId = parseInt(e.id);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
@@ -120,6 +122,7 @@ window.getPackage = (e) => {
 };
 
 window.updatePackage = async (e) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   const destP = e.parentElement.parentElement.querySelectorAll('p')[2];
   try {
     const id = parseInt(e.id);
