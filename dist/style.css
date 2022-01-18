@@ -681,12 +681,11 @@ input:focus {
   }
 }
 @media screen and (max-width: 768px) {
-  .packageUl,
-  .packageUlDiv .userUl {
+  .packageUl.open,
+  .packageUlDiv {
     width: 100%;
   }
-  .packageDiv,
-  .userUl li {
+  .packageDiv {
     width: 95%;
     padding: 10px;
     border-radius: 10px;
