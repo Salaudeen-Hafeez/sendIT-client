@@ -1,4 +1,5 @@
 import { putPackage } from '../httpFetch/putData.js';
+import { userUpdateUrl } from '../httpFetch/urls.js';
 import { authenticateRoute } from '../routAuth.js';
 import { createPackage } from './createPackages.js';
 
