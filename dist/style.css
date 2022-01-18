@@ -663,3 +663,7 @@ input:focus {
   color: white;
   box-shadow: 2px 3px 5px #5aac5a, 2px 3px 5px #5aac5a;
 }
+.deleteDiv {
+  display: flex;
+  justify-content: space-between;
+}
