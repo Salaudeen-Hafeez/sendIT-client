@@ -1,9 +1,8 @@
-const packageDisplay = (packages, labels) => {
-  const admin = JSON.parse(localStorage.getItem('admin'));
+const packageDisplay = (packages, labels = true) => {
   let packagesDiv = '';
   let visible;
   let color;
-  if (!admin) {
+  if (labels) {
     visible = 'hidden';
   } else {
     visible = 'visible';
@@ -30,7 +29,7 @@ const packageDisplay = (packages, labels) => {
         </div>
         <div class="deleteDiv">
         <button class="delete" style="visibility:${visible}" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">delete</button>
-        <button class="delete" onclick="updatePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">${labels}</button>
+        <button class="delete" onclick="updatePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">update</button>
         </div>
       </li>
     `;

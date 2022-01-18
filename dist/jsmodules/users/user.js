@@ -47,6 +47,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 const { users_id, _email, auth_token } = user;
+let deleBtn = false;
 
 window.createProfile = () => {
   let profileData;
@@ -91,8 +92,7 @@ window.displayUserPackages = () => {
       const packag = { errMessage: 'You do not have packages' };
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      console.log(packagesDiv);
-      packagesDiv.innerHTML = packageDisplay(packages, 'update');
+      packagesDiv.innerHTML = packageDisplay(packages, deleBtn);
     }
   }
 };
@@ -109,7 +109,7 @@ window.displayPendingPackage = () => {
       const packag = { errMessage: 'You do not have package in transit' };
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      packagesDiv.innerHTML = packageDisplay(packageInTrans, 'update');
+      packagesDiv.innerHTML = packageDisplay(packageInTrans, deleBtn);
     }
   }
 };
