@@ -325,7 +325,7 @@ user-profile
 }
 .user-profile {
   border-radius: 1rem;
-  margin: 1.2rem 0.7rem 0;
+  margin: 1.2rem 0.7rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
