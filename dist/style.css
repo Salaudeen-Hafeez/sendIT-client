@@ -334,11 +334,6 @@ user-profile
   z-index: 2;
   font-size: 13px;
   background: aliceblue;
-  background: linear-gradient(
-    to left top,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.5)
-  );
 }
 .profile-img {
   border: 1px solid darkgreen;
@@ -675,9 +670,5 @@ input:focus {
   border-radius: 8px;
   box-shadow: 1px 2px 4px #eaeaea, 1px 2px 4px #eaeaea;
   justify-content: flex-start;
-  background: linear-gradient(
-    to left top,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.5)
-  );
+  background-color: aliceblue;
 }
