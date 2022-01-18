@@ -2,6 +2,7 @@ const packag = JSON.parse(localStorage.getItem('package'));
 const { _username, _email, users_id, auth_token } = JSON.parse(
   localStorage.getItem('user')
 );
+let id;
 if (packag !== null) {
   id = parseInt(packag.parcel_id);
 }
