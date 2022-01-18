@@ -675,8 +675,15 @@ input:focus {
   }
 }
 @media screen and (min-width: 320px) {
-  .packageDiv {
-    border-radius: 10px;
-    background: aliceblue;
+  .userUl,
+  .packageUl {
+    display: flex;
+    flex-direction: column;
+  }
+  .packageDiv,
+  .userUl li {
+    margin: 10px;
+    flex-basis: calc(100% - 40px);
+    box-sizing: border-box;
   }
 }
