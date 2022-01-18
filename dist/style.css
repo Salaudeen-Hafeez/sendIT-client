@@ -11,7 +11,7 @@ ul {
 }
 body {
   color: #333;
-  background: white;
+  background: #c6f1dd;
 }
 /* navigation bar*/
 .logo {
@@ -668,10 +668,11 @@ input:focus {
 }
 .packageDiv {
   cursor: pointer;
+  margin: 1px;
   padding: 8px;
 }
 .packageDiv:hover {
-  margin-right: 7px;
+  padding-right: 1px;
   border-radius: 8px;
   justify-content: flex-start;
   background: linear-gradient(
