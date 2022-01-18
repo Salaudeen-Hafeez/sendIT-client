@@ -666,11 +666,11 @@ input:focus {
   display: flex;
   justify-content: space-between;
 }
-.packagediv {
+.packageDiv {
   cursor: pointer;
   margin: 8px;
 }
-.packageli:hover {
+.packageDiv:hover {
   padding: 3px;
   border-radius: 8px;
   background-color: #eaeaea;
