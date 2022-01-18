@@ -68,8 +68,8 @@ window.createProfile = () => {
             <li>${profileData._status}</li>
           </ul>
         </div>`;
-    const button = `<button class="shwPackages" onclick="displayPendingPackage">My Packages</button
-          ><button class="shwPackages"onclick="displayUserPackages()">Pending Packages</button>
+    const button = `<button class="shwPackages" onclick="displayUserPackages()">My Packages</button
+          ><button class="shwPackages"onclick="displayPendingPackage()">Pending Packages</button>
           <ul id="packages" class="packageUl"></ul>`;
     profile.innerHTML = userProfile;
     packagBtn.innerHTML = button;
@@ -91,6 +91,7 @@ window.displayUserPackages = () => {
       const packag = { errMessage: 'You do not have packages' };
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
+      console.log(packagesDiv);
       packagesDiv.innerHTML = packageDisplay(packages, 'change destination');
     }
   }
