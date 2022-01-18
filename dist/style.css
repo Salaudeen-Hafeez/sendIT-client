@@ -309,7 +309,7 @@ input {
   background-color: white;
   font-weight: 900;
 }
-.delete1.open {
+.delete1.open1 {
   visibility: 'hidden';
 }
 .delete:hover {

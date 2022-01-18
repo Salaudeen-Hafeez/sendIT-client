@@ -4,7 +4,7 @@ const packageDisplay = (packages, labels) => {
   let color;
   if (!admin) {
     const deleteBtn = document.getElementById('delete1');
-    deleteBtn.classList.toggle('open');
+    deleteBtn.classList.toggle('open1');
   }
   if (Array.isArray(packages) && packages.length !== 0) {
     packages.forEach((packag) => {
