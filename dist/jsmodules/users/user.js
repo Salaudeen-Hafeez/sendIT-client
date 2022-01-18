@@ -68,8 +68,8 @@ window.createProfile = () => {
             <li>${profileData._status}</li>
           </ul>
         </div>`;
-    const button = `<button class="shwPackages">Pending Packages</button
-          ><button class="shwPackages">My Packages</button>
+    const button = `<button class="shwPackages" onclick="displayPendingPackage">My Packages</button
+          ><button class="shwPackages"onclick="displayUserPackages()">Pending Packages</button>
           <ul id="packages" class="packageUl"></ul>`;
     profile.innerHTML = userProfile;
     packagBtn.innerHTML = button;

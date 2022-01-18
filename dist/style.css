@@ -655,6 +655,7 @@ input:focus {
   background: #5aac5a;
   font-weight: 700;
   font-size: 16px;
+  width: 95%;
   padding: 10px;
 }
 .shwPackages:hover {
