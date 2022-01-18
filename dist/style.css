@@ -686,9 +686,11 @@ input:focus {
   .packageUlDiv {
     width: 100%;
   }
-  .packageDiv {
+  .packageDiv,
+  .userDetails {
     width: 95%;
     padding: 10px;
+    margin: 10px;
     border-radius: 10px;
   }
 }
