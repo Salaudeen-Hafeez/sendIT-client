@@ -681,7 +681,7 @@ input:focus {
   }
 }
 @media screen and (max-width: 768px) {
-  .packageUl.open,
+  .packageUl,
   .packageUlDiv {
     width: 100%;
   }
