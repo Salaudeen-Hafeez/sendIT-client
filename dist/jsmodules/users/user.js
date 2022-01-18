@@ -120,7 +120,7 @@ window.getPackage = (e) => {
 };
 
 window.updatePackage = async (e) => {
-  console.log(e.parentElement.parentElement.querySelectorAll('p')[0]);
+  console.log(e.parentElement.parentElement.querySelectorAll('p')[2].innerText);
   // try {
   //   const id = parseInt(e.id);
 
