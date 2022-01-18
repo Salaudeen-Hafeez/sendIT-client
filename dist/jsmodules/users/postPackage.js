@@ -2,7 +2,6 @@ import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
 import { authenticateRoute } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
-localStorage.clear();
 let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
