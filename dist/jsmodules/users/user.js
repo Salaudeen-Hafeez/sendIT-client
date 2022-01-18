@@ -137,9 +137,9 @@ window.updatePackage = async (e) => {
         const distMetrix = await getDistance(service, add);
         const data = { _destination: add2 };
         if (distMetrix.rows[0].elements[0].status === 'OK') {
-          const { packages, package } = await putPackage(userUpdateUrl, data);
-          localStorage.setItem('packages', JSON.stringify(packages));
-          destP.innerHTML = `Going to: ${package._destination}`;
+          const packag = await putPackage(userUpdateUrl, data);
+          localStorage.setItem('packages', JSON.stringify(packag.packages));
+          destP.innerHTML = `Going to: ${packag.package._destination}`;
         } else {
           alert('Destination address entered not found');
         }
