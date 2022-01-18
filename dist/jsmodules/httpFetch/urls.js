@@ -1,8 +1,12 @@
 const packag = JSON.parse(localStorage.getItem('package'));
-const { _username, _email, users_id, auth_token } = JSON.parse(
-  localStorage.getItem('user')
-);
-let id;
+const user = JSON.parse(localStorage.getItem('user'));
+let id, username, email, userId, token;
+if (user) {
+  email = user._email;
+  username = user._username;
+  userId = user.users_id;
+  token = user.auth_token;
+}
 if (packag !== null) {
   id = parseInt(packag.parcel_id);
 }
@@ -12,8 +16,8 @@ const postAdmUrl = 'https://akera-logistics.herokuapp.com/api/v1/users/admins';
 const postUsrUrl = 'https://akera-logistics.herokuapp.com/api/v1/users';
 const adminLoginUrl =
   'https://akera-logistics.herokuapp.com/api/v1/users/admins/login';
-const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
-const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${_email}/${auth_token}/packages`;
+const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
+const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${email}/${token}/packages`;
 export {
   loginUrl,
   postAdmUrl,
