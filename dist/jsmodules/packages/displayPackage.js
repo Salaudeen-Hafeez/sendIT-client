@@ -1,11 +1,6 @@
 const packageDisplay = (packages, labels) => {
-  const admin = JSON.parse(localStorage.getItem('admin'));
   let packagesDiv = '';
   let color;
-  if (!admin) {
-    const deleteBtn = document.getElementById('delete1');
-    deleteBtn.classList.toggle('open1');
-  }
   if (Array.isArray(packages) && packages.length !== 0) {
     packages.forEach((packag) => {
       switch (packag._status) {
