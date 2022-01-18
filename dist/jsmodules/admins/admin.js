@@ -8,6 +8,35 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
+const geocodeAddress = async (geocoder, address) => {
+  let geocodeResult = await geocoder
+    .geocode({ address })
+    .then(({ results }) => {
+      return {
+        add1: results[0].formatted_address,
+        add2: results[0].geometry.location,
+      };
+    })
+    .catch((e) =>
+      alert(`Geocode was not successful for the following reason: ${e}`)
+    );
+  return geocodeResult;
+};
+const getDistance = async (service, add) => {
+  const request = {
+    origins: [add[0]],
+    destinations: [add[1]],
+    travelMode: google.maps.TravelMode.DRIVING,
+    unitSystem: google.maps.UnitSystem.METRIC,
+    avoidHighways: false,
+    avoidTolls: false,
+  };
+  // get distance matrix response
+  let distance = await service.getDistanceMatrix(request).then((response) => {
+    return response;
+  });
+  return distance;
+};
 const { _name, users_id, _username, _email, _status, admin_token } = JSON.parse(
   localStorage.getItem('admin')
 );
