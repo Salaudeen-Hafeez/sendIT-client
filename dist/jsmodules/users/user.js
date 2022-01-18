@@ -48,6 +48,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 const { users_id, _email, auth_token } = user;
+
 window.createProfile = () => {
   let profileData;
   if (user !== null || admin !== null) {
@@ -96,7 +97,7 @@ window.displayUserPackages = () => {
     }
   }
 };
-
+localStorage.clear();
 window.displayPendingPackage = () => {
   const packagesDiv = document.getElementById('packagesUl');
   if (user !== null && !user.auth_token) {
@@ -123,26 +124,31 @@ window.getPackage = (e) => {
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
 };
+
 window.updatePackage = async (e) => {
-  const id = parseInt(e.id);
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
-  const input = prompt('Enter new destination');
-  if (input !== null) {
-    const packag = packages.filter((pack) => pack.parcel_id === id);
-    const { _status, _location } = packag[0];
-    if (_status === 'Order Cancelled') {
-      alert('Order has been cancelled');
-    } else {
-      const data = { _destination: input };
-      const { add1: add2 } = await geocodeAddress(geocoder, input);
-      const add = [_location, add2];
-      const distMetrix = await getDistance(service, add);
-      if (distMetrix.rows[0].elements[0].status === 'OK') {
-        const updPack = await putPackage(userUpdateUrl, add2);
-        localStorage.setItem('packages', JSON.stringify(updPack.packages));
+  try {
+    const id = parseInt(e.id);
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
+    const input = prompt('Enter new destination');
+    if (input !== null) {
+      const packag = packages.filter((pack) => pack.parcel_id === id);
+      const { _status, _location } = packag[0];
+      if (_status === 'Order Cancelled') {
+        alert('Order has been cancelled');
       } else {
-        alert('Destination address entered not found');
+        const data = { _destination: input };
+        const { add1: add2 } = await geocodeAddress(geocoder, input);
+        const add = [_location, add2];
+        const distMetrix = await getDistance(service, add);
+        if (distMetrix.rows[0].elements[0].status === 'OK') {
+          const updPack = await putPackage(userUpdateUrl, add2);
+          localStorage.setItem('packages', JSON.stringify(updPack.packages));
+        } else {
+          alert('Destination address entered not found');
+        }
       }
     }
+  } catch (error) {
+    console.log(error);
   }
 };
