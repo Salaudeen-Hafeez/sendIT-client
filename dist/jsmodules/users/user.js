@@ -138,7 +138,7 @@ window.updatePackage = async (e) => {
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
-        const updPack = await putPackage(userUpdateUrl, data);
+        const updPack = await putPackage(userUpdateUrl, add2);
         localStorage.setItem('packages', JSON.stringify(updPack.packages));
       } else {
         alert('Destination address entered not found');
