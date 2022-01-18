@@ -92,7 +92,7 @@ window.displayUserPackages = () => {
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
       console.log(packagesDiv);
-      packagesDiv.innerHTML = packageDisplay(packages, 'change destination');
+      packagesDiv.innerHTML = packageDisplay(packages, 'update');
     }
   }
 };
@@ -109,10 +109,7 @@ window.displayPendingPackage = () => {
       const packag = { errMessage: 'You do not have package in transit' };
       packagesDiv.innerHTML = packageDisplay(packag);
     } else {
-      packagesDiv.innerHTML = packageDisplay(
-        packageInTrans,
-        'change destination'
-      );
+      packagesDiv.innerHTML = packageDisplay(packageInTrans, 'update');
     }
   }
 };

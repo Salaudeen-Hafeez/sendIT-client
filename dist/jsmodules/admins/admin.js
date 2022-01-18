@@ -55,7 +55,7 @@ const adminFetchPackages = (cond) => {
     window.location.href = '/login';
   } else {
     const packag = packages.filter((packag) => packag._status === cond);
-    const displayPackage = packageDisplay(packag, 'update package');
+    const displayPackage = packageDisplay(packag, 'update');
     newPackages.innerHTML = displayPackage;
     newPackages.classList.toggle('open');
   }
@@ -104,7 +104,7 @@ window.adminFetchUserPackage = (e) => {
   const userCont = `userCont${id}`;
   const newPackages = document.getElementById(userCont);
   const packag = packages.filter((packag) => packag._username === username);
-  newPackages.innerHTML = packageDisplay(packag, 'update package');
+  newPackages.innerHTML = packageDisplay(packag, 'update');
   newPackages.classList.toggle('open');
 };
 window.adminDeleteUser = (e) => {
