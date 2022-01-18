@@ -173,7 +173,7 @@ window.updatePackage = async (e) => {
     if (_status === 'Order Cancelled') {
       alert('Order has been cancelled');
     } else {
-      const data = { _destination: input };
+      const data = { _location: input };
       const { add1: add2 } = await geocodeAddress(geocoder, input);
       console.log(add2);
       const add = [_location, add2];
