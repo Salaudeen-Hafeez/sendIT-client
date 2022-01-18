@@ -134,10 +134,11 @@ window.adminDeleteUser = (e) => {
   }
 };
 window.adminDeletePackage = (e) => {
-  const sibling = e.parentElement.parentElement.previousElementSibling;
+  const sibling =
+    e.parentElement.parentElement.parentElement.previousElementSibling;
   const button = sibling.querySelector('button');
   console.log(button);
-  const stat = e.parentElement.querySelector('div');
+  const stat = e.parentElement.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
   const id = parseInt(e.id);
@@ -203,11 +204,10 @@ window.updatePackage = async (e) => {
     if (_status === 'Order Cancelled') {
       alert('Order has been cancelled');
     } else {
-      const data = { _location: input };
       const { add1: add2 } = await geocodeAddress(geocoder, input);
-      console.log(add2);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
+      const data = { _location: add2 };
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const updPack = await putPackage(userUpdateUrl, data);
         localStorage.setItem('packages', JSON.stringify(updPack.packages));
