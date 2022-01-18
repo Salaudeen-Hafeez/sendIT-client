@@ -1,6 +1,7 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 import { authenticateRoute } from '../routAuth.js';
+localStorage.clear();
 // Get the stored user data and create the user profile display
 let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
@@ -135,12 +136,12 @@ window.updatePackage = async (e) => {
       if (_status === 'Order Cancelled') {
         alert('Order has been cancelled');
       } else {
-        const data = { _destination: input };
         const { add1: add2 } = await geocodeAddress(geocoder, input);
         const add = [_location, add2];
         const distMetrix = await getDistance(service, add);
+        const data = { _destination: add2 };
         if (distMetrix.rows[0].elements[0].status === 'OK') {
-          const updPack = await putPackage(userUpdateUrl, add2);
+          const updPack = await putPackage(userUpdateUrl, data);
           localStorage.setItem('packages', JSON.stringify(updPack.packages));
         } else {
           alert('Destination address entered not found');
