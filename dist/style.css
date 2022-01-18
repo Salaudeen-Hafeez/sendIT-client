@@ -666,7 +666,7 @@ input:focus {
     grid-template-columns: repeat(2, 28rem [col-start]);
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 320px) {
   .packageDiv {
     background: aliceblue;
   }
