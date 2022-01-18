@@ -32,23 +32,23 @@ const toNaira = Intl.NumberFormat('en-US', {
 const cost = (dist, dur) => {
   let multiplier;
   switch (dist) {
-    case dist <= 5000:
+    case dist <= 10000:
       multiplier = 300;
       break;
-    case 5000 <= dist <= 10000:
+    case 10000 <= dist <= 30000:
       multiplier = 250;
       break;
-    case 10000 <= dist <= 50000:
+    case 30000 <= dist <= 70000:
       multiplier = 190;
       break;
-    case 50000 <= dist <= 100000:
+    case 70000 <= dist <= 1200000:
       multiplier = 120;
       break;
-    case 100000 <= dist <= 200000:
+    case 1200000 <= dist <= 250000:
       multiplier = 60;
       break;
     default:
-      multiplier = 30;
+      multiplier = 40;
       break;
   }
   const totalcost = ((dist + dur) / 1000) * multiplier;
