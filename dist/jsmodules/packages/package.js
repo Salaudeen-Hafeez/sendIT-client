@@ -1,6 +1,7 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { authenticateRoute } from '../routAuth.js';
 import { createPackage } from './createPackages.js';
+localStorage.clear();
 let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
