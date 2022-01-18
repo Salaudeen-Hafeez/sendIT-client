@@ -8,3 +8,7 @@ console.log(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
+window.toggleMenu = () => {
+  const navLink = document.querySelector('.nav-link');
+  navLink.classList.toggle('open');
+};
