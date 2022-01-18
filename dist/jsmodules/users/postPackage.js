@@ -58,7 +58,6 @@ const cost = (dist, dur) => {
   }
   const totalcost = ((dist + dur) / 1000) * multiplier;
   const naira = toNaira.format(Math.round(totalcost));
-  console.log(naira);
   return naira;
 };
 window.toggleMenu = () => {
@@ -75,7 +74,8 @@ window.submitPackage = async () => {
   const distMetrix = await getDistance(service, add);
   const { distance, duration } = distMetrix.rows[0].elements[0];
   const tripFare = cost(distance.value, duration.value);
-  console.log(tripFare);
+  data['cost'] = tripFare;
+  console.log(data);
   // if (!emptyInput) {
   //   data['username'] = user._username;
   //   const postedData = await postData(postPackageUrl, data);
