@@ -671,6 +671,7 @@ input:focus {
   margin: 8px;
 }
 .packageDiv:hover {
+  margin: 4px;
   padding: 0px 2px;
   border-radius: 8px;
   background-color: #eaeaea;
