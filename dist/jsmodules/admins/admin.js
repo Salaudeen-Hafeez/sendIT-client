@@ -12,6 +12,7 @@ const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
     .then(({ results }) => {
+      console.log(results);
       return {
         add1: results[0].formatted_address,
         add2: results[0].geometry.location,
