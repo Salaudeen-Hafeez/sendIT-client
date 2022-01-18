@@ -662,6 +662,9 @@ input:focus {
   justify-content: space-between;
 }
 .packageDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   cursor: pointer;
   margin: 1px;
   padding: 8px;
