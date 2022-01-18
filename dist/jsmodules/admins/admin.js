@@ -194,6 +194,9 @@ window.fetchPackagesInTransit = () => {
 window.fetchDeliveredPackages = () => {
   adminFetchPackages('Delivered');
 };
+window.fetchCanceledPackages = () => {
+  adminFetchPackages('Order Cancelled');
+};
 window.updatePackage = async (e) => {
   const id = parseInt(e.id);
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${admin_token}/packages/${id}`;
