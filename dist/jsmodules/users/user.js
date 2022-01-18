@@ -93,8 +93,6 @@ window.displayUserPackages = () => {
     } else {
       console.log(packagesDiv);
       packagesDiv.innerHTML = packageDisplay(packages, 'change destination');
-      const deleteBtn = document.getElementById('delete1');
-      deleteBtn.classList.toggle('open1');
     }
   }
 };
@@ -115,8 +113,6 @@ window.displayPendingPackage = () => {
         packageInTrans,
         'change destination'
       );
-      const deleteBtn = document.getElementById('delete1');
-      deleteBtn.classList.toggle('open1');
     }
   }
 };
