@@ -120,31 +120,32 @@ window.getPackage = (e) => {
 };
 
 window.updatePackage = async (e) => {
-  console.log(e.parentElement.parentElement.querySelectorAll('p')[2].innerText);
-  // try {
-  //   const id = parseInt(e.id);
+  const destP = e.parentElement.parentElement.querySelectorAll('p')[2];
+  try {
+    const id = parseInt(e.id);
 
-  //   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
-  //   const input = prompt('Enter new destination');
-  //   if (input !== null) {
-  //     const packag = packages.filter((pack) => pack.parcel_id === id);
-  //     const { _status, _location } = packag[0];
-  //     if (_status === 'Order Cancelled') {
-  //       alert('Order has been cancelled');
-  //     } else {
-  //       const { add1: add2 } = await geocodeAddress(geocoder, input);
-  //       const add = [_location, add2];
-  //       const distMetrix = await getDistance(service, add);
-  //       const data = { _destination: add2 };
-  //       if (distMetrix.rows[0].elements[0].status === 'OK') {
-  //         const updPack = await putPackage(userUpdateUrl, data);
-  //         localStorage.setItem('packages', JSON.stringify(updPack.packages));
-  //       } else {
-  //         alert('Destination address entered not found');
-  //       }
-  //     }
-  //   }
-  // } catch (error) {
-  //   console.log(error);
-  // }
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
+    const input = prompt('Enter new destination');
+    if (input !== null) {
+      const packag = packages.filter((pack) => pack.parcel_id === id);
+      const { _status, _location } = packag[0];
+      if (_status === 'Order Cancelled') {
+        alert('Order has been cancelled');
+      } else {
+        const { add1: add2 } = await geocodeAddress(geocoder, input);
+        const add = [_location, add2];
+        const distMetrix = await getDistance(service, add);
+        const data = { _destination: add2 };
+        if (distMetrix.rows[0].elements[0].status === 'OK') {
+          const { packages, package } = await putPackage(userUpdateUrl, data);
+          localStorage.setItem('packages', JSON.stringify(packages));
+          destP.innerHTML = `Going to: ${package._destination}`;
+        } else {
+          alert('Destination address entered not found');
+        }
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
