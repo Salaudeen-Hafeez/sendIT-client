@@ -668,10 +668,15 @@ input:focus {
 }
 .packageDiv {
   cursor: pointer;
-  margin: 8px;
+  padding: 8px;
 }
 .packageDiv:hover {
   margin-right: 7px;
   border-radius: 8px;
-  background-color: #eaeaea;
+  justify-content: flex-start;
+  background: linear-gradient(
+    to left top,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.5)
+  );
 }

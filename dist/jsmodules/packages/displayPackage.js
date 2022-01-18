@@ -14,8 +14,8 @@ const packageDisplay = (packages, label = 'delete') => {
           color = 'red';
           break;
       }
-      packagesDiv += `<li>
-        <div class="packageDiv" id="${packag.parcel_id}" onclick="getPackage(this)">
+      packagesDiv += `<li class="packageDiv">
+        <div id="${packag.parcel_id}" onclick="getPackage(this)">
           <p style="font-weight:800;color:#056973">${packag._name}</p>
           <p><span style="font-weight:800">Location:</span> ${packag._location}</p>
           <p><span style="font-weight:800">Going to:</span> ${packag._destination}</p>
