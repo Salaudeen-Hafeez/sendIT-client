@@ -671,7 +671,6 @@ input:focus {
 }
 .packageDiv:hover {
   border-radius: 8px;
-  box-shadow: 1px 2px 4px #eaeaea, 1px 2px 4px #eaeaea;
-  justify-content: flex-start;
+  box-shadow: 2px 3px 4px #eaeaea, 2px 3px 4px #ffffff;
   background-color: aliceblue;
 }
