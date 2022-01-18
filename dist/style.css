@@ -301,16 +301,12 @@ input {
   width: 95%;
   padding: 12px;
 }
-.delete,
-.delete1 {
+.delete {
   border: 0px;
   color: #1f4399;
   padding: 5px 10px;
   background-color: white;
   font-weight: 900;
-}
-.delete1.close {
-  visibility: hidden;
 }
 .delete:hover {
   color: white;
