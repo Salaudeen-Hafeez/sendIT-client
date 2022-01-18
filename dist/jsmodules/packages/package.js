@@ -29,33 +29,7 @@ const toNaira = Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'NGN',
 });
-const cost = (dist, dur) => {
-  let multiplier;
-  switch (dist) {
-    case dist <= 10000:
-      multiplier = 400;
-      break;
-    case 10000 <= dist <= 30000:
-      multiplier = 250;
-      break;
-    case 30000 <= dist <= 70000:
-      multiplier = 190;
-      break;
-    case 70000 <= dist <= 1200000:
-      multiplier = 120;
-      break;
-    case 1200000 <= dist <= 250000:
-      multiplier = 60;
-      break;
-    default:
-      multiplier = 40;
-      break;
-  }
-  const totalcost = ((dist + dur) / 1000) * multiplier;
-  const naira = toNaira.format(Math.round(totalcost));
-  console.log(naira);
-  return naira;
-};
+
 const getDistance = async (service, add) => {
   const request = {
     origins: [add[0]],
@@ -100,7 +74,6 @@ window.loadPackage = async () => {
   const packages2 = document.getElementById('packagePage2');
   const distMetrix = await getDistance(service, add);
   const { distance, duration } = distMetrix.rows[0].elements[0];
-  const tripFare = cost(distance.value, duration.value);
   const metrixData = {
     distance: distance.text,
     duration: duration.text,
