@@ -47,7 +47,7 @@ const getDistance = async (service, add) => {
 };
 const admin = JSON.parse(localStorage.getItem('admin'));
 
-const package = JSON.parse(localStorage.getItem('package'));
+const packag = JSON.parse(localStorage.getItem('package'));
 const map = new google.maps.Map(document.getElementById('map'), {
   center: { lat: 6.5095, lng: 3.3711 },
   zoom: 8,
@@ -55,7 +55,7 @@ const map = new google.maps.Map(document.getElementById('map'), {
 // initialize services
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
-const addresses = [package._destination, package._location];
+const addresses = [packag._destination, packag._location];
 const add = [];
 addresses.forEach(async (address) => {
   const { add1, add2 } = await geocodeAddress(geocoder, address);
@@ -74,7 +74,7 @@ window.loadPackage = async () => {
   const metrixData = {
     distance: distance.text,
     duration: duration.text,
-    fare: package._cost,
+    fare: packag._cost,
   };
   const { tableBody, tableBody1 } = createPackage(metrixData);
   packages.innerHTML = tableBody;
@@ -88,7 +88,7 @@ window.okay = () => {
   }
 };
 window.canceleOrder = async () => {
-  if (package._status === 'Order Cancelled') {
+  if (packag._status === 'Order Cancelled') {
     alert('Order has been canceled');
   } else {
     const data = { _status: 'Order Canceled' };
