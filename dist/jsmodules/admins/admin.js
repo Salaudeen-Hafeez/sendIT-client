@@ -43,7 +43,6 @@ const { _name, users_id, _username, _email, _status, admin_token } = JSON.parse(
 );
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
-const users = JSON.parse(localStorage.getItem('users'));
 const packages = JSON.parse(localStorage.getItem('packages'));
 let userul = '';
 const containerdiv = document.getElementById('usersContainer');
@@ -78,6 +77,7 @@ window.displayAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 window.fetchUsers = () => {
+  const users = JSON.parse(localStorage.getItem('users'));
   userul = '';
   users.forEach((user) => {
     userul += `<li>
@@ -112,7 +112,6 @@ window.adminDeleteUser = (e) => {
   const id = parseInt(e.id);
   const userCont = `userConts${id}`;
   const newPackages = document.getElementById(userCont);
-  console.log(newPackages.innerHTML);
   if (newPackages.innerHTML === 'User deleted') {
     newPackages.classList.toggle('open');
   } else {
@@ -125,8 +124,10 @@ window.adminDeleteUser = (e) => {
     )
       .then((resp) => resp.json())
       .then((data) => {
-        newPackages.innerHTML = 'User deleted';
-        newPackages.classList.toggle('open');
+        console.log(data);
+        localStorage.setItem('users', JSON.stringify(data));
+        // newPackages.innerHTML = 'User deleted';
+        // newPackages.classList.toggle('open');
       })
       .catch((err) => {
         console.log(err);
