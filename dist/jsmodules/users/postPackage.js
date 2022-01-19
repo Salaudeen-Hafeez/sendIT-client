@@ -66,6 +66,8 @@ window.toggleMenu = () => {
 };
 
 window.submitPackage = async () => {
+  const erro = document.getElementById('errMessage');
+  erro.innerHTML = '';
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
@@ -79,11 +81,15 @@ window.submitPackage = async () => {
       data['username'] = user._username;
       data['cost'] = tripFare;
       const postedData = await postData(postPackageUrl, data);
-      localStorage.removeItem('package');
-      localStorage.removeItem('packages');
-      localStorage.setItem('package', JSON.stringify(postedData.package));
-      localStorage.setItem('packages', JSON.stringify(postedData.packages));
-      window.location.href = '/package';
+      if (!postedData.errMessage) {
+        localStorage.removeItem('package');
+        localStorage.removeItem('packages');
+        localStorage.setItem('package', JSON.stringify(postedData.package));
+        localStorage.setItem('packages', JSON.stringify(postedData.packages));
+        window.location.href = '/package';
+      } else {
+        erro.innerHTML = postedData.errMessage;
+      }
     } else {
       alert('The address entered not found');
     }

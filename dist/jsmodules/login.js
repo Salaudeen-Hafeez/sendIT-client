@@ -9,15 +9,9 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
-const displayErr = (data) => {
-  console.log(data);
-  const erro = document.getElementById('errMessage');
-  erro.innerHTML = '';
-  erro.innerHTML = Object.values(data);
-};
 window.login = async () => {
   const erro = document.getElementById('errMessage');
-  erro.innerHTML = 'Loading...';
+  erro.innerHTML = '';
   localStorage.clear();
   const input = document
     .getElementById('inputContainer')
@@ -27,22 +21,22 @@ window.login = async () => {
   if (!emptyInput) {
     if (!email.includes('@sendit.com')) {
       const user = await postData(loginUrl, data);
-      if (user.errMessage) {
-        displayErr(user);
-      } else {
+      if (!user.errMessage) {
         localStorage.setItem('user', JSON.stringify(user.user));
         localStorage.setItem('packages', JSON.stringify(user.packages));
         window.location.href = '/user';
+      } else {
+        erro.innerHTML = user.errMessage;
       }
     } else {
       const admin = await postData(adminLoginUrl, data);
-      if (admin.errMessage) {
-        displayErr(admin);
-      } else {
+      if (!admin.errMessage) {
         localStorage.setItem('admin', JSON.stringify(admin.admin));
         localStorage.setItem('users', JSON.stringify(admin.users));
         localStorage.setItem('packages', JSON.stringify(admin.packages));
         window.location.href = '/admin';
+      } else {
+        erro.innerHTML = admin.errMessage;
       }
     }
   }

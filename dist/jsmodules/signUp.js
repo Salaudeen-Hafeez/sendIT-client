@@ -1,8 +1,9 @@
-import { displayErr } from './errMessages.js';
 import { postData } from './httpFetch/postData.js';
 import { postAdmUrl, postUsrUrl } from './httpFetch/urls.js';
 import { formValidation } from './validateForm.js';
 window.signUp = async () => {
+  const erro = document.getElementById('errMessage');
+  erro.innerHTML = '';
   localStorage.clear();
   const input = document
     .getElementById('inputContainer')
@@ -13,18 +14,18 @@ window.signUp = async () => {
     if (data.email.includes('@sendit.com')) {
       const adminData = await postData(postAdmUrl, data);
       if (adminData.errMessage) {
-        displayErr(adminData);
+        erro.innerHTML = adminData.errMessage;
       } else {
         localStorage.setItem('admin', JSON.stringify(adminData));
         window.location.href = '/admin';
       }
     } else {
       const userData = await postData(postUsrUrl, data);
-      if (userData.errMessage) {
-        displayErr(userData);
-      } else {
+      if (!userData.errMessage) {
         localStorage.setItem('user', JSON.stringify(userData));
         window.location.href = '/user';
+      } else {
+        erro.innerHTML = userData.errMessage;
       }
     }
   }
