@@ -39,9 +39,7 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
-const { _email, users_id, auth_token } = JSON.parse(
-  localStorage.getItem('user')
-);
+const user = JSON.parse(localStorage.getItem('user'));
 const packag = JSON.parse(localStorage.getItem('package'));
 const map = new google.maps.Map(document.getElementById('map'), {
   center: { lat: 6.5095, lng: 3.3711 },
@@ -90,7 +88,7 @@ window.okay = () => {
   }
 };
 window.canceleOrder = async () => {
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${packag.parcel_id}`;
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${user._email}/${user.users_id}/${user.auth_token}/packages/${packag.parcel_id}`;
   if (packag._status === 'Order Canceled') {
     alert('Order has been canceled');
   } else {
