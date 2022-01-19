@@ -81,14 +81,14 @@ window.loadPackage = async () => {
   packages2.innerHTML = tableBody1;
 };
 window.okay = () => {
-  if (!user.auth_token) {
+  if (!user) {
     window.location.href = '/admin';
   } else {
     window.location.href = '/user';
   }
 };
 window.canceleOrder = async () => {
-  if (user.auth_token) {
+  if (user) {
     const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${user._email}/${user.users_id}/${user.auth_token}/packages/${packag.parcel_id}`;
     if (packag._status === 'Order Canceled') {
       alert('Order has been canceled');
