@@ -1,5 +1,4 @@
 import { putPackage } from '../httpFetch/putData.js';
-import { userUpdateUrl } from '../httpFetch/urls.js';
 import { authenticateRoute } from '../routAuth.js';
 import { createPackage } from './createPackages.js';
 
@@ -25,11 +24,6 @@ const geocodeAddress = async (geocoder, address) => {
     );
   return geocodeResult;
 };
-const toNaira = Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'NGN',
-});
-
 const getDistance = async (service, add) => {
   const request = {
     origins: [add[0]],
@@ -45,8 +39,9 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
-const admin = JSON.parse(localStorage.getItem('admin'));
-
+const { _email, users_id, auth_token } = JSON.parse(
+  localStorage.getItem('user')
+);
 const packag = JSON.parse(localStorage.getItem('package'));
 const map = new google.maps.Map(document.getElementById('map'), {
   center: { lat: 6.5095, lng: 3.3711 },
@@ -84,13 +79,15 @@ window.loadPackage = async () => {
   packages2.innerHTML = tableBody1;
 };
 window.okay = () => {
-  if (admin !== null) {
+  if (!auth_token) {
     window.location.href = '/admin';
   } else {
     window.location.href = '/user';
   }
 };
 window.canceleOrder = async () => {
+  const { parcel_id: id } = JSON.parse(localStorage.getItem('package'));
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
   if (packag._status === 'Order Cancelled') {
     alert('Order has been canceled');
   } else {
