@@ -16,7 +16,8 @@ const displayErr = (data) => {
   erro.innerHTML = Object.values(data);
 };
 window.login = async () => {
-  displayErr({ load: 'Loading...' });
+  const erro = document.getElementById('errMessage');
+  erro.innerHTML = 'Loading...';
   localStorage.clear();
   const input = document
     .getElementById('inputContainer')
