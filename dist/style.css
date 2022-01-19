@@ -21,7 +21,7 @@ small {
 body {
   color: #333;
   background: #c6f1dd;
-  align-items: center;
+  text-align: center;
 }
 /* navigation bar*/
 .logo {
