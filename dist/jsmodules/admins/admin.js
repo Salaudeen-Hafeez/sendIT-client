@@ -197,25 +197,29 @@ window.updatePackage = async (e) => {
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${admin_token}/packages/${id}`;
   const input = prompt(
     'update the package location and status',
-    'new location, In transit/Delivered'
+    'new location - In transit/Delivered'
   );
-  if (input !== null) {
+  const updData = input.split('-');
+  if (input !== null && updData.length === 2) {
     const packag = packages.filter((pack) => pack.parcel_id === id);
-    const { _status, _location } = packag[0];
+    const { _status, _destination } = packag[0];
     if (_status === 'Order Canceled') {
       alert('Order has been canceled');
     } else {
-      const { add1: add2 } = await geocodeAddress(geocoder, input);
-      const add = [_location, add2];
+      const { add1: add2 } = await geocodeAddress(geocoder, updData[0]);
+      const add = [_destination, add2];
       const distMetrix = await getDistance(service, add);
-      const data = { _location: add2 };
       if (distMetrix.rows[0].elements[0].status === 'OK') {
+        const data = { _location: add2, _status: updData[1].trim() };
+        console.log(data);
         const updPack = await putPackage(userUpdateUrl, data);
-        localStorage.setItem('packages', JSON.stringify(updPack.packages));
-        locatP.innerHTML = `<span style="font-weight:800">Location:</span> ${updPack.package._location}`;
+        // localStorage.setItem('packages', JSON.stringify(updPack.packages));
+        // locatP.innerHTML = `<span style="font-weight:800">Location:</span> ${updPack.package._location}`;
       } else {
-        alert('Destination address entered not found');
+        alert('address entered not found');
       }
     }
+  } else {
+    alert('Please enter correct data, exp: Adewusi street, lagos - In transit');
   }
 };
