@@ -1,6 +1,5 @@
 import { formValidation } from './validateForm.js';
 import { postData } from './httpFetch/postData.js';
-import { displayErr } from './errMessages.js';
 import { adminLoginUrl, loginUrl } from './httpFetch/urls.js';
 import { authenticateRoute } from './routAuth.js';
 let pathName = location.pathname;
@@ -10,7 +9,13 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
+const displayErr = (data) => {
+  const erro = document.getElementById('errMessage');
+  erro.innerHTML = '';
+  erro.innerHTML = Object.values(data);
+};
 window.login = async () => {
+  displayErr({ load: 'Loading...' });
   localStorage.clear();
   const input = document
     .getElementById('inputContainer')

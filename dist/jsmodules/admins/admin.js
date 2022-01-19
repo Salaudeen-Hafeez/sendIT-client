@@ -196,8 +196,8 @@ window.updatePackage = async (e) => {
   const locatP = e.parentElement.parentElement.querySelectorAll('p');
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${admin.users_id}/${admin.admin_token}/packages/${id}`;
   const input = prompt(
-    'update the package location and status',
-    'new location - In transit/Delivered'
+    'update the package location and status, In transit/Delivered',
+    'new location - In transit'
   );
   const updData = input.split('-');
   if (input !== null && updData.length === 2) {
