@@ -2,9 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
   line-height: 1.5rem;
+  letter-spacing: 0.05em;
   font-family: ui-sans-serif, system-ui, 'Segoe UI', 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
