@@ -195,7 +195,7 @@ window.fetchDeliveredPackages = () => {
   adminFetchPackages('Delivered');
 };
 window.fetchCanceledPackages = () => {
-  adminFetchPackages('Order Cancelled');
+  adminFetchPackages('Order Canceled');
 };
 window.updatePackage = async (e) => {
   const id = parseInt(e.id);
@@ -204,8 +204,8 @@ window.updatePackage = async (e) => {
   if (input !== null) {
     const packag = packages.filter((pack) => pack.parcel_id === id);
     const { _status, _location } = packag[0];
-    if (_status === 'Order Cancelled') {
-      alert('Order has been cancelled');
+    if (_status === 'Order Canceled') {
+      alert('Order has been canceled');
     } else {
       const { add1: add2 } = await geocodeAddress(geocoder, input);
       const add = [_location, add2];

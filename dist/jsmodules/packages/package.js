@@ -92,9 +92,9 @@ window.okay = () => {
 };
 window.canceleOrder = async () => {
   if (_status === 'Order Cancelled') {
-    alert('Order has been cancelled');
+    alert('Order has been canceled');
   } else {
-    const data = { _status: 'Order Cancelled' };
+    const data = { _status: 'Order Canceled' };
     const deletedPackage = await putPackage(userUpdateUrl, data);
     localStorage.setItem('package', JSON.stringify(deletedPackage.package));
     localStorage.setItem('packages', JSON.stringify(deletedPackage.packages));
