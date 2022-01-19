@@ -193,7 +193,7 @@ window.fetchCanceledPackages = () => {
 };
 window.updatePackage = async (e) => {
   const id = parseInt(e.id);
-  const locatP = e.parentElement.parentElement.querySelectorAll('p')[1];
+  const locatP = e.parentElement.parentElement.querySelectorAll('p');
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${admin_token}/packages/${id}`;
   const input = prompt(
     'update the package location and status',
@@ -213,8 +213,10 @@ window.updatePackage = async (e) => {
         const data = { _location: add2, _status: updData[1].trim() };
         console.log(data);
         const updPack = await putPackage(userUpdateUrl, data);
-        // localStorage.setItem('packages', JSON.stringify(updPack.packages));
-        // locatP.innerHTML = `<span style="font-weight:800">Location:</span> ${updPack.package._location}`;
+        console.log(updPack.package);
+        localStorage.setItem('packages', JSON.stringify(updPack.packages));
+        locatP[1].innerHTML = `<span style="font-weight:800">Location:</span> ${updPack.package._location}`;
+        locatP[3].innerHTML = `<span style="font-weight:800; color:#165516">${updPack.package._status}`;
       } else {
         alert('address entered not found');
       }
