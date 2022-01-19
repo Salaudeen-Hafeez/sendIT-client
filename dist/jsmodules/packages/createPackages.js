@@ -17,7 +17,7 @@ const createPackage = ({ distance, duration, fare }) => {
         <div class="packg">
         <p class="packName">${_name}</p>
         <p class="packinfo">
-          <span>Pickup location:</span>${_location}
+          <span>location:</span>${_location}
         </p>
         <p class="packinfo"><span>Going to:</span>${_destination}</p>
         <p class="packinfo" style="font-weight: 700;color:${color}"><span>Status:</span>${_status}</p>
