@@ -10,6 +10,7 @@ if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
 const displayErr = (data) => {
+  console.log(data);
   const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
   erro.innerHTML = Object.values(data);
