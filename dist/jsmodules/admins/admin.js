@@ -126,8 +126,7 @@ window.adminDeleteUser = (e) => {
       .then((data) => {
         console.log(data);
         localStorage.setItem('users', JSON.stringify(data));
-        // newPackages.innerHTML = 'User deleted';
-        // newPackages.classList.toggle('open');
+        window.fetchUsers();
       })
       .catch((err) => {
         console.log(err);
