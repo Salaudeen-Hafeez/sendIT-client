@@ -195,7 +195,10 @@ window.updatePackage = async (e) => {
   const id = parseInt(e.id);
   const locatP = e.parentElement.parentElement.querySelectorAll('p')[1];
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${admin_token}/packages/${id}`;
-  const input = prompt('Enter new destination');
+  const input = prompt(
+    'update the package location and status',
+    'new location, status'
+  );
   if (input !== null) {
     const packag = packages.filter((pack) => pack.parcel_id === id);
     const { _status, _location } = packag[0];
