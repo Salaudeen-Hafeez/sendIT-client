@@ -701,7 +701,7 @@ input:focus {
     border-radius: 10px;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1024px) {
   main {
     width: 80%;
   }
