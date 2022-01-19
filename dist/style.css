@@ -407,7 +407,7 @@ td {
   background: aliceblue;
   font-weight: 800;
   border: 1px solid green;
-  border-radius: 15px 0;
+  border-radius: 15px 15px 0 0;
   color: #1f4399;
   text-align: center;
   padding: 1rem 0;
