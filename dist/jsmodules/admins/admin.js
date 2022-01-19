@@ -127,6 +127,7 @@ window.adminDeleteUser = (e) => {
         console.log(data);
         localStorage.setItem('users', JSON.stringify(data));
         window.fetchUsers();
+        window.fetchUsers();
       })
       .catch((err) => {
         console.log(err);
