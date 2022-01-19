@@ -1,6 +1,7 @@
 const createPackage = ({ distance, duration, fare }) => {
-  const { parcel_id, _name, _location, _destination, _status, _username } =
-    JSON.parse(localStorage.getItem('package'));
+  const { _name, _location, _destination, _status } = JSON.parse(
+    localStorage.getItem('package')
+  );
   let color;
   switch (_status) {
     case 'In transit':
