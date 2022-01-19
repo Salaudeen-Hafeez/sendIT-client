@@ -29,6 +29,10 @@ window.signUp = async () => {
     }
   }
 };
+window.toggleMenu = () => {
+  const navLink = document.querySelector('.nav-link');
+  navLink.classList.toggle('open');
+};
 window.clearErr = (e) => {
   e.style.border = '1px solid lightgreen';
   const small = e.parentElement.querySelector('small');
