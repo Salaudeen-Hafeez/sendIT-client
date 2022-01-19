@@ -12,7 +12,9 @@
 ul {
   list-style-type: none;
 }
-p {
+p,
+li,
+label {
   font-weight: 500;
 }
 body {
