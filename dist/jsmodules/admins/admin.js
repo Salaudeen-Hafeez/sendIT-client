@@ -110,35 +110,28 @@ window.adminFetchUserPackage = (e) => {
 window.adminDeleteUser = (e) => {
   const username = e.value;
   const id = parseInt(e.id);
-  const userCont = `userConts${id}`;
-  const newPackages = document.getElementById(userCont);
-  if (newPackages.innerHTML === 'User deleted') {
-    newPackages.classList.toggle('open');
-  } else {
-    fetch(
-      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
-      {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem('users', JSON.stringify(data));
-        window.fetchUsers();
-        window.fetchUsers();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  fetch(
+    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
+    {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    }
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
+      localStorage.setItem('users', JSON.stringify(data));
+      window.fetchUsers();
+      window.fetchUsers();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
+
 window.adminDeletePackage = (e) => {
   const sibling =
     e.parentElement.parentElement.parentElement.previousElementSibling;
   const button = sibling.querySelector('button');
-  console.log(button);
   const stat = e.parentElement.parentElement.querySelector('div');
   const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
