@@ -81,7 +81,7 @@ window.loadPackage = async () => {
   packages2.innerHTML = tableBody1;
 };
 window.okay = () => {
-  if (!auth_token) {
+  if (!user.auth_token) {
     window.location.href = '/admin';
   } else {
     window.location.href = '/user';
