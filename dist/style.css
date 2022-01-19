@@ -407,14 +407,13 @@ td {
   background: aliceblue;
   font-weight: 800;
   border: 1px solid green;
-  border-radius: 15px;
+  border-radius: 15px 0 0 15px;
   color: #1f4399;
   text-align: center;
-  margin: 0 1rem;
   padding: 1rem 0;
 }
 .new-package:hover {
-  box-shadow: 6px 6px 10px #9ebab0;
+  box-shadow: 6px 6px 10px aliceblue;
   background: #46a346;
   color: white;
 }
@@ -701,3 +700,4 @@ input:focus {
     border-radius: 10px;
   }
 }
+.new-package
