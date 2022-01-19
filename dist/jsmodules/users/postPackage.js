@@ -70,16 +70,14 @@ window.submitPackage = async () => {
     .getElementById('inputContainer')
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
-  const add = [data.location, data.destination];
-  const distMetrix = await getDistance(service, add);
-  const { distance, duration } = distMetrix.rows[0].elements[0];
-  const tripFare = cost(distance.value, duration.value);
   if (!emptyInput) {
+    const add = [data.location, data.destination];
+    const distMetrix = await getDistance(service, add);
+    const { distance, duration } = distMetrix.rows[0].elements[0];
+    const tripFare = cost(distance.value, duration.value);
     data['username'] = user._username;
     data['cost'] = tripFare;
-    console.log(data);
     const postedData = await postData(postPackageUrl, data);
-    console.log(postedData);
     localStorage.removeItem('package');
     localStorage.removeItem('packages');
     localStorage.setItem('package', JSON.stringify(postedData.package));
