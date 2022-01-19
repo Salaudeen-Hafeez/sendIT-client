@@ -179,7 +179,7 @@ button:hover {
   background-position: center;
 }
 #showcase .btn {
-  background: #c6f1dd;
+  background: green;
   margin-bottom: 1rem;
   padding: 0.5rem;
   text-decoration: none;
@@ -295,7 +295,7 @@ input {
   margin-right: 1rem;
 }
 .btn {
-  background: #c6f1dd;
+  background: green;
   border-radius: 0.8rem;
   color: #333;
   width: 95%;
