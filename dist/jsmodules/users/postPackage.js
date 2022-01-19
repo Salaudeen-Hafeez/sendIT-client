@@ -74,17 +74,21 @@ window.submitPackage = async () => {
     const add = [data.location, data.destination];
     const distMetrix = await getDistance(service, add);
     console.log(distMetrix);
-    const { distance, duration } = distMetrix.rows[0].elements[0];
-    const tripFare = cost(distance.value, duration.value);
-    data['username'] = user._username;
-    data['cost'] = tripFare;
-    const postedData = await postData(postPackageUrl, data);
-    console(postedData);
-    // localStorage.removeItem('package');
-    // localStorage.removeItem('packages');
-    // localStorage.setItem('package', JSON.stringify(postedData.package));
-    // localStorage.setItem('packages', JSON.stringify(postedData.packages));
-    // window.location.href = '/package';
+    const { distance, duration, status } = distMetrix.rows[0].elements[0];
+    if (status === 'OK') {
+      const tripFare = cost(distance.value, duration.value);
+      data['username'] = user._username;
+      data['cost'] = tripFare;
+      const postedData = await postData(postPackageUrl, data);
+      console(postedData);
+      // localStorage.removeItem('package');
+      // localStorage.removeItem('packages');
+      // localStorage.setItem('package', JSON.stringify(postedData.package));
+      // localStorage.setItem('packages', JSON.stringify(postedData.packages));
+      // window.location.href = '/package';
+    } else {
+      alert('The address entered not found');
+    }
   }
 };
 window.clearErr = (e) => {
