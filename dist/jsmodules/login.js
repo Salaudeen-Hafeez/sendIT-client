@@ -7,7 +7,6 @@ let pathName = location.pathname;
 const pathNames = [localStorage.getItem('path')];
 localStorage.setItem('path', pathName);
 pathNames.push(pathName);
-console.log(pathNames);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
