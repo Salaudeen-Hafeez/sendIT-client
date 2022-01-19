@@ -90,8 +90,7 @@ window.okay = () => {
   }
 };
 window.canceleOrder = async () => {
-  const { parcel_id: id } = JSON.parse(localStorage.getItem('package'));
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${packag.parcel_id}`;
   if (packag._status === 'Order Cancelled') {
     alert('Order has been canceled');
   } else {
