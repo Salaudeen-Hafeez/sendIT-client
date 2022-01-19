@@ -1,8 +1,6 @@
 import { clearDisplayErr } from '../errMessages.js';
 
 const postData = async (url, data) => {
-  console.log(url);
-  console.log(data);
   clearDisplayErr();
   let returnData = await fetch(url, {
     method: 'POST',
@@ -11,7 +9,6 @@ const postData = async (url, data) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((err) => {
