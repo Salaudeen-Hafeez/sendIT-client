@@ -38,9 +38,7 @@ const getDistance = async (service, add) => {
   });
   return distance;
 };
-const { _name, users_id, _username, _email, _status, admin_token } = JSON.parse(
-  localStorage.getItem('admin')
-);
+const admin = JSON.parse(localStorage.getItem('admin'));
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 const packages = JSON.parse(localStorage.getItem('packages'));
@@ -50,7 +48,7 @@ const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
 const adminFetchPackages = (cond) => {
   const packages = JSON.parse(localStorage.getItem('packages'));
-  if (!admin_token) {
+  if (admin !== null && !admin.admin_token) {
     window.location.href = '/login';
   } else {
     const packag = packages.filter((packag) => packag._status === cond);
@@ -67,11 +65,11 @@ window.displayAdmin = () => {
           class="profile-img"
         />
         <div class="profile-content">
-          <h1>${_name}</h1>
+          <h1>${admin._name}</h1>
           <ul>
-            <li id="adminname">${_username}</li>
-            <li>${_email}</li>
-            <li>${_status}</li>
+            <li id="adminname">${admin._username}</li>
+            <li>${admin._email}</li>
+            <li>${admin._status}</li>
           </ul>
         </div>`;
   profile.innerHTML = adminProfile;
@@ -111,7 +109,7 @@ window.adminDeleteUser = (e) => {
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/${id}`,
+    `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${admin.admin_token}/${username}/${id}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -137,7 +135,9 @@ window.adminDeletePackage = (e) => {
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/${username}/packages/${id}/${'At the location'}`,
+    `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${
+      admin.admin_token
+    }/${username}/packages/${id}/${'At the location'}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -194,7 +194,7 @@ window.fetchCanceledPackages = () => {
 window.updatePackage = async (e) => {
   const id = parseInt(e.id);
   const locatP = e.parentElement.parentElement.querySelectorAll('p');
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${admin_token}/packages/${id}`;
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${admin.users_id}/${admin.admin_token}/packages/${id}`;
   const input = prompt(
     'update the package location and status',
     'new location - In transit/Delivered'

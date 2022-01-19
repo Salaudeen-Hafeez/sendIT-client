@@ -44,7 +44,6 @@ const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 const user = JSON.parse(localStorage.getItem('user'));
 const admin = JSON.parse(localStorage.getItem('admin'));
-const { users_id, _email, auth_token } = user;
 window.createProfile = () => {
   let profileData;
   if (user !== null || admin !== null) {
@@ -121,6 +120,7 @@ window.getPackage = (e) => {
 };
 
 window.updatePackage = async (e) => {
+  const { users_id, _email, auth_token } = user;
   const packages = JSON.parse(localStorage.getItem('packages'));
   const destP = e.parentElement.parentElement.querySelectorAll('p')[2];
   try {
