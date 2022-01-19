@@ -703,6 +703,6 @@ input:focus {
 }
 @media screen and (min-width: 1024px) {
   main {
-    padding: 10% 0;
+    padding: 0 10%;
   }
 }
