@@ -13,7 +13,7 @@ window.signUp = async () => {
     if (data.email.includes('@sendit.com')) {
       const adminData = await postData(postAdmUrl, data);
       if (adminData.errMessage) {
-        displayErr(data);
+        displayErr(adminData);
       } else {
         localStorage.setItem('admin', JSON.stringify(adminData));
         window.location.href = '/admin';
@@ -21,7 +21,7 @@ window.signUp = async () => {
     } else {
       const userData = await postData(postUsrUrl, data);
       if (userData.errMessage) {
-        displayErr(data);
+        displayErr(userData);
       } else {
         localStorage.setItem('user', JSON.stringify(userData));
         window.location.href = '/user';
