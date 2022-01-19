@@ -88,14 +88,16 @@ window.okay = () => {
   }
 };
 window.canceleOrder = async () => {
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${user._email}/${user.users_id}/${user.auth_token}/packages/${packag.parcel_id}`;
-  if (packag._status === 'Order Canceled') {
-    alert('Order has been canceled');
-  } else {
-    const data = { _status: 'Order Canceled' };
-    const deletedPackage = await putPackage(userUpdateUrl, data);
-    localStorage.setItem('package', JSON.stringify(deletedPackage.package));
-    localStorage.setItem('packages', JSON.stringify(deletedPackage.packages));
-    window.location.reload();
+  if (user.auth_token) {
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${user._email}/${user.users_id}/${user.auth_token}/packages/${packag.parcel_id}`;
+    if (packag._status === 'Order Canceled') {
+      alert('Order has been canceled');
+    } else {
+      const data = { _status: 'Order Canceled' };
+      const deletedPackage = await putPackage(userUpdateUrl, data);
+      localStorage.setItem('package', JSON.stringify(deletedPackage.package));
+      localStorage.setItem('packages', JSON.stringify(deletedPackage.packages));
+      window.location.reload();
+    }
   }
 };
