@@ -64,6 +64,10 @@ if (packag) {
     });
   });
 }
+window.toggleMenu = () => {
+  const navLink = document.querySelector('.nav-link');
+  navLink.classList.toggle('open');
+};
 window.loadPackage = async () => {
   const packages = document.getElementById('packagePage1');
   const packages2 = document.getElementById('packagePage2');
