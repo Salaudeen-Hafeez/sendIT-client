@@ -21,7 +21,6 @@ small {
 body {
   color: #333;
   background: #c6f1dd;
-  text-align: center;
 }
 /* navigation bar*/
 .logo {
@@ -710,6 +709,6 @@ input:focus {
     flex-direction: column;
   }
   div {
-    width: 100%;
+    width: 80%;
   }
 }
