@@ -82,7 +82,7 @@ window.loadPackage = async () => {
   packages2.innerHTML = tableBody1;
 };
 const locatn = document.getElementById('location');
-new google.maps.places.Autocomplete(location1);
+new google.maps.places.Autocomplete(locatn);
 window.okay = async () => {
   const status = document.getElementById('status');
   const location1 = locatn.value;
