@@ -38,14 +38,13 @@ const createPackage = ({ distance, duration, fare }) => {
         <form action="#" class="updateForm" id="updateForm">
         <label for="email" class="col-4">${label}</label>
         <input type="email" class="col-8" id="email1" />
-        <divstyle="width: 100%;visibility:${visibility}">
+        <div class="select" style="visibility:${visibility}">
         <label for="status" class="col-4">status</label>
         <select name="status" class="col-8" id="status" form="updateForm">
           <option value="In transit">In transit</option>
           <option value="Delivered">Delivered</option>
         </select>
         </div>
-        
       </form>
       <div class="confirmOrd">
         <button
