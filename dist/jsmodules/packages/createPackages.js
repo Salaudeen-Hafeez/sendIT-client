@@ -3,7 +3,8 @@ const createPackage = ({ distance, duration, fare }) => {
   const { _name, _location, _destination, _status } = JSON.parse(
     localStorage.getItem('package')
   );
-  let color, visibility;
+  let color,
+    visibility = 'hidden';
   let label = 'Change destination';
   switch (_status) {
     case 'In transit':
