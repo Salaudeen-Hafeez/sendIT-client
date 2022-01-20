@@ -679,6 +679,9 @@ input:focus {
 .updateForm input {
   margin-bottom: 5px;
 }
+.updateForm div {
+  visibility: hidden;
+}
 .updateForm select {
   width: 95%;
   height: 2.5rem;
