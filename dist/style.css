@@ -725,8 +725,10 @@ select {
 }
 .packDescription {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .packDescription a {
+  padding: 10px;
   background: aliceblue;
 }
