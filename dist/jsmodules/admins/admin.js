@@ -106,24 +106,27 @@ window.adminFetchUserPackage = (e) => {
   newPackages.classList.toggle('open');
 };
 window.adminDeleteUser = (e) => {
-  const username = e.value;
-  const id = parseInt(e.id);
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${admin.admin_token}/${username}/${id}`,
-    {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.setItem('users', JSON.stringify(data));
-      window.fetchUsers();
-      window.fetchUsers();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const confrm = confirm('Are you sure to delete this user?');
+  if (confrm) {
+    const username = e.value;
+    const id = parseInt(e.id);
+    fetch(
+      `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${admin.admin_token}/${username}/${id}`,
+      {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        localStorage.setItem('users', JSON.stringify(data));
+        window.fetchUsers();
+        window.fetchUsers();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };
 
 window.adminDeletePackage = (e) => {
@@ -134,29 +137,36 @@ window.adminDeletePackage = (e) => {
   const status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
   const id = parseInt(e.id);
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${
-      admin.admin_token
-    }/${username}/packages/${id}/${'At the location'}`,
-    {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
+  if (status === 'Order canceled') {
+    alert('Order already canceled');
+  } else {
+    const confrm = confirm('Are you sure to delete this order?');
+    if (confrm) {
+      fetch(
+        `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${
+          admin.admin_token
+        }/${username}/packages/${id}/${'At the location'}`,
+        {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          localStorage.removeItem('packages');
+          localStorage.setItem('packages', JSON.stringify(data));
+          if (button !== null) {
+            button.click();
+            button.click();
+          } else {
+            adminFetchPackages(status);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  )
-    .then((resp) => resp.json())
-    .then((data) => {
-      localStorage.removeItem('packages');
-      localStorage.setItem('packages', JSON.stringify(data));
-      if (button !== null) {
-        button.click();
-        button.click();
-      } else {
-        adminFetchPackages(status);
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  }
 };
 window.getPackage = (e) => {
   localStorage.removeItem('package');

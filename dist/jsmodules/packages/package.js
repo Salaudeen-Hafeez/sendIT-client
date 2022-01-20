@@ -135,13 +135,19 @@ window.canceleOrder = async () => {
   if (user) {
     const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${user._email}/${user.users_id}/${user.auth_token}/packages/${packag.parcel_id}`;
     if (packag._status === 'Order Canceled') {
-      alert('Order has been canceled');
+      alert('Order already canceled');
     } else {
-      const data = { _status: 'Order Canceled' };
-      const deletedPackage = await putPackage(userUpdateUrl, data);
-      localStorage.setItem('package', JSON.stringify(deletedPackage.package));
-      localStorage.setItem('packages', JSON.stringify(deletedPackage.packages));
-      window.location.reload();
+      const confrm = confirm('Are you sure to cancel this order?');
+      if (confrm) {
+        const data = { _status: 'Order Canceled' };
+        const deletedPackage = await putPackage(userUpdateUrl, data);
+        localStorage.setItem('package', JSON.stringify(deletedPackage.package));
+        localStorage.setItem(
+          'packages',
+          JSON.stringify(deletedPackage.packages)
+        );
+        window.location.reload();
+      }
     }
   }
 };
