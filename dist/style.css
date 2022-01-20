@@ -674,6 +674,7 @@ input:focus {
 }
 .updateForm {
   min-height: 5vh;
+  padding: 0px;
   background: none;
 }
 .updateForm input {
