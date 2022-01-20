@@ -40,6 +40,7 @@ const getDistance = async (service, add) => {
   return distance;
 };
 const user = JSON.parse(localStorage.getItem('user'));
+const admin = JSON.parse(localStorage.getItem('admin'));
 const packag = JSON.parse(localStorage.getItem('package'));
 const map = new google.maps.Map(document.getElementById('map'), {
   center: { lat: 6.5095, lng: 3.3711 },
@@ -83,11 +84,44 @@ window.loadPackage = async () => {
 window.okay = () => {
   const location = document.getElementById('location');
   const status = document.getElementById('status');
-  let data = [location.value];
+  let data = {};
+  let key = '_destination';
+  let email, userId, token;
+  const { _status, _location, parcel_id: id } = packag;
   if (!user) {
-    data.push(status.options[status.selectedIndex].value);
+    data['_status'] = status.options[status.selectedIndex].value;
+    key = '_location';
+    email = admin._email;
+    userId = admin.users_id;
+    token = admin.admin_token;
+  } else {
+    email = user._email;
+    userId = user.users_id;
+    token = user.auth_token;
   }
-  console.log(data);
+  try {
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
+    if (data.length !== 0 && data.length === 1) {
+      if (_status === 'Order Canceled') {
+        alert('Order has been canceled');
+      } else {
+        const { add1: add2 } = await geocodeAddress(geocoder, location.value);
+        const add = [_location, add2];
+        const distMetrix = await getDistance(service, add);
+        const newDest = { ...data, [key]: add2 };
+        if (distMetrix.rows[0].elements[0].status === 'OK') {
+          console.log(newDest);
+          // const packag = await putPackage(userUpdateUrl, newDest);
+          // localStorage.setItem('packages', JSON.stringify(packag.packages));
+          // destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
+        } else {
+          alert('Destination address entered not found');
+        }
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
   // if (!user) {
   //   window.location.href = '/admin';
   // } else {
