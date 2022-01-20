@@ -682,6 +682,11 @@ input:focus {
 }
 .select1 {
   width: 100%;
+  visibility: hidden;
+}
+select {
+  width: 95%;
+  height: 2.5rem;
 }
 
 @media screen and (min-width: 768px) {
