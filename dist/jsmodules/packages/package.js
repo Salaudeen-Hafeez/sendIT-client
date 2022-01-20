@@ -84,6 +84,7 @@ window.loadPackage = async () => {
 window.okay = () => {
   const locatn = document.getElementById('location');
   const status = document.getElementById('status');
+  const location1 = locatn.value;
   let data = {};
   let key = '_destination';
   let email, userId, token;
@@ -105,7 +106,7 @@ window.okay = () => {
       if (_status === 'Order Canceled') {
         alert('Order has been canceled');
       } else {
-        const { add1: add2 } = await geocodeAddress(geocoder, locatn.value);
+        const { add1: add2 } = await geocodeAddress(geocoder, location1);
         const add = [_location, add2];
         const distMetrix = await getDistance(service, add);
         const newDest = { ...data, [key]: add2 };
