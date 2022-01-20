@@ -58,6 +58,5 @@ const authenticateRoute = (pathName) => {
   }
 };
 let pathName = location.pathname;
+console.log(pathName);
 authenticateRoute(pathName);
-
-export { authenticateRoute };
