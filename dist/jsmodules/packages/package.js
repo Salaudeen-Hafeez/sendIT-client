@@ -83,7 +83,7 @@ window.loadPackage = async () => {
 window.okay = () => {
   const location = document.getElementById('location');
   const status = document.getElementById('status');
-  console.log(status.options[status.selectedIndex].value, location);
+  console.log(status.options[status.selectedIndex].value, location.value);
   // if (!user) {
   //   window.location.href = '/admin';
   // } else {
