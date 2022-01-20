@@ -683,10 +683,7 @@ input:focus {
   width: 100%;
   visibility: hidden;
 }
-.updateForm select {
-  width: 95%;
-  height: 2.5rem;
-}
+
 @media screen and (min-width: 768px) {
   .userUl,
   .packageUl,
