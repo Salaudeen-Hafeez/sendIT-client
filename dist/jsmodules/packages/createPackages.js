@@ -4,6 +4,7 @@ const createPackage = ({ distance, duration, fare }) => {
     localStorage.getItem('package')
   );
   let color;
+  let select = '';
   let visibility = 'hidden';
   let label = 'Change destination';
   switch (_status) {
@@ -20,6 +21,11 @@ const createPackage = ({ distance, duration, fare }) => {
   if (admin) {
     visibility = 'visible';
     label = 'New location';
+    select = `<label for="status" class="col-4">status</label>
+        <select name="status" class="col-8" id="status" form="updateForm">
+          <option value="In transit">In transit</option>
+          <option value="Delivered">Delivered</option>
+        </select>`;
   }
   const tableBody = `
         <div class="packg">
@@ -40,11 +46,7 @@ const createPackage = ({ distance, duration, fare }) => {
         <label for="email" class="col-4">${label}</label>
         <input type="email" class="col-8" id="email1" />
         <div class="select1" style="visibility:${visibility}">
-        <label for="status" class="col-4">status</label>
-        <select name="status" class="col-8" id="status" form="updateForm">
-          <option value="In transit">In transit</option>
-          <option value="Delivered">Delivered</option>
-        </select>
+        ${select}
         </div>
       </form>
       <div class="confirmOrd">
