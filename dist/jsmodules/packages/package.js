@@ -143,4 +143,4 @@ window.canceleOrder = async () => {
     }
   }
 };
-setTimeout(new google.maps.places.Autocomplete(locatn), 4000);
+//setTimeout(new google.maps.places.Autocomplete(locatn), 4000);
