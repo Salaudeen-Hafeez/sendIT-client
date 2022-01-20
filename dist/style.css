@@ -672,6 +672,18 @@ input:focus {
   box-shadow: 2px 3px 4px #eaeaea, 2px 3px 4px #ffffff;
   background-color: aliceblue;
 }
+.updateForm {
+  min-height: 5vh;
+  background: none;
+}
+.updateForm input {
+  margin-bottom: 5px;
+}
+.updateForm select {
+  width: 95%;
+  height: 2.5rem;
+  visibility: hidden;
+}
 @media screen and (min-width: 768px) {
   .userUl,
   .packageUl,
