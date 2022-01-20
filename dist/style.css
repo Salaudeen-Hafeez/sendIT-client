@@ -674,7 +674,7 @@ input:focus {
 }
 .updateForm {
   min-height: 5vh;
-  padding: 0px;
+  padding: 0 0 0 10px;
   background: none;
 }
 .updateForm input {
@@ -682,7 +682,6 @@ input:focus {
 }
 .select1 {
   width: 100%;
-  visibility: hidden;
 }
 
 @media screen and (min-width: 768px) {
