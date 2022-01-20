@@ -724,11 +724,13 @@ select {
   }
 }
 .packDescription {
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 .packDescription a {
   padding: 10px;
+  border-radius: 10px;
   background: aliceblue;
 }
