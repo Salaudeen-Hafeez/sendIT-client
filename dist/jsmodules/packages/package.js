@@ -81,9 +81,9 @@ window.loadPackage = async () => {
   packages2.innerHTML = tableBody1;
 };
 window.okay = () => {
-  const email = document.getElementById('email').innerHTML;
-  const status = document.getElementById('status').innerHTML;
-  console.log(email, status);
+  const location = document.getElementById('location');
+  const status = document.getElementById('status');
+  console.log(location.innerHTML, status.innerHTML);
   // if (!user) {
   //   window.location.href = '/admin';
   // } else {
