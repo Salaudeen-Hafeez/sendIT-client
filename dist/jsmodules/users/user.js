@@ -1,14 +1,14 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
-import { authenticateRoute } from '../routAuth.js';
+//import { authenticateRoute } from '../routAuth.js';
 // Get the stored user data and create the user profile display
-let pathName = location.pathname;
-const pathNames = [localStorage.getItem('path')];
-localStorage.setItem('path', pathName);
-pathNames.push(pathName);
-if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathName);
-}
+// let pathName = location.pathname;
+// const pathNames = [localStorage.getItem('path')];
+// localStorage.setItem('path', pathName);
+// pathNames.push(pathName);
+// if (pathNames[0] !== pathNames[1]) {
+//   authenticateRoute(pathName);
+// }
 
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder

@@ -1,14 +1,14 @@
 import { putPackage } from '../httpFetch/putData.js';
-import { authenticateRoute } from '../routAuth.js';
+//import { authenticateRoute } from '../routAuth.js';
 import { createPackage } from './createPackages.js';
 
-let pathName = location.pathname;
-const pathNames = [localStorage.getItem('path')];
-localStorage.setItem('path', pathName);
-pathNames.push(pathName);
-if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathName);
-}
+// let pathName = location.pathname;
+// const pathNames = [localStorage.getItem('path')];
+// localStorage.setItem('path', pathName);
+// pathNames.push(pathName);
+// if (pathNames[0] !== pathNames[1]) {
+//   authenticateRoute(pathName);
+// }
 
 // Google map API call and services
 const geocodeAddress = async (geocoder, address) => {

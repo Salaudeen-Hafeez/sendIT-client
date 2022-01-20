@@ -1,13 +1,13 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
-import { authenticateRoute } from '../routAuth.js';
-let pathName = location.pathname;
-const pathNames = [localStorage.getItem('path')];
-localStorage.setItem('path', pathName);
-pathNames.push(pathName);
-if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathName);
-}
+//import { authenticateRoute } from '../routAuth.js';
+// let pathName = location.pathname;
+// const pathNames = [localStorage.getItem('path')];
+// localStorage.setItem('path', pathName);
+// pathNames.push(pathName);
+// if (pathNames[0] !== pathNames[1]) {
+//   authenticateRoute(pathName);
+// }
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })

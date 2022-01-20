@@ -1,14 +1,14 @@
 import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
-import { authenticateRoute } from '../routAuth.js';
+//import { authenticateRoute } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
-let pathName = location.pathname;
-const pathNames = [localStorage.getItem('path')];
-localStorage.setItem('path', pathName);
-pathNames.push(pathName);
-if (pathNames[0] !== pathNames[1]) {
-  authenticateRoute(pathName);
-}
+// let pathName = location.pathname;
+// const pathNames = [localStorage.getItem('path')];
+// localStorage.setItem('path', pathName);
+// pathNames.push(pathName);
+// if (pathNames[0] !== pathNames[1]) {
+//   authenticateRoute(pathName);
+// }
 const input = document.getElementById('location');
 const input2 = document.getElementById('destination');
 new google.maps.places.Autocomplete(input);
