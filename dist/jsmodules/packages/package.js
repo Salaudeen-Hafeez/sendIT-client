@@ -100,6 +100,7 @@ window.okay = () => {
     userId = user.users_id;
     token = user.auth_token;
   }
+  console.log(location1);
   try {
     const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
     if (data.length !== 0 && data.length === 1) {
