@@ -112,6 +112,7 @@ window.okay = async () => {
       const newDest = { ...data, [key]: add2 };
       console.log(newDest);
       const packag = await putPackage(userUpdateUrl, newDest);
+      localStorage.setItem('package', JSON.stringify(packag.package));
       localStorage.setItem('packages', JSON.stringify(packag.packages));
       window.location.reload();
     } else {
