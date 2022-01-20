@@ -102,24 +102,23 @@ window.okay = async () => {
   }
   console.log(location1);
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
-  if (data.length !== 0 && data.length === 1) {
-    if (_status === 'Order Canceled') {
-      alert('Order has been canceled');
+  if (_status === 'Order Canceled') {
+    alert('Order has been canceled');
+  } else {
+    const { add1: add2 } = await geocodeAddress(geocoder, location1);
+    const add = [_location, add2];
+    const distMetrix = await getDistance(service, add);
+    const newDest = { ...data, [key]: add2 };
+    console.log(newDest);
+    if (distMetrix.rows[0].elements[0].status === 'OK') {
+      // const packag = await putPackage(userUpdateUrl, newDest);
+      // localStorage.setItem('packages', JSON.stringify(packag.packages));
+      // destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
     } else {
-      const { add1: add2 } = await geocodeAddress(geocoder, location1);
-      const add = [_location, add2];
-      const distMetrix = await getDistance(service, add);
-      const newDest = { ...data, [key]: add2 };
-      console.log(newDest);
-      if (distMetrix.rows[0].elements[0].status === 'OK') {
-        // const packag = await putPackage(userUpdateUrl, newDest);
-        // localStorage.setItem('packages', JSON.stringify(packag.packages));
-        // destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
-      } else {
-        alert('Destination address entered not found');
-      }
+      alert('Destination address entered not found');
     }
   }
+
   // if (!user) {
   //   window.location.href = '/admin';
   // } else {
