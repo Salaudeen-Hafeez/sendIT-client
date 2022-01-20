@@ -118,39 +118,6 @@ window.getPackage = (e) => {
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
 };
-
-// window.updatePackage = async (e) => {
-// const { users_id, _email, auth_token } = user;
-// const packages = JSON.parse(localStorage.getItem('packages'));
-// const destP = e.parentElement.parentElement.querySelectorAll('p')[2];
-// try {
-//   const id = parseInt(e.id);
-
-//   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${users_id}/${auth_token}/packages/${id}`;
-//   const input = prompt('Enter new destination');
-//   if (input !== null) {
-//     const packag = packages.filter((pack) => pack.parcel_id === id);
-//     const { _status, _location } = packag[0];
-//     if (_status === 'Order Canceled') {
-//       alert('Order has been canceled');
-//     } else {
-//       const { add1: add2 } = await geocodeAddress(geocoder, input);
-//       const add = [_location, add2];
-//       const distMetrix = await getDistance(service, add);
-//       const data = { _destination: add2 };
-//       if (distMetrix.rows[0].elements[0].status === 'OK') {
-//         const packag = await putPackage(userUpdateUrl, data);
-//         localStorage.setItem('packages', JSON.stringify(packag.packages));
-//         destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
-//       } else {
-//         alert('Destination address entered not found');
-//       }
-//     }
-//   }
-// } catch (error) {
-//   console.log(error);
-// }
-// };
 window.adminDeletePackage = (e) => {
   window.getPackage(e);
 };

@@ -28,7 +28,6 @@ const packageDisplay = (packages) => {
         </div>
         <div class="deleteDiv">
         <button class="delete" onclick="adminDeletePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">${label}</button>
-        <button class="delete" onclick="updatePackage(this)" value= "${packag._username}" id="${packag.parcel_id}">update</button>
         </div>
       </li>
     `;
