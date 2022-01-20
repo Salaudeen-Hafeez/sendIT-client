@@ -108,12 +108,12 @@ window.okay = async () => {
     const { add1: add2 } = await geocodeAddress(geocoder, location1);
     const add = [_location, add2];
     const distMetrix = await getDistance(service, add);
-    const newDest = { ...data, [key]: add2 };
-    console.log(newDest);
     if (distMetrix.rows[0].elements[0].status === 'OK') {
-      // const packag = await putPackage(userUpdateUrl, newDest);
-      // localStorage.setItem('packages', JSON.stringify(packag.packages));
-      // destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
+      const newDest = { ...data, [key]: add2 };
+      console.log(newDest);
+      const packag = await putPackage(userUpdateUrl, newDest);
+      localStorage.setItem('packages', JSON.stringify(packag.packages));
+      window.location.reload();
     } else {
       alert('Destination address entered not found');
     }

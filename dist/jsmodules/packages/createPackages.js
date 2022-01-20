@@ -28,7 +28,7 @@ const createPackage = ({ distance, duration, fare }) => {
         </select>`;
   }
   const tableBody = `
-        <div class="packg">
+        <div class="packg" id="packg">
         <p class="packName">${_name}</p>
         <p class="packinfo">
           <span>location:</span>${_location}
@@ -43,7 +43,7 @@ const createPackage = ({ distance, duration, fare }) => {
         <p class="packinfo"><span>Duration:</span>${duration}</p>
         </div>
         <form action="#" class="updateForm" id="updateForm">
-        <label for="email" class="col-4">${label}</label>
+        <label for="location" class="col-4">${label}</label>
         <input type="text" class="col-8" id="location" />
         <div class="select1" style="visibility:${visibility}">
         ${select}
