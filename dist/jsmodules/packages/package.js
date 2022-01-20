@@ -81,11 +81,14 @@ window.loadPackage = async () => {
   packages2.innerHTML = tableBody1;
 };
 window.okay = () => {
-  if (!user) {
-    window.location.href = '/admin';
-  } else {
-    window.location.href = '/user';
-  }
+  const email = document.getElementById('email');
+  const status = document.getElementById('status');
+  console.log(email, status);
+  // if (!user) {
+  //   window.location.href = '/admin';
+  // } else {
+  //   window.location.href = '/user';
+  // }
 };
 window.canceleOrder = async () => {
   if (user) {
