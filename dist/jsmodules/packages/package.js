@@ -101,28 +101,24 @@ window.okay = async () => {
     token = user.auth_token;
   }
   console.log(location1);
-  try {
-    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
-    if (data.length !== 0 && data.length === 1) {
-      if (_status === 'Order Canceled') {
-        alert('Order has been canceled');
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
+  if (data.length !== 0 && data.length === 1) {
+    if (_status === 'Order Canceled') {
+      alert('Order has been canceled');
+    } else {
+      const { add1: add2 } = await geocodeAddress(geocoder, location1);
+      const add = [_location, add2];
+      const distMetrix = await getDistance(service, add);
+      const newDest = { ...data, [key]: add2 };
+      if (distMetrix.rows[0].elements[0].status === 'OK') {
+        console.log(newDest);
+        // const packag = await putPackage(userUpdateUrl, newDest);
+        // localStorage.setItem('packages', JSON.stringify(packag.packages));
+        // destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
       } else {
-        const { add1: add2 } = await geocodeAddress(geocoder, location1);
-        const add = [_location, add2];
-        const distMetrix = await getDistance(service, add);
-        const newDest = { ...data, [key]: add2 };
-        if (distMetrix.rows[0].elements[0].status === 'OK') {
-          console.log(newDest);
-          // const packag = await putPackage(userUpdateUrl, newDest);
-          // localStorage.setItem('packages', JSON.stringify(packag.packages));
-          // destP.innerHTML = `<span style="font-weight:800">Going to:</span> ${packag.package._destination}`;
-        } else {
-          alert('Destination address entered not found');
-        }
+        alert('Destination address entered not found');
       }
     }
-  } catch (error) {
-    console.log(error);
   }
   // if (!user) {
   //   window.location.href = '/admin';
