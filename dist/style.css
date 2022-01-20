@@ -723,3 +723,10 @@ select {
     padding: 0 10%;
   }
 }
+.packDescription {
+  display: flex;
+  justify-content: space-between;
+}
+.packDescription a {
+  background: aliceblue;
+}
