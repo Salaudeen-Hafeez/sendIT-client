@@ -1,8 +1,10 @@
 const createPackage = ({ distance, duration, fare }) => {
+  let admin = JSON.parse(localStorage.getItem('admin'));
   const { _name, _location, _destination, _status } = JSON.parse(
     localStorage.getItem('package')
   );
   let color;
+  let label = 'Change destination';
   switch (_status) {
     case 'In transit':
       color = '#095F06';
@@ -13,6 +15,9 @@ const createPackage = ({ distance, duration, fare }) => {
     default:
       color = 'red';
       break;
+  }
+  if (admin) {
+    label = 'New location';
   }
   const tableBody = `
         <div class="packg">
@@ -29,6 +34,23 @@ const createPackage = ({ distance, duration, fare }) => {
         <p class="packinfo"><span>Distance:</span> ${distance}</p>
         <p class="packinfo"><span>Duration:</span>${duration}</p>
         </div>
+        <form action="#" class="updateForm" id="updateForm">
+        <label for="email" class="col-4">${label}</label>
+        <input type="email" class="col-8" id="email1" />
+        ${
+          admin && (
+            <div>
+              <label for="status" class="col-4">
+                status
+              </label>
+              <select name="status" class="col-8" id="status" form="updateForm">
+                <option value="In transit">In transit</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+          )
+        }
+      </form>
       <div class="confirmOrd">
         <button
           style="border-radius: 10px 0px 0px 10px"
