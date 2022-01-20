@@ -82,7 +82,7 @@ window.loadPackage = async () => {
   packages2.innerHTML = tableBody1;
 };
 window.okay = () => {
-  const location = document.getElementById('location');
+  const locatn = document.getElementById('location');
   const status = document.getElementById('status');
   let data = {};
   let key = '_destination';
@@ -105,7 +105,7 @@ window.okay = () => {
       if (_status === 'Order Canceled') {
         alert('Order has been canceled');
       } else {
-        const { add1: add2 } = await geocodeAddress(geocoder, location.value);
+        const { add1: add2 } = await geocodeAddress(geocoder, locatn.value);
         const add = [_location, add2];
         const distMetrix = await getDistance(service, add);
         const newDest = { ...data, [key]: add2 };
