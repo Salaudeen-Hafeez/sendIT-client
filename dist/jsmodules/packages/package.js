@@ -9,6 +9,8 @@ pathNames.push(pathName);
 if (pathNames[0] !== pathNames[1]) {
   authenticateRoute(pathName);
 }
+
+const locatn = document.getElementById('location');
 // Google map API call and services
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
@@ -81,8 +83,7 @@ window.loadPackage = async () => {
   packages.innerHTML = tableBody;
   packages2.innerHTML = tableBody1;
 };
-const locatn = document.getElementById('location');
-new google.maps.places.Autocomplete(locatn);
+
 window.okay = async () => {
   const status = document.getElementById('status');
   const location1 = locatn.value;
@@ -142,3 +143,4 @@ window.canceleOrder = async () => {
     }
   }
 };
+new google.maps.places.Autocomplete(locatn);
