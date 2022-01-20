@@ -129,6 +129,7 @@ window.okay = async () => {
       window.location.href = '/user';
     }
   }
+  locatn.value = '';
 };
 window.canceleOrder = async () => {
   if (user) {
