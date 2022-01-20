@@ -81,7 +81,7 @@ window.loadPackage = async () => {
   packages.innerHTML = tableBody;
   packages2.innerHTML = tableBody1;
 };
-window.okay = () => {
+window.okay = async () => {
   const locatn = document.getElementById('location');
   const status = document.getElementById('status');
   const location1 = locatn.value;
