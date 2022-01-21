@@ -1,6 +1,6 @@
 const createPackage = ({ distance, duration, fare }) => {
   let admin = JSON.parse(localStorage.getItem('admin'));
-  const { _name, _location, _destination, _status } = JSON.parse(
+  const { _name, _location, _destination, _status, _reciever } = JSON.parse(
     localStorage.getItem('package')
   );
   let color;
