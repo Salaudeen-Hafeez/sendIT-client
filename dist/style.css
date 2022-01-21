@@ -736,3 +736,6 @@ select {
   font-size: 10px;
   background: aliceblue;
 }
+.packDescription li a {
+  font-size: 12px;
+}
