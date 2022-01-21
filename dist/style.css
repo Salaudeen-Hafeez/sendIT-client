@@ -717,6 +717,9 @@ select {
     margin: 5px 10px;
     border-radius: 10px;
   }
+  .inner404div {
+    border-radius: 20px;
+  }
 }
 @media screen and (min-width: 1024px) {
   main {
