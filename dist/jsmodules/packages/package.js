@@ -105,7 +105,7 @@ window.okay = async () => {
   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
   if (location1) {
     if (_status === 'Order Canceled') {
-      alert('Order has been canceled');
+      alert('Order already canceled');
     } else {
       const { add1: add2 } = await geocodeAddress(geocoder, location1);
       const add = [_location, add2];

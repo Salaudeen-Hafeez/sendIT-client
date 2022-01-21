@@ -214,7 +214,7 @@ window.updatePackage = async (e) => {
     const packag = packages.filter((pack) => pack.parcel_id === id);
     const { _status, _destination } = packag[0];
     if (_status === 'Order Canceled') {
-      alert('Order has been canceled');
+      alert('Order already canceled');
     } else {
       const { add1: add2 } = await geocodeAddress(geocoder, updData[0]);
       const add = [_destination, add2];
