@@ -733,9 +733,8 @@ select {
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 10px;
-  font-size: 10px;
   background: aliceblue;
 }
 .packDescription li a {
-  font-size: 12px;
+  font-size: 14px;
 }
