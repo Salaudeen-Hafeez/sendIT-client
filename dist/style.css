@@ -719,7 +719,8 @@ select {
   }
   .inner404div {
     border-radius: 20px;
-    padding: 40px;
+    padding: 15px;
+    width: 100%;
   }
   .inner404div p {
     padding-top: 00px;
