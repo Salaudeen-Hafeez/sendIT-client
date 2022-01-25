@@ -119,7 +119,7 @@ window.adminDeleteUser = (e) => {
     )
       .then((resp) => resp.json())
       .then((data) => {
-        localStorage.setItem('users', JSON.stringify(data));
+        localStorage.setItem('users', JSON.stringify(data.users));
         window.fetchUsers();
         window.fetchUsers();
       })
@@ -154,7 +154,7 @@ window.adminDeletePackage = (e) => {
         .then((resp) => resp.json())
         .then((data) => {
           localStorage.removeItem('packages');
-          localStorage.setItem('packages', JSON.stringify(data));
+          localStorage.setItem('packages', JSON.stringify(data.packages));
           if (button !== null) {
             button.click();
             button.click();
