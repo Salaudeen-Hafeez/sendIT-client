@@ -111,7 +111,7 @@ window.okay = async () => {
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
-        const newDest = { ...data, [key]: add2 };
+        const newDest = { ...data, [key]: location1 };
         const packag = await putPackage(userUpdateUrl, newDest);
         localStorage.setItem('package', JSON.stringify(packag.package));
         localStorage.setItem('packages', JSON.stringify(packag.packages));
