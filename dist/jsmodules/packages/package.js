@@ -110,10 +110,8 @@ window.okay = async () => {
       const { add1: add2 } = await geocodeAddress(geocoder, location1);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
-      console.log(distMetrix);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const newDest = { ...data, [key]: add2 };
-        console.log(newDest);
         const packag = await putPackage(userUpdateUrl, newDest);
         localStorage.setItem('package', JSON.stringify(packag.package));
         localStorage.setItem('packages', JSON.stringify(packag.packages));
