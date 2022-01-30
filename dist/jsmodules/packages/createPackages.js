@@ -6,7 +6,7 @@ const createPackage = ({ distance, duration, fare }) => {
   let color;
   let select = '';
   let visibility = 'hidden';
-  let label = 'Change destination';
+  let label = 'Enter new destination';
   switch (_status) {
     case 'In transit':
       color = '#095F06';
@@ -20,7 +20,7 @@ const createPackage = ({ distance, duration, fare }) => {
   }
   if (admin) {
     visibility = 'visible';
-    label = 'New location';
+    label = 'Enter new location';
     select = `<label for="status" class="col-4">status</label>
         <select name="status" class="col-8" id="status" form="updateForm">
           <option value="In transit">In transit</option>
