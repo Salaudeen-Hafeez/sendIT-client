@@ -86,7 +86,7 @@ window.loadPackage = async () => {
 };
 
 window.okay = async () => {
-  const locatn = document.getElementById('location');
+  const locatn = document.getElementById('location1');
   const status = document.getElementById('status');
   const location1 = locatn.value;
   let data = {};
