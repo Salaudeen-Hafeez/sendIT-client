@@ -153,7 +153,5 @@ window.canceleOrder = async () => {
     }
   }
 };
-if (done) {
-  const input = document.getElementById('location1');
-  new google.maps.places.Autocomplete(input);
-}
+const input = document.getElementById('location1');
+new google.maps.places.Autocomplete(input);
