@@ -71,7 +71,7 @@ window.toggleMenu = () => {
 window.loadPackage = async () => {
   const packages = document.getElementById('packagePage1');
   const packages2 = document.getElementById('packagePage2');
-  const input = document.getElementById('location');
+  const input = document.getElementById('location1');
   new google.maps.places.Autocomplete(input);
   const distMetrix = await getDistance(service, add);
   const { distance, duration } = distMetrix.rows[0].elements[0];
@@ -86,7 +86,7 @@ window.loadPackage = async () => {
 };
 
 window.okay = async () => {
-  const locatn = document.getElementById('location1');
+  const locatn = document.getElementById('location');
   const status = document.getElementById('status');
   const location1 = locatn.value;
   let data = {};
