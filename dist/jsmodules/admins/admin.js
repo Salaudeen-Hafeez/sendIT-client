@@ -134,11 +134,11 @@ window.adminDeletePackage = (e) => {
     e.parentElement.parentElement.parentElement.previousElementSibling;
   const button = sibling.querySelector('button');
   const stat = e.parentElement.parentElement.querySelector('div');
-  const status = stat.querySelectorAll('p')[3].innerHTML;
+  const _status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
   const id = parseInt(e.id);
-  if (status === 'Order canceled') {
-    alert('Order already canceled');
+  if (_status === 'Order Canceled' || _status === 'Delivered') {
+    alert(`Order already ${_status}`);
   } else {
     const confrm = confirm('Are you sure to delete this order?');
     if (confrm) {
@@ -213,8 +213,8 @@ window.updatePackage = async (e) => {
   if (input !== null && updData.length === 2) {
     const packag = packages.filter((pack) => pack.parcel_id === id);
     const { _status, _destination } = packag[0];
-    if (_status === 'Order Canceled') {
-      alert('Order already canceled');
+    if (_status === 'Order Canceled' || _status === 'Delivered') {
+      alert(`Order already ${_status}`);
     } else {
       const { add1: add2 } = await geocodeAddress(geocoder, updData[0]);
       const add = [_destination, add2];
