@@ -64,7 +64,6 @@ if (packag) {
     });
   });
 }
-let done = false;
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
@@ -82,7 +81,6 @@ window.loadPackage = async () => {
   const { tableBody, tableBody1 } = createPackage(metrixData);
   packages.innerHTML = tableBody;
   packages2.innerHTML = tableBody1;
-  done = true;
 };
 
 window.okay = async () => {
@@ -153,5 +151,3 @@ window.canceleOrder = async () => {
     }
   }
 };
-const input = document.getElementById('location1');
-new google.maps.places.Autocomplete(input);
