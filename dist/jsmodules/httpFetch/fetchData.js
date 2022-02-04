@@ -5,7 +5,6 @@ const fetchData = async (url) => {
   })
     .then((resp) => resp.json())
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((err) => {

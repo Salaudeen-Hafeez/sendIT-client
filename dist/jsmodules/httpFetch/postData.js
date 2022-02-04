@@ -11,7 +11,6 @@ const postData = async (url, data) => {
     .catch((err) => {
       console.log(err);
     });
-  console.log(returnData);
   return returnData;
 };
 export { postData };

@@ -12,7 +12,6 @@ const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
     .then(({ results }) => {
-      console.log(results);
       return {
         add1: results[0].formatted_address,
         add2: results[0].geometry.location,
@@ -159,7 +158,7 @@ window.adminDeletePackage = (e) => {
             button.click();
             button.click();
           } else {
-            adminFetchPackages(status);
+            adminFetchPackages(_status);
           }
         })
         .catch((err) => {
@@ -221,9 +220,7 @@ window.updatePackage = async (e) => {
       const distMetrix = await getDistance(service, add);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const data = { _location: add2, _status: updData[1].trim() };
-        console.log(data);
         const updPack = await putPackage(userUpdateUrl, data);
-        console.log(updPack.package);
         localStorage.setItem('packages', JSON.stringify(updPack.packages));
         locatP[1].innerHTML = `<span style="font-weight:800">Location:</span> ${updPack.package._location}`;
         locatP[3].innerHTML = `<span style="font-weight:800; color:#165516">${updPack.package._status}`;
