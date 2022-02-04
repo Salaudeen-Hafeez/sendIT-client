@@ -136,7 +136,7 @@ window.adminDeletePackage = (e) => {
   const _status = stat.querySelectorAll('p')[3].innerHTML;
   const username = e.value;
   const id = parseInt(e.id);
-  if (_status === 'Order Canceled' || _status === 'Delivered') {
+  if (_status === 'Order Canceled') {
     alert(`Order already ${_status}`);
   } else {
     const confrm = confirm('Are you sure to delete this order?');
