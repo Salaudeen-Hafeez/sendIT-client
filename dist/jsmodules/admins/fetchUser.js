@@ -1,18 +1,15 @@
 const fetchUsers = () => {
   const admin = adminsData();
-  const { _email, admin_token } = admin.admin;
+  const { admin_token } = admin.admin;
   if (!admin_token) {
     window.location.href = '/login';
   } else {
     let users = '';
     const containerdiv = document.getElementById('usersContainer');
     const container = containerdiv.querySelector('ul');
-    fetch(
-      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}`,
-      {
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
+    fetch(`https://akera-logistics.herokuapp.com/api/v1/${admin_token}`, {
+      headers: { 'Content-Type': 'application/json' },
+    })
       .then((resp) => resp.json())
       .then((data) => {
         data.forEach((user) => {

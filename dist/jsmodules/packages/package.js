@@ -1,16 +1,6 @@
 import { putPackage } from '../httpFetch/putData.js';
-//import { authenticateRoute } from '../routAuth.js';
 import { createPackage } from './createPackages.js';
 
-// let pathName = location.pathname;
-// const pathNames = [localStorage.getItem('path')];
-// localStorage.setItem('path', pathName);
-// pathNames.push(pathName);
-// if (pathNames[0] !== pathNames[1]) {
-//   authenticateRoute(pathName);
-// }
-
-// Google map API call and services
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
@@ -25,6 +15,7 @@ const geocodeAddress = async (geocoder, address) => {
     );
   return geocodeResult;
 };
+
 const getDistance = async (service, add) => {
   const request = {
     origins: [add[0]],
@@ -34,12 +25,14 @@ const getDistance = async (service, add) => {
     avoidHighways: false,
     avoidTolls: false,
   };
+
   // get distance matrix response
   let distance = await service.getDistanceMatrix(request).then((response) => {
     return response;
   });
   return distance;
 };
+
 const user = JSON.parse(localStorage.getItem('user'));
 const admin = JSON.parse(localStorage.getItem('admin'));
 const packag = JSON.parse(localStorage.getItem('package'));
@@ -47,6 +40,7 @@ const map = new google.maps.Map(document.getElementById('map'), {
   center: { lat: 6.5095, lng: 3.3711 },
   zoom: 8,
 });
+
 // initialize services
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
@@ -64,10 +58,12 @@ if (packag) {
     });
   });
 }
+
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
 };
+
 window.loadPackage = async () => {
   const packages = document.getElementById('packagePage1');
   const packages2 = document.getElementById('packagePage2');
@@ -91,20 +87,19 @@ window.okay = async () => {
   const location1 = locatn.value;
   let data = {};
   let key = '_destination';
-  let email, userId, token;
+  let email, token;
   const { _status, _location, parcel_id: id } = packag;
   if (!user) {
     data['_status'] = status.options[status.selectedIndex].value;
     key = '_location';
     email = admin._email;
-    userId = admin.users_id;
     token = admin.admin_token;
   } else {
     email = user._email;
-    userId = user.users_id;
     token = user.auth_token;
   }
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
+
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/${email}/packages/${id}/${token}`;
   if (location1) {
     if (_status === 'Order Canceled' || _status === 'Delivered') {
       alert(`Order already ${_status}`);
@@ -131,20 +126,21 @@ window.okay = async () => {
   }
   locatn.value = '';
 };
+
 window.canceleOrder = async () => {
   if (user) {
-    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${user._email}/${user.users_id}/${user.auth_token}/packages/${packag.parcel_id}`;
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/${user._email}/packages/${packag.parcel_id}/${user.auth_token}`;
     if (packag._status === 'Order Canceled') {
       alert('Order already canceled');
     } else {
       const confrm = confirm('Are you sure to cancel this order?');
       if (confrm) {
         const data = { _status: 'Order Canceled' };
-        const deletedPackage = await putPackage(userUpdateUrl, data);
-        localStorage.setItem('package', JSON.stringify(deletedPackage.package));
+        const updatedPackage = await putPackage(userUpdateUrl, data);
+        localStorage.setItem('package', JSON.stringify(updatedPackage.package));
         localStorage.setItem(
           'packages',
-          JSON.stringify(deletedPackage.packages)
+          JSON.stringify(updatedPackage.packages)
         );
         window.location.reload();
       }

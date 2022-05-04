@@ -1,13 +1,6 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
-//import { authenticateRoute } from '../routAuth.js';
-// let pathName = location.pathname;
-// const pathNames = [localStorage.getItem('path')];
-// localStorage.setItem('path', pathName);
-// pathNames.push(pathName);
-// if (pathNames[0] !== pathNames[1]) {
-//   authenticateRoute(pathName);
-// }
+
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
@@ -22,6 +15,7 @@ const geocodeAddress = async (geocoder, address) => {
     );
   return geocodeResult;
 };
+
 const getDistance = async (service, add) => {
   const request = {
     origins: [add[0]],
@@ -31,12 +25,14 @@ const getDistance = async (service, add) => {
     avoidHighways: false,
     avoidTolls: false,
   };
+
   // get distance matrix response
   let distance = await service.getDistanceMatrix(request).then((response) => {
     return response;
   });
   return distance;
 };
+
 const admin = JSON.parse(localStorage.getItem('admin'));
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
@@ -56,6 +52,7 @@ const adminFetchPackages = (cond) => {
     newPackages.classList.toggle('open');
   }
 };
+
 window.displayAdmin = () => {
   const profile = document.getElementById('userProfile');
   const adminProfile = ` <img
@@ -73,6 +70,7 @@ window.displayAdmin = () => {
         </div>`;
   profile.innerHTML = adminProfile;
 };
+
 window.fetchUsers = () => {
   const users = JSON.parse(localStorage.getItem('users'));
   userul = '';
@@ -91,9 +89,11 @@ window.fetchUsers = () => {
         </div>
       </li>`;
   });
+
   container.innerHTML = userul;
   containerdiv.classList.toggle('open');
 };
+
 window.adminFetchUserPackage = (e) => {
   const packages = JSON.parse(localStorage.getItem('packages'));
   const username = e.value;
@@ -104,13 +104,14 @@ window.adminFetchUserPackage = (e) => {
   newPackages.innerHTML = packageDisplay(packag);
   newPackages.classList.toggle('open');
 };
+
 window.adminDeleteUser = (e) => {
   const confrm = confirm('Are you sure to delete this user?');
   if (confrm) {
     const username = e.value;
     const id = parseInt(e.id);
     fetch(
-      `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${admin.admin_token}/${username}/${id}`,
+      `https://akera-logistics.herokuapp.com/api/v1/${username}/${admin.admin_token}`,
       {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -142,9 +143,7 @@ window.adminDeletePackage = (e) => {
     const confrm = confirm('Are you sure to delete this order?');
     if (confrm) {
       fetch(
-        `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${
-          admin.admin_token
-        }/${username}/packages/${id}/${'At the location'}`,
+        `https://akera-logistics.herokuapp.com/api/v1/${username}/packages/${id}/${admin.admin_token}`,
         {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
@@ -167,6 +166,7 @@ window.adminDeletePackage = (e) => {
     }
   }
 };
+
 window.getPackage = (e) => {
   localStorage.removeItem('package');
   const parcelId = parseInt(e.id);
@@ -174,18 +174,22 @@ window.getPackage = (e) => {
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
 };
+
 window.logOut = () => {
   localStorage.clear();
   window.location.href = '/';
 };
+
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
 };
+
 window.showPackages = () => {
   const packages = document.querySelector('.packageContainer');
   packages.classList.toggle('open');
 };
+
 window.fetchNewPackages = () => {
   adminFetchPackages('Ready for pickup');
 };
@@ -197,17 +201,20 @@ window.fetchPackagesInTransit = () => {
 window.fetchDeliveredPackages = () => {
   adminFetchPackages('Delivered');
 };
+
 window.fetchCanceledPackages = () => {
   adminFetchPackages('Order Canceled');
 };
+
 window.updatePackage = async (e) => {
   const id = parseInt(e.id);
   const locatP = e.parentElement.parentElement.querySelectorAll('p');
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${admin._email}/${admin.users_id}/${admin.admin_token}/packages/${id}`;
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/${admin._email}/packages/${id}/${admin.admin_token}`;
   const input = prompt(
     'update the package location and status, In transit/Delivered',
     'new location - In transit'
   );
+
   const updData = input.split('-');
   if (input !== null && updData.length === 2) {
     const packag = packages.filter((pack) => pack.parcel_id === id);

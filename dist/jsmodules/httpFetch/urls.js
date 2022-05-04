@@ -11,13 +11,13 @@ if (packag !== null) {
   id = parseInt(packag.parcel_id);
 }
 
-const loginUrl = 'https://akera-logistics.herokuapp.com/api/v1/users/login';
-const postAdmUrl = 'https://akera-logistics.herokuapp.com/api/v1/users/admins';
-const postUsrUrl = 'https://akera-logistics.herokuapp.com/api/v1/users';
+const loginUrl = 'https://akera-logistics.herokuapp.com/api/v1/login';
+const postAdmUrl = 'https://akera-logistics.herokuapp.com/api/v1/admins';
+const postUsrUrl = 'https://akera-logistics.herokuapp.com/api/v1';
 const adminLoginUrl =
-  'https://akera-logistics.herokuapp.com/api/v1/users/admins/login';
-const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${email}/${userId}/${token}/packages/${id}`;
-const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/users/${username}/${email}/${token}/packages`;
+  'https://akera-logistics.herokuapp.com/api/v1/admins/login';
+const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/${email}/packages/${id}/${token}`;
+const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${token}`;
 export {
   loginUrl,
   postAdmUrl,

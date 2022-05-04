@@ -1,13 +1,10 @@
 const fetchPackages = () => {
   const user = usersData();
-  const { _email, auth_token, users_id, _username } = user.user;
-  fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/users/${_username}/${users_id}/${_email}/${auth_token}/packages`,
-    {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    }
-  )
+  const { auth_token } = user.user;
+  fetch(`https://akera-logistics.herokuapp.com/api/v1/packages/${auth_token}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  })
     .then((resp) => resp.json())
     .then((data) => {
       localStorage.removeItem('packages');
@@ -46,7 +43,7 @@ const adminFetchPackages = (cond) => {
     window.location.href = '/login';
   } else {
     fetch(
-      `https://akera-logistics.herokuapp.com/api/v1/users/${_email}/${admin_token}/packages/${cond}`,
+      `https://akera-logistics.herokuapp.com/api/v1/users/packages/${admin_token}/${cond}`,
       {
         headers: { 'Content-Type': 'application/json' },
       }
