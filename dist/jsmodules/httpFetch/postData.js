@@ -1,7 +1,11 @@
 const postData = async (url, data) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
-  const token = user.auth_token || admin.admin_token;
+  let token;
+  if (user || admin) {
+    token = user.auth_token || admin.admin_token;
+  }
+
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
