@@ -113,16 +113,16 @@ window.okay = async () => {
         console.log(packag);
         localStorage.setItem('package', JSON.stringify(packag.package));
         localStorage.setItem('packages', JSON.stringify(packag.packages));
-        //window.location.reload();
+        window.location.reload();
       } else {
         alert('Destination address entered not found');
       }
     }
   } else {
     if (!user) {
-      // window.location.href = '/admin';
+      window.location.href = '/admin';
     } else {
-      // window.location.href = '/user';
+      window.location.href = '/user';
     }
   }
   locatn.value = '';
@@ -144,7 +144,7 @@ window.canceleOrder = async () => {
           'packages',
           JSON.stringify(updatedPackage.packages)
         );
-        // window.location.reload();
+        window.location.reload();
       }
     }
   }
