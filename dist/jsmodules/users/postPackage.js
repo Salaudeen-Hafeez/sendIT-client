@@ -87,7 +87,7 @@ window.submitPackage = async () => {
         localStorage.removeItem('packages');
         localStorage.setItem('package', JSON.stringify(postedData.package));
         localStorage.setItem('packages', JSON.stringify(postedData.packages));
-        //window.location.href = '/package';
+        window.location.href = '/package';
       } else {
         erro.innerHTML = postedData.errMessage;
       }
