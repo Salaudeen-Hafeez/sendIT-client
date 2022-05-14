@@ -7,5 +7,5 @@ if (packag !== null) {
 const loginUrl = 'https://akera-logistics.herokuapp.com/api/v1/login';
 const postUsrUrl = 'https://akera-logistics.herokuapp.com/api/v1/signup';
 const updatePackageUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}`;
-const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/packages`;
+const postPackageUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels`;
 export { loginUrl, postUsrUrl, postPackageUrl, updatePackageUrl };
