@@ -137,12 +137,13 @@ window.canceleOrder = async () => {
       if (confrm) {
         const data = { _status: 'Order Canceled' };
         const updatedPackage = await putPackage(userUpdateUrl, data);
+        console.log(updatedPackage);
         localStorage.setItem('package', JSON.stringify(updatedPackage.package));
         localStorage.setItem(
           'packages',
           JSON.stringify(updatedPackage.packages)
         );
-        window.location.reload();
+        // window.location.reload();
       }
     }
   }
