@@ -1,6 +1,6 @@
 import { formValidation } from './validateForm.js';
 import { postData } from './httpFetch/postData.js';
-import { adminLoginUrl, loginUrl } from './httpFetch/urls.js';
+import { loginUrl } from './httpFetch/urls.js';
 //import { authenticateRoute } from './routAuth.js';
 // let pathName = location.pathname;
 // const pathNames = [localStorage.getItem('path')];
