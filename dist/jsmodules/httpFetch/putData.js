@@ -1,7 +1,7 @@
 const putPackage = async (url, data) => {
   const returnData = await fetch(url, {
     method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Authorization: '' },
     body: JSON.stringify(data),
   })
     .then((resp) => resp.json())
