@@ -99,7 +99,7 @@ window.okay = async () => {
     token = user.auth_token;
   }
 
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/${email}/packages/${id}/${token}`;
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/destination`;
   if (location1) {
     if (_status === 'Order Canceled' || _status === 'Delivered') {
       alert(`Order already ${_status}`);
@@ -129,7 +129,7 @@ window.okay = async () => {
 
 window.canceleOrder = async () => {
   if (user) {
-    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/${user._email}/packages/${packag.parcel_id}/${user.auth_token}`;
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${packag.parcel_id}/destination`;
     if (packag._status === 'Order Canceled') {
       alert('Order already canceled');
     } else {
