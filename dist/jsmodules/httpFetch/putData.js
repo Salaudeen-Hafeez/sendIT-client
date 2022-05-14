@@ -2,17 +2,17 @@ const putPackage = async (url, data) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
   let token;
-  let email;
+  let username;
   if (user || admin) {
     token = user.auth_token || admin.admin_token;
-    email = user._email || admin._email;
+    username = user._username;
   }
 
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append('Authorization', token);
-  myHeaders.append('email', email);
+  myHeaders.append('username', username);
 
   const returnData = await fetch(url, {
     method: 'PUT',
