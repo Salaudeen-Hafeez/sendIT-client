@@ -11,7 +11,7 @@ const postData = async (url, data) => {
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append('Authorization', `Bearer ${token}`);
+  myHeaders.append('Authorization', token);
   myHeaders.append('email', email);
 
   let returnData = await fetch(url, {
