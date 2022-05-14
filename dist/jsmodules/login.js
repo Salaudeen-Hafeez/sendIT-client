@@ -29,7 +29,7 @@ window.login = async () => {
         erro.innerHTML = user.errMessage;
       }
     } else {
-      const admin = await postData(adminLoginUrl, data);
+      const admin = await postData(loginUrl, data);
       if (!admin.errMessage) {
         localStorage.setItem('admin', JSON.stringify(admin.admin));
         localStorage.setItem('users', JSON.stringify(admin.users));
