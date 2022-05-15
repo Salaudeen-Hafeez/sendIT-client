@@ -147,7 +147,7 @@ window.adminDeletePackage = (e) => {
       myHeaders.append('Content-Type', 'application/json');
       myHeaders.append('Authorization', admin.admin_token);
       fetch(
-        `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/delete`,
+        `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/delete`,
         {
           method: 'DELETE',
           headers: myHeaders,
