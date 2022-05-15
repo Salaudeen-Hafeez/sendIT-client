@@ -13,9 +13,8 @@ window.signUp = async () => {
   if (!emptyInput) {
     if (!data.email.includes('@sendit.com')) {
       delete data.password2;
-      console.log(data);
-      console.log(postUsrUrl);
       const userData = await signUpUser(postUsrUrl, data);
+      console.log(userData);
       if (!userData.errMessage) {
         localStorage.setItem('user', JSON.stringify(userData));
         //window.location.href = '/user';
