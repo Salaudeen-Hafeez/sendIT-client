@@ -1,6 +1,7 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 
+localStorage.clear();
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
@@ -52,7 +53,7 @@ const adminFetchPackages = (cond) => {
     newPackages.classList.toggle('open');
   }
 };
-localStorage.clear();
+
 window.displayAdmin = () => {
   const profile = document.getElementById('userProfile');
   const adminProfile = ` <img
