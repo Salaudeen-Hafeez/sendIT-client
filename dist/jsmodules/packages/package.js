@@ -93,11 +93,9 @@ window.okay = async () => {
     userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/status`;
     data['_status'] = status.options[status.selectedIndex].value;
     key = '_location';
-    email = admin._email;
     token = admin.admin_token;
   } else {
     userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/destination`;
-    email = user._email;
     token = user.auth_token;
   }
 
@@ -110,11 +108,12 @@ window.okay = async () => {
       const distMetrix = await getDistance(service, add);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const newDest = { ...data, [key]: location1 };
-        const packag = await putPackage(userUpdateUrl, newDest);
-        console.log(packag);
-        localStorage.setItem('package', JSON.stringify(packag.package));
-        localStorage.setItem('packages', JSON.stringify(packag.packages));
-        window.location.reload();
+        console.log(newDest);
+        // const packag = await putPackage(userUpdateUrl, newDest);
+        // console.log(packag);
+        // localStorage.setItem('package', JSON.stringify(packag.package));
+        // localStorage.setItem('packages', JSON.stringify(packag.packages));
+        // //window.location.reload();
       } else {
         alert('Destination address entered not found');
       }
