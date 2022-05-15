@@ -3,12 +3,9 @@ const putPackage = async (url, data) => {
   const admin = JSON.parse(localStorage.getItem('admin'));
   let token;
   if (user) {
-    console.log(user);
     token = user.auth_token;
   } else if (admin) {
-    console.log('hello from admin');
     token = admin.admin_token;
-    console.log(token);
   }
 
   const myHeaders = new Headers();
