@@ -209,7 +209,7 @@ window.fetchCanceledPackages = () => {
 window.updatePackage = async (e) => {
   const id = parseInt(e.id);
   const locatP = e.parentElement.parentElement.querySelectorAll('p');
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/${admin._email}/packages/${id}/${admin.admin_token}`;
+  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/status`;
   const input = prompt(
     'update the package location and status, In transit/Delivered',
     'new location - In transit'
