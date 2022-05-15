@@ -108,22 +108,25 @@ window.adminFetchUserPackage = (e) => {
 window.adminDeleteUser = (e) => {
   const confrm = confirm('Are you sure to delete this user?');
   if (confrm) {
-    const username = e.value;
     const id = parseInt(e.id);
-    console.log(id);
-    // fetch(`https://akera-logistics.herokuapp.com/api/v1/users/delete`, {
-    //   method: 'DELETE',
-    //   headers: { 'Content-Type': 'application/json' },
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     localStorage.setItem('users', JSON.stringify(data.users));
-    //     window.fetchUsers();
-    //     window.fetchUsers();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    const myHeaders = new Headers();
+
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Authorization', admin.admin_token);
+
+    fetch(`https://akera-logistics.herokuapp.com/api/v1/users/${id}/delete`, {
+      method: 'DELETE',
+      headers: myHeaders,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        localStorage.setItem('users', JSON.stringify(data.users));
+        window.fetchUsers();
+        window.fetchUsers();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 };
 
