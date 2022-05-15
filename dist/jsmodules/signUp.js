@@ -16,7 +16,7 @@ window.signUp = async () => {
       const userData = await postData(postUsrUrl, data);
       if (!userData.errMessage) {
         localStorage.setItem('user', JSON.stringify(userData));
-        window.location.href = '/user';
+        //window.location.href = '/user';
       } else {
         erro.innerHTML = userData.errMessage;
       }
@@ -25,7 +25,7 @@ window.signUp = async () => {
       const adminData = await postData(postUsrUrl, data);
       if (!adminData.errMessage) {
         localStorage.setItem('admin', JSON.stringify(adminData));
-        window.location.href = '/admin';
+        //window.location.href = '/admin';
       } else {
         erro.innerHTML = adminData.errMessage;
       }
