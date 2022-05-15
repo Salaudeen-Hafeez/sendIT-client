@@ -109,6 +109,7 @@ window.okay = async () => {
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const newDest = { ...data, [key]: location1 };
         console.log(newDest);
+        console.log(userUpdateUrl);
         // const packag = await putPackage(userUpdateUrl, newDest);
         // console.log(packag);
         // localStorage.setItem('package', JSON.stringify(packag.package));
