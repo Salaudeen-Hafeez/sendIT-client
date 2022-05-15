@@ -130,7 +130,7 @@ window.okay = async () => {
 
 window.canceleOrder = async () => {
   if (user) {
-    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${packag.parcel_id}/destination`;
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${packag.parcel_id}/status`;
     if (packag._status === 'Order Canceled') {
       alert('Order already canceled');
     } else {
