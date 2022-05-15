@@ -1,8 +1,6 @@
 import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 
-localStorage.clear();
-
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
@@ -157,7 +155,6 @@ window.adminDeletePackage = (e) => {
       )
         .then((resp) => resp.json())
         .then((data) => {
-          console.log(data);
           localStorage.removeItem('packages');
           localStorage.setItem('packages', JSON.stringify(data.packages));
           if (button !== null) {
