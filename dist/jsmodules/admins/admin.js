@@ -110,22 +110,20 @@ window.adminDeleteUser = (e) => {
   if (confrm) {
     const username = e.value;
     const id = parseInt(e.id);
-    fetch(
-      `https://akera-logistics.herokuapp.com/api/v1/${username}/${admin.admin_token}`,
-      {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        localStorage.setItem('users', JSON.stringify(data.users));
-        window.fetchUsers();
-        window.fetchUsers();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(id);
+    // fetch(`https://akera-logistics.herokuapp.com/api/v1/users/delete`, {
+    //   method: 'DELETE',
+    //   headers: { 'Content-Type': 'application/json' },
+    // })
+    //   .then((resp) => resp.json())
+    //   .then((data) => {
+    //     localStorage.setItem('users', JSON.stringify(data.users));
+    //     window.fetchUsers();
+    //     window.fetchUsers();
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
 };
 
@@ -135,18 +133,21 @@ window.adminDeletePackage = (e) => {
   const button = sibling.querySelector('button');
   const stat = e.parentElement.parentElement.querySelector('div');
   const _status = stat.querySelectorAll('p')[3].innerHTML;
-  const username = e.value;
   const id = parseInt(e.id);
   if (_status === 'Order Canceled') {
     alert(`Order already ${_status}`);
   } else {
     const confrm = confirm('Are you sure to delete this order?');
     if (confrm) {
+      const myHeaders = new Headers();
+
+      myHeaders.append('Content-Type', 'application/json');
+      myHeaders.append('Authorization', admin.admin_token);
       fetch(
-        `https://akera-logistics.herokuapp.com/api/v1/${username}/packages/${id}/${admin.admin_token}`,
+        `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/delete`,
         {
           method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' },
+          headers: myHeaders,
         }
       )
         .then((resp) => resp.json())
