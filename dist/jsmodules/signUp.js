@@ -1,4 +1,4 @@
-import { postData } from './httpFetch/postData.js';
+import { signUpUser } from './httpFetch/postData.js';
 import { postUsrUrl } from './httpFetch/urls.js';
 import { formValidation } from './validateForm.js';
 window.signUp = async () => {
@@ -13,7 +13,9 @@ window.signUp = async () => {
   if (!emptyInput) {
     if (!data.email.includes('@sendit.com')) {
       delete data.password2;
-      const userData = await postData(postUsrUrl, data);
+      console.log(data);
+      console.log(postUsrUrl);
+      const userData = await signUpUser(postUsrUrl, data);
       if (!userData.errMessage) {
         localStorage.setItem('user', JSON.stringify(userData));
         //window.location.href = '/user';
@@ -22,7 +24,7 @@ window.signUp = async () => {
       }
     } else {
       delete data.password2;
-      const adminData = await postData(postUsrUrl, data);
+      const adminData = await signUpUser(postUsrUrl, data);
       if (!adminData.errMessage) {
         localStorage.setItem('admin', JSON.stringify(adminData));
         //window.location.href = '/admin';
