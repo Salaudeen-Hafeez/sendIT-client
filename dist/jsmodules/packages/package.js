@@ -87,19 +87,20 @@ window.okay = async () => {
   const location1 = locatn.value;
   let data = {};
   let key = '_destination';
-  let email, token;
+  let email, token, userUpdateUrl;
   const { _status, _location, parcel_id: id } = packag;
   if (!user) {
+    userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/status`;
     data['_status'] = status.options[status.selectedIndex].value;
     key = '_location';
     email = admin._email;
     token = admin.admin_token;
   } else {
+    userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/destination`;
     email = user._email;
     token = user.auth_token;
   }
 
-  const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/destination`;
   if (location1) {
     if (_status === 'Order Canceled' || _status === 'Delivered') {
       alert(`Order already ${_status}`);
