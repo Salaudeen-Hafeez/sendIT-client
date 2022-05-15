@@ -52,7 +52,7 @@ const adminFetchPackages = (cond) => {
     newPackages.classList.toggle('open');
   }
 };
-
+localStorage.clear();
 window.displayAdmin = () => {
   const profile = document.getElementById('userProfile');
   const adminProfile = ` <img
