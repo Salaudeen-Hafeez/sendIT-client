@@ -100,6 +100,7 @@ window.updateStatus = async () => {
   } else {
     const { data: data0, emptyInput } = formValidation([locatn]);
     if (!emptyInput) {
+      console.log(data0.location);
       const { add1: add2 } = await geocodeAddress(geocoder, data0.location);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
