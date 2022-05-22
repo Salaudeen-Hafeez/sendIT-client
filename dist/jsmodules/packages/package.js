@@ -100,17 +100,18 @@ window.updateStatus = async () => {
     token = user.auth_token;
   }
 
-  console.log(locatn.value);
-
   if (_status === 'Order Canceled' || _status === 'Delivered') {
     alert(`Order already ${_status}`);
   } else {
     const { data: data0, emptyInput } = formValidation([locatn]);
     if (!emptyInput) {
       console.log(data0);
+      console.log(location1);
       const { add1: add2 } = await geocodeAddress(geocoder, location1);
+      console.log(add2);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
+      console.log(distMetrix);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const newDest = { ...data, [key]: location1 };
         const packag = await putPackage(userUpdateUrl, newDest);
