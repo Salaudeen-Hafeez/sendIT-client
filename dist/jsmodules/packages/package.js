@@ -88,8 +88,8 @@ window.updateStatus = async () => {
   const location1 = locatn.value;
   let data = {};
   let key = '_destination';
-  let userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/destination`;
   const { _status, _location, parcel_id: id } = packag;
+  let userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/destination`;
   if (!user) {
     userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/status`;
     data['_status'] = status.options[status.selectedIndex].value;
