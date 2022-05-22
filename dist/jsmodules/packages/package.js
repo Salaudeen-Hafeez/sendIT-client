@@ -105,19 +105,15 @@ window.updateStatus = async () => {
   } else {
     const { data: data0, emptyInput } = formValidation([locatn]);
     if (!emptyInput) {
-      console.log(data0);
-      console.log(location1);
-      const { add1: add2 } = await geocodeAddress(geocoder, location1);
-      console.log(add2);
+      const { add1: add2 } = await geocodeAddress(geocoder, data0.location);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
-      console.log(distMetrix);
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const newDest = { ...data, [key]: location1 };
         const packag = await putPackage(userUpdateUrl, newDest);
         localStorage.setItem('package', JSON.stringify(packag.package));
         localStorage.setItem('packages', JSON.stringify(packag.packages));
-        // window.location.reload();
+        window.location.reload();
       } else {
         alert('Destination address entered not found');
       }
