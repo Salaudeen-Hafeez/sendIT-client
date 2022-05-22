@@ -116,7 +116,7 @@ window.updateStatus = async () => {
         const packag = await putPackage(userUpdateUrl, newDest);
         localStorage.setItem('package', JSON.stringify(packag.package));
         localStorage.setItem('packages', JSON.stringify(packag.packages));
-        window.location.reload();
+        // window.location.reload();
       } else {
         alert('Destination address entered not found');
       }

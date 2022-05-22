@@ -1,6 +1,7 @@
 import { signUpUser } from './httpFetch/postData.js';
 import { postUsrUrl } from './httpFetch/urls.js';
 import { formValidation } from './validateForm.js';
+
 window.signUp = async () => {
   const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
