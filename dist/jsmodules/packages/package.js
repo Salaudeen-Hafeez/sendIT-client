@@ -81,7 +81,7 @@ window.loadPackage = async () => {
   new google.maps.places.Autocomplete(input);
 };
 
-window.okay = async () => {
+window.updateStatus = async () => {
   const locatn = document.getElementById('location');
   const status = document.getElementById('status');
   const location1 = locatn.value;
@@ -90,19 +90,22 @@ window.okay = async () => {
   let token, userUpdateUrl;
   const { _status, _location, parcel_id: id } = packag;
   if (!user) {
-    userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/status`;
+    userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/status`;
     data['_status'] = status.options[status.selectedIndex].value;
     key = '_location';
     token = admin.admin_token;
   } else {
-    userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/destination`;
+    userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/destination`;
     token = user.auth_token;
   }
 
-  if (location1) {
-    if (_status === 'Order Canceled' || _status === 'Delivered') {
-      alert(`Order already ${_status}`);
-    } else {
+  if (_status === 'Order Canceled' || _status === 'Delivered') {
+    alert(`Order already ${_status}`);
+  } else {
+    const { data: data0, emptyInput } = formValidation(location1);
+    if (!emptyInput) {
+      console.log(data0);
+      console.log(location1);
       const { add1: add2 } = await geocodeAddress(geocoder, location1);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
@@ -116,19 +119,22 @@ window.okay = async () => {
         alert('Destination address entered not found');
       }
     }
-  } else {
-    if (!user) {
-      window.location.href = '/admin';
-    } else {
-      window.location.href = '/user';
-    }
   }
+
   locatn.value = '';
+};
+
+window.okay = () => {
+  if (!user) {
+    window.location.href = '/admin';
+  } else {
+    window.location.href = '/user';
+  }
 };
 
 window.canceleOrder = async () => {
   if (user) {
-    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${packag.parcel_id}/destination`;
+    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${packag.parcel_id}/destination`;
     if (packag._status === 'Order Canceled') {
       alert('Order already canceled');
     } else {

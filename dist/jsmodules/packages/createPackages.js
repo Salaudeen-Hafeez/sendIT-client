@@ -54,7 +54,7 @@ const createPackage = ({ distance, duration, fare }) => {
             class="btn"
             id="submitUpdate"
             value="Update"
-            onclick="update()"
+            onclick="updateStatus(this)"
           />
       </form>
       <div class="confirmOrd">
