@@ -105,7 +105,7 @@ window.updateStatus = async () => {
   if (_status === 'Order Canceled' || _status === 'Delivered') {
     alert(`Order already ${_status}`);
   } else {
-    const { data: data0, emptyInput } = formValidation(location1);
+    const { data: data0, emptyInput } = formValidation([location1]);
     if (!emptyInput) {
       console.log(data0);
       const { add1: add2 } = await geocodeAddress(geocoder, location1);
