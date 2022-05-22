@@ -100,13 +100,14 @@ window.updateStatus = async () => {
     token = user.auth_token;
   }
 
+  console.log(location1);
+
   if (_status === 'Order Canceled' || _status === 'Delivered') {
     alert(`Order already ${_status}`);
   } else {
     const { data: data0, emptyInput } = formValidation(location1);
     if (!emptyInput) {
       console.log(data0);
-      console.log(location1);
       const { add1: add2 } = await geocodeAddress(geocoder, location1);
       const add = [_location, add2];
       const distMetrix = await getDistance(service, add);
