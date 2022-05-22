@@ -1,7 +1,7 @@
 const fetchData = async (url) => {
   let returnData = await fetch(url, {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json', Authorization: '' },
+    headers: { 'Content-Type': 'application/json' },
   })
     .then((resp) => resp.json())
     .then((data) => {

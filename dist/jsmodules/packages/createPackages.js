@@ -49,6 +49,13 @@ const createPackage = ({ distance, duration, fare }) => {
         <div class="select1" style="visibility:${visibility}">
         ${select}
         </div>
+        <input
+            type="submit"
+            class="btn"
+            id="submitUpdate"
+            value="Update"
+            onclick="update()"
+          />
       </form>
       <div class="confirmOrd">
         <button
