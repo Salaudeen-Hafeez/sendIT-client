@@ -100,7 +100,7 @@ window.updateStatus = async () => {
     token = user.auth_token;
   }
 
-  console.log(location1);
+  console.log(locatn);
 
   if (_status === 'Order Canceled' || _status === 'Delivered') {
     alert(`Order already ${_status}`);
