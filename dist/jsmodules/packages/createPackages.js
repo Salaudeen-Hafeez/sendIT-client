@@ -6,7 +6,7 @@ const createPackage = ({ distance, duration, fare }) => {
   let color;
   let select = '';
   let visibility = 'hidden';
-  let label = 'Enter new destination';
+  let label = 'destination';
   switch (_status) {
     case 'In transit':
       color = '#095F06';
@@ -20,7 +20,7 @@ const createPackage = ({ distance, duration, fare }) => {
   }
   if (admin) {
     visibility = 'visible';
-    label = 'Enter new location';
+    label = 'location';
     select = `<label for="status" class="col-4">status</label>
         <select name="status" class="col-8" id="status" form="updateForm">
           <option value="In transit">In transit</option>
@@ -44,8 +44,17 @@ const createPackage = ({ distance, duration, fare }) => {
         <p class="packinfo"><span>Duration:</span>${duration}</p>
         </div>
         <form action="#" class="updateForm" id="updateForm">
-        <label for="location" class="col-4">${label}</label>
-        <input type="text" class="col-8" id="location" />
+        <div class="input-field">
+              <label for="pName" class="col-4">Enter new ${label}</label>
+              <input
+                type="text"
+                class="col-8"
+                id="location"
+                name=${label}
+                oninput="clearErr(this)"
+              />
+              <small></small>
+            </div>
         <div class="select1" style="visibility:${visibility}">
         ${select}
         </div>
