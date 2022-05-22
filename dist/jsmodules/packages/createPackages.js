@@ -43,7 +43,7 @@ const createPackage = ({ distance, duration, fare }) => {
         <p class="packinfo"><span>Distance:</span> ${distance}</p>
         <p class="packinfo"><span>Duration:</span>${duration}</p>
         </div>
-        <form action="#" class="updateForm" id="updateForm">
+        <form onsubmit="return false" class="updateForm" id="updateForm">
         <div class="input-field">
               <label for="pName" class="col-4">Enter new ${label}</label>
               <input
