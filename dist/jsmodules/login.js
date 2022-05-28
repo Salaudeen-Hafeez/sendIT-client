@@ -1,14 +1,7 @@
 import { formValidation } from './validateForm.js';
 import { postData } from './httpFetch/postData.js';
 import { loginUrl } from './httpFetch/urls.js';
-//import { authenticateRoute } from './routAuth.js';
-// let pathName = location.pathname;
-// const pathNames = [localStorage.getItem('path')];
-// localStorage.setItem('path', pathName);
-// pathNames.push(pathName);
-// if (pathNames[0] !== pathNames[1]) {
-//   authenticateRoute(pathName);
-// }
+
 window.login = async () => {
   const erro = document.getElementById('errMessage');
   erro.innerHTML = '';

@@ -1,14 +1,7 @@
 import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
-//import { authenticateRoute } from '../routAuth.js';
 import { formValidation } from '../validateForm.js';
-// let pathName = location.pathname;
-// const pathNames = [localStorage.getItem('path')];
-// localStorage.setItem('path', pathName);
-// pathNames.push(pathName);
-// if (pathNames[0] !== pathNames[1]) {
-//   authenticateRoute(pathName);
-// }
+
 const input = document.getElementById('location');
 const input2 = document.getElementById('destination');
 new google.maps.places.Autocomplete(input);
@@ -34,7 +27,7 @@ const toNaira = Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'NGN',
 });
-const cost = (dist, dur) => {
+const cost = (dist, weight) => {
   let multiplier;
   switch (dist) {
     case dist <= 10000:
@@ -56,7 +49,7 @@ const cost = (dist, dur) => {
       multiplier = 40;
       break;
   }
-  const totalcost = ((dist + dur) / 1000) * multiplier;
+  const totalcost = weight * multiplier;
   const naira = toNaira.format(Math.round(totalcost));
   return naira;
 };
@@ -75,22 +68,22 @@ window.submitPackage = async () => {
   if (!emptyInput) {
     const add = [data.location, data.destination];
     const distMetrix = await getDistance(service, add);
-    const { distance, duration, status } = distMetrix.rows[0].elements[0];
+    const { distance, status } = distMetrix.rows[0].elements[0];
     if (status === 'OK') {
-      const tripFare = cost(distance.value, duration.value);
+      const tripFare = cost(distance.value, data.weight);
       data['username'] = user._username;
       data['cost'] = tripFare;
-      const postedData = await postData(postPackageUrl, data);
-      console.log(postedData);
-      if (!postedData.errMessage) {
-        localStorage.removeItem('package');
-        localStorage.removeItem('packages');
-        localStorage.setItem('package', JSON.stringify(postedData.package));
-        localStorage.setItem('packages', JSON.stringify(postedData.packages));
-        window.location.href = '/package';
-      } else {
-        erro.innerHTML = postedData.errMessage;
-      }
+      console.log(input);
+      // const postedData = await postData(postPackageUrl, data);
+      // if (!postedData.errMessage) {
+      //   localStorage.removeItem('package');
+      //   localStorage.removeItem('packages');
+      //   localStorage.setItem('package', JSON.stringify(postedData.package));
+      //   localStorage.setItem('packages', JSON.stringify(postedData.packages));
+      //   window.location.href = '/package';
+      // } else {
+      //   erro.innerHTML = postedData.errMessage;
+      // }
     } else {
       alert('The address entered not found');
     }

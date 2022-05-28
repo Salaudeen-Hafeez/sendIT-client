@@ -5,14 +5,12 @@ const postData = async (url, data) => {
   let email;
   if (user || admin) {
     token = user.auth_token || admin.admin_token;
-    email = user._email || admin._email;
   }
 
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append('Authorization', token);
-  myHeaders.append('email', email);
 
   let returnData = await fetch(url, {
     method: 'POST',
