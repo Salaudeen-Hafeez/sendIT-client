@@ -97,7 +97,6 @@ window.clearErr = (e) => {
 };
 
 window.showAmount = async (e) => {
-  window.clearErr()
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
