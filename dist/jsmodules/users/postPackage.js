@@ -30,7 +30,7 @@ const toNaira = Intl.NumberFormat('en-US', {
 });
 const cost = (dist, weight) => {
   let multiplier;
-  switch (dist) {
+  switch (parseInt(dist)) {
     case dist <= 10000:
       multiplier = dist/40;
       break;
