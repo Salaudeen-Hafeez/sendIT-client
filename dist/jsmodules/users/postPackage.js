@@ -50,7 +50,8 @@ const cost = (dist, weight) => {
       multiplier = dist/400;
       break;
   }
-  console.log(multiplier)
+  console.log(typeof multiplier)
+  console.log(typeof weight)
   const totalcost = parseInt(weight) * 10 * multiplier;
   console.log(totalcost)
   const naira = toNaira.format(Math.round(totalcost));
