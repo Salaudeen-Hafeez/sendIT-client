@@ -30,7 +30,7 @@ const toNaira = Intl.NumberFormat('en-US', {
 });
 const cost = (dist, weight) => {
   let multiplier;
-  switch (parseInt(dist)) {
+  switch (dist) {
     case dist <= 10000:
       multiplier = dist/40;
       break;
@@ -52,7 +52,7 @@ const cost = (dist, weight) => {
   }
   console.log(typeof multiplier)
   console.log(typeof weight)
-  const totalcost = parseInt(weight) * 10 * multiplier;
+  const totalcost = weight * 10 * multiplier;
   console.log(totalcost)
   const naira = toNaira.format(Math.round(totalcost));
   return naira;

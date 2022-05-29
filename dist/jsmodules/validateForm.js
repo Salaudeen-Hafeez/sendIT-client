@@ -30,6 +30,8 @@ const formValidation = (input) => {
       if(isNaN(inp.value.trim())){
         emptyInput = true;
         setErrorFor(inp, 'Please enter a valid nuber in kg');
+      }else{
+        data[inp.getAttribute('name')] = inp.value.trim();
       }
     } else if (inp.getAttribute('name') === 'frajile') {
       if (inp.checked) {
