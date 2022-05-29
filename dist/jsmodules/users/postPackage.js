@@ -32,7 +32,7 @@ const cost = (dist, weight) => {
   let multiplier;
   switch (dist) {
     case dist <= 10000:
-      multiplier = dist/100;
+      multiplier = 100;
       break;
     case 10000 <= dist <= 30000:
       multiplier = dist/300;
@@ -94,14 +94,14 @@ window.submitPackage = async () => {
   const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
   console.log(parceldata)
-      // const postedData = await postData(postPackageUrl, parceldata);
-      // if (!postedData.errMessage) {
-      //   localStorage.removeItem('package');
-      //   localStorage.removeItem('packages');
-      //   localStorage.setItem('package', JSON.stringify(postedData.package));
-      //   localStorage.setItem('packages', JSON.stringify(postedData.packages));
-      //   window.location.href = '/package';
-      // } else {
-      //   erro.innerHTML = postedData.errMessage;
-      // }
+    const postedData = await postData(postPackageUrl, parceldata);
+    if (!postedData.errMessage) {
+      localStorage.removeItem('package');
+      localStorage.removeItem('packages');
+      localStorage.setItem('package', JSON.stringify(postedData.package));
+      localStorage.setItem('packages', JSON.stringify(postedData.packages));
+      window.location.href = '/package';
+    } else {
+      erro.innerHTML = postedData.errMessage;
+    }
   }
