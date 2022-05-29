@@ -2,6 +2,7 @@ import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 
+let parceldata = {}
 const input = document.getElementById('location');
 const input2 = document.getElementById('destination');
 new google.maps.places.Autocomplete(input);
@@ -31,63 +32,31 @@ const cost = (dist, weight) => {
   let multiplier;
   switch (dist) {
     case dist <= 10000:
-      multiplier = 400;
+      multiplier = dist/40;
       break;
     case 10000 <= dist <= 30000:
-      multiplier = 250;
+      multiplier = dist/60;
       break;
     case 30000 <= dist <= 70000:
-      multiplier = 190;
+      multiplier = dist/120;
       break;
     case 70000 <= dist <= 1200000:
-      multiplier = 120;
+      multiplier = dist/190;
       break;
     case 1200000 <= dist <= 250000:
-      multiplier = 60;
+      multiplier = dist/250;
       break;
     default:
-      multiplier = 40;
+      multiplier = dist/400;
       break;
   }
-  const totalcost = ((weight * dist)/100000) * multiplier;
+  const totalcost = weight * 10 * multiplier;
   const naira = toNaira.format(Math.round(totalcost));
   return naira;
 };
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
-};
-
-window.submitPackage = async () => {
-  const erro = document.getElementById('errMessage');
-  erro.innerHTML = '';
-  const input = document
-    .getElementById('inputContainer')
-    .querySelectorAll('input');
-  const { data, emptyInput } = formValidation(input);
-  if (!emptyInput) {
-    const add = [data.location, data.destination];
-    const distMetrix = await getDistance(service, add);
-    const { distance, status } = distMetrix.rows[0].elements[0];
-    if (status === 'OK') {
-      const tripFare = cost(distance.value, data.weight);
-      data['username'] = user._username;
-      data['cost'] = tripFare;
-      console.log(input);
-      // const postedData = await postData(postPackageUrl, data);
-      // if (!postedData.errMessage) {
-      //   localStorage.removeItem('package');
-      //   localStorage.removeItem('packages');
-      //   localStorage.setItem('package', JSON.stringify(postedData.package));
-      //   localStorage.setItem('packages', JSON.stringify(postedData.packages));
-      //   window.location.href = '/package';
-      // } else {
-      //   erro.innerHTML = postedData.errMessage;
-      // }
-    } else {
-      alert('The address entered not found');
-    }
-  }
 };
 
 window.clearErr = (e) => {
@@ -97,11 +66,13 @@ window.clearErr = (e) => {
 };
 
 window.showAmount = async (e) => {
+  e.style.border = '1px solid lightgreen';
+  const small = e.parentElement.querySelector('small');
+  small.style.visibility = 'hidden';
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
-  console.log(input);
   if (!emptyInput) {
     const add = [data.location, data.destination];
     const distMetrix = await getDistance(service, add);
@@ -110,11 +81,26 @@ window.showAmount = async (e) => {
       const tripFare = cost(distance.value, data.weight);
       data['username'] = user._username;
       data['cost'] = tripFare;
-      console.log(tripFare)
-      input[6].value = tripFare
-      
+      input[6].value = tripFare 
+      parceldata = {...data} 
+    }else {
+      alert('The address entered not found');
     }
-    
-    }
-
+  }
 };
+
+window.submitPackage = async () => {
+  const erro = document.getElementById('errMessage');
+  erro.innerHTML = '';
+  console.log(parceldata)
+      // const postedData = await postData(postPackageUrl, parceldata);
+      // if (!postedData.errMessage) {
+      //   localStorage.removeItem('package');
+      //   localStorage.removeItem('packages');
+      //   localStorage.setItem('package', JSON.stringify(postedData.package));
+      //   localStorage.setItem('packages', JSON.stringify(postedData.packages));
+      //   window.location.href = '/package';
+      // } else {
+      //   erro.innerHTML = postedData.errMessage;
+      // }
+  }

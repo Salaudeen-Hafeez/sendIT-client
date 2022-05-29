@@ -26,6 +26,11 @@ const formValidation = (input) => {
         emptyInput = true;
         setErrorFor(inp, message);
       }
+    }else if (inp.getAttribute('name') === 'weight') {
+      if(typeof(inp.value.trim()) !== 'number'){
+        emptyInput = true;
+        setErrorFor(inp, 'Please enter a valid nuber in kg');
+      }
     } else if (inp.getAttribute('name') === 'frajile') {
       if (inp.checked) {
         data[inp.getAttribute('name')] = 'the package is frajile';
