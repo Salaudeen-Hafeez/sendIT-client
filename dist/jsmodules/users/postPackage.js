@@ -110,6 +110,8 @@ window.showAmount = async (e) => {
       const tripFare = cost(distance.value, data.weight);
       data['username'] = user._username;
       data['cost'] = tripFare;
+      console.log(tripFare)
+      input[6].value = tripFare
       
     }
     
