@@ -13,15 +13,15 @@ const formValidation = (input) => {
   const contactPattern =
     /^[\+]?([0-9][\s]?|[0-9]?)([(][0-9]{3}[)][\s]?|[0-9]{3}[-\s\.]?)[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
   const data = {};
-  let emptyInput = '';
+  let emptyInput = false;
   input.forEach((inp) => {
     if (inp.value.trim() === '') {
       if (inp.getAttribute('name') === 'password1') {
-        emptyInput = 'true';
+        emptyInput = true;
         setErrorFor(inp, 'password confirmation can not be blank');
       } else {
         const message = `${inp.getAttribute('name')} can not be blank`;
-        emptyInput = 'true';
+        emptyInput = true;
         setErrorFor(inp, message);
       }
     } else if (inp.getAttribute('name') === 'frajile') {
@@ -34,7 +34,7 @@ const formValidation = (input) => {
       if (pattern.test(inp.value.trim().toLowerCase())) {
         data[inp.getAttribute('name')] = inp.value.trim().toLowerCase();
       } else {
-        emptyInput = 'true';
+        emptyInput = true;
         setErrorFor(inp, 'Invalid email address');
       }
     } else if (
@@ -44,25 +44,27 @@ const formValidation = (input) => {
       if (contactPattern.test(inp.value.trim())) {
         data[inp.getAttribute('name')] = inp.value.trim();
       } else {
-        emptyInput = 'true';
+        emptyInput = true;
         setErrorFor(inp, 'Invalid phone number');
       }
     } else if (inp.getAttribute('name') === 'password') {
       if (inp.value.trim().length < 6) {
-        emptyInput = 'true';
+        emptyInput = true;
         setErrorFor(inp, 'The password length must be 6 or more character');
       } else {
         data[inp.getAttribute('name')] = inp.value.trim();
       }
     } else if (inp.getAttribute('name') === 'password1') {
       if (inp.value.trim().length < 6) {
-        emptyInput = 'true';
+        emptyInput = true;
         setErrorFor(inp, 'The password length must be 6 or more');
       } else if (data.password !== inp.value.trim()) {
-        emptyInput = 'true';
+        emptyInput = true;
         setErrorFor(inp, 'The password does not match');
       }
-    } else {
+    } else if (inp.getAttribute('name') === 'amount') {
+      emptyInput = false
+    }else {
       data[inp.getAttribute('name')] = inp.value.trim();
     }
   });
