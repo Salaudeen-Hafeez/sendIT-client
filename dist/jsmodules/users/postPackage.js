@@ -101,6 +101,7 @@ window.showAmount = async (e) => {
     .getElementById('inputContainer')
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
+  console.log(input);
   if (!emptyInput) {
     const add = [data.location, data.destination];
     const distMetrix = await getDistance(service, add);
@@ -109,7 +110,7 @@ window.showAmount = async (e) => {
       const tripFare = cost(distance.value, data.weight);
       data['username'] = user._username;
       data['cost'] = tripFare;
-      console.log(input);
+      
     }
     
     }

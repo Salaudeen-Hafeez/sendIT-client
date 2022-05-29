@@ -16,7 +16,9 @@ const formValidation = (input) => {
   let emptyInput = false;
   input.forEach((inp) => {
     if (inp.value.trim() === '') {
-      if (inp.getAttribute('name') === 'password1') {
+      if (inp.getAttribute('name') === 'amount') {
+        return
+      }else if (inp.getAttribute('name') === 'password1') {
         emptyInput = true;
         setErrorFor(inp, 'password confirmation can not be blank');
       } else {
@@ -62,8 +64,6 @@ const formValidation = (input) => {
         emptyInput = true;
         setErrorFor(inp, 'The password does not match');
       }
-    } else if (inp.getAttribute('name') === 'amount') {
-      emptyInput = false
     }else {
       data[inp.getAttribute('name')] = inp.value.trim();
     }
