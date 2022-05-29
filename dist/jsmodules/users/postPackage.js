@@ -49,7 +49,7 @@ const cost = (dist, weight) => {
       multiplier = 40;
       break;
   }
-  const totalcost = weight * multiplier;
+  const totalcost = ((weight * dist)/1000) * multiplier;
   const naira = toNaira.format(Math.round(totalcost));
   return naira;
 };
