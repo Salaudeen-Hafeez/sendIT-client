@@ -27,9 +27,7 @@ const formValidation = (input) => {
         setErrorFor(inp, message);
       }
     }else if (inp.getAttribute('name') === 'weight') {
-      console.log(inp.value)
-      console.log(typeof inp.value)
-      if(typeof inp.value !== 'number'){
+      if(isNaN(inp.value.trim())){
         emptyInput = true;
         setErrorFor(inp, 'Please enter a valid nuber in kg');
       }
