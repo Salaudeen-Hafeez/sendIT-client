@@ -89,8 +89,30 @@ window.submitPackage = async () => {
     }
   }
 };
+
 window.clearErr = (e) => {
   e.style.border = '1px solid lightgreen';
   const small = e.parentElement.querySelector('small');
   small.style.visibility = 'hidden';
+};
+
+window.showAmount = (e) => {
+  window.clearErr()
+  const input = document
+    .getElementById('inputContainer')
+    .querySelectorAll('input');
+  const { data, emptyInput } = formValidation(input);
+  if (!emptyInput) {
+    const add = [data.location, data.destination];
+    const distMetrix = await getDistance(service, add);
+    const { distance, status } = distMetrix.rows[0].elements[0];
+    if (status === 'OK') {
+      const tripFare = cost(distance.value, data.weight);
+      data['username'] = user._username;
+      data['cost'] = tripFare;
+      console.log(input);
+    }
+    
+    }
+
 };
