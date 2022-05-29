@@ -96,7 +96,7 @@ window.clearErr = (e) => {
   small.style.visibility = 'hidden';
 };
 
-window.showAmount = (e) => {
+window.showAmount = async (e) => {
   window.clearErr()
   const input = document
     .getElementById('inputContainer')
