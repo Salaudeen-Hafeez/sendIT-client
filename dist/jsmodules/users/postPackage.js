@@ -32,28 +32,26 @@ const cost = (dist, weight) => {
   let multiplier;
   switch (dist) {
     case dist <= 10000:
-      multiplier = dist/40;
+      multiplier = dist/100;
       break;
     case 10000 <= dist <= 30000:
-      multiplier = dist/60;
+      multiplier = dist/300;
       break;
     case 30000 <= dist <= 70000:
-      multiplier = dist/120;
+      multiplier = dist/700;
       break;
     case 70000 <= dist <= 1200000:
-      multiplier = dist/190;
+      multiplier = dist/1200;
       break;
     case 1200000 <= dist <= 250000:
-      multiplier = dist/250;
+      multiplier = dist/2500;
       break;
     default:
-      multiplier = dist/400;
+      multiplier = dist/4000;
       break;
   }
-  console.log(typeof multiplier)
-  console.log(typeof weight)
-  const totalcost = weight * 10 * multiplier;
-  console.log(totalcost)
+
+  const totalcost = parseInt(weight) * 10 * multiplier;
   const naira = toNaira.format(Math.round(totalcost));
   return naira;
 };
