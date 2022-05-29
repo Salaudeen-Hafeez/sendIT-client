@@ -27,6 +27,7 @@ const formValidation = (input) => {
         setErrorFor(inp, message);
       }
     }else if (inp.getAttribute('name') === 'weight') {
+      console.log(inp.value)
       console.log(typeof inp.value)
       if(typeof inp.value !== 'number'){
         emptyInput = true;
