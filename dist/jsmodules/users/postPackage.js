@@ -93,8 +93,12 @@ window.showAmount = async (e) => {
 window.submitPackage = async () => {
   const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
-  console.log(parceldata)
-    const postedData = await postData(postPackageUrl, parceldata);
+  const input = document
+    .getElementById('inputContainer')
+    .querySelectorAll('input');
+  const { data, emptyInput } = formValidation(input);
+  if (!emptyInput) {
+    const postedData = await postData(postPackageUrl, data);
     if (!postedData.errMessage) {
       console.log(postedData)
       // localStorage.removeItem('package');
@@ -104,5 +108,6 @@ window.submitPackage = async () => {
       //window.location.href = '/package';
     } else {
       erro.innerHTML = postedData.errMessage;
-    }
+    }}
+    
   }
