@@ -8,7 +8,6 @@ const input2 = document.getElementById('destination');
 new google.maps.places.Autocomplete(input);
 new google.maps.places.Autocomplete(input2);
 const service = new google.maps.DistanceMatrixService();
-const user = JSON.parse(localStorage.getItem('user'));
 const getDistance = async (service, add) => {
   const request = {
     origins: [add[0]],
@@ -51,7 +50,7 @@ const cost = (dist, weight) => {
       break;
   }
 
-  const totalcost = parseInt(weight) * 5 * multiplier;
+  const totalcost = weight * 5 * multiplier;
   const naira = toNaira.format(Math.round(totalcost));
   return naira;
 };
@@ -73,16 +72,17 @@ window.showAmount = async (e) => {
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
-  const { data, emptyInput } = formValidation(input);
+  const { data, emptyInput, frajileMultiplier } = formValidation(input);
   if (!emptyInput) {
     const add = [data.location, data.destination];
     const distMetrix = await getDistance(service, add);
     const { distance, status } = distMetrix.rows[0].elements[0];
     if (status === 'OK') {
-      const tripFare = cost(distance.value, data.weight);
+      const weight = data.weight * frajileMultiplier
+      const user = JSON.parse(localStorage.getItem('user'));
+      const tripFare = cost(distance.value, weight);
       data['username'] = user._username;
-      data['cost'] = tripFare;
-      input[6].value = tripFare 
+      input[7].value = tripFare 
       parceldata = {...data} 
     }else {
       alert('The address entered not found');

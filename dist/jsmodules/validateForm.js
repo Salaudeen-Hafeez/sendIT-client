@@ -14,6 +14,7 @@ const formValidation = (input) => {
     /^[\+]?([0-9][\s]?|[0-9]?)([(][0-9]{3}[)][\s]?|[0-9]{3}[-\s\.]?)[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
   const data = {};
   let emptyInput = false;
+  let frajileMultiplier = 1;
   input.forEach((inp) => {
     if (inp.value.trim() === '') {
       if (inp.getAttribute('name') === 'amount') {
@@ -36,6 +37,7 @@ const formValidation = (input) => {
     } else if (inp.getAttribute('name') === 'frajile') {
       if (inp.checked) {
         data[inp.getAttribute('name')] = 'the package is frajile';
+        frajileMultiplier = 2
       } else {
         data[inp.getAttribute('name')] = 'not frajile';
       }
