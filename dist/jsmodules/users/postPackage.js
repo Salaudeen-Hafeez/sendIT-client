@@ -78,8 +78,8 @@ window.showAmount = async (e) => {
     const distMetrix = await getDistance(service, add);
     const { distance, status } = distMetrix.rows[0].elements[0];
     if (status === 'OK') {
-      const weight = data.weight * frajileMultiplier
       const user = JSON.parse(localStorage.getItem('user'));
+      const weight = parseInt(data.weight) * frajileMultiplier
       const tripFare = cost(distance.value, weight);
       data['username'] = user._username;
       input[7].value = tripFare 
