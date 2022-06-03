@@ -98,16 +98,18 @@ window.submitPackage = async () => {
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
-    const postedData = await postData(postPackageUrl, data);
-    if (!postedData.errMessage) {
-      console.log(postedData)
-      // localStorage.removeItem('package');
-      // localStorage.removeItem('packages');
-      // localStorage.setItem('package', JSON.stringify(postedData.package));
-      // localStorage.setItem('packages', JSON.stringify(postedData.packages));
-      //window.location.href = '/package';
-    } else {
-      erro.innerHTML = postedData.errMessage;
-    }}
+    console.log(data)
+    // //const postedData = await postData(postPackageUrl, data);
+    // if (!postedData.errMessage) {
+    //   console.log(postedData)
+    //   // localStorage.removeItem('package');
+    //   // localStorage.removeItem('packages');
+    //   // localStorage.setItem('package', JSON.stringify(postedData.package));
+    //   // localStorage.setItem('packages', JSON.stringify(postedData.packages));
+    //   //window.location.href = '/package';
+    // } else {
+    //   erro.innerHTML = postedData.errMessage;
+    // }
+  }
     
   }
