@@ -15,6 +15,7 @@ const formValidation = (input) => {
   const data = {};
   let emptyInput = false;
   input.forEach((inp) => {
+    console.log(inp.getAttribute('name'))
     if (inp.value.trim() === '') {
       if (inp.getAttribute('name') === 'amount') {
         return
@@ -35,6 +36,7 @@ const formValidation = (input) => {
       }
     } else if (inp.getAttribute('name') === 'frajile') {
       if (inp.checked) {
+        console.log(inp.checked)
         data[inp.getAttribute('name')] = 'the package is frajile';
       } else {
         data[inp.getAttribute('name')] = 'not frajile';
