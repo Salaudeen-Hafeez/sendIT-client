@@ -96,10 +96,11 @@ window.submitPackage = async () => {
   console.log(parceldata)
     const postedData = await postData(postPackageUrl, parceldata);
     if (!postedData.errMessage) {
-      localStorage.removeItem('package');
-      localStorage.removeItem('packages');
-      localStorage.setItem('package', JSON.stringify(postedData.package));
-      localStorage.setItem('packages', JSON.stringify(postedData.packages));
+      console.log(postedData)
+      // localStorage.removeItem('package');
+      // localStorage.removeItem('packages');
+      // localStorage.setItem('package', JSON.stringify(postedData.package));
+      // localStorage.setItem('packages', JSON.stringify(postedData.packages));
       //window.location.href = '/package';
     } else {
       erro.innerHTML = postedData.errMessage;
