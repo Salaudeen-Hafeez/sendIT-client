@@ -73,6 +73,7 @@ window.showAmount = async (e) => {
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
+    console.log(input)
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
     const add = [data.location, data.destination];
@@ -96,6 +97,7 @@ window.submitPackage = async () => {
   const input = document
     .getElementById('inputContainer')
     .querySelectorAll('input');
+    console.log(input)
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
     console.log(data)
