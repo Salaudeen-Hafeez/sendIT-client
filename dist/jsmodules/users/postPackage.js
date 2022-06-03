@@ -78,10 +78,8 @@ window.showAmount = async (e) => {
     const distMetrix = await getDistance(service, add);
     const { distance, status } = distMetrix.rows[0].elements[0];
     if (status === 'OK') {
-      const user = JSON.parse(localStorage.getItem('user'));
       const weight = parseInt(data.weight) * frajileMultiplier
       const tripFare = cost(distance.value, weight);
-      data['username'] = user._username;
       input[7].value = tripFare 
       parceldata = {...data} 
     }else {
@@ -91,6 +89,7 @@ window.showAmount = async (e) => {
 };
 
 window.submitPackage = async () => {
+  const user = JSON.parse(localStorage.getItem('user'));
   const erro = document.getElementById('errMessage');
   erro.innerHTML = '';
   const input = document
@@ -99,7 +98,9 @@ window.submitPackage = async () => {
   const { data, emptyInput } = formValidation(input);
   console.log(data)
   if (!emptyInput) {
-    //const postedData = await postData(postPackageUrl, data);
+    data['username'] = user._username;
+    console.log(data)
+    // const postedData = await postData(postPackageUrl, data);
     // if (!postedData.errMessage) {
     //   //console.log(postedData)
     //   // localStorage.removeItem('package');
