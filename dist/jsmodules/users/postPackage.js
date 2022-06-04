@@ -2,7 +2,6 @@ import { postData } from '../httpFetch/postData.js';
 import { postPackageUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 
-let parceldata = {}
 const input = document.getElementById('location');
 const input2 = document.getElementById('destination');
 new google.maps.places.Autocomplete(input);
@@ -78,10 +77,11 @@ window.showAmount = async (e) => {
     const distMetrix = await getDistance(service, add);
     const { distance, status } = distMetrix.rows[0].elements[0];
     if (status === 'OK') {
+      console.log(typeof data.weight)
+      console.log(typeof frajileMultiplier)
       const weight = parseInt(data.weight) * frajileMultiplier
       const tripFare = cost(distance.value, weight);
       input[7].value = tripFare 
-      parceldata = {...data} 
     }else {
       alert('The address entered not found');
     }
