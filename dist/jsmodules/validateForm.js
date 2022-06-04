@@ -77,7 +77,7 @@ const formValidation = (input) => {
       data[inp.getAttribute('name')] = inp.value.trim();
     }
   });
-  return { emptyInput, data };
+  return { emptyInput, data, frajileMultiplier };
 };
 
 export { formValidation };

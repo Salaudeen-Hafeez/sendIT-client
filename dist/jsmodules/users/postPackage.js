@@ -80,6 +80,7 @@ window.showAmount = async (e) => {
       console.log(typeof data.weight)
       console.log(typeof frajileMultiplier)
       const weight = parseInt(data.weight) * frajileMultiplier
+      console.log(typeof weight)
       const tripFare = cost(distance.value, weight);
       input[7].value = tripFare 
     }else {
