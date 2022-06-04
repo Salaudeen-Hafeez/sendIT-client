@@ -94,15 +94,6 @@
               />
               <small></small>
             </div>
-            <div class="checkBox">
-              <input
-                type="checkbox"
-                class="packageinput"
-                id="checkBox"
-                name="frajile"
-              />
-              <label for="checkBox">Is the parcel frajile?</label>
-            </div>
             <div class="input-field">
               <input
                 type="text"
@@ -113,6 +104,16 @@
                 oninput="showAmount(this)"
               />
               <small></small>
+            </div>
+            <div class="checkBox">
+              <input
+                type="checkbox"
+                class="packageinput"
+                id="checkBox"
+                name="frajile"
+                onclick="showAmount(this)"
+              />
+              <label for="checkBox">Is the parcel frajile?</label>
             </div>
             <div class="input-field">
               <label for="amount" class="col-4">Amount</label>
