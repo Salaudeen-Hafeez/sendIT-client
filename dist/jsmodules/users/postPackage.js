@@ -77,10 +77,7 @@ window.showAmount = async (e) => {
     const distMetrix = await getDistance(service, add);
     const { distance, status } = distMetrix.rows[0].elements[0];
     if (status === 'OK') {
-      console.log(typeof data.weight)
-      console.log(typeof frajileMultiplier)
       const weight = parseInt(data.weight) * frajileMultiplier
-      console.log(typeof weight)
       const tripFare = cost(distance.value, weight);
       input[7].value = tripFare 
     }else {
@@ -97,18 +94,15 @@ window.submitPackage = async () => {
     .getElementById('inputContainer')
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
-  console.log(data)
   if (!emptyInput) {
     data['username'] = user._username;
-    console.log(data)
     const postedData = await postData(postPackageUrl, data);
     if (!postedData.errMessage) {
-      console.log(postedData)
-      // localStorage.removeItem('package');
-      // localStorage.removeItem('packages');
-      // localStorage.setItem('package', JSON.stringify(postedData.package));
-      // localStorage.setItem('packages', JSON.stringify(postedData.packages));
-      //window.location.href = '/package';
+      localStorage.removeItem('package');
+      localStorage.removeItem('packages');
+      localStorage.setItem('package', JSON.stringify(postedData.package));
+      localStorage.setItem('packages', JSON.stringify(postedData.packages));
+      window.location.href = '/package';
     } else {
       erro.innerHTML = postedData.errMessage;
     }
