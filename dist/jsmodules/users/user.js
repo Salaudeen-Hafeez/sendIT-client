@@ -76,14 +76,14 @@ window.displayUserPackages = async () => {
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
-    if (packages.length === 0) {
+    if (packages === null) {
       const parcels = await fetchData(fetchParcelUrl)
       if (!parcels.errMessage){
         localStorage.setItem('packages', JSON.stringify(admin.packages));
         console.log(parcels)
         //packagesDiv.innerHTML = packageDisplay(packages, 'Cancele');
       }else{
-        const packag = { errMessage: 'You do not have packages' };
+      const packag = { errMessage: 'You do not have packages' };
       packagesDiv.innerHTML = packageDisplay(packag);
     }
       
