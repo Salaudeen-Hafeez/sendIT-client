@@ -84,16 +84,9 @@ window.displayUserPackages = async () => {
   } else {
     if (packages === null) {
       const parcels = await fetchData(fetchParcelUrl)
-      console.log(parcels)
-    //   .then((resp) => resp.json())
-    //   .then((data) => {console.log(data)})
-    //   .catch((err) => {
-    //   console.log(err);
-    // });
       if (!parcels.errMessage){
-        localStorage.setItem('packages', JSON.stringify(admin.packages));
-        console.log(parcels)
-        //packagesDiv.innerHTML = packageDisplay(packages, 'Cancele');
+        localStorage.setItem('packages', JSON.stringify(parcels));
+        packagesDiv.innerHTML = packageDisplay(parcels, 'Cancele');
       }else{
       const packag = { errMessage: 'You do not have packages' };
       packagesDiv.innerHTML = packageDisplay(packag);
