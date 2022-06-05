@@ -16,7 +16,6 @@ window.login = async () => {
       const user = await postData(loginUrl, data);
       if (!user.errMessage) {
         localStorage.setItem('user', JSON.stringify(user.user));
-        localStorage.setItem('packages', JSON.stringify(user.packages));
         window.location.href = '/user';
       } else {
         erro.innerHTML = user.errMessage;

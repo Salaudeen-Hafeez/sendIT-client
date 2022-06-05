@@ -1,3 +1,5 @@
+import { fetchData } from '../httpFetch/fetchData.js';
+import { fetchParcelUrl } from '../httpFetch/urls.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 
 const geocodeAddress = async (geocoder, address) => {
@@ -68,15 +70,23 @@ window.logOut = async () => {
   localStorage.clear();
   window.location.href = '/';
 };
-window.displayUserPackages = () => {
+window.displayUserPackages = async () => {
   const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
     if (packages.length === 0) {
-      const packag = { errMessage: 'You do not have packages' };
+      const parcels = await fetchData(fetchParcelUrl)
+      if (!parcels.errMessage){
+        localStorage.setItem('packages', JSON.stringify(admin.packages));
+        console.log(parcels)
+        //packagesDiv.innerHTML = packageDisplay(packages, 'Cancele');
+      }else{
+        const packag = { errMessage: 'You do not have packages' };
       packagesDiv.innerHTML = packageDisplay(packag);
+    }
+      
     } else {
       packagesDiv.innerHTML = packageDisplay(packages, 'Cancele');
     }
