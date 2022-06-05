@@ -1,4 +1,4 @@
-const fetchData = async (url) => {
+const fetchData = async (url, data) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
   let token;
@@ -7,10 +7,14 @@ const fetchData = async (url) => {
   }
 
   const myHeaders = new Headers();
+
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append('Authorization', token);
 
-  let returnData = await fetch(url)
+  let returnData = await fetch(url, {
+    method: 'GET',
+    headers: myHeaders,
+  })
     .then((resp) => resp.json())
     .then((data) => {
       return data;
@@ -20,4 +24,5 @@ const fetchData = async (url) => {
     });
   return returnData;
 };
-export { fetchData };
+
+export {fetchData}
