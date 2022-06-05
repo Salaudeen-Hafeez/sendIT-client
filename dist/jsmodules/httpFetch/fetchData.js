@@ -1,7 +1,7 @@
-const fetchData = async (url: RequestInfo) => {
+const fetchData = async (url) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
-  let token: string;
+  let token;
   if (user || admin) {
     token = user.auth_token || admin.admin_token;
   }
