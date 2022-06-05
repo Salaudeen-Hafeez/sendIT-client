@@ -3,7 +3,11 @@ const fetchData = async (url) => {
   const admin = JSON.parse(localStorage.getItem('admin'));
   let token;
   if (user || admin) {
-    token = user.auth_token || admin.admin_token;
+    if (user) {
+      token = user.auth_token 
+    }else {
+      token = admin.admin_token
+    };
   }
 
   const myHeaders = new Headers();

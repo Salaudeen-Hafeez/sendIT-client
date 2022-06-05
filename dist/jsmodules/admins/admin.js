@@ -197,6 +197,7 @@ window.showPackages = async () => {
   if (packages === null){
     console.log('About to fetch parcels')
     const parcels = await fetchData(adminFetchParcelUrl)
+    console.log(parcels)
     localStorage.setItem('packages', JSON.stringify(parcels));
     const packages = document.querySelector('.packageContainer');
     packages.classList.toggle('open');
