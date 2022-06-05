@@ -89,9 +89,9 @@ window.updateStatus = async () => {
   let data = {};
   let key = '_destination';
   const { _status, _location, parcel_id: id } = packag;
-  let userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/destination`;
+  let userUpdateUrl = `https://akera-backend.herokuapp.com/api/v1/parcels/${id}/destination`;
   if (!user) {
-    userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/status`;
+    userUpdateUrl = `https://akera-backend.herokuapp.com/api/v1/parcels/${id}/status`;
     data['_status'] = status.options[status.selectedIndex].value;
     key = '_location';
   }
@@ -109,9 +109,10 @@ window.updateStatus = async () => {
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const newDest = { ...data, [key]: location1 };
         const packag = await putPackage(userUpdateUrl, newDest);
-        localStorage.setItem('package', JSON.stringify(packag.package));
-        localStorage.setItem('packages', JSON.stringify(packag.packages));
-        window.location.reload();
+        console.log(packag)
+        // localStorage.setItem('package', JSON.stringify(packag.package));
+        // localStorage.setItem('packages', JSON.stringify(packag.packages));
+        // window.location.reload();
       } else {
         alert('Destination address entered not found');
       }
@@ -131,7 +132,7 @@ window.okay = () => {
 
 window.canceleOrder = async () => {
   if (user) {
-    const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/parcels/${packag.parcel_id}/destination`;
+    const userUpdateUrl = `https://akera-backend.herokuapp.com/api/v1/parcels/${packag.parcel_id}/destination`;
     if (packag._status === 'Order Canceled') {
       alert('Order already canceled');
     } else {

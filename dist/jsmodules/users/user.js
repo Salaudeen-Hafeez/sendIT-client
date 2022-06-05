@@ -1,7 +1,6 @@
 import { fetchData } from '../httpFetch/fetchData.js';
-//import { fetchParcelUrl } from '../httpFetch/urls.js';
+import { fetchParcelUrl } from '../httpFetch/urls.js';
 import { packageDisplay } from '../packages/displayPackage.js';
-localStorage.clear()
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
