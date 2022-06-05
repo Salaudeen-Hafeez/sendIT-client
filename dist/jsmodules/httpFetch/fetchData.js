@@ -7,12 +7,12 @@ const fetchData = async (url) => {
   }
 
   const myHeaders = new Headers();
-
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append('Authorization', token);
 
   let returnData = await fetch(url, {
-    headers: myHeaders,
+    method: 'GET',
+    headers: myHeaders
   })
     .then((resp) => resp.json())
     .then((data) => {
