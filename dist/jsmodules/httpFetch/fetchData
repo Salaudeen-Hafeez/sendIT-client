@@ -1,7 +1,7 @@
-const fetchData = async (url) => {
+const fetchData = async (url: RequestInfo) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
-  let token;
+  let token: string;
   if (user || admin) {
     token = user.auth_token || admin.admin_token;
   }
@@ -12,8 +12,7 @@ const fetchData = async (url) => {
   myHeaders.append('Authorization', token);
 
   let returnData = await fetch(url, {
-    method: 'GET',
-    headers: myHeaders,
+    method: 'GET',headers: myHeaders,
   })
     .then((resp) => resp.json())
     .then((data) => {
