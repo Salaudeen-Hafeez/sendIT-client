@@ -1,4 +1,4 @@
-const fetchData = async (url, data) => {
+const fetchData = async (url) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
   let token;
