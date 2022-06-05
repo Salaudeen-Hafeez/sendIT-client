@@ -9,17 +9,18 @@ const fetchData = async (url) => {
       console.log(admin)
       console.log('Inside Admin token')
       token = admin.admin_token
-      console.log(token)
     };
   }
 
   const myHeaders = new Headers();
 
+  console.log(token)
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append('Authorization', token);
 
   let returnData = await fetch(url, {
-    method: 'GET',headers: myHeaders,
+    method: 'GET',
+    headers: myHeaders,
   })
     .then((resp) => resp.json())
     .then((data) => {
