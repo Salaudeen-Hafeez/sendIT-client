@@ -1,3 +1,5 @@
+import { fetchData } from '../httpFetch/fetchData.js';
+import { adminFetchParcelUrl, adminFetchUserUrl } from '../httpFetch/urls.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 
 const geocodeAddress = async (geocoder, address) => {
@@ -71,8 +73,9 @@ const adminFetchPackages = (cond) => {
   }
 };
 
-window.fetchUsers = () => {
-  const users = JSON.parse(localStorage.getItem('users'));
+window.fetchUsers = async () => {
+  const users = await fetchData(adminFetchUserUrl)
+  localStorage.setItem('users', JSON.stringify(users));
   let userul = '';
   users.forEach((user) => {
     userul += `<li>
@@ -189,9 +192,16 @@ window.toggleMenu = () => {
   navLink.classList.toggle('open');
 };
 
-window.showPackages = () => {
-  const packages = document.querySelector('.packageContainer');
-  packages.classList.toggle('open');
+window.showPackages = async () => {
+  if (!packages){
+    const parcels = await fetchData(adminFetchParcelUrl)
+    localStorage.setItem('packages', JSON.stringify(parcels));
+    const packages = document.querySelector('.packageContainer');
+    packages.classList.toggle('open');
+  }else{
+    const packages = document.querySelector('.packageContainer');
+    packages.classList.toggle('open');
+  }
 };
 
 window.fetchNewPackages = () => {

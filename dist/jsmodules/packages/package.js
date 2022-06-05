@@ -96,7 +96,7 @@ window.updateStatus = async () => {
     key = '_location';
   }
   if (_status === 'Order Canceled' || _status === 'Delivered') {
-    alert(`Order already ${_status}`);
+    alert(`Order already canceled`);
   } else {
     const { data: data0, emptyInput } = formValidation([locatn]);
     if (!emptyInput) {
@@ -149,6 +149,7 @@ window.canceleOrder = async () => {
     }
   }
 };
+
 window.clearErr = (e) => {
   e.style.border = '1px solid lightgreen';
   const small = e.parentElement.querySelector('small');

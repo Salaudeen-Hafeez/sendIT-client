@@ -24,8 +24,6 @@ window.login = async () => {
       const admin = await postData(loginUrl, data);
       if (!admin.errMessage) {
         localStorage.setItem('admin', JSON.stringify(admin.admin));
-        localStorage.setItem('users', JSON.stringify(admin.users));
-        localStorage.setItem('packages', JSON.stringify(admin.packages));
         window.location.href = '/admin';
       } else {
         erro.innerHTML = admin.errMessage;
