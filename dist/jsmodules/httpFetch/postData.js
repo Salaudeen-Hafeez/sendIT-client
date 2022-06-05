@@ -2,7 +2,6 @@ const postData = async (url, data) => {
   const user = JSON.parse(localStorage.getItem('user'));
   const admin = JSON.parse(localStorage.getItem('admin'));
   let token;
-  let email;
   if (user || admin) {
     token = user.auth_token || admin.admin_token;
   }

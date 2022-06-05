@@ -7,7 +7,8 @@ const fetchUsers = () => {
     let users = '';
     const containerdiv = document.getElementById('usersContainer');
     const container = containerdiv.querySelector('ul');
-    fetch(`https://akera-logistics.herokuapp.com/api/v1/${admin_token}`, {
+
+    fetch(`https://akera-backend.herokuapp.com/api/v1`, {
       headers: { 'Content-Type': 'application/json' },
     })
       .then((resp) => resp.json())

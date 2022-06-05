@@ -4,7 +4,7 @@ const adminDeleteUser = (e) => {
   const username = e.value;
   const id = parseInt(e.id);
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/${username}/${admin_token}`,
+    `https://akera-backend.herokuapp.com/api/v1/${username}/${admin_token}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -31,7 +31,7 @@ const adminDeletePackage = (e) => {
 
   const id = parseInt(e.id);
   fetch(
-    `https://akera-logistics.herokuapp.com/api/v1/${username}/packages/${id}/${admin_token}`,
+    `https://akera-backend.herokuapp.com/api/v1/${username}/packages/${id}/${admin_token}`,
     {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },

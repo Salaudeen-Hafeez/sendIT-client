@@ -1,4 +1,3 @@
-import { putPackage } from '../httpFetch/putData.js';
 import { packageDisplay } from '../packages/displayPackage.js';
 
 const geocodeAddress = async (geocoder, address) => {
@@ -33,26 +32,6 @@ const getDistance = async (service, add) => {
   return distance;
 };
 
-const admin = JSON.parse(localStorage.getItem('admin'));
-const geocoder = new google.maps.Geocoder();
-const service = new google.maps.DistanceMatrixService();
-const packages = JSON.parse(localStorage.getItem('packages'));
-let userul = '';
-const containerdiv = document.getElementById('usersContainer');
-const container = containerdiv.querySelector('ul');
-const newPackages = document.getElementById('newPackages');
-const adminFetchPackages = (cond) => {
-  const packages = JSON.parse(localStorage.getItem('packages'));
-  if (admin !== null && !admin.admin_token) {
-    window.location.href = '/login';
-  } else {
-    const packag = packages.filter((packag) => packag._status === cond);
-    const displayPackage = packageDisplay(packag);
-    newPackages.innerHTML = displayPackage;
-    newPackages.classList.toggle('open');
-  }
-};
-
 window.displayAdmin = () => {
   const profile = document.getElementById('userProfile');
   const adminProfile = ` <img
@@ -71,9 +50,30 @@ window.displayAdmin = () => {
   profile.innerHTML = adminProfile;
 };
 
+const admin = JSON.parse(localStorage.getItem('admin'));
+const geocoder = new google.maps.Geocoder();
+const service = new google.maps.DistanceMatrixService();
+
+const packages = JSON.parse(localStorage.getItem('packages'));
+const containerdiv = document.getElementById('usersContainer');
+const container = containerdiv.querySelector('ul');
+const newPackages = document.getElementById('newPackages');
+
+const adminFetchPackages = (cond) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
+  if (admin !== null && !admin.admin_token) {
+    window.location.href = '/login';
+  } else {
+    const packag = packages.filter((packag) => packag._status === cond);
+    const displayPackage = packageDisplay(packag);
+    newPackages.innerHTML = displayPackage;
+    newPackages.classList.toggle('open');
+  }
+};
+
 window.fetchUsers = () => {
   const users = JSON.parse(localStorage.getItem('users'));
-  userul = '';
+  let userul = '';
   users.forEach((user) => {
     userul += `<li>
         <div>
@@ -114,7 +114,7 @@ window.adminDeleteUser = (e) => {
     myHeaders.append('Content-Type', 'application/json');
     myHeaders.append('Authorization', admin.admin_token);
 
-    fetch(`https://akera-logistics.herokuapp.com/api/v1/users/${id}/delete`, {
+    fetch(`https://akera-backend.herokuapp.com/api/v1/users/${id}/delete`, {
       method: 'DELETE',
       headers: myHeaders,
     })
@@ -147,7 +147,7 @@ window.adminDeletePackage = (e) => {
       myHeaders.append('Content-Type', 'application/json');
       myHeaders.append('Authorization', admin.admin_token);
       fetch(
-        `https://akera-logistics.herokuapp.com/api/v1/parcels/${id}/delete`,
+        `https://akera-backend.herokuapp.com/api/v1/parcels/${id}/delete`,
         {
           method: 'DELETE',
           headers: myHeaders,
@@ -209,37 +209,3 @@ window.fetchDeliveredPackages = () => {
 window.fetchCanceledPackages = () => {
   adminFetchPackages('Order Canceled');
 };
-
-// window.updatePackage = async (e) => {
-//   const id = parseInt(e.id);
-//   const locatP = e.parentElement.parentElement.querySelectorAll('p');
-//   const userUpdateUrl = `https://akera-logistics.herokuapp.com/api/v1/packages/${id}/status`;
-//   const input = prompt(
-//     'update the package location and status, In transit/Delivered',
-//     'new location - In transit'
-//   );
-
-//   const updData = input.split('-');
-//   if (input !== null && updData.length === 2) {
-//     const packag = packages.filter((pack) => pack.parcel_id === id);
-//     const { _status, _destination } = packag[0];
-//     if (_status === 'Order Canceled' || _status === 'Delivered') {
-//       alert(`Order already ${_status}`);
-//     } else {
-//       const { add1: add2 } = await geocodeAddress(geocoder, updData[0]);
-//       const add = [_destination, add2];
-//       const distMetrix = await getDistance(service, add);
-//       if (distMetrix.rows[0].elements[0].status === 'OK') {
-//         const data = { _location: add2, _status: updData[1].trim() };
-//         const updPack = await putPackage(userUpdateUrl, data);
-//         localStorage.setItem('packages', JSON.stringify(updPack.packages));
-//         locatP[1].innerHTML = `<span style="font-weight:800">Location:</span> ${updPack.package._location}`;
-//         locatP[3].innerHTML = `<span style="font-weight:800; color:#165516">${updPack.package._status}`;
-//       } else {
-//         alert('address entered not found');
-//       }
-//     }
-//   } else {
-//     alert('Please enter correct data, exp: Adewusi street, lagos - In transit');
-//   }
-// };
