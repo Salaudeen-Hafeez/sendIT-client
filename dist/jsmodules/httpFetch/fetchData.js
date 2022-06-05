@@ -6,8 +6,10 @@ const fetchData = async (url) => {
     if (user) {
       token = user.auth_token 
     }else {
+      console.log(admin)
       console.log('Inside Admin token')
       token = admin.admin_token
+      console.log(token)
     };
   }
 
