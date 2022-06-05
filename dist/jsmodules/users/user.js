@@ -1,7 +1,7 @@
 import { fetchData } from '../httpFetch/fetchData.js';
 import { fetchParcelUrl } from '../httpFetch/urls.js';
 import { packageDisplay } from '../packages/displayPackage.js';
-
+localStorage.clear()
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
@@ -26,16 +26,19 @@ const getDistance = async (service, add) => {
     avoidHighways: false,
     avoidTolls: false,
   };
+
   // get distance matrix response
   let distance = await service.getDistanceMatrix(request).then((response) => {
     return response;
   });
   return distance;
 };
+
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 const user = JSON.parse(localStorage.getItem('user'));
 const admin = JSON.parse(localStorage.getItem('admin'));
+
 window.createProfile = () => {
   let profileData;
   if (user !== null || admin !== null) {
@@ -62,14 +65,17 @@ window.createProfile = () => {
     packagBtn.innerHTML = button;
   }
 };
+
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
 };
+
 window.logOut = async () => {
   localStorage.clear();
   window.location.href = '/';
 };
+
 window.displayUserPackages = async () => {
   const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
@@ -110,6 +116,7 @@ window.displayPendingPackage = () => {
     }
   }
 };
+
 window.getPackage = (e) => {
   const packages = JSON.parse(localStorage.getItem('packages'));
   localStorage.removeItem('package');
@@ -118,6 +125,7 @@ window.getPackage = (e) => {
   localStorage.setItem('package', JSON.stringify(packag1[0]));
   window.location.href = '/package';
 };
+
 window.adminDeletePackage = (e) => {
   window.getPackage(e);
 };
