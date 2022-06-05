@@ -1,7 +1,7 @@
 import { fetchData } from '../httpFetch/fetchData.js';
 import { fetchParcelUrl } from '../httpFetch/urls.js';
 import { packageDisplay } from '../packages/displayPackage.js';
-
+localStorage.clear()
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
     .geocode({ address })
@@ -79,6 +79,7 @@ window.logOut = async () => {
 window.displayUserPackages = async () => {
   const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
+  console.log(packages)
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
