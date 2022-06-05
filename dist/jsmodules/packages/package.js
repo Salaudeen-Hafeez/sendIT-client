@@ -109,9 +109,10 @@ window.updateStatus = async () => {
       if (distMetrix.rows[0].elements[0].status === 'OK') {
         const newDest = { ...data, [key]: location1 };
         const packag = await putPackage(userUpdateUrl, newDest);
-        localStorage.setItem('package', JSON.stringify(packag.package));
-        localStorage.setItem('packages', JSON.stringify(packag.packages));
-        window.location.reload();
+        console.log(packag)
+        // localStorage.setItem('package', JSON.stringify(packag.package));
+        // localStorage.setItem('packages', JSON.stringify(packag.packages));
+        // window.location.reload();
       } else {
         alert('Destination address entered not found');
       }
