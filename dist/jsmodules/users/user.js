@@ -83,7 +83,9 @@ window.displayUserPackages = async () => {
     window.location.href = '/login';
   } else {
     if (packages === null) {
-      const parcels = await fetchData(fetchParcelUrl)
+      const parcels = await fetch(fetchParcelUrl)
+      .then((resp) => resp.json)
+      .then((data) => {console.log(data)})
       if (!parcels.errMessage){
         localStorage.setItem('packages', JSON.stringify(admin.packages));
         console.log(parcels)
