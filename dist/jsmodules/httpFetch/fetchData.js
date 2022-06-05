@@ -11,8 +11,7 @@ const fetchData = async (url) => {
   myHeaders.append('Authorization', token);
 
   let returnData = await fetch(url, {
-    method: 'GET',
-    headers: myHeaders
+    headers: {'Content-Type': 'application/json', 'Authorization': token}
   })
     .then((resp) => resp.json())
     .then((data) => {
