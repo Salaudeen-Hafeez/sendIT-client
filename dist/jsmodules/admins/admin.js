@@ -56,7 +56,7 @@ const admin = JSON.parse(localStorage.getItem('admin'));
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 
-//const packages = JSON.parse(localStorage.getItem('packages'));
+const packages = JSON.parse(localStorage.getItem('packages'));
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
@@ -193,7 +193,9 @@ window.toggleMenu = () => {
 };
 
 window.showPackages = async () => {
-  if (!packages){
+  console.log('Inside showPackages function')
+  if (packages === null){
+    console.log('About to fetch parcels')
     const parcels = await fetchData(adminFetchParcelUrl)
     localStorage.setItem('packages', JSON.stringify(parcels));
     const packages = document.querySelector('.packageContainer');
