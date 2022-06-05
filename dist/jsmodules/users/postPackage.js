@@ -1,5 +1,5 @@
 import { postData } from '../httpFetch/postData.js';
-import { postPackageUrl } from '../httpFetch/urls.js';
+import { postParcelUrl } from '../httpFetch/urls.js';
 import { formValidation } from '../validateForm.js';
 
 const input = document.getElementById('location');
@@ -96,7 +96,7 @@ window.submitPackage = async () => {
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
     data['username'] = user._username;
-    const postedData = await postData(postPackageUrl, data);
+    const postedData = await postData(postParcelUrl, data);
     if (!postedData.errMessage) {
       localStorage.removeItem('package');
       localStorage.removeItem('packages');
