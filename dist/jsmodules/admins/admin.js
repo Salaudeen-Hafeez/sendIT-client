@@ -56,7 +56,7 @@ const admin = JSON.parse(localStorage.getItem('admin'));
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
 
-const packages = JSON.parse(localStorage.getItem('packages'));
+//const packages = JSON.parse(localStorage.getItem('packages'));
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
