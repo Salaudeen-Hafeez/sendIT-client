@@ -193,6 +193,7 @@ window.toggleMenu = () => {
 };
 
 window.showPackages = async () => {
+  console.log('Inside showPackages')
   if (packages === null){
     const parcels = await fetchData(adminFetchParcelUrl)
     console.log(parcels)
