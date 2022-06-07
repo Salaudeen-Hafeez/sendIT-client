@@ -166,6 +166,7 @@ window.adminDeletePackage = (e) => {
 };
 
 window.getPackage = (e) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
   localStorage.removeItem('package');
   const parcelId = parseInt(e.id);
   const packag1 = packages.filter((packag) => packag.parcel_id === parcelId);
