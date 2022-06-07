@@ -1,6 +1,7 @@
 import { fetchData } from '../httpFetch/fetchData.js';
 import { adminFetchParcelUrl, adminFetchUserUrl } from '../httpFetch/urls.js';
 import { packageDisplay } from '../packages/displayPackage.js';
+import { displayUsers } from './displayUsers.js';
 
 const geocodeAddress = async (geocoder, address) => {
   let geocodeResult = await geocoder
@@ -55,7 +56,6 @@ window.displayAdmin = () => {
 const admin = JSON.parse(localStorage.getItem('admin'));
 const geocoder = new google.maps.Geocoder();
 const service = new google.maps.DistanceMatrixService();
-
 const containerdiv = document.getElementById('usersContainer');
 const container = containerdiv.querySelector('ul');
 const newPackages = document.getElementById('newPackages');
@@ -73,27 +73,19 @@ const adminFetchPackages = (cond) => {
 };
 
 window.fetchUsers = async () => {
-  const users = await fetchData(adminFetchUserUrl)
-  localStorage.setItem('users', JSON.stringify(users));
-  let userul = '';
-  users.forEach((user) => {
-    userul += `<li>
-        <div>
-        <div class="userDetails">
-          <h2>${user._name}</h2>
-          <p>${user._username}</p>
-          <p>${user._email}</p>
-          <button onclick="adminFetchUserPackage(this)" value= "${user._username}" id="${user.users_id}">packages</button>
-          <button onclick="adminDeleteUser(this)" value= "${user._username}" id="${user.users_id}">delete user</button>
-          <div style="font-weight:800;text-align:center;color:red;"class="userCont" id="userConts${user.users_id}"></div>
-        </div>
-        <div class="userCont" id="userCont${user.users_id}"></div>
-        </div>
-      </li>`;
-  });
-
-  container.innerHTML = userul;
-  containerdiv.classList.toggle('open');
+  const users = JSON.parse(localStorage.getItem('users'));
+  if (users === null) {
+    const users = await fetchData(adminFetchUserUrl)
+    console.log(users)
+    localStorage.setItem('users', JSON.stringify(users));
+    const userul = displayUsers(users)
+    container.innerHTML = userul;
+    containerdiv.classList.toggle('open');
+  }else{
+    const userul = displayUsers(users)
+    container.innerHTML = userul;
+    containerdiv.classList.toggle('open');
+  }
 };
 
 window.adminFetchUserPackage = (e) => {
