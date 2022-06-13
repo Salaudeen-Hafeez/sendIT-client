@@ -751,6 +751,7 @@ select {
 }
 .amount {
   font-size: 18px;
+  text-align: center;
   width: 95%;
   padding: 10px;
 }
