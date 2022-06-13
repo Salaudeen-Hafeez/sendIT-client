@@ -76,7 +76,6 @@ window.fetchUsers = async () => {
   const users = JSON.parse(localStorage.getItem('users'));
   if (users === null) {
     const users = await fetchData(adminFetchUserUrl)
-    console.log(users)
     localStorage.setItem('users', JSON.stringify(users));
     const userul = displayUsers(users)
     container.innerHTML = userul;
@@ -88,15 +87,40 @@ window.fetchUsers = async () => {
   }
 };
 
-window.adminFetchUserPackage = (e) => {
+window.showPackages = async () => {
   const packages = JSON.parse(localStorage.getItem('packages'));
-  const username = e.value;
-  const id = e.id;
-  const userCont = `userCont${id}`;
-  const newPackages = document.getElementById(userCont);
-  const packag = packages.filter((packag) => packag._username === username);
-  newPackages.innerHTML = packageDisplay(packag);
-  newPackages.classList.toggle('open');
+  if (packages === null){
+    const parcels = await fetchData(adminFetchParcelUrl)
+    localStorage.setItem('packages', JSON.stringify(parcels));
+    const packages = document.querySelector('.packageContainer');
+    packages.classList.toggle('open');
+  }else{
+    const packages = document.querySelector('.packageContainer');
+    packages.classList.toggle('open');
+  }
+};
+
+window.adminFetchUserPackage = async (e) => {
+  const packages = JSON.parse(localStorage.getItem('packages'));
+  if (packages === null){
+    const parcels = await fetchData(adminFetchParcelUrl)
+    localStorage.setItem('packages', JSON.stringify(parcels));
+    const username = e.value;
+    const id = e.id;
+    const userCont = `userCont${id}`;
+    const newPackages = document.getElementById(userCont);
+    const packag = parcels.filter((packag) => packag._username === username);
+    newPackages.innerHTML = packageDisplay(packag);
+    newPackages.classList.toggle('open');
+  }else{
+    const username = e.value;
+    const id = e.id;
+    const userCont = `userCont${id}`;
+    const newPackages = document.getElementById(userCont);
+    const packag = packages.filter((packag) => packag._username === username);
+    newPackages.innerHTML = packageDisplay(packag);
+    newPackages.classList.toggle('open');
+  }
 };
 
 window.adminDeleteUser = (e) => {
@@ -182,20 +206,6 @@ window.logOut = () => {
 window.toggleMenu = () => {
   const navLink = document.querySelector('.nav-link');
   navLink.classList.toggle('open');
-};
-
-window.showPackages = async () => {
-  const packages = JSON.parse(localStorage.getItem('packages'));
-  if (packages === null){
-    const parcels = await fetchData(adminFetchParcelUrl)
-    console.log(parcels)
-    localStorage.setItem('packages', JSON.stringify(parcels));
-    const packages = document.querySelector('.packageContainer');
-    packages.classList.toggle('open');
-  }else{
-    const packages = document.querySelector('.packageContainer');
-    packages.classList.toggle('open');
-  }
 };
 
 window.fetchNewPackages = () => {
