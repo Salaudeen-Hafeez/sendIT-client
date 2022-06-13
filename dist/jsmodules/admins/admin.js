@@ -174,8 +174,8 @@ window.adminDeletePackage = (e) => {
         .then((resp) => resp.json())
         .then((data) => {
           console.log(data)
-          // localStorage.removeItem('packages');
-          // localStorage.setItem('packages', JSON.stringify(data.packages));
+          localStorage.removeItem('packages');
+          localStorage.setItem('packages', JSON.stringify(data.packages));
           if (button !== null) {
             button.click();
             button.click();
