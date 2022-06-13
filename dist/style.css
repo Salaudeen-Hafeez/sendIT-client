@@ -749,3 +749,7 @@ select {
 .packDescription li a {
   font-size: 14px;
 }
+
+.amount {
+  text-align: center;
+}
