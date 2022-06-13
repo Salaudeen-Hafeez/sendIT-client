@@ -767,17 +767,12 @@ select {
   padding: 10px;
 }
 .amountCont {
-  height: 0rem;
-  visibility: hidden;
-  width: 100%;
-}
-.amountCont.open {
   height: auto;
   padding: 1rem;
-  visibility: visible;
   display: flex;
-  width: 100%;
   flex-direction: column;
   justify-content: space-around;
   padding-bottom: 1rem;
+  visibility: hidden;
+  width: 100%;
 }
