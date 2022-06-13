@@ -9,7 +9,7 @@ const postData = async (url, data) => {
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append('Authorization', token);
+  myHeaders.append('Authorization', 'Bearer '+token);
 
   let returnData = await fetch(url, {
     method: 'POST',

@@ -11,7 +11,7 @@ const putPackage = async (url, data) => {
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append('Authorization', token);
+  myHeaders.append('Authorization', 'Bearer '+token);
 
   const returnData = await fetch(url, {
     method: 'PUT',

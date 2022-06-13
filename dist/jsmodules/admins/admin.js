@@ -106,7 +106,7 @@ window.adminDeleteUser = (e) => {
     const myHeaders = new Headers();
 
     myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('Authorization', admin.admin_token);
+    myHeaders.append('Authorization', 'Bearer '+admin.admin_token);
 
     fetch(`https://akera-backend.herokuapp.com/api/v1/users/${id}/delete`, {
       method: 'DELETE',
@@ -139,7 +139,7 @@ window.adminDeletePackage = (e) => {
       const myHeaders = new Headers();
 
       myHeaders.append('Content-Type', 'application/json');
-      myHeaders.append('Authorization', admin.admin_token);
+      myHeaders.append('Authorization', 'Bearer '+admin.admin_token);
       fetch(
         `https://akera-backend.herokuapp.com/api/v1/parcels/${id}/delete`,
         {

@@ -13,7 +13,7 @@ const fetchData = async (url) => {
   const myHeaders = new Headers();
 
   myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append('Authorization', token);
+  myHeaders.append('Authorization', 'Bearer '+token);
 
   let returnData = await fetch(url, {
     method: 'GET',
