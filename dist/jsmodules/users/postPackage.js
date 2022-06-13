@@ -110,6 +110,5 @@ window.submitPackage = async () => {
     
   }
   
-  window.disableClick = (e) => {
-    e.preventDefault()
+  window.disableClick = () => {
   }
