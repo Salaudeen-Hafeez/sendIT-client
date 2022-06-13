@@ -81,7 +81,8 @@ window.showAmount = async (e) => {
       const weight = parseInt(data.weight) * frajileMultiplier
       const tripFare = cost(distance.value, weight);
       input[7].value = tripFare
-      amountdiv.style.visibility = 'visible'; 
+      amountdiv.style.visibility = 'visible';
+      amountdiv.style.height = 'auto';  
     }else {
       alert('The address entered not found');
     }

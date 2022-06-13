@@ -767,7 +767,7 @@ select {
   padding: 10px;
 }
 .amountCont {
-  height: auto;
+  height: 0rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
