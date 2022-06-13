@@ -4,6 +4,7 @@ import { formValidation } from '../validateForm.js';
 
 const input = document.getElementById('location');
 const input2 = document.getElementById('destination');
+const amountdiv = document.getElementById('amountCont');
 new google.maps.places.Autocomplete(input);
 new google.maps.places.Autocomplete(input2);
 const service = new google.maps.DistanceMatrixService();
@@ -79,7 +80,8 @@ window.showAmount = async (e) => {
     if (status === 'OK') {
       const weight = parseInt(data.weight) * frajileMultiplier
       const tripFare = cost(distance.value, weight);
-      input[7].value = tripFare 
+      input[7].value = tripFare
+      amountdiv.classList.toggle('open'); 
     }else {
       alert('The address entered not found');
     }
