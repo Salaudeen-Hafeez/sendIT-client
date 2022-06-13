@@ -78,7 +78,6 @@ window.logOut = async () => {
 window.displayUserPackages = async () => {
   const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
-  console.log(packages)
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
@@ -99,14 +98,23 @@ window.displayUserPackages = async () => {
 };
 
 window.displayPendingPackage = () => {
+  let packageInTrans;
   const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
   if (user !== null && !user.auth_token) {
     window.location.href = '/login';
   } else {
-    const packageInTrans = packages.filter(
+    if (packages === null) {
+      const parcels = await fetchData(fetchParcelUrl)
+      packageInTrans = parcels.filter(
       (packag) => packag._status === 'In transit'
     );
+    }else{
+      packageInTrans = packages.filter(
+      (packag) => packag._status === 'In transit'
+    );
+    }
+    
     if (packageInTrans.length === 0) {
       const packag = { errMessage: 'You do not have package in transit' };
       packagesDiv.innerHTML = packageDisplay(packag);
