@@ -749,8 +749,19 @@ select {
 .packDescription li a {
   font-size: 14px;
 }
-
 .amount {
-  width: 100%;
-  text-align: center;
+  font-size: 18px;
+  width: 95%;
+  padding: 10px;
+}
+.showAmount {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-style: none;
+  background: #067a06;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  width: 95%;
+  padding: 10px;
 }
