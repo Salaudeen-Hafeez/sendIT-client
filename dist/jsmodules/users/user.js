@@ -97,7 +97,7 @@ window.displayUserPackages = async () => {
   }
 };
 
-window.displayPendingPackage = () => {
+window.displayPendingPackage = async () => {
   let packageInTrans;
   const packages = JSON.parse(localStorage.getItem('packages'));
   const packagesDiv = document.getElementById('packagesUl');
