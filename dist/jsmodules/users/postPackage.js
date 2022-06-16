@@ -99,13 +99,14 @@ window.submitPackage = async () => {
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
     data['username'] = user._username;
+    console.log(data)
     const postedData = await postData(postParcelUrl, data);
     if (!postedData.errMessage) {
       localStorage.removeItem('package');
       localStorage.removeItem('packages');
       localStorage.setItem('package', JSON.stringify(postedData.package));
       localStorage.setItem('packages', JSON.stringify(postedData.packages));
-      window.location.href = '/package';
+      //window.location.href = '/package';
     } else {
       erro.innerHTML = postedData.errMessage;
     }
