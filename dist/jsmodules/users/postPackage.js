@@ -98,8 +98,8 @@ window.submitPackage = async () => {
     .querySelectorAll('input');
   const { data, emptyInput } = formValidation(input);
   if (!emptyInput) {
-    data['username'] = user._username;
     console.log(data)
+    data['username'] = user._username;
     const postedData = await postData(postParcelUrl, data);
     if (!postedData.errMessage) {
       localStorage.removeItem('package');
